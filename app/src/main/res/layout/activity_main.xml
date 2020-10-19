@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frontpage"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@xml/home_background">
+
+    <TextView
+        android:id="@+id/sonority_by"
+        android:layout_width="187dp"
+        android:layout_height="17dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+
+        android:layout_marginStart="111dp"
+        android:layout_marginLeft="111dp"
+        android:layout_marginTop="77dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="SONORITY BY AUDIENTES"
+        android:textAppearance="@style/sonority_by" />
+
+    <TextView
+        android:id="@+id/home"
+        android:layout_width="123dp"
+        android:layout_height="34dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="144dp"
+        android:layout_marginTop="115dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="HOME"
+        android:textAppearance="@style/home" />
+
+    <Button
+        android:id="@+id/home_button1"
+        android:layout_width="152dp"
+        android:layout_height="152dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="198dp"
+        android:background="@xml/home_ellipse"
+        android:elevation="50dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="SOUND  TIMBRE"
+        android:textAppearance="@style/sonic_distr" />
+
+    <Button
+        android:id="@+id/home_button2"
+        android:layout_width="152dp"
+        android:layout_height="152dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="396dp"
+        android:background="@xml/home_ellipse"
+        android:elevation="50dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="SONIC DISTRACTION"
+        android:textAppearance="@style/sonic_distr" />
+
+
+    <Button
+        android:id="@+id/home_rectangle1"
+        android:layout_width="66dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="73dp"
+        android:layout_marginTop="601dp"
+        android:background="@xml/home_rectangle" />
+
+    <View
+        android:id="@+id/home_rectangle1_settings"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="91dp"
+        android:layout_marginTop="605dp"
+        android:background="@drawable/ic_baseline_settings_24" />
+
+    <Button
+        android:id="@+id/home_rectangle2"
+        android:layout_width="66dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="173dp"
+        android:layout_marginTop="601dp"
+        android:background="@xml/home_rectangle" />
+
+    <Button
+        android:id="@+id/home_rectangle3"
+        android:layout_width="66dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="271dp"
+        android:layout_marginTop="602dp"
+        android:background="@xml/home_rectangle" />
+
+
+</RelativeLayout>
