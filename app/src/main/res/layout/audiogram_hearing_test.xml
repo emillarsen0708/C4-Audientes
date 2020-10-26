@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/audiogram"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@xml/audiogram_background">
+
+    <TextView
+        android:id="@+id/sonority_by"
+        android:layout_width="187dp"
+        android:layout_height="17dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="37dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="SONORITY BY AUDIENTES"
+        android:textAppearance="@style/sonority_by2"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/audiogram_header"
+        android:layout_width="209dp"
+        android:layout_height="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="101dp"
+        android:layout_marginTop="74dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="AUDIOGRAM"
+        android:textAppearance="@style/sonic_distr2"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/component_8"
+        android:layout_width="40dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="352dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/home_house_3"
+        android:elevation="5dp"
+        />
+
+    <Button
+        android:id="@+id/audiogram_rectangle_1"
+        android:layout_width="190dp"
+        android:layout_height="69dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="200dp"
+        android:background="@xml/audiogram_rectangle"
+        android:elevation="4dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="TAKE HEARING TEST"
+        android:textAppearance="@style/sonic_distr2"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/audiogram_rectangle_3"
+        android:layout_width="190dp"
+        android:layout_height="69dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="310dp"
+        android:background="@xml/audiogram_rectangle"
+        android:elevation="4dp"
+        android:text="UPLOAD AUDIOGRAM"
+        android:textAppearance="@style/sonic_distr2"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/audiogram_rectangle_2"
+        android:layout_width="190dp"
+        android:layout_height="69dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="420dp"
+        android:background="@xml/audiogram_rectangle"
+        android:elevation="4dp"
+        android:text="VIEW MY AUDIOGRAM"
+        android:textAppearance="@style/sonic_distr2"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/home_rectangle1"
+        android:layout_width="66dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="63dp"
+        android:layout_marginTop="605dp"
+        android:background="@xml/home_rectangle" />
+
+    <View
+        android:id="@+id/home_rectangle1_settings"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="37dp"
+        android:layout_marginTop="558dp"
+        android:background="@drawable/settings_icon"
+        android:elevation="3dp" />
+
+    <Button
+        android:id="@+id/home_rectangle2"
+        android:layout_width="66dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="172dp"
+        android:layout_marginTop="605dp"
+        android:background="@xml/home_rectangle" />
+    <View
+        android:id="@+id/home_sound_settings"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="189dp"
+        android:layout_marginTop="606dp"
+        android:background="@drawable/sound_icon"
+        android:elevation="3dp" />
+
+    <Button
+        android:id="@+id/home_rectangle3"
+        android:layout_width="66dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="605dp"
+        android:background="@xml/home_rectangle" />
+
+    <View
+        android:id="@+id/home_sound_test"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="292dp"
+        android:layout_marginTop="600dp"
+        android:background="@drawable/graph_icon"
+        android:elevation="3dp" />
+
+
+</RelativeLayout>

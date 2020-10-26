@@ -81,4 +81,213 @@
 
     </style>
 
+    <style name="some_id">
+
+        <item name="android:textSize">
+            24sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.04
+        </item>
+
+        <item name="android:textColor">
+            #E9F2F9
+        </item>
+
+    </style>
+
+    <style name="sleep">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.04
+        </item>
+
+        <item name="android:textColor">
+            #E9F2F9
+        </item>
+
+        <item name="android:shadowColor">
+            #40000000
+        </item>
+
+        <item name="android:shadowDx">
+            0
+        </item>
+
+        <item name="android:shadowDy">
+            0
+        </item>
+
+        <item name="android:shadowRadius">
+            2
+        </item>
+
+    </style>
+
+    <style name="ambience">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.04
+        </item>
+
+        <item name="android:textColor">
+            #E9F2F9
+        </item>
+
+        <item name="android:shadowColor">
+            #40000000
+        </item>
+
+        <item name="android:shadowDx">
+            0
+        </item>
+
+        <item name="android:shadowDy">
+            0
+        </item>
+
+        <item name="android:shadowRadius">
+            2
+        </item>
+
+    </style>
+
+    <style name="sonority_by2">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.04
+        </item>
+
+        <item name="android:textColor">
+            #1B325F
+        </item>
+
+        <item name="android:shadowColor">
+            #40000000
+        </item>
+
+        <item name="android:shadowDx">
+            0
+        </item>
+
+        <item name="android:shadowDy">
+            4
+        </item>
+
+        <item name="android:shadowRadius">
+            210
+        </item>
+
+    </style>
+
+    <style name="sonic_distr2">
+
+        <item name="android:textSize">
+            18sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.04
+        </item>
+
+        <item name="android:textColor">
+            #1B325F
+        </item>
+
+        <item name="android:shadowColor">
+            #40000000
+        </item>
+
+        <item name="android:shadowDx">
+            0
+        </item>
+
+        <item name="android:shadowDy">
+            4
+        </item>
+
+        <item name="android:shadowRadius">
+            210
+        </item>
+
+    </style>
+
+    <style name="upload">
+
+        <item name="android:textSize">
+            18sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.04
+        </item>
+
+        <item name="android:textColor">
+            #1B325F
+        </item>
+
+    </style>
+
+    <style name="synthsized">
+
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.04
+        </item>
+
+        <item name="android:textColor">
+            #1B325F
+        </item>
+
+    </style>
+
+    <style name="sleepmode">
+
+        <item name="android:textSize">
+            24sp
+        </item>
+
+        <item name="android:letterSpacing">
+            0.04
+        </item>
+
+        <item name="android:textColor">
+            #1B325F
+        </item>
+
+        <item name="android:shadowColor">
+            #40000000
+        </item>
+
+        <item name="android:shadowDx">
+            0
+        </item>
+
+        <item name="android:shadowDy">
+            4
+        </item>
+
+        <item name="android:shadowRadius">
+            210
+        </item>
+
+    </style>
+
+
 </resources>

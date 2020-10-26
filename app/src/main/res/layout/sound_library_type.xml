@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/app_soundfi"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@xml/sound_timbre_background">
+
+    <TextView
+        android:id="@+id/sonority_by2"
+        android:layout_width="187dp"
+        android:layout_height="17dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="37dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="SONORITY BY AUDIENTES"
+        android:textAppearance="@style/sonority_by2"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/sonic_distr2"
+        android:layout_width="209dp"
+        android:layout_height="38dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="101dp"
+        android:layout_marginTop="74dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="SOUND &amp; TIMBRE"
+        android:textAppearance="@style/sonic_distr2"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/sound_pool_"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/back_arrow"
+        android:elevation="7dp" />
+
+    <ImageView
+        android:layout_width="260dp"
+        android:layout_height="423dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="71dp"
+        android:layout_marginTop="131dp"
+        android:background="@drawable/sound_library"
+        android:gravity="center_horizontal|center_vertical" />
+
+    <Button
+        android:id="@+id/sound_type_ellipse"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="191dp"
+        android:layout_marginTop="198dp"
+        android:background="@xml/sound_type_ellipse"
+        android:elevation="100dp"
+        android:text="SYNTHSIZED"
+        android:textAppearance="@style/synthsized"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/sound_type_ellipse_2"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="281dp"
+        android:background="@xml/sound_type_ellipse"
+        android:elevation="100dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="NATURAL"
+        android:textAppearance="@style/synthsized"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/sound_type_ellipse_3"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="192dp"
+        android:layout_marginTop="341dp"
+        android:background="@xml/sound_type_ellipse"
+        android:elevation="100dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="MUSIC"
+        android:textAppearance="@style/synthsized"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/sound_type_ellipse_4"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="415dp"
+        android:background="@xml/sound_type_ellipse"
+        android:elevation="100dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="ALL"
+        android:textAppearance="@style/synthsized"
+        android:textStyle="bold" />
+
+</RelativeLayout>

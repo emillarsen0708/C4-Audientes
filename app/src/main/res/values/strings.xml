@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">BrInt Audientes</string>
+
+    <string name="some_id">
+
+?
+</string>s
+
+    <string name="zonority_by">
+
+Sonority by Audientes
+</string>
+
+    <string name="ambience">
+
+AMBIENCE
+</string>
+
+    <string name="noise_distr">
+
+NOISE DISTRACTION
+</string>
+
+
 </resources>
