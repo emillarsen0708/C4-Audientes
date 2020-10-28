@@ -34,7 +34,7 @@
         android:textAppearance="@style/sonic_distr2"
         android:fontFamily="sans-serif-medium"/>
 
-    <ImageView
+    <View
         android:layout_width="270dp"
         android:layout_height="290dp"
         android:layout_alignParentLeft="true"
@@ -43,6 +43,7 @@
         android:layout_marginTop="131dp"
         android:background="@drawable/soundpool"
         android:gravity="center_horizontal|center_vertical" />
+
 
     / Mangler shadows + farve
     <Button
