@@ -258,6 +258,49 @@
         android:background="@drawable/graph_icon"
         android:elevation="3dp" />
 
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginTop="550dp"
+        android:theme="@style/SeekBarTheme"
+        android:progressBackgroundTint="@color/colorPrimary"
+        android:progress="30">
+    </SeekBar>
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="167dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginTop="518dp"
+        android:text="LYDNAVN"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"
+        android:gravity="bottom|center">
+         </TextView>
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="167dp"
+        android:layout_marginEnd="167dp"
+        android:layout_marginTop="568dp"
+        android:text="MODE"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif-medium"
+        android:textStyle="bold"
+        android:gravity="top|center">>
+    </TextView>
+
+
+
+
+
 
 
 
