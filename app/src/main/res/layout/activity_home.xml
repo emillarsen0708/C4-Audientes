@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/frontpage"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -20,21 +19,21 @@
         android:gravity="center_horizontal|center_vertical"
         android:text="SONORITY BY AUDIENTES"
         android:textAppearance="@style/sonority_by"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/home"
-        android:layout_width="123dp"
+        android:layout_width="130dp"
         android:layout_height="34dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="144dp"
+        android:layout_marginLeft="140dp"
         android:layout_marginTop="74dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center_horizontal|center_vertical"
         android:text="HOME"
         android:textAppearance="@style/home"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
 
     <Button
@@ -51,28 +50,28 @@
 
     <Button
         android:id="@+id/home_button1"
-        android:layout_width="152dp"
-        android:layout_height="152dp"
+        android:layout_width="162dp"
+        android:layout_height="162dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="128dp"
-        android:layout_marginTop="145dp"
+        android:layout_marginTop="125dp"
         android:background="@xml/home_ellipse"
         android:elevation="50dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center_horizontal|center_vertical"
         android:text="SOUND &amp; TIMBRE"
-        android:textStyle="bold"
-        android:textAppearance="@style/sonic_distr" />
+        android:textAppearance="@style/sonic_distr"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/home_button2"
-        android:layout_width="152dp"
-        android:layout_height="152dp"
+        android:layout_width="162dp"
+        android:layout_height="162dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="129dp"
-        android:layout_marginTop="357dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="310dp"
         android:background="@xml/home_ellipse"
         android:elevation="50dp"
         android:fontFamily="sans-serif-medium"
@@ -82,35 +81,71 @@
         android:textStyle="bold" />
 
     <Button
-            android:id="@+id/home_rectangle1"
-            android:layout_width="66dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="63dp"
-            android:layout_marginTop="605dp"
-            android:background="@xml/home_rectangle" />
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="194dp"
+        android:layout_marginTop="490dp"
+        android:background="@drawable/play_triangle"/>
+
+    <Button
+        android:id="@+id/home_rectangle1"
+        android:layout_width="66dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="595dp"
+        android:background="@xml/home_rectangle" />
 
     <View
         android:id="@+id/home_rectangle1_settings"
-        android:layout_width="130dp"
+        android:layout_width="135dp"
         android:layout_height="130dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="37dp"
-        android:layout_marginTop="558dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="535dp"
         android:background="@drawable/settings_icon"
         android:elevation="3dp" />
 
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="635dp"
+        android:layout_marginEnd="220dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="bottom|center"
+        android:text="SETTINGS"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
     <Button
-            android:id="@+id/home_rectangle2"
-            android:layout_width="66dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="172dp"
-            android:layout_marginTop="605dp"
-            android:background="@xml/home_rectangle" />
+        android:id="@+id/home_rectangle2"
+        android:layout_width="66dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="595dp"
+        android:background="@xml/home_rectangle" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="635dp"
+        android:layout_marginEnd="350dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="bottom|center"
+        android:text="PLAYER"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
     <View
         android:id="@+id/home_sound_settings"
         android:layout_width="35dp"
@@ -118,19 +153,19 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="189dp"
-        android:layout_marginTop="606dp"
+        android:layout_marginTop="596dp"
         android:background="@drawable/sound_icon"
         android:elevation="3dp" />
 
-        <Button
-            android:id="@+id/home_rectangle3"
-            android:layout_width="66dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="280dp"
-            android:layout_marginTop="605dp"
-            android:background="@xml/home_rectangle" />
+    <Button
+        android:id="@+id/home_rectangle3"
+        android:layout_width="66dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="595dp"
+        android:background="@xml/home_rectangle" />
 
     <View
         android:id="@+id/home_sound_test"
@@ -138,10 +173,91 @@
         android:layout_height="45dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="292dp"
-        android:layout_marginTop="599dp"
+        android:layout_marginLeft="310dp"
+        android:layout_marginTop="590dp"
         android:background="@drawable/graph_icon"
         android:elevation="3dp" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="635dp"
+        android:layout_marginEnd="480dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="bottom|center"
+        android:text="AUDIOGRAM"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="80dp"
+        android:progress="30"
+        android:progressBackgroundTint="@color/colorPrimary"
+        android:theme="@style/SeekBarTheme">
+
+    </SeekBar>
+
+    <TextView
+        android:id="@+id/sound_name"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="167dp"
+        android:layout_marginTop="525dp"
+        android:layout_marginEnd="167dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="bottom|center"
+        android:text="LYDNAVN"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="12sp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="167dp"
+        android:layout_marginTop="563dp"
+        android:layout_marginEnd="167dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="top|center"
+        android:text="MODE"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="90dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="top|center"
+        android:text="00.00.00"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="310dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="380dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="top|center"
+        android:text="00.00.00"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
 
 
 </RelativeLayout>
