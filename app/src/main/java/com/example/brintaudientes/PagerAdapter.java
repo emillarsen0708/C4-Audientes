@@ -1,61 +1,37 @@
 package com.example.brintaudientes;
 
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.Lifecycle;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
-
-public class PagerAdapter extends FragmentPagerAdapter {
-
-    private int numOfTabs;
 
 
-    public PagerAdapter(@NonNull FragmentManager fm, int numOfTabs){
-        super(fm);
-        this.numOfTabs = numOfTabs;
+public class PagerAdapter extends FragmentStateAdapter {
+
+    private ArrayList<Fragment> arrayList = new ArrayList<>();
+
+    public PagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
+        super(fragmentManager, lifecycle);
     }
+
+
+    public void addFragment(Fragment fragment) {
+        arrayList.add(fragment);
+    }
+
+    @Override
+    public int getItemCount() {
+        return arrayList.size();
+    }
+
     @NonNull
     @Override
-    public Fragment getItem(int position) {
-        Fragment fragment = null;
-        switch (position) {
-            case 0:
-                fragment = new MainFragment();
-            case 1:
-                fragment = new PresetFragment();
-            case 2:
-                fragment = new AudiogramFragment();
-        }
-        return fragment;
-
+    public Fragment createFragment(int position) {
+        // return your fragment that corresponds to this 'position'
+        return arrayList.get(position);
     }
 
-
-    @Override
-    public int getCount() {
-        return numOfTabs;
-    }
-
-    @Nullable
-    @Override
-    public CharSequence getPageTitle(int position)
-    {
-        String title = null;
-        if (position == 1)
-            title = "SETTINGS";
-         else if (position == 1)
-             title = "PLAYER0";
-         else if (position == 2)
-             title = "AUDIOGRAM";
-         return title;
-    }
-
-    public void setNumOfTabs(int numOfTabs) {
-        this.numOfTabs = numOfTabs;
-    }
 }
