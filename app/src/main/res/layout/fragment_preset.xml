@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".PresetFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
+    <fragment
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="match_parent"
+        tools:layout="@layout/activity_quickstart">
+
+
+    </fragment>
 
 </FrameLayout>

@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".AudiogramFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:layout="@layout/activity_audiogram_hearing_test"/>
 
 </FrameLayout>

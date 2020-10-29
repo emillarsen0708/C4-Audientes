@@ -15,8 +15,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
     private int numOfTabs;
 
 
-    public PagerAdapter(@NonNull FragmentManager fm){
-
+    public PagerAdapter(@NonNull FragmentManager fm, int numOfTabs){
         super(fm);
         this.numOfTabs = numOfTabs;
     }
@@ -26,9 +25,9 @@ public class PagerAdapter extends FragmentPagerAdapter {
         Fragment fragment = null;
         switch (position) {
             case 0:
-                fragment = new SettingsFragment();
+                fragment = new MainFragment();
             case 1:
-                fragment = new PlayerFragment();
+                fragment = new PresetFragment();
             case 2:
                 fragment = new AudiogramFragment();
         }
