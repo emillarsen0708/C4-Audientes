@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/frontpage"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -257,6 +258,37 @@
         android:textAppearance="@style/sonic_distr2"
         android:textSize="12sp"
         android:textStyle="bold" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabbar"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="620dp"
+        app:tabIndicatorColor="#F26C4F"
+        app:tabIndicatorGravity="top"
+        app:tabIndicatorHeight="4dp"
+        >
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SETTINGS" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PLAYER" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabAudiogram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AUDIOGRAM" />
+    </com.google.android.material.tabs.TabLayout>
+
 
 
 
