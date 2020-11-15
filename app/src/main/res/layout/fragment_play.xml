@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SettingsFragment">
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/frontpage"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:background="@xml/home_background">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/frontpage"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@xml/home_background">
 
     <TextView
         android:id="@+id/sonority_by"
@@ -95,5 +89,74 @@
         android:layout_marginLeft="194dp"
         android:layout_marginTop="490dp"
         android:background="@drawable/play_triangle"/>
-    </RelativeLayout>
+
+
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="80dp"
+        android:progress="30"
+        android:progressBackgroundTint="@color/colorPrimary"
+        android:theme="@style/SeekBarTheme">
+
+    </SeekBar>
+
+    <TextView
+        android:id="@+id/sound_name"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="167dp"
+        android:layout_marginTop="525dp"
+        android:layout_marginEnd="167dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="bottom|center"
+        android:text="LYDNAVN"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="12sp"
+        android:textStyle="bold">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="167dp"
+        android:layout_marginTop="563dp"
+        android:layout_marginEnd="167dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="top|center"
+        android:text="MODE"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="90dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="top|center"
+        android:text="00.00.00"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="310dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="380dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="top|center"
+        android:text="00.00.00"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+
 </FrameLayout>

@@ -5,22 +5,25 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class Pager2Adapter extends FragmentStateAdapter {
-    public Pager2Adapter(@NonNull FragmentActivity fragmentActivity) {
+public class PagerAdapter2 extends FragmentStateAdapter {
+
+    public PagerAdapter2(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        switch (position){
+
+        switch (position) {
             case 0:
-            return new MainFragment();
+                return new PlayFragment();
             case 1:
-                return new MaybeFragment();
+                return new SettingsFragment();
             default:
-                return new PresetFragment();
+                return new AudiogramFragment();
         }
+
     }
 
     @Override

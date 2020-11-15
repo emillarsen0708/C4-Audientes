@@ -2,30 +2,66 @@ package com.example.brintaudientes;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager.widget.ViewPager;
+
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.os.Bundle;
-import android.view.Menu;
-import android.widget.RelativeLayout;
-import android.widget.TableLayout;
-import android.widget.Toast;
 
-import com.google.android.material.tabs.TabItem;
+import android.os.Bundle;
+
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+
 public class MainActivity extends AppCompatActivity {
+
+    TabLayout layout;
+    ViewPager2 viewPager2;
+
+    PlayFragment playFragment;
+    SettingsFragment settingsFragment;
+    AudiogramFragment audiogramFragment;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.screenslide);
-        ViewPager2 viewpager = findViewById(R.id.viewpager3);
-        viewpager.setAdapter(PagerAdapter pagerAdapter);
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabdida);
+        setContentView(R.layout.activity_main);
+
+
+        viewPager2 = findViewById(R.id.viewPager);
+        viewPager2.setAdapter(new PagerAdapter2(this));
+
+        layout = findViewById(R.id.tab_layout2);
+        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
+                layout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+                public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+
+                switch (position) {
+                    case 0: {
+                        tab.setText("PLAY MODE");
+                        tab.setIcon(R.drawable.play_button);
+                        break;
+                    }
+                    case 1: {
+                        tab.setText("SETTINGS");
+                        tab.setIcon(R.drawable.settings_icon);
+                        break;
+                    }
+                    case 2: {
+                        tab.setText("AUDIOGRAM");
+                        tab.setIcon(R.drawable.graph_icon);
+                        break;
+                    }
+                }
+            }
+        }
+        );
+        tabLayoutMediator.attach();
+
 
     }
+
 }
