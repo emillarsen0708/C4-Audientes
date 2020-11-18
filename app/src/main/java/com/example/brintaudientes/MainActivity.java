@@ -35,29 +35,25 @@ public class MainActivity extends AppCompatActivity {
 
         layout = findViewById(R.id.tab_layout2);
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
-                layout, viewPager2, new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-                public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-
-                switch (position) {
-                    case 0: {
-                        tab.setText("PLAY MODE");
-                        tab.setIcon(R.drawable.play_button);
-                        break;
-                    }
-                    case 1: {
-                        tab.setText("SETTINGS");
-                        tab.setIcon(R.drawable.settings_icon);
-                        break;
-                    }
-                    case 2: {
-                        tab.setText("AUDIOGRAM");
-                        tab.setIcon(R.drawable.graph_icon);
-                        break;
+                layout, viewPager2, (tab, position) -> {
+                    switch (position) {
+                        case 0: {
+                            tab.setText("PLAY MODE");
+                            tab.setIcon(R.drawable.play_button);
+                            break;
+                        }
+                        case 1: {
+                            tab.setText("SETTINGS");
+                            tab.setIcon(R.drawable.settings_icon);
+                            break;
+                        }
+                        case 2: {
+                            tab.setText("AUDIOGRAM");
+                            tab.setIcon(R.drawable.graph_icon);
+                            break;
+                        }
                     }
                 }
-            }
-        }
         );
         tabLayoutMediator.attach();
 
