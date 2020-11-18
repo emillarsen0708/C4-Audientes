@@ -167,6 +167,10 @@
             14sp
         </item>
 
+        <item name="android:textStyle">
+            bold
+    </item>
+
         <item name="android:letterSpacing">
             0.04
         </item>

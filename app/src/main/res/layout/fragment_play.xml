@@ -4,7 +4,7 @@
     android:id="@+id/frontpage"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@xml/home_background">
+    android:background="@xml/frontpage_background_2">
 
     <TextView
         android:id="@+id/sonority_by"
@@ -26,77 +26,60 @@
         android:id="@+id/home"
         android:layout_width="130dp"
         android:layout_height="34dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="74dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="90dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center_horizontal|center_vertical"
-        android:text="HOME"
+        android:text="PLAYER"
         android:textAppearance="@style/home"
         android:textStyle="bold" />
 
-
     <Button
-        android:id="@+id/some_id"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="351dp"
-        android:layout_marginTop="15dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="@string/some_id"
-        android:textAppearance="@style/some_id" />
-
-    <Button
-        android:id="@+id/home_button1"
-        android:layout_width="162dp"
-        android:layout_height="162dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="128dp"
-        android:layout_marginTop="125dp"
-        android:background="@xml/home_ellipse"
-        android:elevation="50dp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="SOUND &amp; TIMBRE"
-        android:textAppearance="@style/sonic_distr"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/home_button2"
-        android:layout_width="162dp"
-        android:layout_height="162dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="128dp"
-        android:layout_marginTop="310dp"
-        android:background="@xml/home_ellipse"
-        android:elevation="50dp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="SONIC DISTRACTION"
-        android:textAppearance="@style/sonic_distr"
-        android:textStyle="bold" />
+        android:id="@+id/mode_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="189dp"
+        android:background="@xml/rectangle_mode" />
+    
+    <View
+        android:id="@+id/view_mode_button"
+        android:layout_width="260dp"
+        android:layout_height="73.35dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="189dp"
+        android:background="@drawable/ic_group_10"
+        android:elevation="4dp"/>
 
     <Button
         android:layout_width="25dp"
         android:layout_height="25dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="194dp"
-        android:layout_marginTop="490dp"
+        android:layout_marginStart="195dp"
+        android:layout_marginTop="350dp"
         android:background="@drawable/play_triangle"/>
+
+    <Button
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="270dp"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/forward_button" />
+
+    <Button
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="350dp"
+        android:layout_marginEnd="238dp"
+        android:background="@drawable/backwards_button"/>
 
 
     <SeekBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="550dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="409dp"
+        android:layout_marginEnd="70dp"
         android:progress="30"
         android:progressBackgroundTint="@color/colorPrimary"
         android:theme="@style/SeekBarTheme">
@@ -108,10 +91,10 @@
         android:layout_width="80dp"
         android:layout_height="30dp"
         android:layout_marginStart="167dp"
-        android:layout_marginTop="525dp"
+        android:layout_marginTop="375dp"
         android:layout_marginEnd="167dp"
         android:fontFamily="sans-serif-medium"
-        android:gravity="bottom|center"
+        android:gravity="center"
         android:text="LYDNAVN"
         android:textAppearance="@style/sonic_distr2"
         android:textSize="12sp"
@@ -120,14 +103,14 @@
     </TextView>
 
     <TextView
-        android:layout_width="80dp"
+        android:layout_width="100dp"
         android:layout_height="30dp"
-        android:layout_marginStart="167dp"
-        android:layout_marginTop="563dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="430dp"
         android:layout_marginEnd="167dp"
         android:fontFamily="sans-serif-medium"
-        android:gravity="top|center"
-        android:text="MODE"
+        android:gravity="center"
+        android:text="PRESET: PUBLIC"
         android:textAppearance="@style/sonic_distr2"
         android:textSize="12sp"
         android:textStyle="bold" />
@@ -135,8 +118,8 @@
     <TextView
         android:layout_width="80dp"
         android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="550dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="409dp"
         android:layout_marginEnd="90dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="top|center"
@@ -148,8 +131,8 @@
     <TextView
         android:layout_width="80dp"
         android:layout_height="30dp"
-        android:layout_marginStart="310dp"
-        android:layout_marginTop="550dp"
+        android:layout_marginStart="320dp"
+        android:layout_marginTop="409dp"
         android:layout_marginEnd="380dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="top|center"

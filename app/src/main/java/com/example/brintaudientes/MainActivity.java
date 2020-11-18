@@ -39,17 +39,17 @@ public class MainActivity extends AppCompatActivity {
                     switch (position) {
                         case 0: {
                             tab.setText("PLAY MODE");
-                            tab.setIcon(R.drawable.play_button);
+                            tab.setIcon(R.drawable.ic_settings_2);
                             break;
                         }
                         case 1: {
                             tab.setText("SETTINGS");
-                            tab.setIcon(R.drawable.settings_icon);
+                            tab.setIcon(R.drawable.ic_group_45);
                             break;
                         }
                         case 2: {
                             tab.setText("AUDIOGRAM");
-                            tab.setIcon(R.drawable.graph_icon);
+                            tab.setIcon(R.drawable.ic_graph);
                             break;
                         }
                     }
