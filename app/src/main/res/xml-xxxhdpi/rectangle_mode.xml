@@ -13,6 +13,11 @@
             android:pathData="M21 1H286C297.046 1 306 9.95431 306 21V54C306 65.0457 297.046 74 286 74H21C9.95431 74 1 65.0457 1 54V21C1 9.95431 9.95431 1 21 1Z"
             />
 
+        <path
+            android:fillColor="#9CC4E4"
+            android:pathData="M1 1V74H306V1"
+            />
+
     </group>
 
     <path

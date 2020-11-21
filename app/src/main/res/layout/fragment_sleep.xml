@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@xml/ambience_background"
+    tools:context=".AmbienceFragment">
+
+    <TextView
+        android:layout_width="187dp"
+        android:layout_height="17dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="37dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="SONORITY BY AUDIENTES"
+        android:textAppearance="@style/sonority_by2"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="70dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="PRESETS"
+        android:textAppearance="@style/home"
+        android:textColor="#1B325F"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/select_preset_button_sleep"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="130dp"
+        android:background="@xml/preset_add_rectangle"
+        android:text="ADD NEW"
+        android:textAppearance="@style/Play_ambience" />
+
+    <Button
+        android:id="@+id/select_preset_button_2_sleep"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="130dp"
+        android:background="@xml/preset_add_rectangle"
+        android:text="ADD NEW"
+        android:textAppearance="@style/Play_ambience" />
+
+    <Button
+        android:id="@+id/select_preset_button_3_sleep"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="130dp"
+        android:background="@xml/preset_add_rectangle"
+        android:text="ADD NEW"
+        android:textAppearance="@style/Play_ambience" />
+
+    <Button
+        android:id="@+id/select_preset_button_4_sleep"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="255dp"
+        android:background="@xml/preset_add_rectangle"
+        android:text="ADD NEW"
+        android:textAppearance="@style/Play_ambience" />
+
+    <Button
+        android:id="@+id/select_preset_button_5_sleep"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="255dp"
+        android:background="@xml/preset_add_rectangle"
+        android:text="ADD NEW"
+        android:textAppearance="@style/Play_ambience" />
+
+    <Button
+        android:id="@+id/select_preset_button_6_sleep"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="255dp"
+        android:background="@xml/preset_add_rectangle"
+        android:text="ADD NEW"
+        android:textAppearance="@style/Play_ambience" />
+
+    <Button
+        android:id="@+id/select_preset_button_7_sleep"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="380dp"
+        android:background="@xml/preset_add_rectangle"
+        android:text="ADD NEW"
+        android:textAppearance="@style/Play_ambience" />
+
+    <Button
+        android:id="@+id/select_preset_button_8_sleep"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="380dp"
+        android:background="@xml/preset_add_rectangle"
+        android:text="ADD NEW"
+        android:textAppearance="@style/Play_ambience" />
+
+    <Button
+        android:id="@+id/select_preset_button_9_sleep"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="380dp"
+        android:background="@xml/preset_add_rectangle"
+        android:text="ADD NEW"
+        android:textAppearance="@style/Play_ambience" />
+
+    <Button
+        android:id="@+id/edit_preset_button_sleep"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="520dp"
+        android:background="@xml/edit_play_rectangle"
+        android:text="EDIT"
+        android:textAppearance="@style/Play_ambience" />
+
+    <Button
+        android:id="@+id/play_preset_button_sleep"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="520dp"
+        android:background="@xml/edit_play_rectangle"
+        android:text="PLAY"
+        android:textAppearance="@style/Play_ambience" />
+
+
+</FrameLayout>

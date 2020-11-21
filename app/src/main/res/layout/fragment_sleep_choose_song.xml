@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@xml/ambience_background"
+    tools:context=".SleepChooseSongFragment">
+
+    <TextView
+        android:layout_width="187dp"
+        android:layout_height="17dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="112dp"
+        android:layout_marginLeft="112dp"
+        android:layout_marginTop="37dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="SONORITY BY AUDIENTES"
+        android:textAppearance="@style/sonority_by2"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="AMBIENCE MODE"
+        android:textAppearance="@style/home"
+        android:textColor="#1B325F"
+        android:textStyle="bold"
+        app:drawableLeftCompat="@drawable/ic_ambience_icon" />
+
+    <ListView
+        android:id="@+id/listview_songs"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="180dp"
+        android:listSelector="@drawable/selector_list">
+
+    </ListView>
+
+    <View
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="150dp"
+        android:background="@drawable/listview_rectangle" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="490dp"
+        android:background="@drawable/add_list_rectangle"
+        android:text="ADD TO LIST"
+        android:textAppearance="@style/Play_ambience"
+        android:textStyle="bold" />
+
+    <SeekBar
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="560dp"
+        android:layout_marginEnd="0dp"
+        android:progress="30"
+        android:theme="@style/SeekBarTheme" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="560dp"
+        android:text="VOLUME"
+        android:textAppearance="@style/Play_ambience"
+        android:textStyle="bold" />
+
+    <SeekBar
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginEnd="0dp"
+        android:progress="30"
+        android:theme="@style/SeekBarTheme" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="600dp"
+        android:text="DURATION"
+        android:textAppearance="@style/Play_ambience"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="650dp"
+        android:background="@xml/edit_play_rectangle"
+        android:text="CANCEL"
+        android:textAppearance="@style/Play_ambience"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="650dp"
+        android:background="@xml/edit_play_rectangle"
+        android:text="OK"
+        android:textAppearance="@style/Play_ambience"
+        android:textStyle="bold" />
+
+
+</FrameLayout>
