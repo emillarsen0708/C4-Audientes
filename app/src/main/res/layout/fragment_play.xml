@@ -48,6 +48,7 @@
         android:textSize="16sp"
         android:textStyle="bold"/>
     <Button
+        android:id="@+id/btplay"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginStart="195dp"
@@ -55,6 +56,16 @@
         android:background="@drawable/play_triangle"/>
 
     <Button
+        android:id="@+id/btpause"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="195dp"
+        android:layout_marginTop="350dp"
+        android:visibility="gone"
+        android:background="@drawable/pause_button"/>
+
+    <Button
+        android:id="@+id/btFwd"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginStart="270dp"
@@ -62,6 +73,7 @@
         android:background="@drawable/forward_button" />
 
     <Button
+        android:id="@+id/btBack"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginStart="120dp"
@@ -71,6 +83,7 @@
 
 
     <SeekBar
+        android:id="@+id/seekbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
@@ -112,6 +125,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/player_position"
         android:layout_width="80dp"
         android:layout_height="30dp"
         android:layout_marginStart="10dp"
@@ -125,6 +139,7 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/player_duration"
         android:layout_width="80dp"
         android:layout_height="30dp"
         android:layout_marginStart="320dp"

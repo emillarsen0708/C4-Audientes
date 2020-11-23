@@ -6,10 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 
+import android.annotation.SuppressLint;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import android.widget.Button;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import java.util.concurrent.TimeUnit;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,12 +32,11 @@ public class MainActivity extends AppCompatActivity {
     AudiogramFragment audiogramFragment;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         viewPager2 = findViewById(R.id.viewPager);
         viewPager2.setAdapter(new PagerAdapter2(this));
@@ -55,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
         tabLayoutMediator.attach();
-
 
     }
 
