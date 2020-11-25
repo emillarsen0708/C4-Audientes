@@ -23,6 +23,7 @@ public class PlayFragment extends Fragment {
     public PlayFragment() {
 
     }
+
     TextView player_position;
     TextView player_duration;
     SeekBar seekBar, volumeBar;
@@ -33,20 +34,20 @@ public class PlayFragment extends Fragment {
     Handler mp_handler = new Handler(Looper.myLooper());
     Runnable mp_runnable;
 
-    public View onCreate(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        View root = inflater.inflate(R.layout.fragment_play,container,false);
-
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_play, container, false);
 
         player_position = root.findViewById(R.id.player_position);
         player_duration = root.findViewById(R.id.player_duration);
         seekBar = root.findViewById(R.id.seekbar);
-        //btplay = root.findViewById(R.id.btplay);
+        btplay = root.findViewById(R.id.btplay);
         btpause = root.findViewById(R.id.btpause);
         btFwd = root.findViewById(R.id.btFwd);
         btBack = root.findViewById(R.id.btBack);
 
-        //player = MediaPlayer.create(getContext(), R.raw.test);
+
+        player = MediaPlayer.create(getContext(), R.raw.test);
 
         mp_runnable = new Runnable() {
             @Override
@@ -60,6 +61,16 @@ public class PlayFragment extends Fragment {
         String sDuration = convertFormat(duration);
         player_duration.setText(sDuration);
 
+        btplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btplay.setVisibility(View.GONE);
+                btpause.setVisibility(View.VISIBLE);
+                player.start();
+                seekBar.setMax(player.getDuration());
+                mp_handler.postDelayed(mp_runnable, 0);
+            }
+        });
 
         btpause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +141,8 @@ public class PlayFragment extends Fragment {
             }
         });
         return root;
+
+
     }
     @SuppressLint("DefaultLocale")
     private String convertFormat(int duration) {
@@ -137,29 +150,5 @@ public class PlayFragment extends Fragment {
                 , TimeUnit.MILLISECONDS.toMinutes(duration)
                 , TimeUnit.MILLISECONDS.toSeconds(duration) -
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration)));
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-      View root=  inflater.inflate(R.layout.fragment_play, container, false);
-
-      player = MediaPlayer.create(getContext(), R.raw.test);
-
-        btplay = root.findViewById(R.id.btplay);
-
-        btplay.setOnClickListener(new View.OnClickListener() {
-
-
-            @Override
-            public void onClick(View v) {
-                btplay.setVisibility(View.GONE);
-              //  btpause.setVisibility(View.VISIBLE);
-                player.start();
-               // seekBar.setMax(player.getDuration());
-                mp_handler.postDelayed(mp_runnable, 0);
-            }
-        });
-        return root;
     }
 }
