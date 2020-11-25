@@ -1,8 +1,6 @@
 package com.example.brintaudientes;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.viewpager2.widget.ViewPager2;
 
 
@@ -44,26 +42,27 @@ public class MainActivity extends AppCompatActivity {
         layout = findViewById(R.id.tab_layout2);
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
                 layout, viewPager2, (tab, position) -> {
-                    switch (position) {
-                        case 0: {
-                            tab.setText("PLAY MODE");
-                            tab.setIcon(R.drawable.ic_settings_2);
-                            break;
-                        }
-                        case 1: {
-                            tab.setText("SETTINGS");
-                            tab.setIcon(R.drawable.ic_group_45);
-                            break;
-                        }
-                        case 2: {
-                            tab.setText("AUDIOGRAM");
-                            tab.setIcon(R.drawable.ic_graph);
-                            break;
-                        }
-                    }
+            switch (position) {
+                case 0: {
+                    tab.setText("PLAY MODE");
+                    tab.setIcon(R.drawable.ic_settings_2);
+                    break;
                 }
+                case 1: {
+                    tab.setText("SETTINGS");
+                    tab.setIcon(R.drawable.ic_group_45);
+                    break;
+                }
+                case 2: {
+                    tab.setText("AUDIOGRAM");
+                    tab.setIcon(R.drawable.ic_graph);
+                    break;
+                }
+            }
+        }
         );
         tabLayoutMediator.attach();
+
 
     }
 

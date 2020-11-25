@@ -89,7 +89,7 @@
         android:layout_marginStart="70dp"
         android:layout_marginTop="409dp"
         android:layout_marginEnd="70dp"
-        android:progress="30"
+        android:progress="0"
         android:progressBackgroundTint="@color/colorPrimary"
         android:theme="@style/SeekBarTheme">
 
@@ -133,7 +133,7 @@
         android:layout_marginEnd="90dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="top|center"
-        android:text="00.00.00"
+        android:text="00.00"
         android:textAppearance="@style/sonic_distr2"
         android:textSize="12sp"
         android:textStyle="bold" />
@@ -147,11 +147,37 @@
         android:layout_marginEnd="380dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="top|center"
-        android:text="00.00.00"
+        android:text="-"
         android:textAppearance="@style/sonic_distr2"
         android:textSize="12sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/presetname"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="430dp"
+        android:layout_marginEnd="167dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:text="PRESET: PUBLIC"
+        android:textAppearance="@style/sonic_distr2"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <SeekBar
+        android:id="@+id/volumebar"
+        android:layout_width="306dp"
+        android:layout_height="126dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginEnd="70dp"
+        android:progress="30"
+        android:progressBackgroundTint="@color/colorPrimary"
+        android:theme="@style/SeekBarTheme">
+
+    </SeekBar>
 
 </FrameLayout>
 
