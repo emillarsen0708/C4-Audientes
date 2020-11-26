@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,17 +27,17 @@ public class PlayFragment extends Fragment {
 
     TextView player_position;
     TextView player_duration;
-    SeekBar seekBar, volumeBar;
+    SeekBar seekBar, volumeBar1, volumeBar2;
     Button btplay, btpause, btFwd, btBack;
-    int totaltime;
+    int totaltimep1;
+    int totaltimep2;
 
     MediaPlayer player1;
     MediaPlayer player2;
     Handler mp1_handler = new Handler(Looper.myLooper());
-    Handler mp2_handler = new Handler(Looper.myLooper());
 
     Runnable mp1_runnable;
-    Runnable mp2_runnable;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_play, container, false);
@@ -44,7 +45,8 @@ public class PlayFragment extends Fragment {
         player_position = root.findViewById(R.id.player_position);
         player_duration = root.findViewById(R.id.player_duration);
         seekBar = root.findViewById(R.id.seekbar);
-        volumeBar = root.findViewById(R.id.volumebar);
+        volumeBar1 = root.findViewById(R.id.volumebar1);
+        volumeBar2 = root.findViewById(R.id.volumebar2);
         btplay = root.findViewById(R.id.btplay);
         btpause = root.findViewById(R.id.btpause);
         btFwd = root.findViewById(R.id.btFwd);
@@ -55,11 +57,12 @@ public class PlayFragment extends Fragment {
         player2 = MediaPlayer.create(getContext(), R.raw.flowing_stream);
         player1.setLooping(true);
         player2.setLooping(true);
-        player1.setVolume(0.5f, 0.0f);
+        player1.setVolume(0.5f, 0.5f); // Todo: få panorering til at være permanent
         player2.setVolume(0.0f, 0.5f);
         player1.seekTo(0);
         player2.seekTo(0);
-        totaltime = player1.getDuration();
+        totaltimep1 = player1.getDuration();  //Todo: Få resterende tid til at fungere
+        player_duration.setText(convertFormat(totaltimep1));
 
         mp1_runnable = new Runnable() {
             @Override
@@ -69,10 +72,6 @@ public class PlayFragment extends Fragment {
             }
         };
 
-        int duration = player1.getDuration();
-        String sDuration = convertFormat(duration);
-        player_duration.setText(sDuration);
-
         btplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +79,7 @@ public class PlayFragment extends Fragment {
                 btpause.setVisibility(View.VISIBLE);
                 player1.start();
                 player2.start();
-                seekBar.setMax(totaltime);
+                seekBar.setMax(totaltimep1);
                 mp1_handler.postDelayed(mp1_runnable, 0);
             }
         });
@@ -129,9 +128,9 @@ public class PlayFragment extends Fragment {
 
                 if (fromUser) {
                     player1.seekTo(progress);
+                    seekBar.setProgress(progress);
                 }
-                player_position.setText(convertFormat(player1.getCurrentPosition()));
-
+              player_position.setText(convertFormat(player1.getCurrentPosition()));
             }
 
             @Override
@@ -145,12 +144,36 @@ public class PlayFragment extends Fragment {
             }
         });
 
-        volumeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+        volumeBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                 float volumeNum = progress / 100f;
                 player1.setVolume(volumeNum, volumeNum);
+                if (fromUser) {
+
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+
+        volumeBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+                float volumeNum = progress / 100f;
+                player2.setVolume(volumeNum, volumeNum);
                 if (fromUser) {
 
                 }
@@ -180,6 +203,7 @@ public class PlayFragment extends Fragment {
 
 
     }
+
     @SuppressLint("DefaultLocale")
     private String convertFormat(int duration) {
         return String.format("%02d:%02d"

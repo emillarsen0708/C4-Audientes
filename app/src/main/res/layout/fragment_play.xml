@@ -142,9 +142,9 @@
         android:id="@+id/player_duration"
         android:layout_width="80dp"
         android:layout_height="30dp"
-        android:layout_marginStart="320dp"
+        android:layout_marginStart="280dp"
         android:layout_marginTop="409dp"
-        android:layout_marginEnd="380dp"
+        android:layout_marginEnd="310dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="top|center"
         android:text="-"
@@ -167,17 +167,33 @@
         android:textStyle="bold" />
 
     <SeekBar
-        android:id="@+id/volumebar"
-        android:layout_width="306dp"
-        android:layout_height="126dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="480dp"
+        android:id="@+id/volumebar1"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="450dp"
         android:layout_marginEnd="70dp"
         android:progress="30"
         android:progressBackgroundTint="@color/colorPrimary"
+        android:rotation="0"
         android:theme="@style/SeekBarTheme">
 
     </SeekBar>
+
+    <SeekBar
+        android:id="@+id/volumebar2"
+        android:layout_width="221dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="70dp"
+        android:progress="20"
+        android:progressBackgroundTint="@color/colorPrimary"
+        android:rotation="0"
+        android:theme="@style/SeekBarTheme">
+
+    </SeekBar>
+
 
 </FrameLayout>
 

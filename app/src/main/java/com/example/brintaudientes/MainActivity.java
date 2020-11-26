@@ -19,6 +19,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.concurrent.TimeUnit;
 
+// todo: Få styr på skærmvending så player ikke kører videre mens player står i pause mode
 
 public class MainActivity extends AppCompatActivity {
 
