@@ -3,10 +3,13 @@ package com.example.brintaudientes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -16,10 +19,10 @@ public class MainActivity extends AppCompatActivity {
 
     TabLayout layout;
     ViewPager2 viewPager2;
+    FragmentManager fragmentManager;
 
-    PlayFragment playFragment;
-    SettingsFragment settingsFragment;
-    AudiogramFragment audiogramFragment;
+
+    Button mode_button;
 
 
 
@@ -31,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
         viewPager2 = findViewById(R.id.viewPager);
         viewPager2.setAdapter(new PagerAdapter2(this));
+
+        mode_button = findViewById(R.id.mode_button);
+        mode_button.setOnClickListener((View.OnClickListener) this);
 
         layout = findViewById(R.id.tab_layout2);
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
@@ -58,5 +64,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    @Override
+    public void onClick (View v) {
+        if (v == mode_button) {
+
+        }
+    }
+
+
 
 }
