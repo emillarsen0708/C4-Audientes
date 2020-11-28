@@ -1,5 +1,7 @@
 package com.example.brintaudientes;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -14,7 +16,8 @@ public class PagerAdapter2 extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-
+        Fragment fragment = null;
+        Bundle bundle = new Bundle();
         switch (position) {
             case 0:
                 return new PlayFragment();
