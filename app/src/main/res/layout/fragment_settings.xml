@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/preset_quick"
     android:layout_width="fill_parent"
@@ -47,7 +48,7 @@
         android:layout_height="55dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="280dp"
-        android:background="@drawable/grey_ellipse"/>
+        android:background="@drawable/grey_ellipse" />
 
     <Button
         android:layout_width="wrap_content"
@@ -59,5 +60,47 @@
         android:text="RESET"
         android:textAppearance="@style/sonority_by2"
         android:textStyle="bold"/>
+
+    <SeekBar
+        android:id="@+id/volumebars1"
+        android:layout_width="265dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="335dp"
+        android:layout_marginEnd="135dp"
+        android:progress="30"
+        android:progressBackgroundTint="@color/colorPrimary"
+        android:rotation="-27"
+        android:theme="@style/SeekBarTheme">
+
+    </SeekBar>
+
+    <SeekBar
+        android:id="@+id/volumebars2"
+        android:layout_width="260dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="280dp"
+        android:layout_marginEnd="70dp"
+        android:progress="20"
+        android:progressBackgroundTint="@color/colorPrimary"
+        android:rotation="-90"
+        android:theme="@style/SeekBarTheme">
+
+    </SeekBar>
+
+    <SeekBar
+        android:id="@+id/volumebars3"
+        android:layout_width="260dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="335dp"
+        android:layout_marginEnd="70dp"
+        android:progress="45"
+        android:progressBackgroundTint="@color/colorPrimary"
+        android:rotation="207"
+        android:theme="@style/SeekBarTheme">
+
+    </SeekBar>
 </FrameLayout>
 

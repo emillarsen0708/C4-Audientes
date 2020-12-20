@@ -3,10 +3,14 @@ package com.example.brintaudientes;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import static com.example.brintaudientes.R.xml.preset_add_highlight_rectangle;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +31,9 @@ public class AmbienceFragment extends Fragment {
     public AmbienceFragment() {
         // Required empty public constructor
     }
+
+    Button add1,add2,add3,add4,add5,add6,add7,add8,add9;
+
 
     /**
      * Use this factory method to create a new instance of
@@ -59,6 +66,34 @@ public class AmbienceFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ambience, container, false);
+        View root = inflater.inflate(R.layout.fragment_ambience, container, false);
+
+        add1 = root.findViewById(R.id.select_preset_button_1);
+        add1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                add1.findViewById(R.id.select_preset_button_1);
+            }
+        });
+        add2 = root.findViewById(R.id.select_preset_button_2);
+        add3 = root.findViewById(R.id.select_preset_button_3);
+        add4 = root.findViewById(R.id.select_preset_button_4);
+        add5 = root.findViewById(R.id.select_preset_button_5);
+        add6 = root.findViewById(R.id.select_preset_button_6);
+        add7 = root.findViewById(R.id.select_preset_button_7);
+        add8 = root.findViewById(R.id.select_preset_button_8);
+        add9 = root.findViewById(R.id.select_preset_button_9);
+
+
+        return root;
+
     }
+
 }
+      /*  AmbienceFragment ambienceFragment = new AmbienceFragment();
+        FragmentManager manager = getParentFragmentManager();
+        manager.beginTransaction()
+        .replace(R.id.frontpage, ambienceFragment, ambienceFragment.getTag())
+        .commit();
+
+       */

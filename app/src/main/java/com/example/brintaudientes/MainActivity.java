@@ -5,12 +5,14 @@ import androidx.viewpager2.widget.ViewPager2;
 
 
 import android.annotation.SuppressLint;
+import android.app.FragmentManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -21,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 // todo: Få styr på skærmvending så player ikke kører videre mens player står i pause mode
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
 
     TabLayout layout;
     ViewPager2 viewPager2;
@@ -67,4 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackStackChanged() {
+
+    }
 }

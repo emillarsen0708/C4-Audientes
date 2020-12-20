@@ -184,7 +184,7 @@
         android:id="@+id/volumebar2"
         android:layout_width="221dp"
         android:layout_height="23dp"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="500dp"
         android:layout_marginEnd="70dp"
         android:progress="20"
@@ -194,6 +194,33 @@
 
     </SeekBar>
 
+    <SeekBar
+        android:id="@+id/volumebar3"
+        android:layout_width="221dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="550dp"
+        android:layout_marginEnd="70dp"
+        android:progress="45"
+        android:progressBackgroundTint="@color/colorPrimary"
+        android:rotation="0"
+        android:theme="@style/SeekBarTheme">
+
+    </SeekBar>
+
+    <SeekBar
+        android:id="@+id/volumebar4"
+        android:layout_width="221dp"
+        android:layout_height="23dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginEnd="70dp"
+        android:progress="15"
+        android:progressBackgroundTint="@color/colorPrimary"
+        android:rotation="0"
+        android:theme="@style/SeekBarTheme">
+
+    </SeekBar>
 
 </FrameLayout>
 
