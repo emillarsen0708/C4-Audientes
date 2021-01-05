@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import static com.example.brintaudientes.R.xml.preset_add_highlight_rectangle;
+//import static com.example.brintaudientes.R.xml.preset_add_highlight_rectangle;
 import static com.example.brintaudientes.R.xml.preset_add_rectangle;
 
 /**
@@ -34,7 +34,7 @@ public class AmbienceFragment extends Fragment {
         // Required empty public constructor
     }
 
-    Button add1,add2,add3,add4,add5,add6,add7,add8,add9;
+    Button add1, add2, add3, add4, add5, add6, add7, add8, add9;
 
 
     /**
@@ -74,7 +74,15 @@ public class AmbienceFragment extends Fragment {
         add1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CreatePresetFragment createPresetFragment = new CreatePresetFragment();
+                FragmentManager manager = getParentFragmentManager();
+                manager.beginTransaction()
+                        .replace(R.id.frontpage, createPresetFragment, createPresetFragment.getTag())
+                        .commit();
             }
+
+       // });
+         //   }
         });
         add2 = root.findViewById(R.id.select_preset_button_2);
         add3 = root.findViewById(R.id.select_preset_button_3);
@@ -89,5 +97,5 @@ public class AmbienceFragment extends Fragment {
         return root;
 
     }
-
 }
+

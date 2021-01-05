@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.example.brintaudientes.Players.Player;
+
 import java.util.concurrent.TimeUnit;
 
 
@@ -100,12 +102,14 @@ public class PlayFragment extends Fragment {
                 btFwd.setVisibility(View.GONE);
                 btBack.setVisibility(View.GONE);
 
+
                 AmbienceFragment ambienceFragment = new AmbienceFragment();
                 FragmentManager manager = getParentFragmentManager();
                 manager.beginTransaction()
                         .replace(R.id.frontpage, ambienceFragment, ambienceFragment.getTag())
                         .commit();
             }
+
         });
         btplay.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -254,7 +258,6 @@ public class PlayFragment extends Fragment {
             public void onCompletion(MediaPlayer mp) {
                 btpause.setVisibility(View.GONE);
                 btplay.setVisibility(View.VISIBLE);
-
                 player1.seekTo(0);
             }
         });
