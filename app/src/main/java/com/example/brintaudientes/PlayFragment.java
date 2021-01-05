@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.Settings;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,6 @@ import java.util.concurrent.TimeUnit;
 public class PlayFragment extends Fragment {
 
     public PlayFragment() {
-
     }
 
     TextView player_position;
@@ -99,12 +99,15 @@ public class PlayFragment extends Fragment {
                 btBack.setVisibility(View.GONE);
 
                 AmbienceFragment ambienceFragment = new AmbienceFragment();
+
                 FragmentManager manager = getParentFragmentManager();
                 manager.beginTransaction()
                         .replace(R.id.frontpage, ambienceFragment, ambienceFragment.getTag())
                         .commit();
             }
+
         });
+
         btplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

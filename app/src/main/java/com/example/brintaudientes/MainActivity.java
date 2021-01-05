@@ -1,6 +1,8 @@
 package com.example.brintaudientes;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 
@@ -27,8 +29,9 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
     TabLayout layout;
     ViewPager2 viewPager2;
+    Button preset;
 
-    PlayFragment playFragment;
+
     SettingsFragment settingsFragment;
     AudiogramFragment audiogramFragment;
 
@@ -38,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        PlayFragment playFragment = new PlayFragment();
+        playFragment.setArguments(getIntent().getExtras());
 
         viewPager2 = findViewById(R.id.viewPager);
         viewPager2.setAdapter(new PagerAdapter2(this));
@@ -66,8 +71,8 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         );
         tabLayoutMediator.attach();
 
-
     }
+
 
     @Override
     public void onBackStackChanged() {

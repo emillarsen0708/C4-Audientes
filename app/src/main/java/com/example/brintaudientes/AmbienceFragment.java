@@ -68,21 +68,21 @@ public class AmbienceFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_ambience, container, false);
 
-        add1 = root.findViewById(R.id.select_preset_button_1);
+        add1 = (Button) root.findViewById(R.id.select_preset_button_1);
         add1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 add1.findViewById(R.id.select_preset_button_1);
             }
         });
-        add2 = root.findViewById(R.id.select_preset_button_2);
-        add3 = root.findViewById(R.id.select_preset_button_3);
-        add4 = root.findViewById(R.id.select_preset_button_4);
-        add5 = root.findViewById(R.id.select_preset_button_5);
-        add6 = root.findViewById(R.id.select_preset_button_6);
-        add7 = root.findViewById(R.id.select_preset_button_7);
-        add8 = root.findViewById(R.id.select_preset_button_8);
-        add9 = root.findViewById(R.id.select_preset_button_9);
+        add2 = (Button) root.findViewById(R.id.select_preset_button_2);
+        add3 = (Button) root.findViewById(R.id.select_preset_button_3);
+        add4 = (Button) root.findViewById(R.id.select_preset_button_4);
+        add5 = (Button) root.findViewById(R.id.select_preset_button_5);
+        add6 = (Button) root.findViewById(R.id.select_preset_button_6);
+        add7 = (Button) root.findViewById(R.id.select_preset_button_7);
+        add8 = (Button) root.findViewById(R.id.select_preset_button_8);
+        add9 = (Button) root.findViewById(R.id.select_preset_button_9);
 
 
         return root;
