@@ -1,4 +1,4 @@
-package com.example.brintaudientes;
+ package com.example.brintaudientes;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -87,6 +87,8 @@ public class PlayFragment extends Fragment {
                 mp1_handler.postDelayed(this, 500);
             }
         };
+
+//TODO Change preset button into dynamic, where loaded fragment is the playing fragment.
 
         preset.setOnClickListener(new View.OnClickListener() {
             @Override

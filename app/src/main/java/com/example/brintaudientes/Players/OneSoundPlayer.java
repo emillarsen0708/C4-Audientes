@@ -1,9 +1,7 @@
-package Players;
+package com.example.brintaudientes.Players;
 
 import android.media.MediaPlayer;
 import android.widget.SeekBar;
-
-import com.example.brintaudientes.R;
 
 public class OneSoundPlayer implements Player {
     @Override

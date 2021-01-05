@@ -2,6 +2,7 @@ package com.example.brintaudientes;
 
 import android.os.Bundle;
 
+import androidx.annotation.DrawableRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import static com.example.brintaudientes.R.xml.preset_add_highlight_rectangle;
+import static com.example.brintaudientes.R.xml.preset_add_rectangle;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,7 +74,6 @@ public class AmbienceFragment extends Fragment {
         add1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                add1.findViewById(R.id.select_preset_button_1);
             }
         });
         add2 = root.findViewById(R.id.select_preset_button_2);
@@ -90,10 +91,3 @@ public class AmbienceFragment extends Fragment {
     }
 
 }
-      /*  AmbienceFragment ambienceFragment = new AmbienceFragment();
-        FragmentManager manager = getParentFragmentManager();
-        manager.beginTransaction()
-        .replace(R.id.frontpage, ambienceFragment, ambienceFragment.getTag())
-        .commit();
-
-       */
