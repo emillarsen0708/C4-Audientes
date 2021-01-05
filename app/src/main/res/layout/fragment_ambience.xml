@@ -41,7 +41,7 @@
         android:layout_height="100dp"
         android:layout_marginStart="38dp"
         android:layout_marginTop="130dp"
-        android:background="@xml/preset_add_highlight_rectangle"
+        android:background="@drawable/preset_add_highlight_rectangle"
         android:text="ADD NEW"
         android:textAppearance="@style/Play_ambience" />
 

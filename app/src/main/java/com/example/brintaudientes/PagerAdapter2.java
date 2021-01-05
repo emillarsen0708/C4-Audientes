@@ -1,6 +1,6 @@
 package com.example.brintaudientes;
 
-import android.provider.MediaStore;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,7 +16,8 @@ public class PagerAdapter2 extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-
+        Fragment fragment = null;
+        Bundle bundle = new Bundle();
         switch (position) {
             case 0:
                 return new PlayFragment();
@@ -25,9 +26,8 @@ public class PagerAdapter2 extends FragmentStateAdapter {
             default:
                 return new AudiogramFragment();
         }
+
     }
-
-
 
     @Override
     public int getItemCount() {
