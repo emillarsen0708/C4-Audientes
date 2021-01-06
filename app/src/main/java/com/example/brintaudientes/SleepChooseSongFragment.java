@@ -1,5 +1,6 @@
 package com.example.brintaudientes;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,10 +21,36 @@ import android.view.ViewGroup;
  */
 public class SleepChooseSongFragment extends Fragment {
 
+    ListView antiListView;
+    ArrayList<String> arrayList;
+
+    ArrayAdapter antiAdapter;
+    MediaPlayer mediaPlayer;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sleep_choose_song, container, false);
+        View root = inflater.inflate(R.layout.fragment_sleep_choose_song, container, false);
+
+        antiListView = root.findViewById(R.id.listview_songs);
+        arrayList = new ArrayList<String>();
+        Field[] fields = R.raw.class.getFields();
+        for (int i = 0; i < fields.length; i++) {
+            arrayList.add(fields[i].getName());
+        }
+        antiAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, arrayList);
+        antiListView.setAdapter(antiAdapter);
+
+        antiListView.setOnItemClickListener((parent, view, position, id) -> {
+            if (mediaPlayer != null) {
+                mediaPlayer.release();
+            }
+
+            int resId = getResources().getIdentifier(arrayList.get(position), "raw", getActivity().getPackageName());
+            mediaPlayer = MediaPlayer.create(getActivity(), resId);
+            mediaPlayer.start();
+        });
+
+        return root;
     }
 }

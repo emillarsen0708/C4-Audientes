@@ -3,10 +3,12 @@ package com.example.brintaudientes;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +16,11 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class CreatePresetFragment extends Fragment {
+
+    Button add1;
+    Button add2;
+    Button add3;
+    Button add4;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +66,61 @@ public class CreatePresetFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_preset, container, false);
+        View root = inflater.inflate(R.layout.fragment_ambience, container, false);
+
+        add1 = root.findViewById(R.id.add_sound_1);
+        add1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SleepChooseSongFragment addSoundFragment = new SleepChooseSongFragment();
+                FragmentManager manager = getParentFragmentManager();
+                manager.beginTransaction()
+                        .replace(R.id.frontpage, addSoundFragment, addSoundFragment.getTag())
+                        .commit();
+            }
+        });
+        add2 = root.findViewById(R.id.select_preset_button_2);
+        add2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SleepChooseSongFragment addSoundFragment = new SleepChooseSongFragment();
+                FragmentManager manager = getParentFragmentManager();
+                manager.beginTransaction()
+                        .replace(R.id.frontpage, addSoundFragment, addSoundFragment.getTag())
+                        .commit();
+            }
+        });
+
+        add3 = root.findViewById(R.id.select_preset_button_3);
+        add3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SleepChooseSongFragment addSoundFragment = new SleepChooseSongFragment();
+                FragmentManager manager = getParentFragmentManager();
+                manager.beginTransaction()
+                        .replace(R.id.frontpage, addSoundFragment, addSoundFragment.getTag())
+                        .commit();
+            }
+        });
+        add4 = root.findViewById(R.id.select_preset_button_4);
+        add4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SleepChooseSongFragment addSoundFragment = new SleepChooseSongFragment();
+                FragmentManager manager = getParentFragmentManager();
+                manager.beginTransaction()
+                        .replace(R.id.frontpage, addSoundFragment, addSoundFragment.getTag())
+                        .commit();
+            }
+        });
+
+
+        return root;
     }
+
+
 }

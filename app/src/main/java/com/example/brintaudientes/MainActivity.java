@@ -6,10 +6,12 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
 import android.app.FragmentManager;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -19,6 +21,9 @@ import android.widget.TextView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 // todo: Få styr på skærmvending så player ikke kører videre mens player står i pause mode
@@ -31,7 +36,10 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     PlayFragment playFragment;
     SettingsFragment settingsFragment;
     AudiogramFragment audiogramFragment;
-
+    static MediaPlayer mMediaPlayer;
+    int currentIndex = 0;
+    private Runnable runnable;
+    private AudioManager SoundManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +75,10 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         tabLayoutMediator.attach();
 
 
+
+
     }
+
 
     @Override
     public void onBackStackChanged() {

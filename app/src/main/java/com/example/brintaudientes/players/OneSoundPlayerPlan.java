@@ -1,9 +1,10 @@
-package com.example.brintaudientes.Players;
+/*
+package com.example.brintaudientes.players;
 
 import android.media.MediaPlayer;
 import android.widget.SeekBar;
 
-public class OneSoundPlayer implements Player {
+public class OneSoundPlayerPlan implements PlayerPlan {
     @Override
     public void createPlayer() {
         MediaPlayer player1;
@@ -11,3 +12,4 @@ public class OneSoundPlayer implements Player {
         //player1 = MediaPlayer.create(getContext(), R.raw.bee_buzzing);
     }
 }
+*/

@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import static com.example.brintaudientes.R.xml.preset_add_highlight_rectangle;
+//import static com.example.brintaudientes.R.xml.preset_add_highlight_rectangle;
 import static com.example.brintaudientes.R.xml.preset_add_rectangle;
 
 /**
@@ -74,6 +74,12 @@ public class AmbienceFragment extends Fragment {
         add1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                CreatePresetFragment addFragment = new CreatePresetFragment();
+                FragmentManager manager = getParentFragmentManager();
+                manager.beginTransaction()
+                        .replace(R.id.frontpage, addFragment, addFragment.getTag())
+                        .commit();
             }
         });
         add2 = root.findViewById(R.id.select_preset_button_2);
