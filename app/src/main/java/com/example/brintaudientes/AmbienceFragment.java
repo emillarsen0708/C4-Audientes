@@ -75,7 +75,7 @@ public class AmbienceFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                CreatePresetFragment addFragment = new CreatePresetFragment();
+                SleepChooseSongFragment addFragment = new SleepChooseSongFragment();
                 FragmentManager manager = getParentFragmentManager();
                 manager.beginTransaction()
                         .replace(R.id.frontpage, addFragment, addFragment.getTag())
