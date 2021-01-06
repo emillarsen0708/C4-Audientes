@@ -39,12 +39,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         /*FragmentManager fragmentManager = getSupportFragmentManager();
+
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
         fragmentTransaction.add(R.id.container1, playFragment.getParentFragment(), "playfragment").commit();
+
         fragmentTransaction.add(R.id.container2, settingsFragment.getParentFragment(), "settingsfragment").commit();
+
         fragmentTransaction.add(R.id.container3, audiogramFragment.getParentFragment(), "audiogramfragment").commit();*/
 
         viewPager2 = findViewById(R.id.viewPager);

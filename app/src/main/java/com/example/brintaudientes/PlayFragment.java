@@ -28,6 +28,7 @@ public class PlayFragment extends Fragment {
         select_mode = root.findViewById(R.id.mode_button);
 
 
+
         return root;
     }
 
