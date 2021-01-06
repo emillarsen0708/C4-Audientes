@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment_frame"
-        />
+
+    <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout2"
@@ -29,7 +30,6 @@
         app:tabTextAppearance="@style/sonority_by2">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/container1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_settings_tab"
@@ -49,14 +49,27 @@
             android:text="AUDIOGRAM" />
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/tab_layout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/container1"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+
+    <FrameLayout
+        android:id="@+id/container2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <FrameLayout
+        android:id="@+id/container3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
