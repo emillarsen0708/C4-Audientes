@@ -1,5 +1,6 @@
 package com.example.brintaudientes;
 
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SleepChooseSongFragment#newInstance} factory method to
+ * Use the {@link SleepChooseSongFragment #newInstance} factory method to
  * create an instance of this fragment.
  */
 public class SleepChooseSongFragment extends Fragment {
@@ -38,7 +39,7 @@ public class SleepChooseSongFragment extends Fragment {
         for (int i = 0; i < fields.length; i++) {
             arrayList.add(fields[i].getName());
         }
-        antiAdapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, arrayList);
+        antiAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);
         antiListView.setAdapter(antiAdapter);
 
         antiListView.setOnItemClickListener((parent, view, position, id) -> {
