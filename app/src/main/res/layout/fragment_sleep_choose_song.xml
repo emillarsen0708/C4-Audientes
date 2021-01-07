@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@xml/ambience_background"
-    android:fadingEdgeLength="40dp"
+    android:overScrollMode="never"
     tools:context=".SleepChooseSongFragment">
 
     <TextView
@@ -52,7 +52,13 @@
         android:layout_height="326dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="180dp"
-        android:background="@drawable/listview_rectangle" />
+        android:background="@drawable/listview_rectangle"
+        android:fadeScrollbars="true"
+        android:isScrollContainer="true"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:scrollbarDefaultDelayBeforeFade="0"
+        android:scrollbars="none" />
 
     <Button
         android:layout_width="130dp"

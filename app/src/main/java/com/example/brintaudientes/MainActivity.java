@@ -53,7 +53,8 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         layout = findViewById(R.id.tab_layout2);
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
                 layout, viewPager2, (tab, position) -> {
-            switch (position) {
+
+                switch (position) {
                 case 0: {
                     tab.setText("PLAY MODE");
                     tab.setIcon(R.drawable.ic_settings_2);
