@@ -63,7 +63,7 @@ public class CreatePresetFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_sleep_choose_song, container, false);
+        View root = inflater.inflate(R.layout.fragment_create_preset, container, false);
 
         add1 = root.findViewById(R.id.add_sound_1);
         add1.setOnClickListener(new View.OnClickListener() {

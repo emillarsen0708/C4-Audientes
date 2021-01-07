@@ -48,8 +48,8 @@ public class SleepChooseSongFragment extends Fragment {
             }
 
             int resId = getResources().getIdentifier(arrayList.get(position), "raw", getActivity().getPackageName());
-            mediaPlayer = MediaPlayer.create(getActivity(), resId);
-            mediaPlayer.start();
+            //mediaPlayer = MediaPlayer.create(getActivity(), resId);
+            //mediaPlayer.start();
         });
 
         return root;
