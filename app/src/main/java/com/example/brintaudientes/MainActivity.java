@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 
@@ -21,22 +22,21 @@ public class MainActivity extends AppCompatActivity {
     ViewPager2 viewPager2;
     FragmentManager fragmentManager;
 
-
     Button mode_button;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+
+
         viewPager2 = findViewById(R.id.viewPager);
         viewPager2.setAdapter(new PagerAdapter2(this));
 
         mode_button = findViewById(R.id.mode_button);
-        mode_button.setOnClickListener((View.OnClickListener) this);
 
         layout = findViewById(R.id.tab_layout2);
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
@@ -62,13 +62,6 @@ public class MainActivity extends AppCompatActivity {
         );
         tabLayoutMediator.attach();
 
-
-    }
-    @Override
-    public void onClick (View v) {
-        if (v == mode_button) {
-
-        }
     }
 
 

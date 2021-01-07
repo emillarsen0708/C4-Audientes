@@ -20,9 +20,9 @@ public class PagerAdapter2 extends FragmentStateAdapter {
         Bundle bundle = new Bundle();
         switch (position) {
             case 0:
-                return new PlayFragment();
+                return new PlayContainer();
             case 1:
-                return new SettingsFragment();
+                return new SettingsContainer();
             default:
                 return new AudiogramFragment();
         }

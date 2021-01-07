@@ -1,7 +1,5 @@
 package com.example.brintaudientes;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,22 +12,23 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 
-public class SettingsFragment extends Fragment {
+public class PlayContainer extends Fragment {
 
 
-    public SettingsFragment() {
 
+    public PlayContainer() {
+        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_settings, container, false);
+        // Inflate the layout for this fragment
+        View root = inflater.inflate(R.layout.fragment_play_container, container, false);;
 
-        Button select_mode;
-
-
-
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        transaction.replace(R.id.playContainer, new PlayFragment());
+        transaction.commit();
 
 
         return root;
