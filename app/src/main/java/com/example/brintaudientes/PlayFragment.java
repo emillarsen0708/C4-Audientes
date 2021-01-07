@@ -25,7 +25,6 @@ public class PlayFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_play, container, false);
 
-        select_mode = root.findViewById(R.id.mode_button);
 
 
 

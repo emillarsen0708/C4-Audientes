@@ -1,4 +1,4 @@
-package com.example.brintaudientes;
+/*package com.example.brintaudientes;
 
 
 import android.app.Activity;
@@ -39,5 +39,5 @@ public class Sounds {
 
     }
 }
-
+*/
 

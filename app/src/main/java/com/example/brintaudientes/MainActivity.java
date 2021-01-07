@@ -23,15 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     TabLayout layout;
     ViewPager2 viewPager2;
-    FragmentManager fragmentManager;
-    PlayFragment playFragment = new PlayFragment();
-    SettingsFragment settingsFragment = new SettingsFragment();
-    AudiogramFragment audiogramFragment = new AudiogramFragment();
-    FragmentContainer fragmentContainer;
-    AmbienceFragment ambienceFragment;
-    Button mode_button;
-
-
 
 
     @Override
@@ -40,14 +31,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /*FragmentManager fragmentManager = getSupportFragmentManager();
-
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.add(R.id.container1, playFragment.getParentFragment(), "playfragment").commit();
-
-        fragmentTransaction.add(R.id.container2, settingsFragment.getParentFragment(), "settingsfragment").commit();
-
-        fragmentTransaction.add(R.id.container3, audiogramFragment.getParentFragment(), "audiogramfragment").commit();*/
+        fragmentTransaction.replace(R.id.container1, playFragment, "playfragment").commit();
+        fragmentTransaction.replace(R.id.container2, settingsFragment, "settingsfragment").commit();
+        fragmentTransaction.replace(R.id.container3, audiogramFragment, "audiogramfragment").commit();*/
 
         viewPager2 = findViewById(R.id.viewPager);
         viewPager2.setAdapter(new PagerAdapter2(this));
@@ -55,32 +43,27 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
                 layout, viewPager2, (tab, position) -> {
-                    switch (position) {
-                        case 0: {
-                            tab.setText("PLAY MODE");
-                            tab.setIcon(R.drawable.ic_settings_2);
-                            break;
-                        }
-                        case 1: {
-                            tab.setText("SETTINGS");
-                            tab.setIcon(R.drawable.ic_group_45);
-                            break;
-                        }
-                        case 2: {
-                            tab.setText("AUDIOGRAM");
-                            tab.setIcon(R.drawable.ic_graph);
-                            break;
-                        }
-                    }
+            switch (position) {
+                case 0: {
+                    tab.setText("PLAY MODE");
+                    tab.setIcon(R.drawable.ic_settings_2);
+                    break;
                 }
+                case 1: {
+                    tab.setText("SETTINGS");
+                    tab.setIcon(R.drawable.ic_group_45);
+                    break;
+                }
+                case 2: {
+                    tab.setText("AUDIOGRAM");
+                    tab.setIcon(R.drawable.ic_graph);
+                    break;
+                }
+            }
+        }
         );
         tabLayoutMediator.attach();
     }
-    /*
-    private void loadFragment (Fragment fragment, int container) {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(container, fragment);
-    }*/
 
     }
 
