@@ -6,12 +6,8 @@ import java.util.ArrayList;
 class Sound {
     private Field [] listOfSounds;
     private ArrayList <String> sounds = new ArrayList<>();
-    private String soundName;
-    private int position;
 
     public Sound() {
-        this.soundName = soundName;
-        this.position = position;
     }
 
     public String getSoundName(int position){

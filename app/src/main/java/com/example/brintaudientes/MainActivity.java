@@ -22,6 +22,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -41,10 +42,18 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     private Runnable runnable;
     private AudioManager SoundManager;
 
+    Sound sound = new Sound();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ArrayList <String> sounds = new ArrayList<>();
+
+        sound.setupSounds(sounds);
+
+        System.out.println(sound.getSoundName(7));
 
 
         viewPager2 = findViewById(R.id.viewPager);
