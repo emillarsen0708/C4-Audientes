@@ -2,85 +2,52 @@ package com.example.brintaudientes;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-//import static com.example.brintaudientes.R.xml.preset_add_highlight_rectangle;
-
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PresetFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PresetFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public PresetFragment() {
-        // Required empty public constructor
-    }
-
-    Button add1,add2,add3,add4,add5,add6,add7,add8,add9;
+    Button edit,add1,add2,add3,add4,add5,add6,add7,add8,add9;
 
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PresetFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PresetFragment newInstance(String param1, String param2) {
-        PresetFragment fragment = new PresetFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_ambience, container, false);
 
-        add1 = root.findViewById(R.id.select_preset_button_1);
-        add1.setOnClickListener(new View.OnClickListener() {
+        edit = root.findViewById(R.id.edit_preset_button);
+        edit.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
                 SleepChooseSongFragment addFragment = new SleepChooseSongFragment();
-                FragmentManager manager = getParentFragmentManager();
-                manager.beginTransaction()
-                        .add(R.id.add_preset, addFragment, addFragment.getTag())
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .remove(PresetFragment.this)
+                        .replace(((ViewGroup)getView().getParent()).getId(), addFragment, "findThisFragment")
+                        .addToBackStack(null)
                         .commit();
+
+                        /*
+                SleepChooseSongFragment addFragment = new SleepChooseSongFragment();
+                FragmentManager fragmentmanager = getActivity().getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentmanager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, addFragment, addFragment.getTag());
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                         */
             }
         });
+
+        add1 = root.findViewById(R.id.select_preset_button_1);
         add2 = root.findViewById(R.id.select_preset_button_2);
         add3 = root.findViewById(R.id.select_preset_button_3);
         add4 = root.findViewById(R.id.select_preset_button_4);
