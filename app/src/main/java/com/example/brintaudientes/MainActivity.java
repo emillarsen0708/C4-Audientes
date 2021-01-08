@@ -50,11 +50,10 @@ public class MainActivity extends AppCompatActivity {
                             .addToBackStack(null).commit();
                         return true;
                     }
-                    private final BottomNavigationView.OnNavigationItemReselectedListener naviReListner = new BottomNavigationView.OnNavigationItemReselectedListener() {
+                    /*private final BottomNavigationView.OnNavigationItemReselectedListener naviReListner = new BottomNavigationView.OnNavigationItemReselectedListener() {
                         @Override
                         public void onNavigationItemReselected(@NonNull MenuItem item) {
-                        }
-                    }
+                        }*/
             };
 
 
