@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -14,6 +17,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -42,9 +46,17 @@ public class PlayFragment extends Fragment {
 
     Runnable mp1_runnable;
 
+    ViewPager2 viewPager2;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+
+
         View root = inflater.inflate(R.layout.fragment_play, container, false);
+        View test = inflater.inflate(R.layout.activity_main, container, false);
+        viewPager2 = test.findViewById(R.id.viewPager);
 
         preset = root.findViewById(R.id.mode_button);
 
@@ -94,17 +106,24 @@ public class PlayFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                preset.setVisibility(View.GONE);
+                preset.setVisibility(View.INVISIBLE);
                 btplay.setVisibility(View.GONE);
                 btpause.setVisibility(View.GONE);
                 btFwd.setVisibility(View.GONE);
                 btBack.setVisibility(View.GONE);
 
+
                 AmbienceFragment ambienceFragment = new AmbienceFragment();
                 FragmentManager manager = getParentFragmentManager();
                 manager.beginTransaction()
                         .replace(R.id.frontpage, ambienceFragment, ambienceFragment.getTag())
+                        .addToBackStack(null)
                         .commit();
+
+
+                viewPager2.setAdapter(new PagerAdapter2(new FragmentActivity()));
+
+
             }
         });
         btplay.setOnClickListener(new View.OnClickListener() {
