@@ -77,7 +77,7 @@ public class PresetFragment extends Fragment {
                 SleepChooseSongFragment addFragment = new SleepChooseSongFragment();
                 FragmentManager manager = getParentFragmentManager();
                 manager.beginTransaction()
-                        .replace(R.id.frontpage, addFragment, addFragment.getTag())
+                        .add(R.id.add_preset, addFragment, addFragment.getTag())
                         .commit();
             }
         });

@@ -41,7 +41,7 @@ public class PlayFragment extends Fragment {
     TextView player_position;
     TextView player_duration;
     SeekBar seekBar, volumeBar1, volumeBar2, volumeBar3;
-    Button btplay, btpause, btFwd, btBack, preset;
+    Button btplay, btpause, btFwd, btBack;
     int tracktimep1;
     int tracktimep2;
 
@@ -56,8 +56,6 @@ public class PlayFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_play, container, false);
-
-        preset = root.findViewById(R.id.mode_button);
 
         player_position = root.findViewById(R.id.player_position);
         player_duration = root.findViewById(R.id.player_duration);
@@ -97,26 +95,6 @@ public class PlayFragment extends Fragment {
             }
         };
 
-//TODO Change preset button into dynamic, where loaded fragment is the playing fragment.
-
-        preset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                PresetFragment presetFragment = new PresetFragment();
-                FragmentManager manager = getParentFragmentManager();
-                manager.beginTransaction()
-                        .replace(R.id.frontpage, presetFragment, presetFragment.getTag())
-                        .addToBackStack(null)
-                        .commit();
-
-                preset.setVisibility(View.GONE);
-                btplay.setVisibility(View.GONE);
-                btpause.setVisibility(View.GONE);
-                btFwd.setVisibility(View.GONE);
-                btBack.setVisibility(View.GONE);
-            }
-        });
         btplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -281,84 +259,4 @@ public class PlayFragment extends Fragment {
                         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration)));
     }
 }
-
-/*
-
-*/
-
-/*
-        btplay = (Button) findViewById(R.id.btplay);
-        player_position = (TextView) findViewById(R.id.player_position);
-        player_duration = (TextView) findViewById(R.id.player_duration);
-
-        player = MediaPlayer.create(this, R.raw.lyd);
-        player.setLooping(true);
-        player.setVolume(0.5f, 0.5f);
-        player.seekTo(0);
-        totaltime = player.getDuration();
-
-        seekBar = (SeekBar) findViewById(R.id.seekbar);
-        seekBar.setMax(totaltime);
-        seekBar.setOnSeekBarChangeListener(
-                new SeekBar.OnSeekBarChangeListener() {
-                    @Override
-                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                        if (fromUser) {
-                            player.seekTo(progress);
-                            seekBar.setProgress(progress);
-                        }
-                    }
-
-                    @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {
-
-                    }
-
-                    @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {
-
-                    }
-                });
-
-        volumeBar = (SeekBar) findViewById(R.id.volumebar);
-        volumeBar.setOnSeekBarChangeListener(
-                new SeekBar.OnSeekBarChangeListener() {
-                    @Override
-                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                        float volumeNum = progress / 100f;
-                        player.setVolume(volumeNum, volumeNum);
-                    }
-
-                    @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {
-
-                    }
-
-                    @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {
-
-                    }
-                });
-
-
-
-    }
-
-    public void btplayClick(View v) {
-
-        if(!player.isPlaying()) {
-            player.start();
-            btplay.setBackgroundResource(R.drawable.pause_button);
-
-        }
-        else {
-            player.pause();
-            btplay.setBackgroundResource(R.drawable.play_button);
-        }
-    }
-*/
-
-
-
-
 
