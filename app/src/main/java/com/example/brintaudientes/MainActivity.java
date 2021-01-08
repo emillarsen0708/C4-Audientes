@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 
+
 import android.app.FragmentManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -15,15 +16,47 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 // todo: Få styr på skærmvending så player ikke kører videre mens player står i pause mode
 
-public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
+public class MainActivity extends AppCompatActivity {
 
+    static MediaPlayer mMediaPlayer;
     PlayFragment playFragment;
     SettingsFragment settingsFragment;
     AudiogramFragment audiogramFragment;
-    static MediaPlayer mMediaPlayer;
+    PresetFragment presetFragment;
     int currentIndex = 0;
     private Runnable runnable;
     private AudioManager SoundManager;
+    private final BottomNavigationView.OnNavigationItemSelectedListener naviListner =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
+
+                    switch (item.getItemId()) {
+                        case R.id.nav_play:
+                            if(playFragment == null)
+                            selectedFragment = new PlayFragment();
+                            break;
+                        case R.id.nav_vol:
+                            if(settingsFragment == null)
+                            selectedFragment = new SettingsFragment();
+                            break;
+                        case R.id.nav_preset:
+                            if(presetFragment == null)
+                            selectedFragment = new PresetFragment();
+                            break;
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment)
+                            .addToBackStack(null).commit();
+                        return true;
+                    }
+                    private final BottomNavigationView.OnNavigationItemReselectedListener naviReListner = new BottomNavigationView.OnNavigationItemReselectedListener() {
+                        @Override
+                        public void onNavigationItemReselected(@NonNull MenuItem item) {
+                        }
+                    }
+            };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,31 +69,8 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new PlayFragment()).commit();
     }
+}
 
-    private BottomNavigationView.OnNavigationItemSelectedListener naviListner =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
-
-                    switch (item.getItemId()) {
-                        case R.id.nav_play:
-                            selectedFragment = new PlayFragment();
-                            break;
-                        case R.id.nav_vol:
-                            selectedFragment = new SettingsFragment();
-                            break;
-                        case R.id.nav_preset:
-                            selectedFragment = new PresetFragment();
-                            break;
-                    }
-
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
-
-                    return true;
-                }
-            };
 
 
 
@@ -98,8 +108,4 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     }
 */
 
-    @Override
-    public void onBackStackChanged() {
 
-    }
-}

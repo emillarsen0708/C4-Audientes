@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 //import static com.example.brintaudientes.R.xml.preset_add_highlight_rectangle;
 
@@ -68,16 +71,25 @@ public class PresetFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_ambience, container, false);
+        View test = inflater.inflate(R.layout.activity_main, container, false);
+
+
+        BottomNavigationView bottomNavigationView = test.findViewById(R.id.bottom);
 
         add1 = root.findViewById(R.id.select_preset_button_1);
         add1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                SleepChooseSongFragment addFragment = new SleepChooseSongFragment();
+                bottomNavigationView.setVisibility(View.GONE);
+
+
+                CreatePresetFragment addFragment = new CreatePresetFragment();
                 FragmentManager manager = getParentFragmentManager();
                 manager.beginTransaction()
-                        .add(R.id.add_preset, addFragment, addFragment.getTag())
+                        .add(R.id.fragment_container, addFragment, addFragment.getTag())
+
+                        .addToBackStack(null)
                         .commit();
             }
         });
