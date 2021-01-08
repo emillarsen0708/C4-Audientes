@@ -1,7 +1,6 @@
  package com.example.brintaudientes;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -10,7 +9,6 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +20,19 @@ import java.util.concurrent.TimeUnit;
 
 
 public class PlayFragment extends Fragment {
+
+    /*private static final String BACK_STACK_ROOT_TAG = "root_fragment";
+
+    public void onTabSelected(int position) {
+        FragmentManager playFragmentmanager = getActivity().getSupportFragmentManager();
+        playFragmentmanager.popBackStack(BACK_STACK_ROOT_TAG,
+        FragmentManager.POP_BACK_STACK_INCLUSIVE);
+
+        playFragmentmanager.beginTransaction()
+                .replace(R.id.frontpage, getActivity().Ta)
+
+
+    } */
 
     public PlayFragment() {
 
@@ -59,8 +70,6 @@ public class PlayFragment extends Fragment {
         btFwd = root.findViewById(R.id.btFwd);
         btBack = root.findViewById(R.id.btBack);
 
-
-
         player1 = MediaPlayer.create(getContext(), R.raw.bee_buzzing);
         player2 = MediaPlayer.create(getContext(), R.raw.pack_of_dogs);
         player3 = MediaPlayer.create(getContext(), R.raw.cicada);
@@ -94,17 +103,18 @@ public class PlayFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
+                PresetFragment presetFragment = new PresetFragment();
+                FragmentManager manager = getParentFragmentManager();
+                manager.beginTransaction()
+                        .replace(R.id.frontpage, presetFragment, presetFragment.getTag())
+                        .addToBackStack(null)
+                        .commit();
+
                 preset.setVisibility(View.GONE);
                 btplay.setVisibility(View.GONE);
                 btpause.setVisibility(View.GONE);
                 btFwd.setVisibility(View.GONE);
                 btBack.setVisibility(View.GONE);
-
-                AmbienceFragment ambienceFragment = new AmbienceFragment();
-                FragmentManager manager = getParentFragmentManager();
-                manager.beginTransaction()
-                        .replace(R.id.frontpage, ambienceFragment, ambienceFragment.getTag())
-                        .commit();
             }
         });
         btplay.setOnClickListener(new View.OnClickListener() {

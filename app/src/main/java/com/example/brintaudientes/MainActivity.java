@@ -1,37 +1,21 @@
 package com.example.brintaudientes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.fragment.app.Fragment;
 
 
-import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.view.MenuItem;
 
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.concurrent.TimeUnit;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 // todo: Få styr på skærmvending så player ikke kører videre mens player står i pause mode
 
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
-
-    TabLayout layout;
-    ViewPager2 viewPager2;
 
     PlayFragment playFragment;
     SettingsFragment settingsFragment;
@@ -46,8 +30,41 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BottomNavigationView buttNav = findViewById(R.id.bottom);
+        buttNav.setOnNavigationItemSelectedListener(naviListner);
 
-        viewPager2 = findViewById(R.id.viewPager);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new PlayFragment()).commit();
+    }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener naviListner =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = null;
+
+                    switch (item.getItemId()) {
+                        case R.id.nav_play:
+                            selectedFragment = new PlayFragment();
+                            break;
+                        case R.id.nav_vol:
+                            selectedFragment = new SettingsFragment();
+                            break;
+                        case R.id.nav_preset:
+                            selectedFragment = new PresetFragment();
+                            break;
+                    }
+
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            selectedFragment).commit();
+
+                    return true;
+                }
+            };
+
+
+
+    /*
         viewPager2.setAdapter(new PagerAdapter2(this));
 
         layout = findViewById(R.id.tab_layout2);
@@ -57,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                 switch (position) {
                 case 0: {
                     tab.setText("PLAY MODE");
-                    tab.setIcon(R.drawable.ic_settings_2);
+                    tab.setIcon(R.drawable.tab_settings_2);
                     break;
                 }
                 case 1: {
@@ -79,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
 
     }
-
+*/
 
     @Override
     public void onBackStackChanged() {

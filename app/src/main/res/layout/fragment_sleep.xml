@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@xml/ambience_background"
-    tools:context=".AmbienceFragment">
+    tools:context=".PresetFragment">
 
     <TextView
         android:layout_width="187dp"

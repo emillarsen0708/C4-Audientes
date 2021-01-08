@@ -2,7 +2,6 @@ package com.example.brintaudientes;
 
 import android.os.Bundle;
 
-import androidx.annotation.DrawableRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -12,14 +11,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 //import static com.example.brintaudientes.R.xml.preset_add_highlight_rectangle;
-import static com.example.brintaudientes.R.xml.preset_add_rectangle;
+
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AmbienceFragment#newInstance} factory method to
+ * Use the {@link PresetFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AmbienceFragment extends Fragment {
+public class PresetFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -30,7 +29,7 @@ public class AmbienceFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AmbienceFragment() {
+    public PresetFragment() {
         // Required empty public constructor
     }
 
@@ -43,11 +42,11 @@ public class AmbienceFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AmbienceFragment.
+     * @return A new instance of fragment PresetFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AmbienceFragment newInstance(String param1, String param2) {
-        AmbienceFragment fragment = new AmbienceFragment();
+    public static PresetFragment newInstance(String param1, String param2) {
+        PresetFragment fragment = new PresetFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

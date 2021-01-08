@@ -127,5 +127,14 @@
         android:textAppearance="@style/Play_ambience"
         android:textStyle="bold" />
 
+    <Switch
+        android:id="@+id/preview"
+        android:layout_width="300dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="500dp"
+        android:text="Preview sounds before adding to preset"
+        android:textColor="#1B325F"
+        android:textColorLink="#90EE90" />
 
 </FrameLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_play"
+        android:icon="@drawable/play_button"
+        android:title="Play Preset"/>
+
+    <item
+        android:id="@+id/nav_vol"
+        android:icon="@drawable/ic_baseline_volume_up_24"
+        android:title="Preset Vol"/>
+
+    <item
+        android:id="@+id/nav_preset"
+        android:icon="@drawable/ic_baseline_library_music_24"
+        android:title="Presets"/>
+
+</menu>

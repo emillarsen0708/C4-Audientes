@@ -73,7 +73,8 @@ public class CreatePresetFragment extends Fragment {
                 SleepChooseSongFragment addSoundFragment = new SleepChooseSongFragment();
                 FragmentManager manager = getParentFragmentManager();
                 manager.beginTransaction()
-                        .replace(R.id.frontpage, addSoundFragment, addSoundFragment.getTag())
+                        .replace(R.id.nav_preset, addSoundFragment, addSoundFragment.getTag())
+                        .addToBackStack(null)
                         .commit();
             }
         });

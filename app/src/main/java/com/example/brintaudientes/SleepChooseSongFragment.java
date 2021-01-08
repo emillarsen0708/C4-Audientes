@@ -43,15 +43,19 @@ public class SleepChooseSongFragment extends Fragment {
         antiListView.setAdapter(antiAdapter);
 
         antiListView.setOnItemClickListener((parent, view, position, id) -> {
-            if (mediaPlayer != null) {
-                mediaPlayer.release();
-            }
+            // Ends the Mediaplayer if a Mediaplayer already exist
 
+            //if (mediaPlayer != null) {
+              //  mediaPlayer.release();
+            //}
+
+            // Creates a Mediaplayer and start playing from Mediaplayer
             int resId = getResources().getIdentifier(arrayList.get(position), "raw", getActivity().getPackageName());
-            //mediaPlayer = MediaPlayer.create(getActivity(), resId);
-            //mediaPlayer.start();
-        });
+            mediaPlayer = MediaPlayer.create(getActivity(), resId);
+            mediaPlayer.start();
 
+        });
+        
         return root;
     }
 }
