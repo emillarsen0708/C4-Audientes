@@ -106,11 +106,13 @@ public class PlayFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                preset.setVisibility(View.INVISIBLE);
+               /* preset.setVisibility(View.INVISIBLE);
                 btplay.setVisibility(View.GONE);
                 btpause.setVisibility(View.GONE);
                 btFwd.setVisibility(View.GONE);
                 btBack.setVisibility(View.GONE);
+
+                */
 
 
                 AmbienceFragment ambienceFragment = new AmbienceFragment();
