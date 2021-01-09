@@ -1,6 +1,5 @@
 package com.example.brintaudientes;
 
-import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
@@ -17,10 +16,10 @@ import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SleepChooseSongFragment #newInstance} factory method to
+ * Use the {@link LibraryFragment #newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SleepChooseSongFragment extends Fragment {
+public class LibraryFragment extends Fragment {
 
     ListView antiListView;
     ArrayList<String> arrayList;

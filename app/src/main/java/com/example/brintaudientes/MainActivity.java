@@ -18,7 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
 
     PlayFragment playFragment;
-    SettingsFragment settingsFragment;
+    VolumeFragment volumeFragment;
     AudiogramFragment audiogramFragment;
     static MediaPlayer mMediaPlayer;
     int currentIndex = 0;
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         buttNav.setOnNavigationItemSelectedListener(naviListner);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new PlayFragment()).commit();
+                new PresetFragment()).commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener naviListner =
@@ -45,13 +45,13 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
                     switch (item.getItemId()) {
                         case R.id.nav_play:
-                            selectedFragment = new PlayFragment();
+                            selectedFragment = new PresetFragment();
                             break;
                         case R.id.nav_vol:
-                            selectedFragment = new SettingsFragment();
+                            selectedFragment = new VolumeFragment();
                             break;
                         case R.id.nav_preset:
-                            selectedFragment = new PresetFragment();
+                            selectedFragment = new LibraryFragment();
                             break;
                     }
 

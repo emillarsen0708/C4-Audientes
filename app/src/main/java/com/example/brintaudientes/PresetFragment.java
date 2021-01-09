@@ -5,8 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +27,7 @@ public class PresetFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                SleepChooseSongFragment addFragment = new SleepChooseSongFragment();
+                LibraryFragment addFragment = new LibraryFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .remove(PresetFragment.this)
                         .replace(((ViewGroup)getView().getParent()).getId(), addFragment, "findThisFragment")
@@ -37,7 +35,7 @@ public class PresetFragment extends Fragment {
                         .commit();
 
                         /*
-                SleepChooseSongFragment addFragment = new SleepChooseSongFragment();
+                LibraryFragment addFragment = new LibraryFragment();
                 FragmentManager fragmentmanager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentmanager.beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, addFragment, addFragment.getTag());
@@ -55,7 +53,7 @@ public class PresetFragment extends Fragment {
         add6 = root.findViewById(R.id.select_preset_button_6);
         add7 = root.findViewById(R.id.select_preset_button_7);
         add8 = root.findViewById(R.id.select_preset_button_8);
-        add9 = root.findViewById(R.id.select_preset_button_9);
+        add9 = root.findViewById(R.id.plus_button);
 
 
         return root;

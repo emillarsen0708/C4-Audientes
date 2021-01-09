@@ -70,7 +70,7 @@ public class CreatePresetFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                SleepChooseSongFragment addSoundFragment = new SleepChooseSongFragment();
+                LibraryFragment addSoundFragment = new LibraryFragment();
                 FragmentManager manager = getParentFragmentManager();
                 manager.beginTransaction()
                         .replace(R.id.nav_play, addSoundFragment, addSoundFragment.getTag())

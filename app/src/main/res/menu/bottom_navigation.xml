@@ -3,17 +3,17 @@
 
     <item
         android:id="@+id/nav_play"
-        android:icon="@drawable/play_button"
-        android:title="Play Preset"/>
+        android:icon="@drawable/ic_note_icon"
+        android:title="Sound"/>
 
     <item
         android:id="@+id/nav_vol"
         android:icon="@drawable/ic_baseline_volume_up_24"
-        android:title="Preset Vol"/>
+        android:title="Volume"/>
 
     <item
         android:id="@+id/nav_preset"
         android:icon="@drawable/ic_baseline_library_music_24"
-        android:title="Presets"/>
+        android:title="Library"/>
 
 </menu>

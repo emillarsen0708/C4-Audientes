@@ -4,7 +4,7 @@
     android:id="@+id/add_preset"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@xml/ambience_background"
+    android:background="@xml/sound_background"
     tools:context=".CreatePresetFragment">
 
     <EditText

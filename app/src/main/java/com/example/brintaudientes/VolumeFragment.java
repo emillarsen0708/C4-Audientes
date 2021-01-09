@@ -11,13 +11,13 @@ import android.view.ViewGroup;
 import android.widget.SeekBar;
 
 
-public class SettingsFragment extends Fragment {
+public class VolumeFragment extends Fragment {
 
     SeekBar volumes1;
     SeekBar volumes2;
     SeekBar volumes3;
 
-    public SettingsFragment() {
+    public VolumeFragment() {
 
     }
 
