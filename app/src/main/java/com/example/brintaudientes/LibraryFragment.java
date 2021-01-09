@@ -30,7 +30,7 @@ public class LibraryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_sleep_choose_song, container, false);
+        View root = inflater.inflate(R.layout.fragment_library, container, false);
 
         antiListView = root.findViewById(R.id.listview_songs);
         arrayList = new ArrayList<String>();

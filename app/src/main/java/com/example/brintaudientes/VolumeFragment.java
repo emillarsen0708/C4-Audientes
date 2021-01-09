@@ -3,7 +3,6 @@ package com.example.brintaudientes;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +23,7 @@ public class VolumeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_settings, container, false);
+        View root = inflater.inflate(R.layout.fragment_volume, container, false);
 
         volumes1 = root.findViewById(R.id.volumebars1);
         volumes2 = root.findViewById(R.id.volumebars2);

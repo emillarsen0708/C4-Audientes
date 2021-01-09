@@ -19,7 +19,7 @@ public class PresetFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_ambience, container, false);
+        View root = inflater.inflate(R.layout.fragment_sound, container, false);
 
         edit = root.findViewById(R.id.edit_preset_button);
         edit.setOnClickListener(new View.OnClickListener() {

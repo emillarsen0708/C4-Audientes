@@ -5,7 +5,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -55,7 +54,7 @@ public class PlayFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_play, container, false);
+        View root = inflater.inflate(R.layout.fragment_player, container, false);
 
         player_position = root.findViewById(R.id.player_position);
         player_duration = root.findViewById(R.id.player_duration);
