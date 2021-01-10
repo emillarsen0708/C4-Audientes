@@ -61,8 +61,8 @@
         android:layout_height="25dp"
         android:layout_marginStart="195dp"
         android:layout_marginTop="350dp"
-        android:visibility="gone"
-        android:background="@drawable/pause_button"/>
+        android:background="@drawable/pause_button"
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/btFwd"

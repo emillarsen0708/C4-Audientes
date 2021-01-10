@@ -19,7 +19,7 @@
         android:layout_marginTop="37dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center_horizontal|center_vertical"
-        android:text="SONORITY BY AUDIENTES"
+        android:text="Sonority By Audientes"
         android:textAppearance="@style/sonority_by2"
         android:textStyle="bold" />
 
@@ -27,14 +27,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
-        android:text="Ambience Preset"
+        android:text="Sound Library"
         android:textAppearance="@style/home"
         android:textColor="#1B325F"
-        android:textStyle="bold"
-        app:drawableLeftCompat="@drawable/ic_ambience_icon" />
+        android:textStyle="bold" />
+        <!--app:drawableLeftCompat="@drawable/ic_ambience_icon" -->
 
 
     <ListView
@@ -47,9 +47,18 @@
 
     </ListView>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="440dp"
+        android:layout_marginStart="60dp"
+        android:text="Type Your Preset Title here ..."
+        android:textSize="18dp"
+        android:textColor="#1B325F"/>
+
     <View
         android:layout_width="300dp"
-        android:layout_height="326dp"
+        android:layout_height="439dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="180dp"
         android:background="@drawable/listview_rectangle"
@@ -61,49 +70,25 @@
         android:scrollbars="none" />
 
     <Button
-        android:layout_width="130dp"
+        android:layout_width="75dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="20dp"
+        android:layout_gravity="left"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/add_list_rectangle"
+        android:text="Cancel"
+        android:textAppearance="@style/Play_ambience"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="110dp"
         android:layout_height="32dp"
         android:layout_gravity="right"
         android:layout_marginTop="130dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/add_list_rectangle"
-        android:text="Add new sound"
-        android:textAppearance="@style/Play_ambience"
-        android:textStyle="bold" />
-
-    <SeekBar
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="360dp"
-        android:layout_marginEnd="0dp"
-        android:progress="30"
-        android:theme="@style/SeekBarTheme" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="360dp"
-        android:text="VOLUME"
-        android:textAppearance="@style/Play_ambience"
-        android:textStyle="bold" />
-
-    <SeekBar
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="400dp"
-        android:layout_marginEnd="0dp"
-        android:progress="30"
-        android:theme="@style/SeekBarTheme" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="400dp"
-        android:text="DURATION"
+        android:text="Add to Library"
         android:textAppearance="@style/Play_ambience"
         android:textStyle="bold" />
 
@@ -111,9 +96,9 @@
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="500dp"
         android:background="@xml/edit_play_rectangle"
-        android:text="CANCEL"
+        android:text="Display Selected"
         android:textAppearance="@style/Play_ambience"
         android:textStyle="bold" />
 
@@ -121,20 +106,10 @@
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="240dp"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="500dp"
         android:background="@xml/edit_play_rectangle"
-        android:text="ADD TO PRESET"
+        android:text="Add As Preset"
         android:textAppearance="@style/Play_ambience"
         android:textStyle="bold" />
-
-    <Switch
-        android:id="@+id/preview"
-        android:layout_width="300dp"
-        android:layout_height="84dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="500dp"
-        android:text="Preview sounds before adding to preset"
-        android:textColor="#1B325F"
-        android:textColorLink="#90EE90" />
 
 </FrameLayout>

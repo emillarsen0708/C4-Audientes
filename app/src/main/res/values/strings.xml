@@ -25,6 +25,11 @@ NOISE DISTRACTION
     <string name="title_activity_tabbedactivity">Tabbedactivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
+    <string name="concurrent_mode">Concurrent Mode</string>
+    <string name="continuous_mode">Continuous Mode</string>
+    <string name="add_new">Add New</string>
+    <string name="sound">Sound</string>
+    <string name="sonority_by_audientes">Sonority By Audientes</string>
 
 
 </resources>

@@ -3,6 +3,7 @@ package com.example.brintaudientes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.widget.ViewPager2;
 
 
 import android.app.FragmentManager;
@@ -16,6 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 // todo: Få styr på skærmvending så player ikke kører videre mens player står i pause mode
 
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
+    
 
     PlayFragment playFragment;
     VolumeFragment volumeFragment;
