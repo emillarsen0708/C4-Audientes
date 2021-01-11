@@ -1,0 +1,36 @@
+Index: app/src/main/java/com/example/brintaudientes/preset/OneSoundSleepPreset.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.brintaudientes.preset;\n\npublic class OneSoundSleepPreset implements Preset {\n\n    @Override\n    public void makePreset() {\n        System.out.println(\"Sleep Preset 1 sound\");\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/preset/OneSoundSleepPreset.java	(revision c780282d7e6c61769d36ad432e4c76630032be0a)
++++ app/src/main/java/com/example/brintaudientes/preset/OneSoundSleepPreset.java	(date 1610045783000)
+@@ -4,6 +4,7 @@
+ 
+     @Override
+     public void makePreset() {
+-        System.out.println("Sleep Preset 1 sound");
++
++
+     }
+ }
+Index: app/src/main/java/com/example/brintaudientes/SleepChooseSongFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.brintaudientes;\n\nimport android.graphics.Color;\nimport android.media.MediaPlayer;\nimport android.os.Bundle;\n\nimport androidx.fragment.app.Fragment;\n\nimport android.view.LayoutInflater;\nimport android.view.View;\nimport android.view.ViewGroup;\nimport android.widget.ArrayAdapter;\nimport android.widget.ListView;\n\nimport java.lang.reflect.Field;\nimport java.util.ArrayList;\n\n/**\n * A simple {@link Fragment} subclass.\n * Use the {@link SleepChooseSongFragment #newInstance} factory method to\n * create an instance of this fragment.\n */\npublic class SleepChooseSongFragment extends Fragment {\n\n    ListView antiListView;\n    ArrayList<String> arrayList;\n\n    ArrayAdapter antiAdapter;\n    MediaPlayer mediaPlayer;\n\n    @Override\n    public View onCreateView(LayoutInflater inflater, ViewGroup container,\n                             Bundle savedInstanceState) {\n        View root = inflater.inflate(R.layout.fragment_sleep_choose_song, container, false);\n\n        antiListView = root.findViewById(R.id.listview_songs);\n        arrayList = new ArrayList<String>();\n        Field[] fields = R.raw.class.getFields();\n        for (int i = 0; i < fields.length; i++) {\n            arrayList.add(fields[i].getName());\n        }\n        antiAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);\n        antiListView.setAdapter(antiAdapter);\n\n        antiListView.setOnItemClickListener((parent, view, position, id) -> {\n            if (mediaPlayer != null) {\n                mediaPlayer.release();\n            }\n\n            int resId = getResources().getIdentifier(arrayList.get(position), \"raw\", getActivity().getPackageName());\n            //mediaPlayer = MediaPlayer.create(getActivity(), resId);\n            //mediaPlayer.start();\n        });\n\n        return root;\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/SleepChooseSongFragment.java	(revision c780282d7e6c61769d36ad432e4c76630032be0a)
++++ app/src/main/java/com/example/brintaudientes/SleepChooseSongFragment.java	(date 1610052093000)
+@@ -45,6 +45,8 @@
+         antiListView.setOnItemClickListener((parent, view, position, id) -> {
+             if (mediaPlayer != null) {
+                 mediaPlayer.release();
++
++
+             }
+ 
+             int resId = getResources().getIdentifier(arrayList.get(position), "raw", getActivity().getPackageName());

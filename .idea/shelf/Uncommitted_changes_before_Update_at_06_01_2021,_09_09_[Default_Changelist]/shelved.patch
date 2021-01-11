@@ -1,0 +1,1414 @@
+Index: app/src/main/java/com/example/brintaudientes/preset/AmbiencePresetFactory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.brintaudientes.preset;\n\npublic class AmbiencePresetFactory extends AbstractFactory {\n    @Override\n    public Preset getPreset(String presetType) {\n        if (presetType.equalsIgnoreCase(\"TWO\")) {\n            return new TwoSoundAmbPreset();\n        }\n        else if (presetType.equalsIgnoreCase(\"Three\")) {\n            return new ThreeSoundAmbPreset();\n        }\n        else if (presetType.equalsIgnoreCase(\"FOUR\")) {\n            return new FourSoundAmbPreset();\n        }\n        else if (presetType.equalsIgnoreCase(\"ONE\")) {\n            return new OneSoundAmbPreset();\n        }\n        return null;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/preset/AmbiencePresetFactory.java	(revision 98ff855185767f58010348ce213a0086d4ca5348)
++++ app/src/main/java/com/example/brintaudientes/preset/AmbiencePresetFactory.java	(date 1609852636000)
+@@ -6,7 +6,7 @@
+         if (presetType.equalsIgnoreCase("TWO")) {
+             return new TwoSoundAmbPreset();
+         }
+-        else if (presetType.equalsIgnoreCase("Three")) {
++        else if (presetType.equalsIgnoreCase("THREE")) {
+             return new ThreeSoundAmbPreset();
+         }
+         else if (presetType.equalsIgnoreCase("FOUR")) {
+Index: app/src/main/res/layout/activity_soundtimbre.xml
+===================================================================
+--- app/src/main/res/layout/activity_soundtimbre.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
++++ app/src/main/res/layout/activity_soundtimbre.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
+@@ -1,152 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout
+-    xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:id="@+id/app_soundfi"
+-    android:layout_width="fill_parent"
+-    android:layout_height="fill_parent"
+-    android:background="@xml/sound_timbre_background">
+-
+-    <TextView
+-        android:id="@+id/sonority_by2"
+-        android:layout_width="187dp"
+-        android:layout_height="17dp"
+-        android:layout_alignParentStart="true"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginStart="112dp"
+-        android:layout_marginLeft="112dp"
+-        android:layout_marginTop="37dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SONORITY BY AUDIENTES"
+-        android:textAppearance="@style/sonority_by2" />
+-
+-    <TextView
+-        android:id="@+id/sonic_distr2"
+-        android:layout_width="209dp"
+-        android:layout_height="38dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="101dp"
+-        android:layout_marginTop="74dp"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SOUND &amp; TIMBRE"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:fontFamily="sans-serif-medium"/>
+-
+-    <View
+-        android:layout_width="270dp"
+-        android:layout_height="290dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="71dp"
+-        android:layout_marginTop="131dp"
+-        android:background="@drawable/soundpool"
+-        android:gravity="center_horizontal|center_vertical" />
+-
+-
+-    / Mangler shadows + farve
+-    <Button
+-        android:id="@+id/ellipse_3"
+-        android:layout_width="75dp"
+-        android:layout_height="75dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="77dp"
+-        android:layout_marginTop="433dp"
+-        android:background="@xml/upload_ellipse"
+-        android:elevation="5dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="UPLOAD"
+-        android:textAppearance="@style/upload" />
+-
+-    <Button
+-        android:id="@+id/ellipse_2"
+-        android:layout_width="152dp"
+-        android:layout_height="152dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="188dp"
+-        android:layout_marginTop="431dp"
+-        android:background="@xml/sound_type"
+-        android:elevation="50dp"
+-        android:text="Der laves listview her" />
+-
+-    <Button
+-        android:id="@+id/home_rectangle1"
+-        android:layout_width="66dp"
+-        android:layout_height="40dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="65dp"
+-        android:layout_marginTop="605dp"
+-        android:background="@xml/home_rectangle" />
+-
+-    <View
+-        android:id="@+id/home_rectangle1_settings"
+-        android:layout_width="130dp"
+-        android:layout_height="130dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="37dp"
+-        android:layout_marginTop="558dp"
+-        android:background="@drawable/settings_icon"
+-        android:elevation="3dp" />
+-
+-    <Button
+-        android:id="@+id/home_rectangle2"
+-        android:layout_width="66dp"
+-        android:layout_height="40dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="172dp"
+-        android:layout_marginTop="605dp"
+-        android:background="@xml/home_rectangle" />
+-
+-    <View
+-        android:id="@+id/home_sound_settings"
+-        android:layout_width="35dp"
+-        android:layout_height="35dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="189dp"
+-        android:layout_marginTop="606dp"
+-        android:background="@drawable/sound_icon"
+-        android:elevation="3dp" />
+-
+-    <Button
+-        android:id="@+id/home_rectangle3"
+-        android:layout_width="66dp"
+-        android:layout_height="40dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="280dp"
+-        android:layout_marginTop="605dp"
+-        android:background="@xml/home_rectangle" />
+-
+-    <View
+-        android:id="@+id/home_sound_test"
+-        android:layout_width="45dp"
+-        android:layout_height="45dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="292dp"
+-        android:layout_marginTop="599dp"
+-        android:background="@drawable/graph_icon"
+-        android:elevation="3dp" />
+-
+-    <Button
+-        android:id="@+id/home_house_2"
+-        android:layout_width="40dp"
+-        android:layout_height="35dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="352dp"
+-        android:layout_marginTop="15dp"
+-        android:background="@drawable/home_house_2"
+-        android:elevation="5dp"/>
+-
+-
+-
+-
+-</RelativeLayout>
+Index: app/src/main/res/layout/fragment_collection.xml
+===================================================================
+--- app/src/main/res/layout/fragment_collection.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
++++ app/src/main/res/layout/fragment_collection.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
+@@ -1,26 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:tools="http://schemas.android.com/tools"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent">
+-
+-    <fragment
+-        android:layout_width="match_parent"
+-        android:layout_height="match_parent"
+-        tools:layout = "@layout/activity_audiogram_hearing_test"/>
+-
+-    <fragment
+-        android:layout_width="match_parent"
+-        android:layout_height="match_parent"
+-        tools:layout = "@layout/activity_home"/>
+-
+-    <fragment
+-        android:layout_width="match_parent"
+-        android:layout_height="match_parent"
+-        tools:layout = "@layout/activity_quickstart"/>
+-
+-
+-
+-
+-
+-</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_upload_library.xml
+===================================================================
+--- app/src/main/res/layout/activity_upload_library.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
++++ app/src/main/res/layout/activity_upload_library.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
+@@ -1,76 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout
+-    xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:id="@+id/app_soundfi"
+-    android:layout_width="fill_parent"
+-    android:layout_height="fill_parent"
+-    android:background="@xml/sound_timbre_background">
+-
+-    <TextView
+-        android:id="@+id/sonority_by2"
+-        android:layout_width="187dp"
+-        android:layout_height="17dp"
+-        android:layout_alignParentStart="true"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginStart="112dp"
+-        android:layout_marginLeft="112dp"
+-        android:layout_marginTop="37dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SONORITY BY AUDIENTES"
+-        android:textAppearance="@style/sonority_by2"
+-        android:textStyle="bold"/>
+-
+-    <TextView
+-        android:id="@+id/sonic_distr2"
+-        android:layout_width="209dp"
+-        android:layout_height="38dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="101dp"
+-        android:layout_marginTop="74dp"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SOUND &amp; TIMBRE"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:fontFamily="sans-serif-medium"
+-        android:textStyle="bold"/>
+-
+-    <Button
+-        android:id="@+id/sound_pool_"
+-        android:layout_width="40dp"
+-        android:layout_height="20dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="10dp"
+-        android:layout_marginTop="12dp"
+-        android:background="@drawable/back_arrow"
+-        android:elevation="7dp" />
+-
+-    <ImageView
+-        android:layout_width="270dp"
+-        android:layout_height="290dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="71dp"
+-        android:layout_marginTop="131dp"
+-        android:background="@drawable/library_options"
+-        android:gravity="center_horizontal|center_vertical" />
+-
+-    <Button
+-        android:id="@+id/ellipse_3"
+-        android:layout_width="75dp"
+-        android:layout_height="75dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="167dp"
+-        android:layout_marginTop="493dp"
+-        android:background="@xml/upload_ellipse"
+-        android:elevation="5dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="UPLOAD"
+-        android:textAppearance="@style/upload"
+-        android:textStyle="bold"/>
+-
+-
+-</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_sleepmode.xml
+===================================================================
+--- app/src/main/res/layout/activity_sleepmode.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
++++ app/src/main/res/layout/activity_sleepmode.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
+@@ -1,206 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:id="@+id/preset_quick"
+-    android:layout_width="fill_parent"
+-    android:layout_height="fill_parent"
+-    android:background="@xml/quickstart_background">
+-
+-    <TextView
+-        android:id="@+id/sonority_by2"
+-        android:layout_width="187dp"
+-        android:layout_height="17dp"
+-        android:layout_alignParentStart="true"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginStart="112dp"
+-        android:layout_marginLeft="112dp"
+-        android:layout_marginTop="37dp"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SONORITY BY AUDIENTES"
+-        android:textAppearance="@style/sonority_by2"
+-        android:fontFamily="sans-serif-medium"
+-        android:textStyle="bold"/>
+-
+-    <TextView
+-        android:id="@+id/sonic_distr2"
+-        android:layout_width="209dp"
+-        android:layout_height="38dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="105dp"
+-        android:layout_marginTop="74dp"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SONIC DISTRACTION"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:fontFamily="sans-serif-medium"
+-        android:textStyle="bold"/>
+-
+-    <TextView
+-        android:id="@+id/sleepmode"
+-        android:layout_width="187dp"
+-        android:layout_height="25dp"
+-        android:layout_centerHorizontal="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginTop="100dp"
+-        android:text="SLEEPMODE"
+-        android:textAppearance="@style/sleepmode"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:textStyle="bold"
+-        />
+-
+-    <TextView
+-        android:id="@+id/press_bar_t"
+-        android:layout_width="300dp"
+-        android:layout_height="25dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_marginLeft="52dp"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginTop="150dp"
+-        android:text="PRESS BAR TO LOAD NEW SOUND"
+-        android:textAppearance="@style/sleepmode"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:textSize="14sp"
+-        />
+-
+-    <Button
+-        android:id="@+id/sleemode_rectangle_1"
+-        android:layout_width="258dp"
+-        android:layout_height="31dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="77dp"
+-        android:layout_marginTop="187dp"
+-        android:background="@xml/sleepmode_rectangle"
+-        android:text="(Navnet på lydfilen"
+-        android:textStyle="bold"
+-        android:textAppearance="@style/sleepmode"
+-        android:textSize="16sp"
+-        android:fontFamily="sans-serif-medium"/>
+-
+-    <Button
+-        android:id="@+id/sleepmode_duration_1"
+-        android:layout_width="140dp"
+-        android:layout_height="20dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="136dp"
+-        android:layout_marginTop="222dp"
+-        android:background="@xml/sleepmode_duration_rectangle"
+-        android:elevation="50dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="DURATION --- MIN"
+-        android:textAppearance="@style/sleepmode"
+-        android:textSize="12sp"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:id="@+id/sleemode_rectangle_2"
+-        android:layout_width="258dp"
+-        android:layout_height="31dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="76dp"
+-        android:layout_marginTop="259dp"
+-        android:background="@xml/sleepmode_rectangle"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="(Navnet på lydfilen"
+-        android:textAppearance="@style/sleepmode"
+-        android:textSize="16sp"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:id="@+id/sleepmode_duration_2"
+-        android:layout_width="140dp"
+-        android:layout_height="20dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="136dp"
+-        android:layout_marginTop="294dp"
+-        android:background="@xml/sleepmode_duration_rectangle"
+-        android:elevation="50dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="DURATION --- MIN"
+-        android:textAppearance="@style/sleepmode"
+-        android:textSize="12sp"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:id="@+id/sleemode_rectangle_3"
+-        android:layout_width="258dp"
+-        android:layout_height="31dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="76dp"
+-        android:layout_marginTop="332dp"
+-        android:background="@xml/sleepmode_rectangle"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="(Navnet på lydfilen"
+-        android:textAppearance="@style/sleepmode"
+-        android:textSize="16sp"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:id="@+id/sleepmode_duration_3"
+-        android:layout_width="140dp"
+-        android:layout_height="20dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="136dp"
+-        android:layout_marginTop="368dp"
+-        android:background="@xml/sleepmode_duration_rectangle"
+-        android:elevation="50dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="DURATION --- MIN"
+-        android:textAppearance="@style/sleepmode"
+-        android:textSize="12sp"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:id="@+id/sleemode_rectangle_4"
+-        android:layout_width="258dp"
+-        android:layout_height="31dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="76dp"
+-        android:layout_marginTop="406dp"
+-        android:background="@xml/sleepmode_rectangle"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="(Navnet på lydfilen"
+-        android:textAppearance="@style/sleepmode"
+-        android:textSize="16sp"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:id="@+id/sleepmode_duration_4"
+-        android:layout_width="140dp"
+-        android:layout_height="20dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="136dp"
+-        android:layout_marginTop="442dp"
+-        android:background="@xml/sleepmode_duration_rectangle"
+-        android:elevation="50dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="DURATION --- MIN"
+-        android:textAppearance="@style/sleepmode"
+-        android:textSize="12sp"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:id="@+id/rectangle_3"
+-        android:layout_width="166dp"
+-        android:layout_height="59dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="122dp"
+-        android:layout_marginTop="500dp"
+-        android:background="@xml/done_rectangle"
+-        android:elevation="4dp"
+-        android:text="DONE"
+-        android:textAppearance="@style/sleepmode"
+-        android:textStyle="bold"
+-        android:fontFamily="sans-serif-medium"
+-        />
+-
+-</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_audiogram_hearing_test.xml
+===================================================================
+--- app/src/main/res/layout/activity_audiogram_hearing_test.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
++++ app/src/main/res/layout/activity_audiogram_hearing_test.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
+@@ -1,101 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout
+-    xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:id="@+id/audiogram"
+-    android:layout_width="fill_parent"
+-    android:layout_height="fill_parent"
+-    android:background="@xml/audiogram_background">
+-
+-    <TextView
+-        android:id="@+id/sonority_by"
+-        android:layout_width="187dp"
+-        android:layout_height="17dp"
+-        android:layout_alignParentStart="true"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginStart="112dp"
+-        android:layout_marginLeft="112dp"
+-        android:layout_marginTop="37dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SONORITY BY AUDIENTES"
+-        android:textAppearance="@style/sonority_by2"
+-        android:textStyle="bold"/>
+-
+-    <TextView
+-        android:id="@+id/audiogram_header"
+-        android:layout_width="209dp"
+-        android:layout_height="38dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="101dp"
+-        android:layout_marginTop="74dp"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="AUDIOGRAM"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:fontFamily="sans-serif-medium"
+-        android:textStyle="bold"/>
+-
+-    <Button
+-        android:id="@+id/component_8"
+-        android:layout_width="40dp"
+-        android:layout_height="35dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="352dp"
+-        android:layout_marginTop="15dp"
+-        android:background="@drawable/home_house_3"
+-        android:elevation="5dp"
+-        />
+-
+-    <Button
+-        android:id="@+id/audiogram_rectangle_1"
+-        android:layout_width="190dp"
+-        android:layout_height="69dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="110dp"
+-        android:layout_marginTop="200dp"
+-        android:background="@xml/audiogram_rectangle"
+-        android:elevation="4dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="TAKE HEARING TEST"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:textStyle="bold"
+-        android:textSize="16sp"/>
+-
+-    <Button
+-        android:id="@+id/audiogram_rectangle_3"
+-        android:layout_width="190dp"
+-        android:layout_height="69dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="110dp"
+-        android:layout_marginTop="310dp"
+-        android:background="@xml/audiogram_rectangle"
+-        android:elevation="4dp"
+-        android:text="UPLOAD AUDIOGRAM"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:fontFamily="sans-serif-medium"
+-        android:textStyle="bold"
+-        android:textSize="16sp"/>
+-
+-    <Button
+-        android:id="@+id/audiogram_rectangle_2"
+-        android:layout_width="190dp"
+-        android:layout_height="69dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="110dp"
+-        android:layout_marginTop="420dp"
+-        android:background="@xml/audiogram_rectangle"
+-        android:elevation="4dp"
+-        android:text="VIEW MY AUDIOGRAM"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:fontFamily="sans-serif-medium"
+-        android:textStyle="bold"
+-        android:textSize="16sp"/>
+-
+-
+-
+-</RelativeLayout>
+Index: app/src/main/res/layout/activity_home.xml
+===================================================================
+--- app/src/main/res/layout/activity_home.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
++++ app/src/main/res/layout/activity_home.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
+@@ -1,166 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    xmlns:app="http://schemas.android.com/apk/res-auto"
+-    android:id="@+id/frontpage"
+-    android:layout_width="fill_parent"
+-    android:layout_height="fill_parent"
+-    android:background="@xml/home_background">
+-
+-    <TextView
+-        android:id="@+id/sonority_by"
+-        android:layout_width="187dp"
+-        android:layout_height="17dp"
+-        android:layout_alignParentStart="true"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginStart="112dp"
+-        android:layout_marginLeft="112dp"
+-        android:layout_marginTop="37dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SONORITY BY AUDIENTES"
+-        android:textAppearance="@style/sonority_by"
+-        android:textStyle="bold" />
+-
+-    <TextView
+-        android:id="@+id/home"
+-        android:layout_width="130dp"
+-        android:layout_height="34dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="140dp"
+-        android:layout_marginTop="74dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="HOME"
+-        android:textAppearance="@style/home"
+-        android:textStyle="bold" />
+-
+-
+-    <Button
+-        android:id="@+id/some_id"
+-        android:layout_width="50dp"
+-        android:layout_height="50dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="351dp"
+-        android:layout_marginTop="15dp"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="@string/some_id"
+-        android:textAppearance="@style/some_id" />
+-
+-    <Button
+-        android:id="@+id/home_button1"
+-        android:layout_width="162dp"
+-        android:layout_height="162dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="128dp"
+-        android:layout_marginTop="125dp"
+-        android:background="@xml/home_ellipse"
+-        android:elevation="50dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SOUND &amp; TIMBRE"
+-        android:textAppearance="@style/sonic_distr"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:id="@+id/home_button2"
+-        android:layout_width="162dp"
+-        android:layout_height="162dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="128dp"
+-        android:layout_marginTop="310dp"
+-        android:background="@xml/home_ellipse"
+-        android:elevation="50dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SONIC DISTRACTION"
+-        android:textAppearance="@style/sonic_distr"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:layout_width="25dp"
+-        android:layout_height="25dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="194dp"
+-        android:layout_marginTop="490dp"
+-        android:background="@drawable/play_triangle"/>
+-
+-
+-    <SeekBar
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="80dp"
+-        android:layout_marginTop="550dp"
+-        android:layout_marginEnd="80dp"
+-        android:progress="30"
+-        android:progressBackgroundTint="@color/colorPrimary"
+-        android:theme="@style/SeekBarTheme">
+-
+-    </SeekBar>
+-
+-    <TextView
+-        android:id="@+id/sound_name"
+-        android:layout_width="80dp"
+-        android:layout_height="30dp"
+-        android:layout_marginStart="167dp"
+-        android:layout_marginTop="525dp"
+-        android:layout_marginEnd="167dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="bottom|center"
+-        android:text="LYDNAVN"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:textSize="12sp"
+-        android:textStyle="bold">
+-
+-    </TextView>
+-
+-    <TextView
+-        android:layout_width="80dp"
+-        android:layout_height="30dp"
+-        android:layout_marginStart="167dp"
+-        android:layout_marginTop="563dp"
+-        android:layout_marginEnd="167dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="top|center"
+-        android:text="MODE"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:textSize="12sp"
+-        android:textStyle="bold" />
+-
+-    <TextView
+-        android:layout_width="80dp"
+-        android:layout_height="30dp"
+-        android:layout_marginStart="20dp"
+-        android:layout_marginTop="550dp"
+-        android:layout_marginEnd="90dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="top|center"
+-        android:text="00.00.00"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:textSize="12sp"
+-        android:textStyle="bold" />
+-
+-    <TextView
+-        android:layout_width="80dp"
+-        android:layout_height="30dp"
+-        android:layout_marginStart="310dp"
+-        android:layout_marginTop="550dp"
+-        android:layout_marginEnd="380dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="top|center"
+-        android:text="00.00.00"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:textSize="12sp"
+-        android:textStyle="bold" />
+-
+-
+-
+-
+-
+-
+-</RelativeLayout>
+Index: app/src/main/res/layout/activity_library.xml
+===================================================================
+--- app/src/main/res/layout/activity_library.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
++++ app/src/main/res/layout/activity_library.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
+@@ -1,120 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout
+-    xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:id="@+id/app_soundfi"
+-    android:layout_width="fill_parent"
+-    android:layout_height="fill_parent"
+-    android:background="@xml/sound_timbre_background">
+-
+-    <TextView
+-        android:id="@+id/sonority_by2"
+-        android:layout_width="187dp"
+-        android:layout_height="17dp"
+-        android:layout_alignParentStart="true"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginStart="112dp"
+-        android:layout_marginLeft="112dp"
+-        android:layout_marginTop="37dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SONORITY BY AUDIENTES"
+-        android:textAppearance="@style/sonority_by2"
+-        android:textStyle="bold"/>
+-
+-    <TextView
+-        android:id="@+id/sonic_distr2"
+-        android:layout_width="209dp"
+-        android:layout_height="38dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="101dp"
+-        android:layout_marginTop="74dp"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SOUND &amp; TIMBRE"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:fontFamily="sans-serif-medium"
+-        android:textStyle="bold"/>
+-
+-    <Button
+-        android:id="@+id/sound_pool_"
+-        android:layout_width="40dp"
+-        android:layout_height="20dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="10dp"
+-        android:layout_marginTop="12dp"
+-        android:background="@drawable/back_arrow"
+-        android:elevation="7dp" />
+-
+-    <ImageView
+-        android:layout_width="260dp"
+-        android:layout_height="423dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="71dp"
+-        android:layout_marginTop="131dp"
+-        android:background="@drawable/sound_library"
+-        android:gravity="center_horizontal|center_vertical" />
+-
+-    <Button
+-        android:id="@+id/sound_type_ellipse"
+-        android:layout_width="110dp"
+-        android:layout_height="110dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="191dp"
+-        android:layout_marginTop="198dp"
+-        android:background="@xml/sound_type_ellipse"
+-        android:elevation="100dp"
+-        android:text="SYNTHSIZED"
+-        android:textAppearance="@style/synthsized"
+-        android:fontFamily="sans-serif-medium"
+-        android:textStyle="bold"/>
+-
+-    <Button
+-        android:id="@+id/sound_type_ellipse_2"
+-        android:layout_width="110dp"
+-        android:layout_height="110dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="92dp"
+-        android:layout_marginTop="281dp"
+-        android:background="@xml/sound_type_ellipse"
+-        android:elevation="100dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="NATURAL"
+-        android:textAppearance="@style/synthsized"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:id="@+id/sound_type_ellipse_3"
+-        android:layout_width="110dp"
+-        android:layout_height="110dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="192dp"
+-        android:layout_marginTop="341dp"
+-        android:background="@xml/sound_type_ellipse"
+-        android:elevation="100dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="MUSIC"
+-        android:textAppearance="@style/synthsized"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:id="@+id/sound_type_ellipse_4"
+-        android:layout_width="110dp"
+-        android:layout_height="110dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="92dp"
+-        android:layout_marginTop="415dp"
+-        android:background="@xml/sound_type_ellipse"
+-        android:elevation="100dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="ALL"
+-        android:textAppearance="@style/synthsized"
+-        android:textStyle="bold" />
+-
+-</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_quickstart.xml
+===================================================================
+--- app/src/main/res/layout/activity_quickstart.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
++++ app/src/main/res/layout/activity_quickstart.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
+@@ -1,142 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:id="@+id/preset_quick"
+-    android:layout_width="fill_parent"
+-    android:layout_height="fill_parent"
+-    android:background="#E9F2F9">
+-
+-    <Button
+-        android:id="@+id/home_rectangle"
+-        android:layout_width="66dp"
+-        android:layout_height="40dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="171dp"
+-        android:layout_marginTop="603dp"
+-        android:background="@xml/home_rectangle" />
+-
+-    <Button
+-        android:id="@+id/rectangle_"
+-        android:layout_width="258dp"
+-        android:layout_height="57dp"
+-        android:layout_alignParentLeft="false"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="78dp"
+-        android:layout_marginTop="140dp"
+-        android:background="@xml/quickstart_bars"
+-        android:elevation="3dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="SLEEP"
+-        android:textAppearance="@style/sleep"
+-        android:textStyle="bold" />
+-
+-    <TextView
+-        android:id="@+id/sonority_by2"
+-        android:layout_width="187dp"
+-        android:layout_height="17dp"
+-        android:layout_alignParentStart="true"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginStart="112dp"
+-        android:layout_marginLeft="112dp"
+-        android:layout_marginTop="37dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SONORITY BY AUDIENTES"
+-        android:textAppearance="@style/sonority_by2"
+-        android:textStyle="bold" />
+-
+-    <TextView
+-        android:id="@+id/sonic_distr2"
+-        android:layout_width="209dp"
+-        android:layout_height="38dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="105dp"
+-        android:layout_marginTop="74dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SONIC DISTRACTION"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:textStyle="bold" />
+-
+-
+-    <Button
+-        android:id="@+id/rectangle_1"
+-        android:layout_width="258dp"
+-        android:layout_height="57dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="79dp"
+-        android:layout_marginTop="237dp"
+-        android:background="@xml/quickstart_bars"
+-        android:elevation="3dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="SLEEP"
+-        android:textAppearance="@style/sleep"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:id="@+id/rectangle_2"
+-        android:layout_width="258dp"
+-        android:layout_height="57dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="76dp"
+-        android:layout_marginTop="332dp"
+-        android:background="@xml/quickstart_bars"
+-        android:elevation="3dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="AMBIENCE"
+-        android:textAppearance="@style/ambience"
+-        android:textStyle="bold" />
+-
+-
+-    <Button
+-        android:id="@+id/rectangle_3"
+-        android:layout_width="258dp"
+-        android:layout_height="57dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="75dp"
+-        android:layout_marginTop="432dp"
+-        android:background="@xml/quickstart_bars"
+-        android:elevation="3dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:text="NOISE DISTRACTION"
+-        android:textAppearance="@style/ambience"
+-        android:textStyle="bold" />
+-
+-    <View
+-        android:id="@+id/home_sound_settings"
+-        android:layout_width="35dp"
+-        android:layout_height="35dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="189dp"
+-        android:layout_marginTop="606dp"
+-        android:background="@drawable/sound_icon"
+-        android:elevation="3dp" />
+-
+-    <Button
+-        android:id="@+id/home_rectangle3"
+-        android:layout_width="66dp"
+-        android:layout_height="40dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="280dp"
+-        android:layout_marginTop="605dp"
+-        android:background="@xml/home_rectangle" />
+-
+-    <View
+-        android:id="@+id/home_sound_test"
+-        android:layout_width="45dp"
+-        android:layout_height="45dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="292dp"
+-        android:layout_marginTop="599dp"
+-        android:background="@drawable/graph_icon"
+-        android:elevation="3dp" />
+-
+-</RelativeLayout>
+Index: app/src/main/res/layout/activity_music_player.xml
+===================================================================
+--- app/src/main/res/layout/activity_music_player.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
++++ app/src/main/res/layout/activity_music_player.xml	(revision 98ff855185767f58010348ce213a0086d4ca5348)
+@@ -1,340 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:id="@+id/frontpage"
+-    android:layout_width="fill_parent"
+-    android:layout_height="fill_parent"
+-    android:background="@xml/home_background">
+-
+-    <TextView
+-        android:id="@+id/sonority_by"
+-        android:layout_width="187dp"
+-        android:layout_height="17dp"
+-        android:layout_alignParentStart="true"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginStart="112dp"
+-        android:layout_marginLeft="112dp"
+-        android:layout_marginTop="37dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="SONORITY BY AUDIENTES"
+-        android:textAppearance="@style/sonority_by"
+-        android:textStyle="bold" />
+-
+-    <TextView
+-        android:id="@+id/player"
+-        android:layout_width="123dp"
+-        android:layout_height="34dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="144dp"
+-        android:layout_marginTop="74dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="center_horizontal|center_vertical"
+-        android:text="PLAYER"
+-        android:textAppearance="@style/home"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:id="@+id/component_8"
+-        android:layout_width="40dp"
+-        android:layout_height="35dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="352dp"
+-        android:layout_marginTop="15dp"
+-        android:background="@drawable/home_house_4"
+-        android:elevation="5dp" />
+-
+-    <Button
+-        android:id="@+id/component_1"
+-        android:layout_width="182dp"
+-        android:layout_height="32dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="114dp"
+-        android:layout_marginTop="130dp"
+-        android:background="@xml/player_rectangle_1"
+-        android:elevation="50dp"
+-        android:text="SLEEP MODE"
+-        android:textAppearance="@style/sleepmode"
+-        android:textSize="12sp"
+-        android:textStyle="bold" />
+-
+-
+-    <View
+-        android:id="@+id/player_zzz"
+-        android:layout_width="160dp"
+-        android:layout_height="160dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="53dp"
+-        android:layout_marginTop="65dp"
+-        android:background="@drawable/zzz_icon"
+-        android:elevation="3dp" />
+-
+-    <Button
+-        android:id="@+id/arrows"
+-        android:layout_width="20dp"
+-        android:layout_height="20dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="268dp"
+-        android:layout_marginTop="136dp"
+-        android:background="@drawable/arrows"
+-        android:elevation="3dp" />
+-
+-    <Button
+-        android:id="@+id/player_ellipse_1"
+-        android:layout_width="75dp"
+-        android:layout_height="75dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="66dp"
+-        android:layout_marginTop="184dp"
+-        android:background="@xml/player_ellipse"
+-        android:elevation="50dp" />
+-
+-    <View
+-        android:id="@+id/player_button_play"
+-        android:layout_width="25dp"
+-        android:layout_height="25dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="94dp"
+-        android:layout_marginTop="207dp"
+-        android:background="@drawable/play_button"
+-        android:elevation="3dp" />
+-
+-    <Button
+-        android:id="@+id/player_ellipse_2"
+-        android:layout_width="75dp"
+-        android:layout_height="75dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="180dp"
+-        android:layout_marginTop="184dp"
+-        android:background="@xml/player_ellipse"
+-        android:elevation="50dp" />
+-
+-    <View
+-        android:id="@+id/player_button_stop"
+-        android:layout_width="20dp"
+-        android:layout_height="20dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="206dp"
+-        android:layout_marginTop="212dp"
+-        android:background="@drawable/stop_button"
+-        android:elevation="3dp" />
+-
+-    <Button
+-        android:id="@+id/player_ellipse_3"
+-        android:layout_width="75dp"
+-        android:layout_height="75dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="294dp"
+-        android:layout_marginTop="184dp"
+-        android:background="@xml/player_ellipse"
+-        android:elevation="50dp" />
+-
+-    <View
+-        android:id="@+id/player_button_pause"
+-        android:layout_width="20dp"
+-        android:layout_height="20dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="322dp"
+-        android:layout_marginTop="211dp"
+-        android:background="@drawable/pause_button"
+-        android:elevation="3dp" />
+-
+-    <Button
+-        android:id="@+id/player_ellipse_4"
+-        android:layout_width="75dp"
+-        android:layout_height="75dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="122dp"
+-        android:layout_marginTop="262dp"
+-        android:background="@xml/player_ellipse"
+-        android:elevation="50dp" />
+-
+-    <View
+-        android:id="@+id/player_button_backwards"
+-        android:layout_width="25dp"
+-        android:layout_height="25dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="147dp"
+-        android:layout_marginTop="285dp"
+-        android:background="@drawable/backwards_button"
+-        android:elevation="3dp" />
+-
+-    <Button
+-        android:id="@+id/player_ellipse_5"
+-        android:layout_width="75dp"
+-        android:layout_height="75dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="245dp"
+-        android:layout_marginTop="262dp"
+-        android:background="@xml/player_ellipse"
+-        android:elevation="50dp" />
+-
+-    <View
+-        android:id="@+id/player_button_forward"
+-        android:layout_width="25dp"
+-        android:layout_height="25dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="270dp"
+-        android:layout_marginTop="285dp"
+-        android:background="@drawable/forward_button"
+-        android:elevation="3dp" />
+-
+-    <Button
+-        android:id="@+id/home_rectangle1"
+-        android:layout_width="66dp"
+-        android:layout_height="40dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="40dp"
+-        android:layout_marginTop="595dp"
+-        android:background="@xml/home_rectangle" />
+-
+-    <View
+-        android:id="@+id/home_rectangle1_settings"
+-        android:layout_width="135dp"
+-        android:layout_height="130dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="13dp"
+-        android:layout_marginTop="535dp"
+-        android:background="@drawable/settings_icon"
+-        android:elevation="3dp" />
+-
+-    <TextView
+-        android:layout_width="80dp"
+-        android:layout_height="20dp"
+-        android:layout_marginStart="32dp"
+-        android:layout_marginTop="635dp"
+-        android:layout_marginEnd="220dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="bottom|center"
+-        android:text="SETTINGS"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:textSize="13sp"
+-        android:textStyle="bold" />
+-
+-    <Button
+-        android:id="@+id/home_rectangle2"
+-        android:layout_width="66dp"
+-        android:layout_height="40dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="170dp"
+-        android:layout_marginTop="595dp"
+-        android:background="@xml/home_rectangle" />
+-
+-    <TextView
+-        android:layout_width="80dp"
+-        android:layout_height="20dp"
+-        android:layout_marginStart="162dp"
+-        android:layout_marginTop="635dp"
+-        android:layout_marginEnd="350dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="bottom|center"
+-        android:text="PLAYER"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:textSize="13sp"
+-        android:textStyle="bold" />
+-
+-    <View
+-        android:id="@+id/home_sound_settings"
+-        android:layout_width="35dp"
+-        android:layout_height="35dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="189dp"
+-        android:layout_marginTop="596dp"
+-        android:background="@drawable/sound_icon"
+-        android:elevation="3dp" />
+-
+-    <Button
+-        android:id="@+id/home_rectangle3"
+-        android:layout_width="66dp"
+-        android:layout_height="40dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="300dp"
+-        android:layout_marginTop="595dp"
+-        android:background="@xml/home_rectangle" />
+-
+-    <View
+-        android:id="@+id/home_sound_test"
+-        android:layout_width="45dp"
+-        android:layout_height="45dp"
+-        android:layout_alignParentLeft="true"
+-        android:layout_alignParentTop="true"
+-        android:layout_marginLeft="310dp"
+-        android:layout_marginTop="590dp"
+-        android:background="@drawable/graph_icon"
+-        android:elevation="3dp" />
+-
+-    <TextView
+-        android:layout_width="80dp"
+-        android:layout_height="20dp"
+-        android:layout_marginStart="292dp"
+-        android:layout_marginTop="635dp"
+-        android:layout_marginEnd="480dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="bottom|center"
+-        android:text="AUDIOGRAM"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:textSize="13sp"
+-        android:textStyle="bold" />
+-
+-    <SeekBar
+-        android:layout_width="match_parent"
+-        android:layout_height="wrap_content"
+-        android:layout_marginStart="80dp"
+-        android:layout_marginTop="550dp"
+-        android:layout_marginEnd="80dp"
+-        android:progress="30"
+-        android:progressBackgroundTint="@color/colorPrimary"
+-        android:theme="@style/SeekBarTheme">
+-
+-    </SeekBar>
+-
+-    <TextView
+-        android:layout_width="80dp"
+-        android:layout_height="30dp"
+-        android:layout_marginStart="167dp"
+-        android:layout_marginTop="518dp"
+-        android:layout_marginEnd="167dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="bottom|center"
+-        android:text="LYDNAVN"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:textSize="12sp"
+-        android:textStyle="bold">
+-
+-    </TextView>
+-
+-    <TextView
+-        android:layout_width="80dp"
+-        android:layout_height="30dp"
+-        android:layout_marginStart="167dp"
+-        android:layout_marginTop="568dp"
+-        android:layout_marginEnd="167dp"
+-        android:fontFamily="sans-serif-medium"
+-        android:gravity="top|center"
+-        android:text="MODE"
+-        android:textAppearance="@style/sonic_distr2"
+-        android:textSize="12sp"
+-        android:textStyle="bold" />
+-
+-
+-</RelativeLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/brintaudientes/preset/OneSoundAmbPreset.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.brintaudientes.preset;\n\npublic class OneSoundAmbPreset implements Preset {\n\n\n    @Override\n    public void makePreset() {\n        System.out.println(\"Ambience Preset 1 Sound\");\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/preset/OneSoundAmbPreset.java	(revision 98ff855185767f58010348ce213a0086d4ca5348)
++++ app/src/main/java/com/example/brintaudientes/preset/OneSoundAmbPreset.java	(date 1609852955000)
+@@ -3,6 +3,7 @@
+ public class OneSoundAmbPreset implements Preset {
+ 
+ 
++
+     @Override
+     public void makePreset() {
+         System.out.println("Ambience Preset 1 Sound");
