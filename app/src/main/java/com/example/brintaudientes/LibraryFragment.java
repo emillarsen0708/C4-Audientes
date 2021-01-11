@@ -17,7 +17,10 @@ import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.lang.reflect.Field;
@@ -54,6 +57,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         antiListView.setAdapter(antiAdapter);
         antiListView.setChoiceMode(antiListView.CHOICE_MODE_MULTIPLE);
 
+
         cancel = root.findViewById(R.id.cancel_button_library);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +73,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         displaySelected = root.findViewById(R.id.display_selected_button);
         addAsPreset = root.findViewById(R.id.add_as_preset_button);
         presetName = root.findViewById(R.id.preset_title_editText);
+
 
 
 
@@ -90,6 +95,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
     }
 
 
+
     @Override
     public void setVisibilityForButton(boolean bool) {
         if (bool) {
@@ -97,6 +103,10 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             displaySelected.setVisibility(View.GONE);
             addAsPreset.setVisibility(View.GONE);
             presetName.setVisibility(View.GONE);
+            ViewGroup.LayoutParams list = antiListView.getLayoutParams();
+            list.height = 900;
+            antiListView.setLayoutParams(list);
+            antiListView.setPadding(0, 150,0,0);
         } else {
             cancel.setVisibility(View.VISIBLE);
             cancel.setVisibility(View.VISIBLE);

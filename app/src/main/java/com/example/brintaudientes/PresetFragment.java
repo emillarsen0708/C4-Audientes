@@ -51,7 +51,7 @@ public class PresetFragment extends Fragment {
             public void onClick(View v) {
                 LibraryFragment addFragment = new LibraryFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(((ViewGroup)getView().getParent()).getId(), addFragment, "findThisFragment")
+                        .add(((ViewGroup)getView().getParent()).getId(), addFragment, "findThisFragment")
                         .addToBackStack(null)
                         .commit();
 

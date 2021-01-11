@@ -132,11 +132,11 @@
 
     <Button
         android:id="@+id/edit_preset_button"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_marginStart="240dp"
-        android:layout_marginTop="500dp"
-        android:background="@drawable/settings_icon_tab"
+        android:layout_marginTop="510dp"
+        android:background="@drawable/ic_edit_preset"
         android:textAppearance="@style/Play_ambience" />
 
 
@@ -144,7 +144,7 @@
         android:id="@+id/concurrent"
         android:layout_width="wrap_content"
         android:layout_height="17dp"
-        android:layout_marginStart="238dp"
+        android:layout_marginStart="230dp"
         android:layout_marginTop="575dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center_horizontal|center_vertical"
