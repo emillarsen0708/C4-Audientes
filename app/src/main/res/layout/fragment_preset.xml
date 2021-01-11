@@ -136,7 +136,7 @@
         android:layout_height="75dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="500dp"
-        android:background="@drawable/settings_icon_tab"
+        android:background="@drawable/ic_edit_preset"
         android:textAppearance="@style/Play_ambience" />
 
 

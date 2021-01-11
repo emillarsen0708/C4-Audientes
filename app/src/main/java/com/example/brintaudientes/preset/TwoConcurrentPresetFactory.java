@@ -1,9 +1,8 @@
-/*package com.example.brintaudientes.preset;
+package com.example.brintaudientes.preset;
 
 public class TwoConcurrentPresetFactory implements PresetFactory {
-    @Override
-    public void makePreset() {
-        System.out.println("Ambience PresetFactory 2 Sound");
+
+    public UserName addPresetName() {
+        return new addPresetName();
     }
 }
-*/

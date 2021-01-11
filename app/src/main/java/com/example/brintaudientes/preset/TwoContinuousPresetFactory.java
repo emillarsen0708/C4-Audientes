@@ -1,4 +1,4 @@
-/*package com.example.brintaudientes.preset;
+package com.example.brintaudientes.preset;
 
 public class TwoContinuousPresetFactory implements PresetFactory {
     @Override
@@ -6,4 +6,3 @@ public class TwoContinuousPresetFactory implements PresetFactory {
         System.out.println("Sleep PresetFactory 2 sound");
     }
 }
-*/

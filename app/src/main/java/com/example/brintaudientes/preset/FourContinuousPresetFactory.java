@@ -1,4 +1,4 @@
-/*package com.example.brintaudientes.preset;
+package com.example.brintaudientes.preset;
 
 public class FourContinuousPresetFactory implements PresetFactory {
 
@@ -7,4 +7,3 @@ public class FourContinuousPresetFactory implements PresetFactory {
         System.out.println("Sleep PresetFactory 4 sound");
     }
 }
-*/
