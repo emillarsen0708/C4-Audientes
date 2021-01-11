@@ -11,8 +11,11 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import static android.view.View.GONE;
 
 // todo: Få styr på skærmvending så player ikke kører videre mens player står i pause mode
 
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     private AudioManager SoundManager;
     final PresetFragment presetFragment = new PresetFragment();
     Fragment selectedFragment = presetFragment;
+    Button libraryCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, libraryFragment, "3").hide(libraryFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, volumeFragment, "2").hide(volumeFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, presetFragment, "1").commit();
+        libraryCancel = findViewById(R.id.cancel_button_library);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener naviListner =
@@ -63,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                             selectedFragment = volumeFragment;
                             return true;
                         case R.id.nav_preset:
+                            libraryFragment.setVisibilityForButton(true);
                             getSupportFragmentManager().beginTransaction()
                                     .hide(selectedFragment)
                                     .show(libraryFragment)

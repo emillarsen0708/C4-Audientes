@@ -42,23 +42,31 @@
         android:layout_width="250dp"
         android:layout_height="160dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="180dp">
+        android:layout_marginTop="180dp"
+        android:choiceMode="multipleChoice"
+        android:listSelector="@color/colorPrimary"
+        android:drawSelectorOnTop="false"
+        >
         <!--- android:listSelector="@drawable/selector_list" -->
 
     </ListView>
 
-    <TextView
+
+    <EditText
+        android:id="@+id/preset_title_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="440dp"
-        android:layout_marginStart="60dp"
-        android:text="Type Your Preset Title here ..."
+        android:layout_marginStart="65dp"
+        android:hint="Type Your Preset Title here ..."
         android:textSize="18dp"
-        android:textColor="#1B325F"/>
+        android:textColorHint="#1B325F"
+        android:textColor="#1B325F"
+        />
 
     <View
         android:layout_width="300dp"
-        android:layout_height="439dp"
+        android:layout_height="410dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="180dp"
         android:background="@drawable/listview_rectangle"
@@ -70,6 +78,7 @@
         android:scrollbars="none" />
 
     <Button
+        android:id="@+id/cancel_button_library"
         android:layout_width="75dp"
         android:layout_height="32dp"
         android:layout_marginStart="20dp"
@@ -93,6 +102,7 @@
         android:textStyle="bold" />
 
     <Button
+        android:id="@+id/display_selected_button"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -103,6 +113,7 @@
         android:textStyle="bold" />
 
     <Button
+        android:id="@+id/add_as_preset_button"
         android:layout_width="90dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="240dp"

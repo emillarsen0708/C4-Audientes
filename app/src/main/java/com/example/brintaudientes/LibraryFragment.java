@@ -5,11 +5,19 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -19,13 +27,16 @@ import java.util.ArrayList;
  * Use the {@link LibraryFragment #newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LibraryFragment extends Fragment {
+public class LibraryFragment extends Fragment implements AccessFragmentViews {
 
     ListView antiListView;
     ArrayList<String> arrayList;
+    Button cancel, displaySelected, addAsPreset;
+    EditText presetName;
 
     ArrayAdapter antiAdapter;
     MediaPlayer mediaPlayer;
+    private int nr = 4;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,8 +51,15 @@ public class LibraryFragment extends Fragment {
         }
         antiAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);
         antiListView.setAdapter(antiAdapter);
+        antiListView.setChoiceMode(antiListView.CHOICE_MODE_MULTIPLE);
+        cancel = root.findViewById(R.id.cancel_button_library);
 
-        antiListView.setOnItemClickListener((parent, view, position, id) -> {
+        displaySelected = root.findViewById(R.id.display_selected_button);
+        addAsPreset = root.findViewById(R.id.add_as_preset_button);
+        presetName = root.findViewById(R.id.preset_title_editText);
+
+
+        /*antiListView.setOnItemClickListener((parent, view, position, id) -> {
             // Ends the Mediaplayer if a Mediaplayer already exist
 
             //if (mediaPlayer != null) {
@@ -53,8 +71,25 @@ public class LibraryFragment extends Fragment {
             mediaPlayer = MediaPlayer.create(getActivity(), resId);
             mediaPlayer.start();
 
-        });
+        });*/
         
         return root;
+    }
+
+
+    @Override
+    public void setVisibilityForButton(boolean bool) {
+        if (bool) {
+            cancel.setVisibility(View.GONE);
+            displaySelected.setVisibility(View.GONE);
+            addAsPreset.setVisibility(View.GONE);
+            presetName.setVisibility(View.GONE);
+        } else {
+            cancel.setVisibility(View.VISIBLE);
+            cancel.setVisibility(View.VISIBLE);
+            displaySelected.setVisibility(View.VISIBLE);
+            addAsPreset.setVisibility(View.VISIBLE);
+            presetName.setVisibility(View.VISIBLE);
+        }
     }
 }

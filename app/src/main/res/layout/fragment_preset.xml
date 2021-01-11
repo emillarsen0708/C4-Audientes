@@ -152,26 +152,6 @@
         android:textAppearance="@style/sonority_by2"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/play_preset_button"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="500dp"
-        android:background="@drawable/ic_continuous_icon"
-        android:textAppearance="@style/Play_ambience" />
-
-    <TextView
-        android:id="@+id/continuous_Mode"
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
-        android:layout_marginStart="280dp"
-        android:layout_marginTop="580dp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="@string/tom"
-        android:textAppearance="@style/sonority_by2"
-        android:textStyle="bold" />
 
 
 </FrameLayout>
