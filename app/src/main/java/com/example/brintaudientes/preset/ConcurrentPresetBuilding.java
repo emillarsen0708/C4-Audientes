@@ -26,8 +26,8 @@ public class ConcurrentPresetBuilding extends PresetBuilding {
             else
             if (typeOfPreset.equals("FOUR")) {
                 PresetFactory presetPartsFactory = new FourConcurrentPresetFactory();
-                thePreset = new ThreeConcurrentPreset(presetPartsFactory);
-                thePreset.setName("Concurrent Three-Sound Preset");
+                thePreset = new FourConcurrentPreset(presetPartsFactory);
+                thePreset.setName("Concurrent Four-Sound Preset");
             }
             return thePreset;
     }
@@ -43,7 +43,7 @@ public class ConcurrentPresetBuilding extends PresetBuilding {
             return new ThreeConcurrentPresetFactory();
         }
         else if (presetType.equalsIgnoreCase("FOUR")) {
-            return new ConcurrentPresetFactory();
+            return new OneConcurrentPreset();
         }
         else if (presetType.equalsIgnoreCase("ONE")) {
             return new OneConcurrentPresetFactory();

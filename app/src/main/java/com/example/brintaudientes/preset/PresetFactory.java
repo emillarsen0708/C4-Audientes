@@ -4,4 +4,6 @@ public interface PresetFactory {
 
     public UserName addPresetName();
 
+    public PresetPlayer presetPlayer();
+
 }

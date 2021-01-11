@@ -2,7 +2,7 @@ package com.example.brintaudientes.preset;
 
 public abstract class PresetBuilding {
 
-    protected abstract PresetBuilding makePreset(String typeOfPreset);
+    protected abstract Preset makePreset(String typeOfPreset);
 
     public Preset orderThePreset(String typeOfPreset) {
         Preset thePreset = makePreset(typeOfPreset);
@@ -10,7 +10,6 @@ public abstract class PresetBuilding {
         thePreset.makeUserPreset();
         thePreset.metodeEt();
         thePreset.metodeTo();
-        thePreset.metodeTre();
 
         return thePreset;
     }

@@ -2,5 +2,14 @@ package com.example.brintaudientes.preset;
 
 public class OneConcurrentPresetFactory implements PresetFactory {
 
-    public UserName addPresetName() { return new addPresetName(); }
+
+    @Override
+    public UserName addPresetName() {
+        return new OnePresetName();
+    }
+
+    @Override
+    public PresetPlayer presetPlayer() {
+        return new OnePresetPlayer();
+    }
 }
