@@ -1,4 +1,4 @@
-/*
+
 package com.example.brintaudientes.players;
 
 public class Player implements PlayerPlan {
@@ -49,4 +49,3 @@ public class Player implements PlayerPlan {
         playerTitle = titel;
     }
 }
-*/
