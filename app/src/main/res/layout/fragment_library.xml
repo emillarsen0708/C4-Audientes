@@ -51,17 +51,18 @@
 
     </ListView>
 
-
     <EditText
         android:id="@+id/preset_title_editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="440dp"
-        android:layout_marginStart="65dp"
+        android:layout_marginTop="405dp"
+        android:layout_marginStart="80dp"
         android:hint="Type Your Preset Title here ..."
         android:textSize="18dp"
-        android:textColorHint="#1B325F"
-        android:textColor="#1B325F"
+        android:textStyle="bold"
+        android:textColorHint="#591B325F"
+        android:textColor="#000000"
+        android:backgroundTint="@color/colorPrimary"
         />
 
     <View
