@@ -1,4 +1,4 @@
-package com.example.brintaudientes.preset;
+/*package com.example.brintaudientes.preset;
 
 public class ContinuousPresetBuilding extends PresetBuilding {
     @Override
@@ -18,3 +18,4 @@ public class ContinuousPresetBuilding extends PresetBuilding {
         return null;
     }
 }
+*/

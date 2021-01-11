@@ -1,6 +1,6 @@
 /*package com.example.brintaudientes.preset;
 
-public class PresetFactoryProducer {
+public abstract class Preset {
 
     public static PresetBuilding getFactory(boolean concurrent, boolean continuous) {
 
@@ -13,4 +13,5 @@ public class PresetFactoryProducer {
         return null;
     }
 }
+
 */

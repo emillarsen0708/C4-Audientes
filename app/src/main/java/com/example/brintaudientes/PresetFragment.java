@@ -17,7 +17,7 @@ public class PresetFragment extends Fragment {
 
     private SoundPool soundPool;
     private int sound1, sound2, sound3, sound4;
-    Button play,plus,add1,add2,add3,add4,add5,add6,add7,add8,add9, concurrent, continuous;
+    Button play,edit,plus,add1,add2,add3,add4,add5,add6,add7,add8,add9, concurrent, continuous;
 
     private boolean play_pause_button = true;
 
@@ -41,8 +41,8 @@ public class PresetFragment extends Fragment {
             }
         });
 
-        plus = root.findViewById(R.id.plus_button);
-        plus.setOnClickListener(new View.OnClickListener() {
+        edit = root.findViewById(R.id.edit_preset_button);
+        edit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -62,6 +62,21 @@ public class PresetFragment extends Fragment {
                         fragmentTransaction.addToBackStack(null);
                         fragmentTransaction.commit();
                          */
+            }
+        });
+
+        plus = root.findViewById(R.id.plus_button);
+        plus.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                LibraryFragment addFragment = new LibraryFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .remove(PresetFragment.this)
+                        .replace(((ViewGroup)getView().getParent()).getId(), addFragment, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 

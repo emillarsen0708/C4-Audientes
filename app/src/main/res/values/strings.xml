@@ -30,6 +30,8 @@ NOISE DISTRACTION
     <string name="add_new">Add New</string>
     <string name="sound">Sound</string>
     <string name="sonority_by_audientes">Sonority By Audientes</string>
+    <string name="edit_preset">Edit Preset</string>
+    <string name="tom">Ny Funktion</string>
 
 
 </resources>
