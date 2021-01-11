@@ -20,13 +20,13 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     
 
     PlayFragment playFragment = new PlayFragment();
-    VolumeFragment volumeFragment = new VolumeFragment();
-    LibraryFragment libraryFragment = new LibraryFragment();
+    final VolumeFragment volumeFragment = new VolumeFragment();
+    final LibraryFragment libraryFragment = new LibraryFragment();
     static MediaPlayer mMediaPlayer;
     int currentIndex = 0;
     private Runnable runnable;
     private AudioManager SoundManager;
-    PresetFragment presetFragment = new PresetFragment();
+    final PresetFragment presetFragment = new PresetFragment();
     Fragment selectedFragment = presetFragment;
 
     @Override
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         BottomNavigationView buttNav = findViewById(R.id.bottom);
         buttNav.setOnNavigationItemSelectedListener(naviListner);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, libraryFragment, "3").hide(presetFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, libraryFragment, "3").hide(libraryFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, volumeFragment, "2").hide(volumeFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, presetFragment, "1").commit();
     }
