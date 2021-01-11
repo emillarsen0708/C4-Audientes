@@ -4,6 +4,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -52,11 +53,23 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         antiAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);
         antiListView.setAdapter(antiAdapter);
         antiListView.setChoiceMode(antiListView.CHOICE_MODE_MULTIPLE);
+
         cancel = root.findViewById(R.id.cancel_button_library);
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .remove(LibraryFragment.this)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         displaySelected = root.findViewById(R.id.display_selected_button);
         addAsPreset = root.findViewById(R.id.add_as_preset_button);
         presetName = root.findViewById(R.id.preset_title_editText);
+
 
 
         /*antiListView.setOnItemClickListener((parent, view, position, id) -> {

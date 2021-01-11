@@ -28,6 +28,8 @@ public class PresetFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_preset, container, false);
 
+
+
         play = root.findViewById(R.id.play_button);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,8 +73,7 @@ public class PresetFragment extends Fragment {
             public void onClick(View v) {
                 LibraryFragment addFragment = new LibraryFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .remove(PresetFragment.this)
-                        .replace(((ViewGroup)getView().getParent()).getId(), addFragment, "findThisFragment")
+                        .add(((ViewGroup)getView().getParent()).getId(), addFragment, "findThisFragment")
                         .addToBackStack(null)
                         .commit();
             }
