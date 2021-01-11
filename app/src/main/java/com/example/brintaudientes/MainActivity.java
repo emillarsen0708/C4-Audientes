@@ -19,13 +19,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
     
 
-    PlayFragment playFragment;
-    VolumeFragment volumeFragment;
-    AudiogramFragment audiogramFragment;
+    PlayFragment playFragment = new PlayFragment();
+    final VolumeFragment volumeFragment = new VolumeFragment();
+    final LibraryFragment libraryFragment = new LibraryFragment();
     static MediaPlayer mMediaPlayer;
     int currentIndex = 0;
     private Runnable runnable;
     private AudioManager SoundManager;
+    final PresetFragment presetFragment = new PresetFragment();
+    Fragment selectedFragment = presetFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,32 +37,40 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         BottomNavigationView buttNav = findViewById(R.id.bottom);
         buttNav.setOnNavigationItemSelectedListener(naviListner);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new PresetFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, libraryFragment, "3").hide(libraryFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, volumeFragment, "2").hide(volumeFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, presetFragment, "1").commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener naviListner =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
 
                     switch (item.getItemId()) {
                         case R.id.nav_play:
-                            selectedFragment = new PresetFragment();
-                            break;
+                            getSupportFragmentManager().beginTransaction()
+                                    .hide(selectedFragment)
+                                    .show(presetFragment)
+                                    .commit();
+                            selectedFragment = presetFragment;
+                            return true;
                         case R.id.nav_vol:
-                            selectedFragment = new VolumeFragment();
-                            break;
+                            getSupportFragmentManager().beginTransaction()
+                                    .hide(selectedFragment)
+                                    .show(volumeFragment)
+                                    .commit();
+                            selectedFragment = volumeFragment;
+                            return true;
                         case R.id.nav_preset:
-                            selectedFragment = new LibraryFragment();
-                            break;
+                            getSupportFragmentManager().beginTransaction()
+                                    .hide(selectedFragment)
+                                    .show(libraryFragment)
+                                    .commit();
+                            selectedFragment = libraryFragment;
+                            return true;
                     }
-
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
-
-                    return true;
+                    return false;
                 }
             };
 
