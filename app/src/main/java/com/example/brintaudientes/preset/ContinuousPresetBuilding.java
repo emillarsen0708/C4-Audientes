@@ -1,19 +1,19 @@
 package com.example.brintaudientes.preset;
 
-public class SleepPresetFactory extends AbstractFactory {
+public class ContinuousPresetBuilding extends PresetBuilding {
     @Override
-    public Preset getPreset(String presetType) {
+    public PresetFactory getPreset(String presetType) {
         if (presetType.equalsIgnoreCase("ONE")) {
-            return new OneSoundSleepPreset();
+            return new OneContinuousPresetFactory();
         }
         else if (presetType.equalsIgnoreCase("TWO")) {
-            return new TwoSoundSleepPreset();
+            return new TwoContinuousPresetFactory();
         }
         else if (presetType.equalsIgnoreCase("THREE")) {
-            return new ThreeSoundSleepPreset();
+            return new ThreeContinuousPresetFactory();
         }
         else if (presetType.equalsIgnoreCase("FOUR")) {
-            return new FourSoundSleepPreset();
+            return new FourContinuousPresetFactory();
         }
         return null;
     }

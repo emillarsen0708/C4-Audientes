@@ -64,8 +64,6 @@ public class PlayFragment extends Fragment {
         volumeBar3 = root.findViewById(R.id.volumebar3);
         btplay = root.findViewById(R.id.btplay);
         btpause = root.findViewById(R.id.btpause);
-        btFwd = root.findViewById(R.id.btFwd);
-        btBack = root.findViewById(R.id.btBack);
 
         player1 = MediaPlayer.create(getContext(), R.raw.bee_buzzing_a);
         player2 = MediaPlayer.create(getContext(), R.raw.pack_of_dogs);

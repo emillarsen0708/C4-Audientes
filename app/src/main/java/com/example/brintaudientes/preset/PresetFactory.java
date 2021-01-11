@@ -1,5 +1,6 @@
 package com.example.brintaudientes.preset;
 
-public interface Preset {
+public interface PresetFactory {
+
     void makePreset();
 }

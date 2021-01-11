@@ -53,7 +53,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="195dp"
         android:layout_marginTop="350dp"
-        android:background="@drawable/play_triangle"/>
+        android:background="@drawable/ic_play_icon"/>
 
     <Button
         android:id="@+id/btpause"
@@ -63,24 +63,6 @@
         android:layout_marginTop="350dp"
         android:background="@drawable/pause_button"
         android:visibility="gone" />
-
-    <Button
-        android:id="@+id/btFwd"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="270dp"
-        android:layout_marginTop="350dp"
-        android:background="@drawable/forward_button" />
-
-    <Button
-        android:id="@+id/btBack"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="350dp"
-        android:layout_marginEnd="238dp"
-        android:background="@drawable/backwards_button"/>
-
 
     <SeekBar
         android:id="@+id/seekbar"

@@ -48,7 +48,7 @@
         android:layout_height="55dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="280dp"
-        android:background="@drawable/grey_ellipse" />
+        android:background="@drawable/ic_concurrent_marked_icon" />
 
     <Button
         android:layout_width="wrap_content"

@@ -17,7 +17,7 @@ public class PresetFragment extends Fragment {
 
     private SoundPool soundPool;
     private int sound1, sound2, sound3, sound4;
-    Button play,edit,add1,add2,add3,add4,add5,add6,add7,add8,add9, concurrent, continuous;
+    Button play,plus,add1,add2,add3,add4,add5,add6,add7,add8,add9, concurrent, continuous;
 
     private boolean play_pause_button = true;
 
@@ -32,17 +32,17 @@ public class PresetFragment extends Fragment {
             public void onClick(View v) {
 
                 if ((play != null) && (play_pause_button)) {
-                 play.setBackgroundResource(R.drawable.ic_play_icon);
+                 play.setBackgroundResource(R.drawable.ic_pause_icon);
                  play_pause_button = false; }
                 else {
-                    if (play != null) play.setBackgroundResource(R.drawable.pause_button);
+                    if (play != null) play.setBackgroundResource(R.drawable.ic_play_icon);
                     play_pause_button = true;
                 }
             }
         });
 
-        add1 = root.findViewById(R.id.select_preset_button_1);
-        add1.setOnClickListener(new View.OnClickListener() {
+        plus = root.findViewById(R.id.plus_button);
+        plus.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -65,14 +65,25 @@ public class PresetFragment extends Fragment {
             }
         });
 
+        add1 = root.findViewById(R.id.select_preset_button_1);
+        add1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ((play != null) && (play_pause_button)) {
+                    play.setBackgroundResource(R.drawable.ic_pause_icon);
+                    play_pause_button = false; }
+
+            }
+        });
+
         add2 = root.findViewById(R.id.select_preset_button_2);
+
         add3 = root.findViewById(R.id.select_preset_button_3);
         add4 = root.findViewById(R.id.select_preset_button_4);
         add5 = root.findViewById(R.id.select_preset_button_5);
         add6 = root.findViewById(R.id.select_preset_button_6);
         add7 = root.findViewById(R.id.select_preset_button_7);
         add8 = root.findViewById(R.id.select_preset_button_8);
-        add9 = root.findViewById(R.id.plus_button);
 
 
         return root;

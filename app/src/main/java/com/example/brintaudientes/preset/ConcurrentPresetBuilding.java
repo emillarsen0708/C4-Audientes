@@ -1,19 +1,20 @@
 package com.example.brintaudientes.preset;
 
-public class AmbiencePresetFactory extends AbstractFactory {
+public class ConcurrentPresetBuilding extends PresetBuilding {
+
     @Override
-    public Preset getPreset(String presetType) {
+    public PresetFactory getPreset(String presetType) {
         if (presetType.equalsIgnoreCase("TWO")) {
-            return new TwoSoundAmbPreset();
+            return new TwoConcurrentPresetFactory();
         }
         else if (presetType.equalsIgnoreCase("Three")) {
-            return new ThreeSoundAmbPreset();
+            return new ThreeConcurrentPresetFactory();
         }
         else if (presetType.equalsIgnoreCase("FOUR")) {
-            return new FourSoundAmbPreset();
+            return new FourConcurrentPresetFactory();
         }
         else if (presetType.equalsIgnoreCase("ONE")) {
-            return new OneSoundAmbPreset();
+            return new OneConcurrentUserPresetFactory();
         }
         return null;
     }

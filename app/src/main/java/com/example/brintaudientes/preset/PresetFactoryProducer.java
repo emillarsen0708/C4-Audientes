@@ -1,15 +1,16 @@
-package com.example.brintaudientes.preset;
+/*package com.example.brintaudientes.preset;
 
 public class PresetFactoryProducer {
-    public static AbstractFactory getFactory(boolean ambience, boolean sleep) {
-        if (ambience) {
-            return new AmbiencePresetFactory();
+
+    public static PresetBuilding getFactory(boolean concurrent, boolean continuous) {
+
+        if (concurrent) {
+            return new ConcurrentPresetBuilding();
         }
-        else if (sleep) {
-            return new SleepPresetFactory();
+        else if (continuous) {
+            return new ContinuousPresetBuilding();
         }
-        else {
-            return new NoisePresetFactory();
-        }
+        return null;
     }
 }
+*/

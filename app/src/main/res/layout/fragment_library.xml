@@ -76,7 +76,7 @@
         android:layout_gravity="left"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/add_list_rectangle"
+        android:background="@drawable/ic_selected_sound"
         android:text="Cancel"
         android:textAppearance="@style/Play_ambience"
         android:textStyle="bold" />
@@ -87,7 +87,7 @@
         android:layout_gravity="right"
         android:layout_marginTop="130dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/add_list_rectangle"
+        android:background="@drawable/ic_selected_sound"
         android:text="Add to Library"
         android:textAppearance="@style/Play_ambience"
         android:textStyle="bold" />

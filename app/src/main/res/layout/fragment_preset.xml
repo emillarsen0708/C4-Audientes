@@ -119,8 +119,7 @@
         android:layout_height="63dp"
         android:layout_marginStart="300dp"
         android:layout_marginTop="400dp"
-        android:background="@drawable/ic_plus_icon"
-        android:textAppearance="@style/Play_ambience" />
+        android:background="@drawable/ic_plus_icon" />
 
     <Button
         android:id="@+id/play_button"
@@ -128,8 +127,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="195dp"
         android:layout_marginTop="515dp"
-        android:background="@drawable/Add_buttons"
-        />
+        android:background="@drawable/ic_play_icon" />
 
 
     <Button
