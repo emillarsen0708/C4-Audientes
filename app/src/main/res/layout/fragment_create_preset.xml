@@ -7,14 +7,6 @@
     android:background="@xml/sound_background"
     tools:context=".CreatePresetFragment">
 
-    <EditText
-        android:layout_width="233dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:hint="My preset name..."
-        android:textAppearance="@style/Play_ambience"
-        />
 
     <Button
         android:id="@+id/add_sound_1"
