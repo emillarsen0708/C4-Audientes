@@ -44,9 +44,12 @@ public class LibraryFragment extends Fragment {
 
         antiListView.setOnItemClickListener((parent, view, position, id) -> {
             // Ends the Mediaplayer if a Mediaplayer already exist
-            view.setSelected(true);
-            String pathname = String.valueOf(R.drawable.listview_selector);
+
+            view.setBackgroundColor(R.drawable.listview_selector);
+            /*String pathname = String.valueOf(R.drawable.listview_selector);
             view.setBackground(Drawable.createFromPath(pathname));
+
+             */
 
 
             //if (mediaPlayer != null) {
