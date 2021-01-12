@@ -8,7 +8,7 @@ public class ConcurrentPresetBuilding extends PresetBuilding {
 
         if (typeOfPreset.equals("ONE")) {
             PresetFactory presetPartsFactory = new OneConcurrentPresetFactory();
-            thePreset = new OneConcurrentPresetFactory(presetPartsFactory);
+            thePreset = new OneConcurrentPreset(presetPartsFactory);
             thePreset.setName("Concurrent One-Sound Preset");
         }
         else
