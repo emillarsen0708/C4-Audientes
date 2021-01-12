@@ -2,6 +2,11 @@
 
 public abstract class Preset {
 
+private String name;
+private int soundCount;
+private ArrayList <String> presetSounds;
+private int presetType;
+
     public static PresetBuilding getFactory(boolean concurrent, boolean continuous) {
 
         if (concurrent) {

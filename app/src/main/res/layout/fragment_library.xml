@@ -40,11 +40,11 @@
     <ListView
         android:id="@+id/listview_songs"
         android:layout_width="250dp"
-        android:layout_height="160dp"
+        android:layout_height="209dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="180dp"
         android:choiceMode="multipleChoice"
-        android:listSelector="@drawable/selector_list"
+        android:listSelector="@color/colorPrimary"
         android:drawSelectorOnTop="false"
         android:fadingEdge="horizontal"
         android:fadingEdgeLength="60dp"
@@ -96,6 +96,7 @@
         android:textStyle="bold" />
 
     <Button
+        android:id="@+id/import_local_sound"
         android:layout_width="110dp"
         android:layout_height="32dp"
         android:layout_gravity="right"

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.os.Environment;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -35,7 +36,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
 
     ListView antiListView;
     ArrayList<String> arrayList;
-    Button cancel, displaySelected, addAsPreset;
+    Button cancel, displaySelected, addAsPreset, importLocalSound;
     EditText presetName;
 
     ArrayAdapter antiAdapter;
@@ -55,8 +56,9 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         }
         antiAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);
         antiListView.setAdapter(antiAdapter);
-        antiListView.setChoiceMode(antiListView.CHOICE_MODE_MULTIPLE);
+        antiListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 
+        importLocalSound = root.findViewById(R.id.import_local_sound);
 
         cancel = root.findViewById(R.id.cancel_button_library);
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -73,9 +75,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         displaySelected = root.findViewById(R.id.display_selected_button);
         addAsPreset = root.findViewById(R.id.add_as_preset_button);
         presetName = root.findViewById(R.id.preset_title_editText);
-
-
-
 
         /*antiListView.setOnItemClickListener((parent, view, position, id) -> {
             // Ends the Mediaplayer if a Mediaplayer already exist
@@ -94,6 +93,22 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         return root;
     }
 
+    @Override
+    public void readExternalStorage() {
+        String fileName = "1.mp3";
+        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString();
+        MediaPlayer player = new MediaPlayer();
+
+        try {
+            player.setDataSource(path);
+            player.prepare();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Exception of type : " + e.toString());
+            e.printStackTrace();
+        }
+    }
 
 
     @Override

@@ -32,6 +32,8 @@ NOISE DISTRACTION
     <string name="sonority_by_audientes">Sonority By Audientes</string>
     <string name="edit_preset">Edit Preset</string>
     <string name="tom">Ny Funktion</string>
+    <string name="permission_necessary">permission_alerts</string>
+    <string name="storage_permission_is_encessary_to_wrote_event">permission_strin2</string>
 
 
 </resources>

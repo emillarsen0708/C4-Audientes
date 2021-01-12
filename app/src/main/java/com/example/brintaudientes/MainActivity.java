@@ -2,19 +2,35 @@ package com.example.brintaudientes;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.view.View.GONE;
 
 // todo: Få styr på skærmvending så player ikke kører videre mens player står i pause mode
@@ -32,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     final PresetFragment presetFragment = new PresetFragment();
     Fragment selectedFragment = presetFragment;
     Button libraryCancel;
+    private static final int PERMISSION_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,39 +99,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
 
 
-    /*
-        viewPager2.setAdapter(new PagerAdapter2(this));
-
-        layout = findViewById(R.id.tab_layout2);
-        TabLayoutMediator tabLayoutMediator = new TabLayoutMediator(
-                layout, viewPager2, (tab, position) -> {
-
-                switch (position) {
-                case 0: {
-                    tab.setText("PLAY MODE");
-                    tab.setIcon(R.drawable.tab_settings_2);
-                    break;
-                }
-                case 1: {
-                    tab.setText("SETTINGS");
-                    tab.setIcon(R.drawable.ic_group_45);
-                    break;
-                }
-                case 2: {
-                    tab.setText("AUDIOGRAM");
-                    tab.setIcon(R.drawable.ic_graph);
-                    break;
-                }
-            }
-        }
-        );
-        tabLayoutMediator.attach();
-
-
-
-
-    }
-*/
 
     @Override
     public void onBackStackChanged() {
