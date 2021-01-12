@@ -5,7 +5,7 @@ import com.example.brintaudientes.R;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class Animal implements Sound {
+public class Continious implements Sound {
     private ArrayList<String> listOfSongs;
 
     @Override

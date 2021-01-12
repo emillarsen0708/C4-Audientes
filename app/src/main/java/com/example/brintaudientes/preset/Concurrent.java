@@ -11,7 +11,8 @@ import java.lang.reflect.Field;
 import java.text.Format;
 import java.util.ArrayList;
 
-public class Nature implements Sound {
+// Alle sangene bliver spillet samtidig.
+public class Concurrent implements Sound {
     private ArrayList<String> listOfSongs;
 
     @Override
