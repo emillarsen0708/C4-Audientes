@@ -1,4 +1,4 @@
-
+/*
 package com.example.brintaudientes.players;
 
 // todo: Singleton player (Det er muligvis en rigitg dårlig løsning, hvis vi benytter 4 x player til multisound
@@ -16,4 +16,4 @@ public interface PlayerPlan {
     public void setPresetTitel(String titel);
 
 }
-
+*/

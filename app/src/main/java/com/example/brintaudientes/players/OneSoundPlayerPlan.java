@@ -1,4 +1,4 @@
-
+/*
 package com.example.brintaudientes.players;
 
 import android.media.MediaPlayer;
@@ -12,3 +12,4 @@ public class OneSoundPlayerPlan implements PlayerPlan {
         //player1 = MediaPlayer.create(getContext(), R.raw.bee_buzzing);
     }
 }
+*/
