@@ -7,13 +7,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Environment;
+import android.util.Log;
 import android.view.ActionMode;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -22,10 +25,13 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -36,8 +42,11 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
 
     ListView antiListView;
     ArrayList<String> arrayList;
-    Button cancel, displaySelected, addAsPreset, importLocalSound;
+    Button cancel, displaySelected, addAsPreset, importLocalSound, buttonPress;
     EditText presetName;
+    PresetFragment presetFragment;
+    private String name;
+    private boolean isEditReady;
 
     ArrayAdapter antiAdapter;
     MediaPlayer mediaPlayer;
@@ -46,6 +55,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.fragment_library, container, false);
 
         antiListView = root.findViewById(R.id.listview_songs);
@@ -72,9 +82,32 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             }
         });
 
+
         displaySelected = root.findViewById(R.id.display_selected_button);
         addAsPreset = root.findViewById(R.id.add_as_preset_button);
+        addAsPreset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    FragmentManager fragmentManager = getParentFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .remove(LibraryFragment.this)
+                            .addToBackStack(null)
+                            .commit();
+            }
+        });
+
+
         presetName = root.findViewById(R.id.preset_title_editText);
+        /*presetName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    Log.i(TAG,"Enter pressed");
+                    isEditReady = true;
+                }
+                return false;
+            }
+        });*/
 
         /*antiListView.setOnItemClickListener((parent, view, position, id) -> {
             // Ends the Mediaplayer if a Mediaplayer already exist
@@ -89,9 +122,10 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             mediaPlayer.start();
 
         });*/
-        
+
         return root;
     }
+
 
     @Override
     public void readExternalStorage() {
@@ -108,6 +142,19 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             System.out.println("Exception of type : " + e.toString());
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void setButtonText(String name, Button button) {
+
+    }
+
+
+
+    @Override
+    public String getEditText() {
+        name = addAsPreset.getText().toString();
+        return name;
     }
 
 
@@ -129,5 +176,10 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             addAsPreset.setVisibility(View.VISIBLE);
             presetName.setVisibility(View.VISIBLE);
         }
+    }
+
+
+    public boolean isEditReady() {
+        return isEditReady;
     }
 }

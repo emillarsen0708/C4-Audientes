@@ -41,7 +41,8 @@
         android:layout_marginTop="130dp"
         android:background="@xml/preset_add_rectangle"
         android:text="@string/add_new"
-        android:textAppearance="@style/Play_ambience" />
+        android:textAppearance="@style/Play_ambience"
+        android:tag="add1"/>
 
     <Button
         android:id="@+id/select_preset_button_2"
@@ -51,7 +52,8 @@
         android:layout_marginTop="130dp"
         android:background="@xml/preset_add_rectangle"
         android:text="@string/add_new"
-        android:textAppearance="@style/Play_ambience" />
+        android:textAppearance="@style/Play_ambience"
+        android:tag="add2"/>
 
     <Button
         android:id="@+id/select_preset_button_3"
@@ -61,7 +63,8 @@
         android:layout_marginTop="130dp"
         android:background="@xml/preset_add_rectangle"
         android:text="@string/add_new"
-        android:textAppearance="@style/Play_ambience" />
+        android:textAppearance="@style/Play_ambience"
+        android:tag="add3"/>
 
     <Button
         android:id="@+id/select_preset_button_4"
@@ -71,7 +74,8 @@
         android:layout_marginTop="255dp"
         android:background="@xml/preset_add_rectangle"
         android:text="@string/add_new"
-        android:textAppearance="@style/Play_ambience" />
+        android:textAppearance="@style/Play_ambience"
+        android:tag="add4"/>
 
     <Button
         android:id="@+id/select_preset_button_5"
@@ -81,7 +85,8 @@
         android:layout_marginTop="255dp"
         android:background="@xml/preset_add_rectangle"
         android:text="@string/add_new"
-        android:textAppearance="@style/Play_ambience" />
+        android:textAppearance="@style/Play_ambience"
+        android:tag="add5"/>
 
     <Button
         android:id="@+id/select_preset_button_6"
@@ -91,7 +96,8 @@
         android:layout_marginTop="255dp"
         android:background="@xml/preset_add_rectangle"
         android:text="@string/add_new"
-        android:textAppearance="@style/Play_ambience" />
+        android:textAppearance="@style/Play_ambience"
+        android:tag="add6"/>
 
     <Button
         android:id="@+id/select_preset_button_7"
@@ -101,7 +107,8 @@
         android:layout_marginTop="380dp"
         android:background="@xml/preset_add_rectangle"
         android:text="@string/add_new"
-        android:textAppearance="@style/Play_ambience" />
+        android:textAppearance="@style/Play_ambience"
+        android:tag="add7"/>
 
     <Button
         android:id="@+id/select_preset_button_8"
@@ -111,7 +118,8 @@
         android:layout_marginTop="380dp"
         android:background="@xml/preset_add_rectangle"
         android:text="@string/add_new"
-        android:textAppearance="@style/Play_ambience" />
+        android:textAppearance="@style/Play_ambience"
+        android:tag="add8"/>
 
     <Button
         android:id="@+id/plus_button"
