@@ -3,7 +3,6 @@
 
     <string name="some_id">
 
-?
 </string>s
 
     <string name="zonority_by">
@@ -34,6 +33,7 @@ NOISE DISTRACTION
     <string name="tom">Ny Funktion</string>
     <string name="permission_necessary">permission_alerts</string>
     <string name="storage_permission_is_encessary_to_wrote_event">permission_strin2</string>
+
 
 
 </resources>

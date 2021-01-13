@@ -1,10 +1,15 @@
 package com.example.brintaudientes;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Environment;
 import android.view.ActionMode;
@@ -33,11 +38,17 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class LibraryFragment extends Fragment implements AccessFragmentViews {
+    private FragmentLiListener listener;
+    EditText presetName;
+
+    public interface FragmentLiListener {
+        void onInputLiSent(CharSequence input);
+    }
 
     ListView antiListView;
     ArrayList<String> arrayList;
     Button cancel, displaySelected, addAsPreset, importLocalSound;
-    EditText presetName;
+
 
     ArrayAdapter antiAdapter;
     MediaPlayer mediaPlayer;
@@ -47,6 +58,25 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_library, container, false);
+
+        displaySelected = root.findViewById(R.id.display_selected_button);
+        addAsPreset = root.findViewById(R.id.add_as_preset_button);
+        presetName = root.findViewById(R.id.preset_title_editText);
+
+        addAsPreset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CharSequence input = presetName.getText();
+                listener.onInputLiSent(input);
+
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .remove(LibraryFragment.this)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
 
         antiListView = root.findViewById(R.id.listview_songs);
         arrayList = new ArrayList<String>();
@@ -72,12 +102,14 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             }
         });
 
-        displaySelected = root.findViewById(R.id.display_selected_button);
-        addAsPreset = root.findViewById(R.id.add_as_preset_button);
-        presetName = root.findViewById(R.id.preset_title_editText);
 
-        /*antiListView.setOnItemClickListener((parent, view, position, id) -> {
+
+        antiListView.setOnItemClickListener((parent, view, position, id) -> {
             // Ends the Mediaplayer if a Mediaplayer already exist
+            view.setSelected(true);
+            String pathname = String.valueOf(R.drawable.ic_selected_sound);
+            view.setBackground(Drawable.createFromPath(pathname));
+
 
             //if (mediaPlayer != null) {
               //  mediaPlayer.release();
@@ -88,9 +120,29 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             mediaPlayer = MediaPlayer.create(getActivity(), resId);
             mediaPlayer.start();
 
-        });*/
+        });
         
         return root;
+    }
+
+    public void updateEditText(CharSequence newtext) {
+        presetName.setText(newtext);
+    }
+    @Override
+    public void onAttach (Context context) {
+        super.onAttach(context);
+        if (context instanceof FragmentLiListener) {
+            listener = (FragmentLiListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement FragmentLiListner");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
     }
 
     @Override

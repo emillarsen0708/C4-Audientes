@@ -39,7 +39,8 @@
         android:layout_height="100dp"
         android:layout_marginStart="38dp"
         android:layout_marginTop="130dp"
-        android:background="@xml/preset_add_rectangle"
+        android:background="@drawable/preset_add_highlight_rectangle"
+        android:foreground="@drawable/add_preset_rectangle"
         android:text="@string/add_new"
         android:textAppearance="@style/Play_ambience" />
 
@@ -152,6 +153,18 @@
         android:textAppearance="@style/sonority_by2"
         android:textStyle="bold" />
 
-
+    <EditText
+        android:id="@+id/add_button_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="405dp"
+        android:layout_marginStart="80dp"
+        android:text="@string/add_new"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColorHint="#591B325F"
+        android:textColor="#000000"
+        android:backgroundTint="@color/colorPrimary"
+        android:visibility="invisible"/>
 
 </FrameLayout>

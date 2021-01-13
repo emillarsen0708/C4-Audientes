@@ -1,4 +1,4 @@
-/*package com.example.brintaudientes.preset;
+package com.example.brintaudientes.preset;
 
 public abstract class Preset {
 
@@ -35,4 +35,3 @@ public abstract class Preset {
     }
 }
 
-*/
