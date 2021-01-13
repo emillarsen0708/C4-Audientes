@@ -104,12 +104,8 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         antiListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
             }
         });
-
-
 
         importLocalSound = root.findViewById(R.id.import_local_sound);
 
@@ -125,7 +121,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             }
         });
 
-
         displaySelected = root.findViewById(R.id.display_selected_button);
         addAsPreset = root.findViewById(R.id.add_as_preset_button);
         addAsPreset.setOnClickListener(new View.OnClickListener() {
@@ -138,8 +133,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
                             .commit();
             }
         });
-
-
 
         presetName = root.findViewById(R.id.preset_title_editText);
         /*presetName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -170,7 +163,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         return root;
     }
 
-
     @Override
     public void readExternalStorage() {
         String fileName = "1.mp3";
@@ -193,14 +185,11 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
 
     }
 
-
-
     @Override
     public String getEditText() {
         name = addAsPreset.getText().toString();
         return name;
     }
-
 
     @Override
     public void setVisibilityForButton(boolean bool) {
@@ -221,7 +210,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             presetName.setVisibility(View.VISIBLE);
         }
     }
-
 
     public boolean isEditReady() {
         return isEditReady;
