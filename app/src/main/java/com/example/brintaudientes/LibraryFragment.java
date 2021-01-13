@@ -54,28 +54,29 @@ public class LibraryFragment extends Fragment {
                 int resId = LibraryFragment.this
                         .getResources()
                         .getIdentifier(arrayList.get(position), "raw", LibraryFragment.this.getActivity().getPackageName());
+                mediaPlayer = MediaPlayer.create(LibraryFragment.this.getActivity(), resId);
 
-                for (int i = 0; i < antiListView.getChildCount() ; i++) {
-                    if (position == i){
+                for (int i = 0; i < antiListView.getChildCount(); i++) {
+                    if (position == i) {
+                        view.setSelected(true);
                         antiListView.getChildAt(i).setBackgroundResource(R.drawable.ic_selected_sound);
-                        mediaPlayer = MediaPlayer.create(LibraryFragment.this.getActivity(), resId);
                         mediaPlayer.start();
-                    } /*else if (position != i){
+                    } else if (position == i) {
+                        view.setSelected(false);
                         antiListView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-                        //mediaPlayer.stop();
-                    }*/
-                    
+                    }
+
                 }
 
-                // Ends the Mediaplayer if a Mediaplayer already exist
-                //if (mediaPlayer != null) {
-                //  mediaPlayer.release();
-                //}
-
-                // Creates a Mediaplayer and start playing from Mediaplayer
-
-
             }
+
+            // Ends the Mediaplayer if a Mediaplayer already exist
+            //if (mediaPlayer != null) {
+            //  mediaPlayer.release();
+            //}
+
+            // Creates a Mediaplayer and start playing from Mediaplayer
+            
         });
 
         return root;
