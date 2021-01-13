@@ -1,14 +1,17 @@
 package com.example.brintaudientes;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -24,6 +27,7 @@ public class LibraryFragment extends Fragment {
 
     ListView antiListView;
     ArrayList<String> arrayList;
+
 
     ArrayAdapter antiAdapter;
     MediaPlayer mediaPlayer;
@@ -42,27 +46,40 @@ public class LibraryFragment extends Fragment {
         antiAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);
         antiListView.setAdapter(antiAdapter);
 
-        antiListView.setOnItemClickListener((parent, view, position, id) -> {
-            // Ends the Mediaplayer if a Mediaplayer already exist
 
-            view.setBackgroundColor(R.drawable.listview_selector);
-            /*String pathname = String.valueOf(R.drawable.listview_selector);
-            view.setBackground(Drawable.createFromPath(pathname));
+        antiListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-             */
+                int resId = LibraryFragment.this
+                        .getResources()
+                        .getIdentifier(arrayList.get(position), "raw", LibraryFragment.this.getActivity().getPackageName());
+
+                for (int i = 0; i < antiListView.getChildCount() ; i++) {
+                    if (position == i){
+                        antiListView.getChildAt(i).setBackgroundResource(R.drawable.ic_selected_sound);
+                        mediaPlayer = MediaPlayer.create(LibraryFragment.this.getActivity(), resId);
+                        mediaPlayer.start();
+                    } /*else if (position != i){
+                        antiListView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                        //mediaPlayer.stop();
+                    }*/
+                    
+                }
+
+                // Ends the Mediaplayer if a Mediaplayer already exist
+                //if (mediaPlayer != null) {
+                //  mediaPlayer.release();
+                //}
+
+                // Creates a Mediaplayer and start playing from Mediaplayer
 
 
-            //if (mediaPlayer != null) {
-              //  mediaPlayer.release();
-            //}
-
-            // Creates a Mediaplayer and start playing from Mediaplayer
-            int resId = getResources().getIdentifier(arrayList.get(position), "raw", getActivity().getPackageName());
-            mediaPlayer = MediaPlayer.create(getActivity(), resId);
-            mediaPlayer.start();
-
+            }
         });
-        
+
         return root;
+
     }
+
 }
