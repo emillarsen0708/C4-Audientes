@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,6 +53,8 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
     MediaPlayer mediaPlayer;
     private int nr = 4;
 
+    public static int selectedPosition = 0;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -66,7 +69,47 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         }
         antiAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);
         antiListView.setAdapter(antiAdapter);
-        antiListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
+
+
+
+        antiListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+            @Override
+            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+                if (antiListView.getCheckedItemCount() > 4) {
+                    antiListView.setItemChecked(position, false);
+                }
+            }
+
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+
+            }
+        });
+
+        antiListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+            }
+        });
+
+
 
         importLocalSound = root.findViewById(R.id.import_local_sound);
 
@@ -97,6 +140,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         });
 
 
+
         presetName = root.findViewById(R.id.preset_title_editText);
         /*presetName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -109,19 +153,19 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             }
         });*/
 
-        /*antiListView.setOnItemClickListener((parent, view, position, id) -> {
+        antiListView.setOnItemClickListener((parent, view, position, id) -> {
             // Ends the Mediaplayer if a Mediaplayer already exist
 
-            //if (mediaPlayer != null) {
-              //  mediaPlayer.release();
-            //}
+            if (mediaPlayer != null) {
+                mediaPlayer.release();
+            }
 
             // Creates a Mediaplayer and start playing from Mediaplayer
             int resId = getResources().getIdentifier(arrayList.get(position), "raw", getActivity().getPackageName());
             mediaPlayer = MediaPlayer.create(getActivity(), resId);
             mediaPlayer.start();
 
-        });*/
+        });
 
         return root;
     }
