@@ -1,22 +1,18 @@
 package com.example.brintaudientes;
 
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,18 +22,61 @@ import java.util.ArrayList;
 public class LibraryFragment extends Fragment {
 
     ListView antiListView;
-    ArrayList<String> arrayList;
+    List<SoundModel> soundList;
 
+    //ArrayAdapter antiAdapter;
+    //MediaPlayer mediaPlayer;
 
-    ArrayAdapter antiAdapter;
-    MediaPlayer mediaPlayer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_library, container, false);
 
-        antiListView = root.findViewById(R.id.listview_songs);
+        antiListView = (ListView) root.findViewById(R.id.listview_songs);
+
+        soundList = new ArrayList<>();
+        soundList.add(new SoundModel(false,"Beyonce"));
+        soundList.add(new SoundModel(false,"Drake"));
+        soundList.add(new SoundModel(false,"FatBoi"));
+        soundList.add(new SoundModel(false,"Anthony Hamilton"));
+        soundList.add(new SoundModel(false,"Dick Hanson"));
+
+
+        CustomAdapter adapter = new CustomAdapter(getActivity(), soundList);
+        antiListView.setAdapter(adapter);
+
+        antiListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+                SoundModel model = soundList.get(i);
+                if (model.isSelected())
+                    model.setSelected(false);
+                else
+                    model.setSelected(true);
+                soundList.set(i, model);
+
+                // now update adapter
+                adapter.updateRecords(soundList);
+
+            }
+        });
+        return root;
+
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+        /*antiListView = root.findViewById(R.id.listview_songs);
         arrayList = new ArrayList<String>();
         Field[] fields = R.raw.class.getFields();
         for (int i = 0; i < fields.length; i++) {
@@ -51,36 +90,25 @@ public class LibraryFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                int resId = LibraryFragment.this
-                        .getResources()
-                        .getIdentifier(arrayList.get(position), "raw", LibraryFragment.this.getActivity().getPackageName());
-                mediaPlayer = MediaPlayer.create(LibraryFragment.this.getActivity(), resId);
 
-                for (int i = 0; i < antiListView.getChildCount(); i++) {
-                    if (position == i) {
-                        view.setSelected(true);
-                        antiListView.getChildAt(i).setBackgroundResource(R.drawable.ic_selected_sound);
-                        mediaPlayer.start();
-                    } else if (position == i) {
-                        view.setSelected(false);
-                        antiListView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-                    }
 
+                // Gør at de valgte sange ikke afspilles samtidig
+                if (mediaPlayer != null) {
+                    mediaPlayer.release();
                 }
 
+
+
+
+                int resId = getResources().getIdentifier(arrayList.get(position), "raw", LibraryFragment.this.getActivity().getPackageName());
+                mediaPlayer = MediaPlayer.create(LibraryFragment.this.getActivity(), resId);
+                mediaPlayer.start();
             }
-
-            // Ends the Mediaplayer if a Mediaplayer already exist
-            //if (mediaPlayer != null) {
-            //  mediaPlayer.release();
-            //}
-
-            // Creates a Mediaplayer and start playing from Mediaplayer
-            
         });
 
         return root;
-
     }
 
 }
+
+         */
