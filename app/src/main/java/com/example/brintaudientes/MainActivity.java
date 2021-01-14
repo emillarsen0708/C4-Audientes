@@ -125,19 +125,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
     }
 
-    @Override
-    public void setButtonText(String name, Button button) {
-
-    }
-
-    @Override
-    public String getEditText() {
-        return null;
-    }
-
-    @Override
-    public void onInputSend(CharSequence charSequence) {
-    }
 
     @Override
     public void onInputLiSent(CharSequence input) {

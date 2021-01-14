@@ -222,22 +222,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         }
     }
 
-    @Override
-    public void setButtonText(String name, Button button) {
-
-    }
-
-    @Override
-    public String getEditText() {
-        name = addAsPreset.getText().toString();
-        return name;
-    }
-
-    @Override
-    public void onInputSend(CharSequence charSequence) {
-
-    }
-
 
     @Override
     public void setVisibilityForButton(boolean bool) {

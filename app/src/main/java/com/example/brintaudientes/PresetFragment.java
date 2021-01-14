@@ -123,21 +123,6 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
     }
 
-    @Override
-    public void setButtonText(String name, Button button) {
-        button.setText(name);
-        }
-
-
-    @Override
-    public String getEditText() {
-        return null;
-    }
-
-    @Override
-    public void onInputSend(CharSequence charSequence) {
-
-    }
 
     @Override
     public void onClick(View v) {
