@@ -36,12 +36,16 @@ public class LibraryFragment extends Fragment {
         antiListView = (ListView) root.findViewById(R.id.listview_songs);
 
         soundList = new ArrayList<>();
-        soundList.add(new SoundModel(false,"Beyonce"));
-        soundList.add(new SoundModel(false,"Drake"));
-        soundList.add(new SoundModel(false,"FatBoi"));
-        soundList.add(new SoundModel(false,"Anthony Hamilton"));
-        soundList.add(new SoundModel(false,"Dick Hanson"));
+        Field[] fields = R.raw.class.getFields();
+        for (int i = 0; i < fields.length; i++) {
 
+            try {
+                soundList.add(new SoundModel(false, fields[i].getInt(i)));
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
+        }
 
         CustomAdapter adapter = new CustomAdapter(getActivity(), soundList);
         antiListView.setAdapter(adapter);
@@ -50,11 +54,12 @@ public class LibraryFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 SoundModel model = soundList.get(i);
-                if (model.isSelected())
+                if (model.isSelected()) {
                     model.setSelected(false);
-                else
+                }else{
                     model.setSelected(true);
-                soundList.set(i, model);
+                    soundList.set(i, model);
+                }
 
                 // now update adapter
                 adapter.updateRecords(soundList);
@@ -67,14 +72,6 @@ public class LibraryFragment extends Fragment {
 
 
 }
-
-
-
-
-
-
-
-
 
         /*antiListView = root.findViewById(R.id.listview_songs);
         arrayList = new ArrayList<String>();

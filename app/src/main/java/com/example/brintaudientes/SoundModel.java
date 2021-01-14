@@ -1,16 +1,15 @@
 package com.example.brintaudientes;
 
 
-import java.lang.reflect.Field;
-
 public class SoundModel {
 
     boolean isSelected;
-    String soundName;
+    int soundPosition;
 
-    public SoundModel(boolean isSelected, String soundName) {
+
+    public SoundModel(boolean isSelected, int soundPosition) {
         this.isSelected = isSelected;
-        this.soundName = soundName;
+        this.soundPosition = soundPosition;
     }
 
     public boolean isSelected() {
@@ -19,14 +18,19 @@ public class SoundModel {
 
     public void setSelected(boolean selected) {
         isSelected = selected;
+        if (selected)
+        System.out.println("Du har valgt en sang ");
+        else
+            System.out.println("Du har ikke valgt nogen sange");
+
     }
 
-    public void setSoundName(String soundName) {
-        this.soundName = soundName;
+    public void setSoundPosition(int soundPosition) {
+        this.soundPosition = soundPosition;
     }
 
-    public String getSoundName() {
-        return soundName;
+    public int getSoundPosition() {
+        return soundPosition;
     }
 }
 

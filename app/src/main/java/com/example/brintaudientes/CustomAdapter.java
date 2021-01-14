@@ -1,18 +1,23 @@
 package com.example.brintaudientes;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.List;
 
 public class CustomAdapter extends BaseAdapter {
     Activity activity;
     List<SoundModel> sounds;
     LayoutInflater inflater;
+
+    Context context;
 
     public CustomAdapter(Activity activity) {
         this.activity = activity;
@@ -54,11 +59,12 @@ public class CustomAdapter extends BaseAdapter {
         }
         SoundModel soundModel = sounds.get(i);
 
-        holder.tvUserName.setText(soundModel.getSoundName());
+        holder.tvUserName.setText(soundModel.getSoundPosition());
+
 
         if (soundModel.isSelected) {
             holder.ivCheckBox.setBackgroundResource(R.drawable.checked);
-        } else {
+        }else {
             holder.ivCheckBox.setBackgroundResource(R.drawable.check);
         }
         return view;
