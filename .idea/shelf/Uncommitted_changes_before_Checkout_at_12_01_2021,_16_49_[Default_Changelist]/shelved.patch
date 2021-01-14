@@ -1,0 +1,232 @@
+Index: app/src/main/java/com/example/brintaudientes/players/OneSoundPlayerPlan.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\npackage com.example.brintaudientes.players;\n\nimport android.media.MediaPlayer;\nimport android.widget.SeekBar;\n\npublic class OneSoundPlayerPlan implements PlayerPlan {\n    @Override\n    public void createPlayer() {\n        MediaPlayer player1;\n        SeekBar volume1;\n        //player1 = MediaPlayer.create(getContext(), R.raw.bee_buzzing);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/players/OneSoundPlayerPlan.java	(revision 6d5556c7814bba5107088b9476ea89e3fc5033c3)
++++ app/src/main/java/com/example/brintaudientes/players/OneSoundPlayerPlan.java	(date 1610454001000)
+@@ -1,4 +1,4 @@
+-
++/*
+ package com.example.brintaudientes.players;
+ 
+ import android.media.MediaPlayer;
+@@ -11,4 +11,30 @@
+         SeekBar volume1;
+         //player1 = MediaPlayer.create(getContext(), R.raw.bee_buzzing);
+     }
++
++    @Override
++    public void setPlayerSound(int sound) {
++
++    }
++
++    @Override
++    public void setPlayerVolume(int volume) {
++
++    }
++
++    @Override
++    public void setPlayerPosition(int position) {
++
++    }
++
++    @Override
++    public void setPlayerLooper(boolean looper) {
++
++    }
++
++    @Override
++    public void setPresetTitel(String titel) {
++
++    }
+ }
++*/
+\ No newline at end of file
+Index: app/src/main/java/com/example/brintaudientes/players/Player.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\npackage com.example.brintaudientes.players;\n\npublic class Player implements PlayerPlan {\n\n    private int playerSound;\n    private int playerVolume;\n    private int playerPosition;\n    private boolean playerLooper;\n    private String playerTitle;\n\n    @Override\n    public void setPlayerSound(int sound) {\n\n        playerSound = sound;\n    }\n\n\n    @Override\n    public void setPlayerVolume(int volume) {\n\n        playerVolume = volume;\n    }\n\n    public int getPlayerVolume() {\n        return playerVolume;\n\n    @Override\n    public void setPlayerPosition(int position) {\n\n        playerPosition = position;\n\n    }\n\n        public int getPlayerPosition() {\n            return playerPosition;\n\n        }\n\n    @Override\n    public void setPlayerLooper(boolean looper) {\n\n        playerLooper = looper;\n    }\n\n    @Override\n    public void setPresetTitel(String titel) {\n\n        playerTitle = titel;\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/players/Player.java	(revision 6d5556c7814bba5107088b9476ea89e3fc5033c3)
++++ app/src/main/java/com/example/brintaudientes/players/Player.java	(date 1610453901000)
+@@ -1,4 +1,4 @@
+-
++/*
+ package com.example.brintaudientes.players;
+ 
+ public class Player implements PlayerPlan {
+@@ -48,4 +48,5 @@
+ 
+         playerTitle = titel;
+     }
+-}
+\ No newline at end of file
++}
++*/
+Index: app/src/main/java/com/example/brintaudientes/preset/PresetPlayer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.brintaudientes.preset;\n\npublic interface PresetPlayer {\n\n    public String toString();\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/preset/PresetPlayer.java	(revision 6d5556c7814bba5107088b9476ea89e3fc5033c3)
++++ app/src/main/java/com/example/brintaudientes/preset/PresetPlayer.java	(date 1610453793000)
+@@ -1,6 +1,8 @@
+ package com.example.brintaudientes.preset;
+ 
++import android.media.MediaPlayer;
++
+ public interface PresetPlayer {
+ 
+-    public String toString();
++    public MediaPlayer presetplayer();
+ }
+Index: app/src/main/java/com/example/brintaudientes/preset/FourPresetPlayer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.brintaudientes.preset;\n\npublic class FourPresetPlayer implements PresetPlayer{\n    public String FourPresetPlayer() {\n        return \" \";\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/preset/FourPresetPlayer.java	(revision 6d5556c7814bba5107088b9476ea89e3fc5033c3)
++++ app/src/main/java/com/example/brintaudientes/preset/FourPresetPlayer.java	(date 1610453958000)
+@@ -1,7 +1,14 @@
+ package com.example.brintaudientes.preset;
+ 
++import android.media.MediaPlayer;
++
+ public class FourPresetPlayer implements PresetPlayer{
+     public String FourPresetPlayer() {
+         return " ";
+     }
++
++    @Override
++    public MediaPlayer presetplayer() {
++        return null;
++    }
+ }
+Index: app/src/main/java/com/example/brintaudientes/preset/ThreePresetPlayer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.brintaudientes.preset;\n\npublic class ThreePresetPlayer implements PresetPlayer{\n    public String ThreePresetPlayer() {\n        return \" \";\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/preset/ThreePresetPlayer.java	(revision 6d5556c7814bba5107088b9476ea89e3fc5033c3)
++++ app/src/main/java/com/example/brintaudientes/preset/ThreePresetPlayer.java	(date 1610453938000)
+@@ -1,7 +1,14 @@
+ package com.example.brintaudientes.preset;
+ 
++import android.media.MediaPlayer;
++
+ public class ThreePresetPlayer implements PresetPlayer{
+     public String ThreePresetPlayer() {
+         return " ";
+     }
++
++    @Override
++    public MediaPlayer presetplayer() {
++        return null;
++    }
+ }
+Index: app/src/main/java/com/example/brintaudientes/preset/TwoPresetPlayer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.brintaudientes.preset;\n\npublic class TwoPresetPlayer implements PresetPlayer {\n    public String TwoPresetPlayer() {\n        return \" \";\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/preset/TwoPresetPlayer.java	(revision 6d5556c7814bba5107088b9476ea89e3fc5033c3)
++++ app/src/main/java/com/example/brintaudientes/preset/TwoPresetPlayer.java	(date 1610453793000)
+@@ -1,7 +1,14 @@
+ package com.example.brintaudientes.preset;
+ 
++import android.media.MediaPlayer;
++
+ public class TwoPresetPlayer implements PresetPlayer {
+     public String TwoPresetPlayer() {
+         return " ";
+     }
++
++    @Override
++    public MediaPlayer presetplayer() {
++        return null;
++    }
+ }
+Index: app/src/main/java/com/example/brintaudientes/preset/PresetBuilding.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.brintaudientes.preset;\n\npublic abstract class PresetBuilding {\n\n    protected abstract Preset makePreset(String typeOfPreset);\n\n    public Preset orderThePreset(String typeOfPreset) {\n        Preset thePreset = makePreset(typeOfPreset);\n\n        thePreset.makeUserPreset();\n        thePreset.metodeEt();\n        thePreset.metodeTo();\n\n        return thePreset;\n\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/preset/PresetBuilding.java	(revision 6d5556c7814bba5107088b9476ea89e3fc5033c3)
++++ app/src/main/java/com/example/brintaudientes/preset/PresetBuilding.java	(date 1610447099000)
+@@ -14,4 +14,5 @@
+         return thePreset;
+ 
+     }
+-}
+\ No newline at end of file
++}
++
+Index: app/src/main/java/com/example/brintaudientes/preset/ConcurrentPresetBuilding.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.brintaudientes.preset;\n\npublic class ConcurrentPresetBuilding extends PresetBuilding {\n\n    protected Preset makePreset(String typeOfPreset) {\n        Preset thePreset = null;\n\n\n        if (typeOfPreset.equals(\"ONE\")) {\n            PresetFactory presetPartsFactory = new OneConcurrentPresetFactory();\n            thePreset = new OneConcurrentPresetFactory(presetPartsFactory);\n            thePreset.setName(\"Concurrent One-Sound Preset\");\n        }\n        else\n            if (typeOfPreset.equals(\"TWO\")) {\n            PresetFactory presetPartsFactory = new TwoConcurrentPresetFactory();\n            thePreset = new TwoConcurrentPreset(presetPartsFactory);\n            thePreset.setName(\"Concurrent Two-Sound Preset\");\n        }\n            else\n            if (typeOfPreset.equals(\"THREE\")) {\n                PresetFactory presetPartsFactory = new ThreeConcurrentPresetFactory();\n                thePreset = new ThreeConcurrentPreset(presetPartsFactory);\n                thePreset.setName(\"Concurrent Three-Sound Preset\");\n            }\n            else\n            if (typeOfPreset.equals(\"FOUR\")) {\n                PresetFactory presetPartsFactory = new FourConcurrentPresetFactory();\n                thePreset = new FourConcurrentPreset(presetPartsFactory);\n                thePreset.setName(\"Concurrent Four-Sound Preset\");\n            }\n            return thePreset;\n    }\n}\n\n/*\n    @Override\n    public PresetFactory getPreset(String presetType) {\n        if (presetType.equalsIgnoreCase(\"TWO\")) {\n            return new TwoConcurrentPresetFactory();\n        }\n        else if (presetType.equalsIgnoreCase(\"Three\")) {\n            return new ThreeConcurrentPresetFactory();\n        }\n        else if (presetType.equalsIgnoreCase(\"FOUR\")) {\n            return new OneConcurrentPreset();\n        }\n        else if (presetType.equalsIgnoreCase(\"ONE\")) {\n            return new OneConcurrentPresetFactory();\n        }\n        return null;\n    }\n\n */
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/preset/ConcurrentPresetBuilding.java	(revision 6d5556c7814bba5107088b9476ea89e3fc5033c3)
++++ app/src/main/java/com/example/brintaudientes/preset/ConcurrentPresetBuilding.java	(date 1610451840000)
+@@ -6,9 +6,10 @@
+         Preset thePreset = null;
+ 
+ 
++
+         if (typeOfPreset.equals("ONE")) {
+             PresetFactory presetPartsFactory = new OneConcurrentPresetFactory();
+-            thePreset = new OneConcurrentPresetFactory(presetPartsFactory);
++            thePreset = new OneConcurrentPreset(presetPartsFactory);
+             thePreset.setName("Concurrent One-Sound Preset");
+         }
+         else
+Index: app/src/main/java/com/example/brintaudientes/preset/OnePresetPlayer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.brintaudientes.preset;\n\npublic class OnePresetPlayer implements PresetPlayer {\n\n   public String OnePresetPlayer() {\n       return \" \";\n   }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/preset/OnePresetPlayer.java	(revision 6d5556c7814bba5107088b9476ea89e3fc5033c3)
++++ app/src/main/java/com/example/brintaudientes/preset/OnePresetPlayer.java	(date 1610453793000)
+@@ -1,8 +1,20 @@
+ package com.example.brintaudientes.preset;
+ 
++import android.media.MediaPlayer;
++
++import com.example.brintaudientes.LibraryFragment;
++
+ public class OnePresetPlayer implements PresetPlayer {
+ 
+-   public String OnePresetPlayer() {
+-       return " ";
+-   }
++    @Override
++
++    public MediaPlayer presetplayer() {
++        MediaPlayer mediaPlayer = new MediaPlayer();
++        if (mediaPlayer != null) {
++            mediaPlayer.release();
++        }
++
++
++        return mediaPlayer;
++    }
+ }

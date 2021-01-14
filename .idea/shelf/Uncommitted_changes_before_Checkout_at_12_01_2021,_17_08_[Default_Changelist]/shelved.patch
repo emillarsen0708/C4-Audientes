@@ -1,0 +1,21 @@
+Index: app/src/main/java/com/example/brintaudientes/preset/Preset.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/*package com.example.brintaudientes.preset;\n\npublic abstract class Preset {\n\n    private String name;\n\n    UserName userPresetName;\n    PresetPlayer player;\n\n\n    public String getName() {\n        return name;\n    }\n    public void setName(String newName) {\n        name = newName;\n    }\n\n    abstract void makeUserPreset();\n\n\n    public void metodeEt() {\n\n    }\n\n    public void metodeTo() {\n\n    }\n\n\n    public String toString() {\n        String infoOnPreset = \"Noget sludder \" + name + \" noget om metode 1 \" + userPresetName +\n                \" noget om metode 2 \" + player;\n\n        return infoOnPreset;\n    }\n}\n\n*/
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/preset/Preset.java	(revision 2284c039132a315668e9b3f192d0717f4f1c6540)
++++ app/src/main/java/com/example/brintaudientes/preset/Preset.java	(date 1610467471000)
+@@ -1,4 +1,4 @@
+-/*package com.example.brintaudientes.preset;
++package com.example.brintaudientes.preset;
+ 
+ public abstract class Preset {
+ 
+@@ -35,4 +35,3 @@
+     }
+ }
+ 
+-*/
+\ No newline at end of file
