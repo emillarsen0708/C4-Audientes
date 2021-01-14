@@ -75,13 +75,27 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
 
+              /*  int count = 0;
+                while (checked == true) {
+                    antiListView.setItemChecked(position, true);
+                    count++;
+                    if (count==4){
+                        antiListView.setItemChecked(position, false);
+                        Toast.makeText(getActivity().getApplicationContext(), "I was Touched.", Toast.LENGTH_SHORT)
+                                .show();
 
-                if (antiListView.getCheckedItemCount() > 4) {
+                    }
+                }*/
+
+
+
+
+                /*if (antiListView.getCheckedItemCount() > 4) {
                     antiListView.setItemChecked(position, false);
                     Toast.makeText(getActivity().getApplicationContext(), "I was Touched.", Toast.LENGTH_SHORT)
                             .show();
 
-                }
+                }*/
             }
 
             @Override
