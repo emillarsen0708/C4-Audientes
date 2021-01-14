@@ -4,9 +4,14 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -20,9 +25,13 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class LibraryFragment extends Fragment {
+    private ListView listView;
+    private ListViewAdapter adapter;
+    private List<String> sounds = new ArrayList<>();
 
-    ListView antiListView;
-    List<SoundModel> soundList;
+    public static boolean isActionMode = false;
+    public static List<String> userSelection = new ArrayList<>();
+    public static ActionMode actionMode = null;
 
     //ArrayAdapter antiAdapter;
     //MediaPlayer mediaPlayer;
@@ -31,54 +40,70 @@ public class LibraryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.fragment_library, container, false);
+        getSounds();
 
-        antiListView = (ListView) root.findViewById(R.id.listview_songs);
 
-        soundList = new ArrayList<>();
-        Field[] fields = R.raw.class.getFields();
-        for (int i = 0; i < fields.length; i++) {
+        listView = (ListView) root.findViewById(R.id.listview_songs);
+        adapter = new ListViewAdapter(sounds,getActivity());
+        listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
+        listView.setAdapter(adapter);
 
-            try {
-                soundList.add(new SoundModel(false, fields[i].getInt(i)));
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
+        listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+            @Override
+            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+
             }
 
-        }
-
-        CustomAdapter adapter = new CustomAdapter(getActivity(), soundList);
-        antiListView.setAdapter(adapter);
-
-        antiListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
-                int count = 0;
-                SoundModel model = soundList.get(i);
-                if (model.isSelected()) {
-                    model.setSelected(false);
-                    count++;
-                }else{
-                    model.setSelected(true);
-                    soundList.set(i, model);
-                    count--;
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                MenuInflater inflater = mode.getMenuInflater();
+                inflater.inflate(R.menu.context_menu, menu);
+                isActionMode = true;
+                actionMode = mode;
+                return false;
+            }
 
-                }
-                if (count > 4){
-                    System.out.println(count);
-                }
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
 
-                // now update adapter
-                adapter.updateRecords(soundList);
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.action_delete:
+                        adapter.removeItems(userSelection);
+                        mode.finish();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+                isActionMode = false;
+                actionMode = null;
+                userSelection.clear();
 
             }
         });
-        return root;
 
+        return root;
     }
 
+    private void getSounds(){
+        Field[] fields = R.raw.class.getFields();
+        for (int i = 0; i < fields.length; i++) {
+            sounds.add(fields[i].getName());
+        }
 
+    }
 }
+
+
 
         /*antiListView = root.findViewById(R.id.listview_songs);
         arrayList = new ArrayList<String>();

@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion '29.0.2'
     defaultConfig {
         applicationId "com.example.brintaudientes"
@@ -27,6 +27,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.android.support:design:30.1.1'
     implementation 'com.google.android.material:material:1.2.1'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
