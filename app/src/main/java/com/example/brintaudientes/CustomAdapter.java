@@ -55,7 +55,7 @@ public class CustomAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.list_view_item, viewGroup, false);
             holder = new ViewHolder();
             holder.tvUserName = (TextView) view.findViewById(R.id.sound_name);
-            //holder.ivCheckBox =(ImageView) view.findViewById(R.id.iv_check_box);
+            holder.ivCheckBox =(ImageView) view.findViewById(R.id.iv_check_box);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
