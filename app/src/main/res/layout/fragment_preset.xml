@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:background="@xml/sound_background"
     android:visibility="visible"
-    tools:context=".PresetFragment">
+    tools:context=".PresetFragment"
+    android:id="@+id/preset_fragment">
 
     <TextView
         android:id="@+id/sonority_by"

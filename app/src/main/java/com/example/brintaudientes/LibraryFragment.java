@@ -1,8 +1,11 @@
 package com.example.brintaudientes;
 
+import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -41,6 +44,12 @@ import static android.content.ContentValues.TAG;
  */
 public class LibraryFragment extends Fragment implements AccessFragmentViews {
 
+    private FragmentLiListener listener;
+
+    public interface FragmentLiListener {
+        void onInputLiSent(CharSequence input);
+    }
+
     ListView antiListView;
     ArrayList<String> arrayList;
     Button cancel, displaySelected, addAsPreset, importLocalSound, buttonPress;
@@ -52,6 +61,8 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
     ArrayAdapter antiAdapter;
     MediaPlayer mediaPlayer;
     private int nr = 4;
+    Button button;
+    int buttonId;
 
     public static int selectedPosition = 0;
 
@@ -59,7 +70,13 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        buttonId = MainActivity.mybundle.getInt("virkNuForFanden");
+
+
+
         View root = inflater.inflate(R.layout.fragment_library, container, false);
+
+        Bundle bundle = this.getArguments();
 
         antiListView = root.findViewById(R.id.listview_songs);
         arrayList = new ArrayList<String>();
@@ -70,7 +87,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         antiAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);
         antiListView.setAdapter(antiAdapter);
 
-
+        System.out.println(buttonId);
 
         antiListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
@@ -126,6 +143,10 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         addAsPreset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CharSequence input = presetName.getText().toString();
+                listener.onInputLiSent(input);
+                MainActivity.strBundle.putString("editText", presetName.getText().toString());
+                System.out.println(input);
                     FragmentManager fragmentManager = getParentFragmentManager();
                     fragmentManager.beginTransaction()
                             .remove(LibraryFragment.this)
@@ -133,7 +154,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
                             .commit();
             }
         });
-
         presetName = root.findViewById(R.id.preset_title_editText);
         /*presetName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -162,6 +182,28 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
 
         return root;
     }
+    public void updateEditText(CharSequence newtext) {
+        presetName.setText(newtext);
+    }
+
+    @Override
+    public void onAttach (Context context) {
+        super.onAttach(context);
+        if (context instanceof FragmentLiListener) {
+            listener = (FragmentLiListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement FragmentLiListner");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
+
+
 
     @Override
     public void readExternalStorage() {
@@ -190,6 +232,12 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         name = addAsPreset.getText().toString();
         return name;
     }
+
+    @Override
+    public void onInputSend(CharSequence charSequence) {
+
+    }
+
 
     @Override
     public void setVisibilityForButton(boolean bool) {
