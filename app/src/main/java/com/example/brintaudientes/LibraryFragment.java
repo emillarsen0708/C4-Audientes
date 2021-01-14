@@ -12,14 +12,18 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Environment;
+import android.util.Log;
 import android.view.ActionMode;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,10 +31,13 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,16 +54,22 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
 
     ListView antiListView;
     ArrayList<String> arrayList;
-    Button cancel, displaySelected, addAsPreset, importLocalSound;
-
+    Button cancel, displaySelected, addAsPreset, importLocalSound, buttonPress;
+    EditText presetName;
+    PresetFragment presetFragment;
+    private String name;
+    private boolean isEditReady;
 
     ArrayAdapter antiAdapter;
     MediaPlayer mediaPlayer;
     private int nr = 4;
 
+    public static int selectedPosition = 0;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.fragment_library, container, false);
 
         displaySelected = root.findViewById(R.id.display_selected_button);
@@ -86,7 +99,43 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         }
         antiAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);
         antiListView.setAdapter(antiAdapter);
-        antiListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
+
+
+
+        antiListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+            @Override
+            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+                if (antiListView.getCheckedItemCount() > 4) {
+                    antiListView.setItemChecked(position, false);
+                }
+            }
+
+            @Override
+            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+                return false;
+            }
+
+            @Override
+            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                return false;
+            }
+
+            @Override
+            public void onDestroyActionMode(ActionMode mode) {
+
+            }
+        });
+
+        antiListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            }
+        });
 
         importLocalSound = root.findViewById(R.id.import_local_sound);
 
@@ -102,7 +151,30 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             }
         });
 
+        displaySelected = root.findViewById(R.id.display_selected_button);
+        addAsPreset = root.findViewById(R.id.add_as_preset_button);
+        addAsPreset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    FragmentManager fragmentManager = getParentFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .remove(LibraryFragment.this)
+                            .addToBackStack(null)
+                            .commit();
+            }
+        });
 
+        presetName = root.findViewById(R.id.preset_title_editText);
+        /*presetName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    Log.i(TAG,"Enter pressed");
+                    isEditReady = true;
+                }
+                return false;
+            }
+        });*/
 
         antiListView.setOnItemClickListener((parent, view, position, id) -> {
             // Ends the Mediaplayer if a Mediaplayer already exist
@@ -111,9 +183,9 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             view.setBackground(Drawable.createFromPath(pathname));
 
 
-            //if (mediaPlayer != null) {
-              //  mediaPlayer.release();
-            //}
+            if (mediaPlayer != null) {
+                mediaPlayer.release();
+            }
 
             // Creates a Mediaplayer and start playing from Mediaplayer
             int resId = getResources().getIdentifier(arrayList.get(position), "raw", getActivity().getPackageName());
@@ -121,7 +193,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             mediaPlayer.start();
 
         });
-        
+
         return root;
     }
 
@@ -162,6 +234,16 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         }
     }
 
+    @Override
+    public void setButtonText(String name, Button button) {
+
+    }
+
+    @Override
+    public String getEditText() {
+        name = addAsPreset.getText().toString();
+        return name;
+    }
 
     @Override
     public void setVisibilityForButton(boolean bool) {
@@ -181,5 +263,9 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             addAsPreset.setVisibility(View.VISIBLE);
             presetName.setVisibility(View.VISIBLE);
         }
+    }
+
+    public boolean isEditReady() {
+        return isEditReady;
     }
 }

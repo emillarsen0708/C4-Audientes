@@ -56,7 +56,10 @@ public class MainActivity extends AppCompatActivity
     final PresetFragment presetFragment = new PresetFragment();
     Fragment selectedFragment = presetFragment;
     Button libraryCancel;
-    private static final int PERMISSION_REQUEST_CODE = 1;
+    String buttonText1, buttonText2, buttonText3, buttonText4, buttonText5, buttonText6, buttonText7, buttonText8 = "Add new";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +118,10 @@ public class MainActivity extends AppCompatActivity
                     return false;
                 }
             };
+
+    public void setButtonTextString(String buttonText) {
+
+    }
 
 
 

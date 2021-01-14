@@ -44,13 +44,13 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="180dp"
         android:choiceMode="multipleChoice"
-        android:listSelector="@color/colorPrimary"
         android:drawSelectorOnTop="false"
         android:fadingEdge="horizontal"
         android:fadingEdgeLength="60dp"
         android:requiresFadingEdge="vertical"
         android:fillViewport = "false"
-        >
+        android:clickable="true"
+        android:focusable="true">
         <!--- android:listSelector="@drawable/selector_list" -->
 
     </ListView>
