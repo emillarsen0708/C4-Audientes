@@ -18,11 +18,6 @@ public class SoundModel {
 
     public void setSelected(boolean selected) {
         isSelected = selected;
-        if (selected)
-        System.out.println("Du har valgt en sang ");
-        else
-            System.out.println("Du har ikke valgt nogen sange");
-
     }
 
     public void setSoundPosition(int soundPosition) {

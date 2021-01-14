@@ -53,12 +53,19 @@ public class LibraryFragment extends Fragment {
         antiListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+                int count = 0;
                 SoundModel model = soundList.get(i);
                 if (model.isSelected()) {
                     model.setSelected(false);
+                    count++;
                 }else{
                     model.setSelected(true);
                     soundList.set(i, model);
+                    count--;
+
+                }
+                if (count > 4){
+                    System.out.println(count);
                 }
 
                 // now update adapter

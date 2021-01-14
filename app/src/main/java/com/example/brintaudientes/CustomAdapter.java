@@ -44,6 +44,9 @@ public class CustomAdapter extends BaseAdapter {
         return i;
     }
 
+
+    int count = 0;
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder holder = null;
@@ -62,10 +65,17 @@ public class CustomAdapter extends BaseAdapter {
         holder.tvUserName.setText(soundModel.getSoundPosition());
 
 
-        if (soundModel.isSelected) {
+        if (soundModel.isSelected ) {
             holder.ivCheckBox.setBackgroundResource(R.drawable.checked);
-        }else {
+            count++;
+      /*      updateRecords(sounds);
+            System.out.println("du har valgt " + count + " sange");
+        }else if (count > 4){
+            System.out.println("Du kan ikke vælge flere sange");
+*/
+        } else {
             holder.ivCheckBox.setBackgroundResource(R.drawable.check);
+
         }
         return view;
 

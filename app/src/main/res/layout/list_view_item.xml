@@ -5,19 +5,23 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:textColor="#1B325F"
-        android:id="@+id/tv_user_name"
-        android:gravity="center_vertical"/>
+        android:id="@+id/sound_name"
+        android:layout_marginLeft="25dp"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_alignParentLeft="true"/>
 
-    <ImageView
+    <CheckBox
         android:id="@+id/iv_check_box"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/check"/>
+        android:layout_marginRight="25dp"
+        />
 
 </RelativeLayout>
