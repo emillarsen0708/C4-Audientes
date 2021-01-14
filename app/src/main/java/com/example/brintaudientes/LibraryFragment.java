@@ -71,12 +71,16 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         antiListView.setAdapter(antiAdapter);
 
 
-
         antiListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
+
+
                 if (antiListView.getCheckedItemCount() > 4) {
                     antiListView.setItemChecked(position, false);
+                    Toast.makeText(getActivity().getApplicationContext(), "I was Touched.", Toast.LENGTH_SHORT)
+                            .show();
+
                 }
             }
 
@@ -104,6 +108,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         antiListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
             }
         });
 
@@ -126,11 +131,11 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         addAsPreset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    FragmentManager fragmentManager = getParentFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .remove(LibraryFragment.this)
-                            .addToBackStack(null)
-                            .commit();
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .remove(LibraryFragment.this)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 
@@ -201,7 +206,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             ViewGroup.LayoutParams list = antiListView.getLayoutParams();
             list.height = 900;
             antiListView.setLayoutParams(list);
-            antiListView.setPadding(0, 150,0,0);
+            antiListView.setPadding(0, 150, 0, 0);
         } else {
             cancel.setVisibility(View.VISIBLE);
             cancel.setVisibility(View.VISIBLE);
