@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.SparseArray;
+import android.util.SparseBooleanArray;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -29,6 +31,8 @@ public class LibraryFragment extends Fragment {
     private ListViewAdapter adapter;
     private List<String> sounds = new ArrayList<>();
 
+
+
     public static boolean isActionMode = false;
     public static List<String> userSelection = new ArrayList<>();
     public static ActionMode actionMode = null;
@@ -45,6 +49,8 @@ public class LibraryFragment extends Fragment {
         getSounds();
 
 
+
+
         listView = (ListView) root.findViewById(R.id.listview_songs);
         adapter = new ListViewAdapter(sounds,getActivity());
         listView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
@@ -58,11 +64,11 @@ public class LibraryFragment extends Fragment {
 
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                MenuInflater inflater = mode.getMenuInflater();
+               MenuInflater inflater = mode.getMenuInflater();
                 inflater.inflate(R.menu.context_menu, menu);
                 isActionMode = true;
-                actionMode = mode;
-                return false;
+                actionMode = null;
+                return true;
             }
 
             @Override
