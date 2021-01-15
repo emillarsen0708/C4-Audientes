@@ -1,7 +1,9 @@
 package com.example.brintaudientes;
 
 import android.content.Intent;
+import android.graphics.drawable.LayerDrawable;
 import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,9 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import static android.view.View.GONE;
+import static android.view.View.INVISIBLE;
 
 public class PresetFragment extends Fragment implements AccessFragmentViews, View.OnClickListener {
 
@@ -34,14 +38,16 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
     LibraryFragment addSound6 = new LibraryFragment();
     LibraryFragment addSound7 = new LibraryFragment();
     LibraryFragment addSound8 = new LibraryFragment();
+    LibraryFragment addSound9 = new LibraryFragment();
+    private boolean isButtonClicked;
+    private Button button;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_preset, container, false);
 
-
-
+        button = root.findViewById(MainActivity.mybundle.getInt("virkNuForFanden"));
 
         play = root.findViewById(R.id.play_button);
         play.setOnClickListener(new View.OnClickListener() {
@@ -79,19 +85,6 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
             }
         });
 
-        plus = root.findViewById(R.id.plus_button);
-        plus.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                LibraryFragment addFragment = new LibraryFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addFragment, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
         add1 = root.findViewById(R.id.select_preset_button_1);
         add1.setOnClickListener(this);
 
@@ -101,21 +94,23 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
         add3 = root.findViewById(R.id.select_preset_button_3);
         add3.setOnClickListener(this);
 
-
-        add4 = root.findViewById(R.id.select_preset_button_4);
+        add4 = root.findViewById(R.id.plus_button2);
         add4.setOnClickListener(this);
 
-        add5 = root.findViewById(R.id.select_preset_button_5);
+        add5 = root.findViewById(R.id.plus_button3);
         add5.setOnClickListener(this);
 
-        add6 = root.findViewById(R.id.select_preset_button_6);
+        add6 = root.findViewById(R.id.plus_button4);
         add6.setOnClickListener(this);
 
-        add7 = root.findViewById(R.id.select_preset_button_7);
+        add7 = root.findViewById(R.id.plus_button5);
         add7.setOnClickListener(this);
 
-        add8 = root.findViewById(R.id.select_preset_button_8);
+        add8 = root.findViewById(R.id.plus_button6);
         add8.setOnClickListener(this);
+
+        add9 = root.findViewById(R.id.plus_button);
+        add9.setOnClickListener(this);
 
 
         return root;
@@ -124,7 +119,6 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
     @Override
     public void setVisibilityForButton(boolean bool) {
-
     }
 
     @Override
@@ -133,17 +127,19 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
     }
 
 
+
     @Override
     public void onClick(View v) {
 
         getLibraryFragment(addSound);
         getLibraryFragment(addSound2);
-        /*getLibraryFragment(addSound3);
+        getLibraryFragment(addSound3);
         getLibraryFragment(addSound4);
         getLibraryFragment(addSound5);
         getLibraryFragment(addSound6);
         getLibraryFragment(addSound7);
-        getLibraryFragment(addSound8);*/
+        getLibraryFragment(addSound8);
+        getLibraryFragment(addSound9);
 
         switch (v.getId()) {
             case R.id.select_preset_button_1:
@@ -164,33 +160,39 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
                         .addToBackStack(null)
                         .commit();
                 break;
-            case R.id.select_preset_button_4:
+            case R.id.plus_button2:
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound4, "add4")
                         .addToBackStack(null)
                         .commit();
                 break;
-            case R.id.select_preset_button_5:
+            case R.id.plus_button3:
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound5, "add5")
                         .addToBackStack(null)
                         .commit();
                 break;
-            case R.id.select_preset_button_6:
+            case R.id.plus_button4:
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound6, "add6")
                         .addToBackStack(null)
                         .commit();
                 break;
-            case R.id.select_preset_button_7:
+            case R.id.plus_button5:
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound7, "add7")
                         .addToBackStack(null)
                         .commit();
                 break;
-            case R.id.select_preset_button_8:
+            case R.id.plus_button6:
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound8, "add8")
+                        .addToBackStack(null)
+                        .commit();
+                break;
+            case R.id.plus_button:
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .add(((ViewGroup) getView().getParent()).getId(), addSound9, "add8")
                         .addToBackStack(null)
                         .commit();
                 break;
@@ -199,6 +201,8 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
         }
         MainActivity.mybundle.putInt("virkNuForFanden", v.getId());
+
+
 
     }
 
@@ -210,6 +214,8 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
             }
         }
     }
+
+
 
 
 

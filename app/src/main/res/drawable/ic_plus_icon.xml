@@ -2,7 +2,8 @@
     android:width="17dp"
     android:height="18dp"
     android:viewportWidth="17"
-    android:viewportHeight="18">
+    android:viewportHeight="18"
+    android:id ="@+id/plus_plus">
   <path
       android:pathData="M10.3164,7.3203H14.3125V10.707H10.3164V15.2891H6.625V10.707H2.6172V7.3203H6.625V2.8672H10.3164V7.3203Z"
       android:fillColor="#1B325F"/>
