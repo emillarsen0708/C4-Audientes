@@ -26,6 +26,15 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
     private boolean play_pause_button = true;
     private final boolean waitForEdit = true;
     PresetFragment presetFragment;
+    LibraryFragment addSound = new LibraryFragment();
+    LibraryFragment addSound2 = new LibraryFragment();
+    LibraryFragment addSound3 = new LibraryFragment();
+    LibraryFragment addSound4 = new LibraryFragment();
+    LibraryFragment addSound5 = new LibraryFragment();
+    LibraryFragment addSound6 = new LibraryFragment();
+    LibraryFragment addSound7 = new LibraryFragment();
+    LibraryFragment addSound8 = new LibraryFragment();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -127,7 +136,14 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
     @Override
     public void onClick(View v) {
 
-        LibraryFragment addSound = new LibraryFragment();
+        getLibraryFragment(addSound);
+        getLibraryFragment(addSound2);
+        /*getLibraryFragment(addSound3);
+        getLibraryFragment(addSound4);
+        getLibraryFragment(addSound5);
+        getLibraryFragment(addSound6);
+        getLibraryFragment(addSound7);
+        getLibraryFragment(addSound8);*/
 
         switch (v.getId()) {
             case R.id.select_preset_button_1:
@@ -138,43 +154,43 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
                 break;
             case R.id.select_preset_button_2:
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(R.id.fragment_container, addSound, "add2")
+                        .add(R.id.fragment_container, addSound2, "add2")
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.select_preset_button_3:
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addSound, "add3")
+                        .add(((ViewGroup) getView().getParent()).getId(), addSound3, "add3")
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.select_preset_button_4:
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addSound, "add4")
+                        .add(((ViewGroup) getView().getParent()).getId(), addSound4, "add4")
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.select_preset_button_5:
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addSound, "add5")
+                        .add(((ViewGroup) getView().getParent()).getId(), addSound5, "add5")
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.select_preset_button_6:
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addSound, "add6")
+                        .add(((ViewGroup) getView().getParent()).getId(), addSound6, "add6")
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.select_preset_button_7:
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addSound, "add7")
+                        .add(((ViewGroup) getView().getParent()).getId(), addSound7, "add7")
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.select_preset_button_8:
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addSound, "add8")
+                        .add(((ViewGroup) getView().getParent()).getId(), addSound8, "add8")
                         .addToBackStack(null)
                         .commit();
                 break;
@@ -186,8 +202,16 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
     }
 
+    public LibraryFragment getLibraryFragment(LibraryFragment libraryFragment) {
+        if (libraryFragment == null) {
+            return new LibraryFragment();
+        } else {
+            return libraryFragment;
+            }
+        }
+    }
 
 
-}
+
 
 
