@@ -87,7 +87,6 @@ public class LibraryFragment extends Fragment {
                 isActionMode = false;
                 actionMode = null;
                 userSelection.clear();
-
             }
         });
 

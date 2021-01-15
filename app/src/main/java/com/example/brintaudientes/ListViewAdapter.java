@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.ArrayList;
@@ -53,10 +55,9 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                 }else {
                     LibraryFragment.userSelection.add(sounds.get(position));
                 }
+
                   //LibraryFragment.userSelection.setTitle(LibraryFragment.userSelection.size() + "items selected.. ");
-
-
-
+                Toast.makeText(context,"Antal Item: " +LibraryFragment.userSelection.size(),Toast.LENGTH_LONG).show();
             }
         });
         return row;
