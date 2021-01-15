@@ -1,5 +1,6 @@
 package com.example.brintaudientes;
 
+import android.content.Intent;
 import android.content.Context;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -29,37 +30,22 @@ import java.util.concurrent.TimeoutException;
 
 import static android.view.View.GONE;
 
-public class PresetFragment extends Fragment implements AccessFragmentViews, ViewModelStoreOwner, View.OnClickListener {
+public class PresetFragment extends Fragment implements AccessFragmentViews, View.OnClickListener {
 
-
-    private PresetFragment.FragmentPrListener listener;
-    TextView addButtonId;
-    public interface FragmentPrListener {
-        void onInputPrSent(CharSequence input);
-    }
-
+    Button play, edit, plus, add1, add2, add3, add4, add5, add6, add7, add8, add9, concurrent, continuous;
     private SoundPool soundPool;
     private int sound1, sound2, sound3, sound4;
-    Button play,edit,plus,add1,add2,add3,add4,add5,add6,add7,add8,add9, concurrent, continuous;
     private Button libraryButton;
     private boolean play_pause_button = true;
     //private LibraryFragment libraryFragment;
     private final boolean waitForEdit = true;
-
-    // TIL VIEW MODEL MELLEM FRAGMENTS
-
-    private EditText editText;
-
-
+    PresetFragment presetFragment;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         View root = inflater.inflate(R.layout.fragment_preset, container, false);
 
         play = root.findViewById(R.id.play_button);
-        //play.setId(0);
-        //System.out.println(play.getId());
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,15 +59,11 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
                 }
             }
         });
-
-
         edit = root.findViewById(R.id.edit_preset_button);
         edit.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                CharSequence input = edit.getText();
-                listener.onInputPrSent(input);
                 LibraryFragment addFragment = new LibraryFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addFragment, "findThisFragment")
@@ -105,26 +87,9 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
         });
 
         add1 = root.findViewById(R.id.select_preset_button_1);
-        //add1.setId(0);
-        //add1.setTag("add1");
-        add1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switch (v.getId()) {
-
-                    case R.id.select_preset_button_1:
-
-
-                        System.out.println();
-                        break;
-                }
-            }
-
-        });
-
+        add1.setOnClickListener(this);
 
         add2 = root.findViewById(R.id.select_preset_button_2);
-
         add2.setOnClickListener(this);
 
         add3 = root.findViewById(R.id.select_preset_button_3);
@@ -146,55 +111,9 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
         add8.setOnClickListener(this);
 
 
-
-
         return root;
 
     }
-
-
-
-/*
-//SharedView Coding in flow
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        viewModel = ViewModelProvider(ViewModelStoreOwner).get(SharedViewModel.class);
-        viewModel.getText().observe(getViewLifecycleOwner(), new Observer<CharSequence>() {
-            @Override
-            public void onChanged(CharSequence charSequence) {
-                editText.setText(charSequence);
-            }
-        });
-    }
-
-
-*/
-
-    // To Interface Observer
-
-
-        public void updateEditText(CharSequence newtext) {
-            addButtonId.setText(newtext);
-        }
-        @Override
-        public void onAttach (Context context) {
-            super.onAttach(context);
-            if (context instanceof FragmentPrListener) {
-                listener = (FragmentPrListener) context;
-            } else {
-                throw new RuntimeException(context.toString()
-                        + " must implement FragmentPrListner");
-            }
-        }
-
-        @Override
-        public void onDetach() {
-            super.onDetach();
-            listener = null;
-        }
-
 
     @Override
     public void setVisibilityForButton(boolean bool) {
@@ -206,87 +125,56 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
     }
 
-    @Override
-    public void setButtonText(String name, Button button) {
-
-    }
-
-    @Override
-    public String getEditText() {
-        return null;
-    }
 
     @Override
     public void onClick(View v) {
 
-    }
-
-    /*
-
-    @Override
-    public void onClick(View v) {
         LibraryFragment addSound = new LibraryFragment();
-        Bundle bundle = new Bundle();
-        switch (getId()) {
-            case 0:
-                bundle.putInt("buttonPressed", R.id.select_preset_button_1);
-                addSound.setArguments(bundle);
+
+        switch (v.getId()) {
+            case R.id.select_preset_button_1:
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addSound, "add1")
+                        .add(R.id.fragment_container, addSound, "add1")
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.select_preset_button_2:
-                bundle.putInt("buttonPressed", R.id.select_preset_button_2);
-                addSound.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addSound, "add2")
+                        .add(R.id.fragment_container, addSound, "add2")
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.select_preset_button_3:
-                bundle.putInt("buttonPressed", R.id.select_preset_button_3);
-                addSound.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound, "add3")
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.select_preset_button_4:
-                bundle.putInt("buttonPressed", R.id.select_preset_button_4);
-                addSound.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound, "add4")
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.select_preset_button_5:
-                bundle.putInt("buttonPressed", R.id.select_preset_button_5);
-                addSound.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound, "add5")
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.select_preset_button_6:
-                bundle.putInt("buttonPressed", R.id.select_preset_button_6);
-                addSound.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound, "add6")
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.select_preset_button_7:
-                bundle.putInt("buttonPressed", R.id.select_preset_button_7);
-                addSound.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound, "add7")
                         .addToBackStack(null)
                         .commit();
                 break;
             case R.id.select_preset_button_8:
-                bundle.putInt("buttonPressed", R.id.select_preset_button_8);
-                addSound.setArguments(bundle);
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound, "add8")
                         .addToBackStack(null)
@@ -295,12 +183,12 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
             default:
                 throw new RuntimeException("Unknown button ID");
 
-
-
         }
+        MainActivity.mybundle.putInt("virkNuForFanden", v.getId());
+
     }
 
- */
+
 
 }
 

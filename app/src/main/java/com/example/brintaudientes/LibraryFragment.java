@@ -2,6 +2,8 @@ package com.example.brintaudientes;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.content.Context;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -14,23 +16,31 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Environment;
+import android.util.Log;
 import android.view.ActionMode;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import org.w3c.dom.ls.LSOutput;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,10 +49,7 @@ import java.util.ArrayList;
  */
 public class LibraryFragment extends Fragment implements AccessFragmentViews {
 
-
     private FragmentLiListener listener;
-    EditText presetName;
-
 
     public interface FragmentLiListener {
         void onInputLiSent(CharSequence input);
@@ -51,6 +58,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
     ListView soundLibraryListView;
     ArrayList<String> arrayList;
     Button cancel, displaySelected, addAsPreset, importLocalSound, buttonPress;
+    EditText presetName;
     PresetFragment presetFragment;
     private String name;
     private boolean isEditReady;
@@ -58,6 +66,8 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
     ArrayAdapter soundListAdapter;
     MediaPlayer mediaPlayer;
     private int nr = 4;
+    Button button;
+    int buttonId;
 
     public static int selectedPosition = 0;
 
@@ -65,8 +75,15 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        buttonId = MainActivity.mybundle.getInt("virkNuForFanden");
+
+
+
         View root = inflater.inflate(R.layout.fragment_library, container, false);
 
+        Bundle bundle = this.getArguments();
+
+        soundLibraryListView = root.findViewById(R.id.listview_songs);
         displaySelected = root.findViewById(R.id.display_selected_button);
         addAsPreset = root.findViewById(R.id.add_as_preset_button);
         presetName = root.findViewById(R.id.preset_title_editText);
@@ -96,7 +113,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         soundListAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);
         soundLibraryListView.setAdapter(soundListAdapter);
 
-
+        System.out.println(buttonId);
 
         soundLibraryListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
@@ -152,6 +169,10 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         addAsPreset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                CharSequence input = presetName.getText().toString();
+                listener.onInputLiSent(input);
+                MainActivity.strBundle.putString("editText", presetName.getText().toString());
+                System.out.println(input);
                     FragmentManager fragmentManager = getParentFragmentManager();
                     fragmentManager.beginTransaction()
                             .remove(LibraryFragment.this)
@@ -183,27 +204,28 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
 
         return root;
     }
+    public void updateEditText(CharSequence newtext) {
+        presetName.setText(newtext);
+    }
+
+    @Override
+    public void onAttach (Context context) {
+        super.onAttach(context);
+        if (context instanceof FragmentLiListener) {
+            listener = (FragmentLiListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement FragmentLiListner");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
 
 
-        public void updateEditText(CharSequence newtext) {
-            presetName.setText(newtext);
-        }
-        @Override
-        public void onAttach (Context context) {
-            super.onAttach(context);
-            if (context instanceof FragmentLiListener) {
-                listener = (FragmentLiListener) context;
-            } else {
-                throw new RuntimeException(context.toString()
-                        + " must implement FragmentLiListner");
-            }
-        }
-
-        @Override
-        public void onDetach() {
-            super.onDetach();
-            listener = null;
-        }
 
     @Override
     public void readExternalStorage() {
@@ -222,16 +244,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         }
     }
 
-    @Override
-    public void setButtonText(String name, Button button) {
-
-    }
-
-    @Override
-    public String getEditText() {
-        name = addAsPreset.getText().toString();
-        return name;
-    }
 
     @Override
     public void setVisibilityForButton(boolean bool) {
