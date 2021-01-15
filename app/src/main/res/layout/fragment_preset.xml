@@ -67,12 +67,20 @@
         android:tag="add3"/>
 
     <Button
+        android:id="@+id/plus_button1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="270dp"
+        android:textAppearance="@style/Play_ambience"
+        android:background="@drawable/ic_plus_icon" />
+
+    <Button
         android:id="@+id/plus_button2"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="298dp"
-        android:layout_marginTop="255dp"
-        android:text=""
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="270dp"
         android:textAppearance="@style/Play_ambience"
         android:background="@drawable/ic_plus_icon" />
 
@@ -80,8 +88,9 @@
         android:id="@+id/plus_button3"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="175dp"
-        android:layout_marginTop="255dp"
+        android:layout_marginStart="298dp"
+        android:layout_marginTop="270dp"
+        android:text=""
         android:textAppearance="@style/Play_ambience"
         android:background="@drawable/ic_plus_icon" />
 
@@ -90,36 +99,26 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="53dp"
-        android:layout_marginTop="255dp"
         android:textAppearance="@style/Play_ambience"
+        android:layout_marginTop="395dp"
         android:background="@drawable/ic_plus_icon" />
-
 
     <Button
         android:id="@+id/plus_button5"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginStart="53dp"
-        android:textAppearance="@style/Play_ambience"
-        android:layout_marginTop="380dp"
-        android:background="@drawable/ic_plus_icon" />
-
-    <Button
-        android:id="@+id/plus_button6"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
         android:layout_marginStart="175dp"
         android:textAppearance="@style/Play_ambience"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="395dp"
         android:background="@drawable/ic_plus_icon" />
 
         <Button
-            android:id="@+id/plus_button"
+            android:id="@+id/plus_button6"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="298dp"
             android:textAppearance="@style/Play_ambience"
-            android:layout_marginTop="380dp"
+            android:layout_marginTop="395dp"
             android:background="@drawable/ic_plus_icon" />
 
         <Button

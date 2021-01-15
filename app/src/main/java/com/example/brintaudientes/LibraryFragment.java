@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Environment;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.ActionMode;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -88,12 +89,17 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         antiListView.setAdapter(antiAdapter);
 
         System.out.println(buttonId);
+        antiListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 
         antiListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-                if (antiListView.getCheckedItemCount() > 4) {
+                SparseBooleanArray checkedItemPositions = antiListView.getCheckedItemPositions();
+                int count = 0;
+                if (checkedItemPositions.size() > 4) {
                     antiListView.setItemChecked(position, false);
+                } else {
+                    antiListView.setItemChecked(position, true);
                 }
             }
 
@@ -166,7 +172,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             }
         });*/
 
-        antiListView.setOnItemClickListener((parent, view, position, id) -> {
+        /*antiListView.setOnItemClickListener((parent, view, position, id) -> {
             // Ends the Mediaplayer if a Mediaplayer already exist
 
             if (mediaPlayer != null) {
@@ -178,7 +184,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             mediaPlayer = MediaPlayer.create(getActivity(), resId);
             mediaPlayer.start();
 
-        });
+        });*/
 
         return root;
     }
