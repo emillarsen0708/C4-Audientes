@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     PlayFragment playFragment = new PlayFragment();
     final VolumeFragment volumeFragment = new VolumeFragment();
     final LibraryFragment libraryFragment = new LibraryFragment();
-    final CreatePresetFragment createPresetFragment = new CreatePresetFragment();
     static MediaPlayer mMediaPlayer;
     int currentIndex = 0;
     private Runnable runnable;
@@ -66,8 +65,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         BottomNavigationView buttNav = findViewById(R.id.bottom);
         buttNav.setOnNavigationItemSelectedListener(naviListner);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, libraryFragment, "4").hide(libraryFragment).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, createPresetFragment, "3").hide(createPresetFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, libraryFragment, "3").hide(libraryFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, volumeFragment, "2").hide(volumeFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, presetFragment, "1").commit();
         libraryCancel = findViewById(R.id.cancel_button_library);
@@ -92,13 +90,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                                     .show(volumeFragment)
                                     .commit();
                             selectedFragment = volumeFragment;
-                            return true;
-                        case R.id.nav_create:
-                            getSupportFragmentManager().beginTransaction()
-                                    .hide(selectedFragment)
-                                    .show(createPresetFragment)
-                                    .commit();
-                            selectedFragment = createPresetFragment;
                             return true;
                         case R.id.nav_preset:
                             libraryFragment.setVisibilityForButton(true);

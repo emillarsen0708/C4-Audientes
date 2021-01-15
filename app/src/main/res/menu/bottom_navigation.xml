@@ -7,11 +7,6 @@
         android:title="Sound"/>
 
     <item
-        android:id="@+id/nav_create"
-        android:icon="@drawable/ic_edit_preset"
-        android:title="Edit preset"/>
-
-    <item
         android:id="@+id/nav_vol"
         android:icon="@drawable/ic_volume_icon"
         android:title="Volume"/>
