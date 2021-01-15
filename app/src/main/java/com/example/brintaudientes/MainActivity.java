@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     Preset fourSound = MakeContinuous.orderThePreset("FOUR");
     */
 
-
     PlayFragment playFragment = new PlayFragment();
     final VolumeFragment volumeFragment = new VolumeFragment();
     final LibraryFragment libraryFragment = new LibraryFragment();
