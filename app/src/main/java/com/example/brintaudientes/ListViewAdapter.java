@@ -48,7 +48,7 @@ public class ListViewAdapter extends ArrayAdapter<String> {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                int position = (int)buttonView.getTag();
+               // int position = (int)buttonView.getTag();
 
                 if (isChecked) {
                     count++;
@@ -59,8 +59,7 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                 if (count >= 5) {
                     buttonView.setChecked(false);
                     count--;
-                    Toast.makeText(context,"Du kan ikke vælge flere "+ count,Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(context,"Du kan ikke vælge flere end "+ count +" sange",Toast.LENGTH_LONG).show();
                 } else {
                     int getPosition = (int) buttonView.getTag();
 
