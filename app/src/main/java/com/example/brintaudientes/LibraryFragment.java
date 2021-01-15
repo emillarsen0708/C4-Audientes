@@ -1,22 +1,17 @@
 package com.example.brintaudientes;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Environment;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.ActionMode;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -34,8 +29,9 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-
-import org.w3c.dom.ls.LSOutput;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -114,12 +110,17 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         soundLibraryListView.setAdapter(soundListAdapter);
 
         System.out.println(buttonId);
+        soundLibraryListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
 
         soundLibraryListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-                if (soundLibraryListView.getCheckedItemCount() > 4) {
+                SparseBooleanArray checkedItemPositions = soundLibraryListView.getCheckedItemPositions();
+                int count = 0;
+                if (checkedItemPositions.size() > 4) {
                     soundLibraryListView.setItemChecked(position, false);
+                } else {
+                    soundLibraryListView.setItemChecked(position, true);
                 }
             }
 
@@ -180,7 +181,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
                             .commit();
             }
         });
-
         presetName = root.findViewById(R.id.preset_title_editText);
 
 

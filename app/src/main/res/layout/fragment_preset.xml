@@ -34,146 +34,134 @@
         android:textStyle="bold" />
 
     <Button
+        android:textStyle="bold"
         android:id="@+id/select_preset_button_1"
-        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="38dp"
         android:layout_marginTop="130dp"
-        android:background="@drawable/preset_add_highlight_rectangle"
-        android:foreground="@drawable/add_preset_rectangle"
+        android:background="@drawable/preset_add_rectangle"
         android:text="@string/add_new"
         android:textAppearance="@style/Play_ambience"
         android:tag="add1"/>
 
     <Button
+        android:textStyle="bold"
         android:id="@+id/select_preset_button_2"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="161dp"
         android:layout_marginTop="130dp"
-        android:background="@xml/preset_add_rectangle"
+        android:background="@drawable/preset_add_rectangle"
         android:text="@string/add_new"
         android:textAppearance="@style/Play_ambience"
         android:tag="add2"/>
 
     <Button
+        android:textStyle="bold"
         android:id="@+id/select_preset_button_3"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="284dp"
         android:layout_marginTop="130dp"
-        android:background="@xml/preset_add_rectangle"
+        android:background="@drawable/preset_add_rectangle"
         android:text="@string/add_new"
         android:textAppearance="@style/Play_ambience"
         android:tag="add3"/>
 
     <Button
-        android:id="@+id/select_preset_button_4"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="284dp"
-        android:layout_marginTop="255dp"
-        android:background="@xml/preset_add_rectangle"
-        android:text="@string/add_new"
+        android:id="@+id/plus_button1"
+        android:textStyle="bold"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="53dp"
+        android:layout_marginTop="270dp"
         android:textAppearance="@style/Play_ambience"
-        android:tag="add4"/>
-
-    <Button
-        android:id="@+id/select_preset_button_5"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="255dp"
-        android:background="@xml/preset_add_rectangle"
-        android:text="@string/add_new"
-        android:textAppearance="@style/Play_ambience"
-        android:tag="add5"/>
-
-    <Button
-        android:id="@+id/select_preset_button_6"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="255dp"
-        android:background="@xml/preset_add_rectangle"
-        android:text="@string/add_new"
-        android:textAppearance="@style/Play_ambience"
-        android:tag="add6"/>
-
-    <Button
-        android:id="@+id/select_preset_button_7"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="380dp"
-        android:background="@xml/preset_add_rectangle"
-        android:text="@string/add_new"
-        android:textAppearance="@style/Play_ambience"
-        android:tag="add7"/>
-
-    <Button
-        android:id="@+id/select_preset_button_8"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="161dp"
-        android:layout_marginTop="380dp"
-        android:background="@xml/preset_add_rectangle"
-        android:text="@string/add_new"
-        android:textAppearance="@style/Play_ambience"
-        android:tag="add8"/>
-
-    <Button
-        android:id="@+id/plus_button"
-        android:layout_width="66dp"
-        android:layout_height="63dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="400dp"
         android:background="@drawable/ic_plus_icon" />
 
     <Button
-        android:id="@+id/play_button"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="515dp"
-        android:background="@drawable/ic_play_icon" />
-
+        android:textStyle="bold"
+        android:id="@+id/plus_button2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="270dp"
+        android:textAppearance="@style/Play_ambience"
+        android:background="@drawable/ic_plus_icon" />
 
     <Button
-        android:id="@+id/edit_preset_button"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="510dp"
-        android:background="@drawable/ic_edit_preset"
-        android:textAppearance="@style/Play_ambience" />
-
-
-    <TextView
-        android:id="@+id/concurrent"
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
-        android:layout_marginStart="230dp"
-        android:layout_marginTop="575dp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="@string/edit_preset"
-        android:textAppearance="@style/sonority_by2"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/add_button_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="405dp"
-        android:layout_marginStart="80dp"
-        android:text="@string/add_new"
-        android:textSize="18dp"
         android:textStyle="bold"
-        android:textColorHint="#591B325F"
-        android:textColor="#000000"
-        android:backgroundTint="@color/colorPrimary"
-        android:visibility="invisible"/>
+        android:id="@+id/plus_button3"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="298dp"
+        android:layout_marginTop="270dp"
+        android:text=""
+        android:textAppearance="@style/Play_ambience"
+        android:background="@drawable/ic_plus_icon" />
 
-</FrameLayout>
+    <Button
+        android:textStyle="bold"
+        android:id="@+id/plus_button4"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="53dp"
+        android:textAppearance="@style/Play_ambience"
+        android:layout_marginTop="395dp"
+        android:background="@drawable/ic_plus_icon" />
+
+    <Button
+        android:textStyle="bold"
+        android:id="@+id/plus_button5"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="175dp"
+        android:textAppearance="@style/Play_ambience"
+        android:layout_marginTop="395dp"
+        android:background="@drawable/ic_plus_icon" />
+
+        <Button
+            android:textStyle="bold"
+            android:id="@+id/plus_button6"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="298dp"
+            android:textAppearance="@style/Play_ambience"
+            android:layout_marginTop="395dp"
+            android:background="@drawable/ic_plus_icon" />
+
+        <Button
+            android:id="@+id/play_button"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:textAppearance="@style/Play_ambience"
+            android:layout_marginTop="515dp"
+            android:background="@drawable/ic_play_icon" />
+
+
+        <Button
+            android:id="@+id/edit_preset_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="240dp"
+            android:layout_marginTop="510dp"
+            android:background="@drawable/ic_edit_preset"
+            android:textAppearance="@style/Play_ambience" />
+
+
+        <TextView
+            android:id="@+id/concurrent"
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:layout_marginStart="230dp"
+            android:layout_marginTop="575dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/edit_preset"
+            android:textAppearance="@style/sonority_by2"
+            android:textStyle="bold" />
+
+
+
+    </FrameLayout>
