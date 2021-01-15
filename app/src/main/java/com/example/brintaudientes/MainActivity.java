@@ -25,6 +25,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.brintaudientes.preset.ConcurrentPresetBuilding;
+import com.example.brintaudientes.preset.Preset;
+import com.example.brintaudientes.preset.PresetBuilding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -37,6 +40,22 @@ import static android.view.View.GONE;
 // todo: Få styr på skærmvending så player ikke kører videre mens player står i pause mode
 
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener, AccessFragmentViews, LibraryFragment.FragmentLiListener {
+
+   // ORDRE AF PRESETS
+   /*
+    PresetBuilding MakeConcurrents = new ConcurrentPresetBuilding();
+    Preset oneSound = MakeConcurrents.orderThePreset("ONE");
+    Preset twoSound = MakeConcurrents.orderThePreset("TWO");
+    Preset threeSound = MakeConcurrents.orderThePreset("THREE");
+    Preset fourSound = MakeConcurrents.orderThePreset("FOUR");
+
+
+    PresetBuilding MakeContinuous = new ContinuousPresetBuilding();
+    Preset oneSound = MakeContinuous.orderThePreset("ONE");
+    Preset twoSound = MakeContinuous.orderThePreset("TWO");
+    Preset threeSound = MakeContinuous.orderThePreset("THREE");
+    Preset fourSound = MakeContinuous.orderThePreset("FOUR");
+    */
 
 
     PlayFragment playFragment = new PlayFragment();

@@ -88,6 +88,18 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
         add1 = root.findViewById(R.id.select_preset_button_1);
         add1.setOnClickListener(this);
+        add1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ((play != null) && (play_pause_button)) {
+                    play.setBackgroundResource(R.drawable.ic_pause_icon);
+                    play_pause_button = false;
+                } else {
+                    if (play != null) play.setBackgroundResource(R.drawable.ic_play_icon);
+                    play_pause_button = true;
+                }
+            }
+        });
 
         add2 = root.findViewById(R.id.select_preset_button_2);
         add2.setOnClickListener(this);

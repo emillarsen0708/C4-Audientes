@@ -1,5 +1,6 @@
 package com.example.brintaudientes;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.InputDevice;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,6 +17,8 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 
 public class VolumeFragment extends Fragment implements View.OnTouchListener {
 
@@ -22,40 +26,58 @@ public class VolumeFragment extends Fragment implements View.OnTouchListener {
 
     private float x;
     private float y;
+    private float xr;
+    private float yr;
+    private float xh;
+    private float yh;
 
     SeekBar volumes1;
     SeekBar volumes2;
     SeekBar volumes3;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_volume, container, false);
 
+
+        Toast.makeText(getActivity().getApplicationContext(), "Move the ball to adjust volume", Toast.LENGTH_LONG)
+                .show();
+
+       // Snackbar snackbar = new Snackbar.make(getActivity().findViewById(R.id.nav_vol), "Move the ball to adjust volume", Snackbar.LENGTH_SHORT);
+       // snackbar.show();
+
         adjustButton = root.findViewById(R.id.adjust_button);
         root.setOnTouchListener(new View.OnTouchListener() {
 
+            InputDevice.MotionRange motionRange;
+
+            public InputDevice.MotionRange getMotionRange() {
+
+
+                return motionRange;
+            }
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
+
                 x = event.getX();
                 y = event.getY();
-                if (event.getAction() == MotionEvent.ACTION_MOVE) {
 
-                    //String xyMsg = String.format("Coordinates: (%. 2f, %2.f)", x, y);
-                    //Log.d(AC), xyMsg);
 
-                    adjustButton.setX(x);
-                    adjustButton.setY(y);
+                switch (event.getAction()) {
+
+                    case MotionEvent.ACTION_DOWN:
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        event.getX();
+                        event.getY();
                 }
 
                 return true;
-                /*
-                Toast.makeText(getActivity().getApplicationContext(), "I was Touched.", Toast.LENGTH_SHORT)
-                        .show();
-                return true;
-            */
+
             }
         });
 
