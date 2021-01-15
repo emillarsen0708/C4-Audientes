@@ -34,6 +34,7 @@
         android:textStyle="bold" />
 
     <Button
+        android:textStyle="bold"
         android:id="@+id/select_preset_button_1"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -45,6 +46,7 @@
         android:tag="add1"/>
 
     <Button
+        android:textStyle="bold"
         android:id="@+id/select_preset_button_2"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -56,6 +58,7 @@
         android:tag="add2"/>
 
     <Button
+        android:textStyle="bold"
         android:id="@+id/select_preset_button_3"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -68,6 +71,7 @@
 
     <Button
         android:id="@+id/plus_button1"
+        android:textStyle="bold"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="53dp"
@@ -76,6 +80,7 @@
         android:background="@drawable/ic_plus_icon" />
 
     <Button
+        android:textStyle="bold"
         android:id="@+id/plus_button2"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -85,6 +90,7 @@
         android:background="@drawable/ic_plus_icon" />
 
     <Button
+        android:textStyle="bold"
         android:id="@+id/plus_button3"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -95,6 +101,7 @@
         android:background="@drawable/ic_plus_icon" />
 
     <Button
+        android:textStyle="bold"
         android:id="@+id/plus_button4"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -104,6 +111,7 @@
         android:background="@drawable/ic_plus_icon" />
 
     <Button
+        android:textStyle="bold"
         android:id="@+id/plus_button5"
         android:layout_width="70dp"
         android:layout_height="70dp"
@@ -113,6 +121,7 @@
         android:background="@drawable/ic_plus_icon" />
 
         <Button
+            android:textStyle="bold"
             android:id="@+id/plus_button6"
             android:layout_width="70dp"
             android:layout_height="70dp"
