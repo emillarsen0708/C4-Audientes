@@ -3,41 +3,34 @@ package com.example.brintaudientes;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Environment;
-import android.util.Log;
 import android.view.ActionMode;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import org.w3c.dom.ls.LSOutput;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,22 +38,24 @@ import static android.content.ContentValues.TAG;
  * create an instance of this fragment.
  */
 public class LibraryFragment extends Fragment implements AccessFragmentViews {
+
+
     private FragmentLiListener listener;
     EditText presetName;
+
 
     public interface FragmentLiListener {
         void onInputLiSent(CharSequence input);
     }
 
-    ListView antiListView;
+    ListView soundLibraryListView;
     ArrayList<String> arrayList;
     Button cancel, displaySelected, addAsPreset, importLocalSound, buttonPress;
-    EditText presetName;
     PresetFragment presetFragment;
     private String name;
     private boolean isEditReady;
 
-    ArrayAdapter antiAdapter;
+    ArrayAdapter soundListAdapter;
     MediaPlayer mediaPlayer;
     private int nr = 4;
 
@@ -75,6 +70,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         displaySelected = root.findViewById(R.id.display_selected_button);
         addAsPreset = root.findViewById(R.id.add_as_preset_button);
         presetName = root.findViewById(R.id.preset_title_editText);
+
 
         addAsPreset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,22 +87,22 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         });
 
 
-        antiListView = root.findViewById(R.id.listview_songs);
+        soundLibraryListView = root.findViewById(R.id.listview_songs);
         arrayList = new ArrayList<String>();
         Field[] fields = R.raw.class.getFields();
         for (int i = 0; i < fields.length; i++) {
             arrayList.add(fields[i].getName());
         }
-        antiAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);
-        antiListView.setAdapter(antiAdapter);
+        soundListAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);
+        soundLibraryListView.setAdapter(soundListAdapter);
 
 
 
-        antiListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+        soundLibraryListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-                if (antiListView.getCheckedItemCount() > 4) {
-                    antiListView.setItemChecked(position, false);
+                if (soundLibraryListView.getCheckedItemCount() > 4) {
+                    soundLibraryListView.setItemChecked(position, false);
                 }
             }
 
@@ -131,7 +127,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             }
         });
 
-        antiListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        soundLibraryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             }
@@ -165,18 +161,9 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         });
 
         presetName = root.findViewById(R.id.preset_title_editText);
-        /*presetName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-                    Log.i(TAG,"Enter pressed");
-                    isEditReady = true;
-                }
-                return false;
-            }
-        });*/
 
-        antiListView.setOnItemClickListener((parent, view, position, id) -> {
+
+        soundLibraryListView.setOnItemClickListener((parent, view, position, id) -> {
             // Ends the Mediaplayer if a Mediaplayer already exist
             view.setSelected(true);
             String pathname = String.valueOf(R.drawable.ic_selected_sound);
@@ -197,25 +184,26 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
         return root;
     }
 
-    public void updateEditText(CharSequence newtext) {
-        presetName.setText(newtext);
-    }
-    @Override
-    public void onAttach (Context context) {
-        super.onAttach(context);
-        if (context instanceof FragmentLiListener) {
-            listener = (FragmentLiListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement FragmentLiListner");
-        }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        listener = null;
-    }
+        public void updateEditText(CharSequence newtext) {
+            presetName.setText(newtext);
+        }
+        @Override
+        public void onAttach (Context context) {
+            super.onAttach(context);
+            if (context instanceof FragmentLiListener) {
+                listener = (FragmentLiListener) context;
+            } else {
+                throw new RuntimeException(context.toString()
+                        + " must implement FragmentLiListner");
+            }
+        }
+
+        @Override
+        public void onDetach() {
+            super.onDetach();
+            listener = null;
+        }
 
     @Override
     public void readExternalStorage() {
@@ -252,10 +240,10 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             displaySelected.setVisibility(View.GONE);
             addAsPreset.setVisibility(View.GONE);
             presetName.setVisibility(View.GONE);
-            ViewGroup.LayoutParams list = antiListView.getLayoutParams();
+            ViewGroup.LayoutParams list = soundLibraryListView.getLayoutParams();
             list.height = 900;
-            antiListView.setLayoutParams(list);
-            antiListView.setPadding(0, 150,0,0);
+            soundLibraryListView.setLayoutParams(list);
+            soundLibraryListView.setPadding(0, 150,0,0);
         } else {
             cancel.setVisibility(View.VISIBLE);
             cancel.setVisibility(View.VISIBLE);

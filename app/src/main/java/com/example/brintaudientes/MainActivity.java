@@ -2,62 +2,37 @@ package com.example.brintaudientes;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.lifecycle.ViewModelStoreOwner;
 
-
-import android.Manifest;
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.FragmentManager;
-import android.content.DialogInterface;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-import static android.view.View.GONE;
-
-// todo: Få styr på skærmvending så player ikke kører videre mens player står i pause mode
 
 public class MainActivity extends AppCompatActivity
-        implements FragmentManager.OnBackStackChangedListener,
-        PresetFragment.FragmentPrListener,
-        LibraryFragment.FragmentLiListener,
-        ButtonClickInterface {
-
+        implements FragmentManager.OnBackStackChangedListener, PresetFragment.FragmentPrListener,
+        LibraryFragment.FragmentLiListener,ButtonClickInterface
+        {
+    private PresetFragment presetFragment = new PresetFragment();
+    private LibraryFragment libraryFragment = new LibraryFragment();
     PlayFragment playFragment = new PlayFragment();
     final VolumeFragment volumeFragment = new VolumeFragment();
-    final LibraryFragment libraryFragment = new LibraryFragment();
     final CreatePresetFragment createPresetFragment = new CreatePresetFragment();
     static MediaPlayer mMediaPlayer;
     int currentIndex = 0;
     private Runnable runnable;
     private AudioManager SoundManager;
-    final PresetFragment presetFragment = new PresetFragment();
     Fragment selectedFragment = presetFragment;
     Button libraryCancel;
     String buttonText1, buttonText2, buttonText3, buttonText4, buttonText5, buttonText6, buttonText7, buttonText8 = "Add new";
-
 
 
 
@@ -144,4 +119,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onInputLiSent(CharSequence input) { presetFragment.add1.setText(input);
     }
+
+
 }
