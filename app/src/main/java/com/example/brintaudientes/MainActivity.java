@@ -150,11 +150,9 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
     }
 
-
-
     @Override
     public void onInputLiSent(CharSequence input) {
-        buttonId = MainActivity.mybundle.getInt("virkNuForFanden");
+        buttonId = MainActivity.mybundle.getInt("buttonId");
         if (!input.toString().isEmpty()) {
             ViewGroup.LayoutParams params = presetFragment.getView().findViewById(buttonId).getLayoutParams();
             params.height = 262;

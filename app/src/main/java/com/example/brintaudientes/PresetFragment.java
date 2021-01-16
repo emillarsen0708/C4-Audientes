@@ -117,7 +117,6 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
     }
 
-
     @Override
     public void onClick(View v) {
 
@@ -190,7 +189,7 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
                 throw new RuntimeException("Unknown button ID");
 
         }
-        MainActivity.mybundle.putInt("virkNuForFanden", v.getId());
+        MainActivity.mybundle.putInt("buttonId", v.getId());
 
     }
 
@@ -200,10 +199,9 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
         } else {
             return libraryFragment;
             }
-        }
     }
 
-
 }
+
 
 
