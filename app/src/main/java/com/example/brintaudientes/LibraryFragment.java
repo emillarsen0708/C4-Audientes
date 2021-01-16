@@ -44,19 +44,19 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
 
     private FragmentLiListener listener;
 
+    private ListView soundLibraryListView;
+    private ListViewAdapter adapter;
+    private List<String> sounds = new ArrayList<>();
+    public static List<String> userSelection = new ArrayList<>();
+
+    public static boolean isActionMode = false;
+    public static ActionMode actionMode = null;
+
     public interface FragmentLiListener {
         void onInputLiSent(CharSequence input);
     }
 
-    private ListView soundLibraryListView;
-    private com.example.brintaudientes.ListViewAdapter adapter;
-    private List<String> sounds = new ArrayList<>();
-
-    public static boolean isActionMode = false;
-    public static List<String> userSelection = new ArrayList<>();
-    public static ActionMode actionMode = null;
     ArrayList<String> arrayList;
-
 
     Button cancel, displaySelected, addAsPreset, importLocalSound, buttonPress;
     EditText presetName;
@@ -76,30 +76,40 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        buttonId = MainActivity.mybundle.getInt("buttonId");
+        // buttonId = MainActivity.mybundle.getInt("buttonId");
 
 
         View root = inflater.inflate(R.layout.fragment_library, container, false);
         getSounds();
-        Bundle bundle = this.getArguments();
+        //Bundle bundle = this.getArguments();
+        buttonId = MainActivity.mybundle.getInt("buttonId");
 
         soundLibraryListView = root.findViewById(R.id.listview_songs);
-        adapter = new com.example.brintaudientes.ListViewAdapter(sounds,getActivity());
         soundLibraryListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
+        adapter = new ListViewAdapter(sounds, getActivity());
         soundLibraryListView.setAdapter(adapter);
+
 
         soundLibraryListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
 
+                if (userSelection.contains(sounds.get(position))) {
+                    userSelection.remove(sounds.get(position));
+                } else {
+                    userSelection.add(sounds.get(position));
+                }
+
+                //mode.setTitle(userSelection.size() + " items selected.. ");
             }
+
 
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
                 MenuInflater inflater = mode.getMenuInflater();
                 inflater.inflate(R.menu.context_menu, menu);
                 isActionMode = true;
-                actionMode = null;
+                actionMode = mode;
                 return true;
             }
 
@@ -110,7 +120,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
 
             @Override
             public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.action_delete:
                         adapter.removeItems(userSelection);
                         mode.finish();
@@ -120,6 +130,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
                 }
             }
 
+
             @Override
             public void onDestroyActionMode(ActionMode mode) {
                 isActionMode = false;
@@ -127,7 +138,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
                 userSelection.clear();
             }
         });
-
 
         displaySelected = root.findViewById(R.id.display_selected_button);
         addAsPreset = root.findViewById(R.id.add_as_preset_button);
@@ -147,7 +157,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             }
         });
 
-        soundLibraryListView = root.findViewById(R.id.listview_songs);
+      /*  soundLibraryListView = root.findViewById(R.id.listview_songs);
         arrayList = new ArrayList<String>();
         Field[] fields = R.raw.class.getFields();
         for (int i = 0; i < fields.length; i++) {
@@ -198,6 +208,8 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             }
         });
 
+       */
+
         importLocalSound = root.findViewById(R.id.import_local_sound);
 
         cancel = root.findViewById(R.id.cancel_button_library);
@@ -221,17 +233,17 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
                 listener.onInputLiSent(input);
                 MainActivity.strBundle.putString("editText", presetName.getText().toString());
                 System.out.println(input);
-                    FragmentManager fragmentManager = getParentFragmentManager();
-                    fragmentManager.beginTransaction()
-                            .remove(LibraryFragment.this)
-                            .addToBackStack(null)
-                            .commit();
+                FragmentManager fragmentManager = getParentFragmentManager();
+                fragmentManager.beginTransaction()
+                        .remove(LibraryFragment.this)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
         presetName = root.findViewById(R.id.preset_title_edittext);
 
 
-        soundLibraryListView.setOnItemClickListener((parent, view, position, id) -> {
+        /*soundLibraryListView.setOnItemClickListener((parent, view, position, id) -> {
             // Ends the Mediaplayer if a Mediaplayer already exist
             view.setSelected(true);
             String pathname = String.valueOf(R.drawable.ic_selected_sound);
@@ -247,7 +259,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             mediaPlayer = MediaPlayer.create(getActivity(), resId);
             mediaPlayer.start();
 
-        });
+        });*/
 
         return root;
     }
@@ -264,7 +276,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
     }
 
     @Override
-    public void onAttach (Context context) {
+    public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof FragmentLiListener) {
             listener = (FragmentLiListener) context;
@@ -307,7 +319,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews {
             ViewGroup.LayoutParams list = soundLibraryListView.getLayoutParams();
             list.height = 900;
             soundLibraryListView.setLayoutParams(list);
-            soundLibraryListView.setPadding(0, 150,0,0);
+            soundLibraryListView.setPadding(0, 150, 0, 0);
         } else {
             cancel.setVisibility(View.VISIBLE);
             cancel.setVisibility(View.VISIBLE);

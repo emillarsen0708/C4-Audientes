@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,10 +42,8 @@ public class ListViewAdapter extends ArrayAdapter<String> {
         soundNames.setText(sounds.get(position));
 
         CheckBox checkBox = row.findViewById(R.id.checkbox);
-
-
         checkBox.setTag(position);
-        checkBox.setVisibility(View.VISIBLE);
+        //checkBox.setVisibility(View.VISIBLE);
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -62,8 +63,14 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                     Toast.makeText(context,"Du kan ikke vælge flere end "+ count +" sange",Toast.LENGTH_LONG).show();
                 } else {
                     int getPosition = (int) buttonView.getTag();
-
                     sounds.get(getPosition);
+                    if (LibraryFragment.userSelection.contains(sounds.get(getPosition))){
+                        LibraryFragment.userSelection.remove(sounds.get(getPosition));
+                    } else{
+                        LibraryFragment.userSelection.add(sounds.get(getPosition));
+                    }
+                    Toast.makeText(context,"Antal Item: " +LibraryFragment.userSelection.size(),Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
