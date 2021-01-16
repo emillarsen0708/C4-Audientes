@@ -156,7 +156,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
             }
         });
 
-        soundLibraryListView = root.findViewById(R.id.listview_songs);
+       /* soundLibraryListView = root.findViewById(R.id.listview_songs);
         arrayList = new ArrayList<String>();
         Field[] fields = R.raw.class.getFields();
         for (int i = 0; i < fields.length; i++) {
@@ -207,7 +207,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
             }
         });
 
-
+*/
 
         importLocalSound = root.findViewById(R.id.import_local_sound);
 

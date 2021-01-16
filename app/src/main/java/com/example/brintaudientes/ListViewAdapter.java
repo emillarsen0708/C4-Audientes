@@ -46,9 +46,10 @@ public class ListViewAdapter extends ArrayAdapter<String> {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                // int position = (int)buttonView.getTag();
+                 int position = (int)buttonView.getTag();
 
                 if (isChecked) {
+                    //LibraryFragment.userSelection.add(sounds.get(position));
                     count++;
                 } else if (!isChecked) {
                     count--;
@@ -60,8 +61,7 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                     count--;
 
                 } else {
-                    int getPosition = (int) buttonView.getTag();
-                    sounds.get(getPosition);
+                    sounds.get(position);
                    /* if (LibraryFragment.userSelection.contains(sounds.get(getPosition))){
                         LibraryFragment.userSelection.remove(sounds.get(getPosition));
                     } else{
