@@ -162,6 +162,4 @@
             android:textAppearance="@style/sonority_by2"
             android:textStyle="bold" />
 
-
-
     </FrameLayout>
