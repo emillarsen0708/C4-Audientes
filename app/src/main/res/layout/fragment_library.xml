@@ -43,7 +43,7 @@
         android:layout_height="209dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="180dp"
-        android:choiceMode="multipleChoice"
+        android:choiceMode="singleChoice"
         android:drawSelectorOnTop="false"
         android:fadingEdge="horizontal"
         android:fadingEdgeLength="60dp"
@@ -55,14 +55,16 @@
 
     </ListView>
 
+
+
     <EditText
-        android:id="@+id/preset_title_editText"
+        android:id="@+id/preset_title_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="405dp"
         android:layout_marginStart="80dp"
-        android:hint="Type Your Preset Title here ..."
-        android:textSize="18dp"
+        android:hint="Type in preset title of choice ..."
+        android:textSize="16dp"
         android:textStyle="bold"
         android:textColorHint="#591B325F"
         android:textColor="#000000"
