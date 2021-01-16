@@ -2,7 +2,6 @@ package com.example.brintaudientes;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +13,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,12 +35,12 @@ public class ListViewAdapter extends ArrayAdapter<String> {
 
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
         View row = inflater.inflate(R.layout.item_layout,parent,false);
-        TextView soundNames = row.findViewById(R.id.sound_name);
+        TextView soundNames = row.findViewById(R.id.song_name);
         soundNames.setText(sounds.get(position));
 
         CheckBox checkBox = row.findViewById(R.id.checkbox);
         checkBox.setTag(position);
-        //checkBox.setVisibility(View.VISIBLE);
+        checkBox.setVisibility(View.VISIBLE);
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -58,19 +55,19 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                 }
 
                 if (count >= 5) {
+                    Toast.makeText(context,"Du kan ikke vælge flere end "+ count +" sange",Toast.LENGTH_LONG).show();
                     buttonView.setChecked(false);
                     count--;
-                    Toast.makeText(context,"Du kan ikke vælge flere end "+ count +" sange",Toast.LENGTH_LONG).show();
+
                 } else {
                     int getPosition = (int) buttonView.getTag();
                     sounds.get(getPosition);
-                    if (LibraryFragment.userSelection.contains(sounds.get(getPosition))){
+                   /* if (LibraryFragment.userSelection.contains(sounds.get(getPosition))){
                         LibraryFragment.userSelection.remove(sounds.get(getPosition));
                     } else{
                         LibraryFragment.userSelection.add(sounds.get(getPosition));
                     }
-                    Toast.makeText(context,"Antal Item: " +LibraryFragment.userSelection.size(),Toast.LENGTH_SHORT).show();
-
+                    Toast.makeText(context,"Antal Item: " +LibraryFragment.userSelection.size(),Toast.LENGTH_SHORT).show();*/
                 }
             }
         });

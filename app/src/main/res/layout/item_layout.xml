@@ -9,6 +9,7 @@
         android:gravity="center"
         android:layout_marginLeft="25dp"
         android:text="18sp"
+        android:textColor="#1B325F"
         android:textStyle="bold"
         android:id="@+id/song_name"
         android:layout_alignParentLeft="true"/>
@@ -17,6 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:textColor="#1B325F"
         android:layout_centerInParent="true"
         android:layout_marginRight="25dp"
         android:id="@+id/checkbox"
