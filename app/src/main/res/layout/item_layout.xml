@@ -18,8 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:background="#1B325F"
         android:layout_centerInParent="true"
+        android:background="#1B325F"
         android:layout_marginRight="25dp"
         android:id="@+id/checkbox"
 

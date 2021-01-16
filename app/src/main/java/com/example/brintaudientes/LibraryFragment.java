@@ -93,13 +93,14 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
 
-             /*   if (userSelection.contains(sounds.get(position))) {
+              /* if (userSelection.contains(sounds.get(position))) {
                     userSelection.remove(sounds.get(position));
                 } else {
                     userSelection.add(sounds.get(position));
-                }*/
+                }
+                Toast.makeText(getActivity(),"Antal Item: " +LibraryFragment.userSelection.size(),Toast.LENGTH_SHORT).show();
 
-                //mode.setTitle(userSelection.size() + " items selected.. ");
+                //mode.setTitle(userSelection.size() + " items selected.. ");*/
             }
 
 
@@ -156,58 +157,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
             }
         });
 
-       /* soundLibraryListView = root.findViewById(R.id.listview_songs);
-        arrayList = new ArrayList<String>();
-        Field[] fields = R.raw.class.getFields();
-        for (int i = 0; i < fields.length; i++) {
-            arrayList.add(fields[i].getName());
-        }
-        soundListAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);
-        soundLibraryListView.setAdapter(soundListAdapter);
-
-        System.out.println(buttonId);
-        soundLibraryListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
-
-        soundLibraryListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
-            @Override
-            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-                SparseBooleanArray checkedItemPositions = soundLibraryListView.getCheckedItemPositions();
-                int count = 0;
-                if (checkedItemPositions.size() > 4) {
-                    soundLibraryListView.setItemChecked(position, false);
-                } else {
-                    soundLibraryListView.setItemChecked(position, true);
-                }
-            }
-
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                return false;
-            }
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-
-            }
-        });
-
-        soundLibraryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            }
-        });
-
-*/
 
         importLocalSound = root.findViewById(R.id.import_local_sound);
 

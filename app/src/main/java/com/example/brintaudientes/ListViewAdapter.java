@@ -49,7 +49,6 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                  int position = (int)buttonView.getTag();
 
                 if (isChecked) {
-                    //LibraryFragment.userSelection.add(sounds.get(position));
                     count++;
                 } else if (!isChecked) {
                     count--;
