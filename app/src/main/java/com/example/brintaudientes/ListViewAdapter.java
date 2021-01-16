@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +24,8 @@ public class ListViewAdapter extends ArrayAdapter<String> {
     private Context context;
     static int count = 0;
 
-    public ListViewAdapter(List<String> sounds, Context context){
-        super(context,R.layout.list_view_item,sounds);
+    public ListViewAdapter(List<String> sounds, Context context) {
+        super(context, R.layout.list_view_item, sounds);
         this.context = context;
         this.sounds = sounds;
     }
@@ -33,22 +34,22 @@ public class ListViewAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-        View row = inflater.inflate(R.layout.list_view_item,parent,false);
+        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+        View row = inflater.inflate(R.layout.list_view_item, parent, false);
         TextView soundNames = row.findViewById(R.id.sound_name);
         soundNames.setText(sounds.get(position));
 
         CheckBox checkBox = row.findViewById(R.id.iv_check_box);
 
 
-            checkBox.setTag(position);
+        checkBox.setTag(position);
         checkBox.setVisibility(View.VISIBLE);
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-               // int position = (int)buttonView.getTag();
+                // int position = (int)buttonView.getTag();
 
                 if (isChecked) {
                     count++;
@@ -59,18 +60,20 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                 if (count >= 5) {
                     buttonView.setChecked(false);
                     count--;
-                    Toast.makeText(context,"Du kan ikke vælge flere end "+ count +" sange",Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Ikke flere end " + count + " sange", Toast.LENGTH_SHORT).show();
                 } else {
                     int getPosition = (int) buttonView.getTag();
-
                     sounds.get(getPosition);
+
+                    if (LibraryFragment.userSelection.contains(sounds.get(position))) {
+                        LibraryFragment.userSelection.remove(sounds.get(position));
+
+                    } else {
+                        LibraryFragment.userSelection.add(sounds.get(position));
+                    }
+                    Toast.makeText(context, "Antal Item: " + LibraryFragment.userSelection.size(), Toast.LENGTH_LONG).show();
                 }
 
-               /* while (isChecked && count < 4) {
-                    LibraryFragment.userSelection.add(sounds.get(position));
-                    count++;
-                    }
-                count--;*/
              /*  if (LibraryFragment.userSelection.contains(sounds.get(position))){
                     LibraryFragment.userSelection.remove(sounds.get(position));
 
@@ -78,15 +81,15 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                     LibraryFragment.userSelection.add(sounds.get(position));
 
                 }*/
-                  //LibraryFragment.userSelection.setTitle(LibraryFragment.userSelection.size() + "items selected.. ");
+                //LibraryFragment.userSelection.setTitle(LibraryFragment.userSelection.size() + "items selected.. ");
                 //Toast.makeText(context,"Antal Item: " +LibraryFragment.userSelection.size(),Toast.LENGTH_LONG).show();
             }
         });
         return row;
     }
 
-    public void removeItems(List<String> items){
-        for (String item : items){
+    public void removeItems(List<String> items) {
+        for (String item : items) {
             sounds.remove(item);
         }
         notifyDataSetChanged();
