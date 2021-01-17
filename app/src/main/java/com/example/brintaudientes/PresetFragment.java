@@ -137,10 +137,6 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
         switch (v.getId()) {
             case R.id.select_preset_button_1:
-                ListViewAdapter.count = 0;
-                for (int i = 0; i < adapter.mCheckedStates.size() ; i++) {
-                    adapter.checkBox.setChecked(adapter.mCheckedStates.get(i));
-                }
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound, "add1")
                         .addToBackStack(null)

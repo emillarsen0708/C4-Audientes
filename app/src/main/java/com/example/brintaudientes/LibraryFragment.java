@@ -195,7 +195,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
                             chosenSoundNames.add(fields[i].getName());
                         }
                     }
-                    System.out.println(chosenSoundNames);
                 ListViewAdapter.count = 0;
                 FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
@@ -206,6 +205,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
             }
         });
         presetName = root.findViewById(R.id.preset_title_edittext);
+        System.out.println(chosenSoundNames);
 
 
         soundLibraryListView.setOnItemClickListener((parent, view, position, id) -> {
