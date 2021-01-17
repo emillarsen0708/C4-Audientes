@@ -89,6 +89,7 @@ public class LibraryFragment extends Fragment {
                 }
 
             }
+            Toast.makeText(getActivity(), itemSelected, Toast.LENGTH_SHORT).show();
             System.out.println(itemSelected);
 
         }
