@@ -2,6 +2,8 @@ package com.example.brintaudientes;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,10 +26,11 @@ public class ListViewAdapter extends ArrayAdapter<String> {
     private Context context;
     static int count = 0;
     CheckBox checkBox;
+
     SparseBooleanArray mCheckedStates = new SparseBooleanArray(sounds.size());
 
-    public ListViewAdapter(List<String> sounds, Context context){
-        super(context,R.layout.item_layout,sounds);
+    public ListViewAdapter(List<String> sounds, Context context) {
+        super(context, R.layout.item_layout, sounds);
         this.context = context;
         this.sounds = sounds;
     }
@@ -36,57 +39,84 @@ public class ListViewAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-        View row = inflater.inflate(R.layout.item_layout,parent,false);
+        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+        View row = inflater.inflate(R.layout.item_layout, parent, false);
         TextView soundNames = row.findViewById(R.id.song_name);
         soundNames.setText(sounds.get(position));
 
         checkBox = row.findViewById(R.id.checkbox);
         checkBox.setTag(position);
         checkBox.setVisibility(View.VISIBLE);
-        checkBox.setChecked(mCheckedStates.get(position));
+        checkBox.setChecked(Update(sounds.get(position)));
+
+
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                int position = (int)buttonView.getTag();
+                int position = (int) buttonView.getTag();
 
                 if (isChecked) {
+                    SaveIntoSharepreference(sounds.get(position), isChecked);
+                } else {
+                    SaveIntoSharepreference(sounds.get(position), isChecked);
+                }
+
+
+
+               /* int position = (int) buttonView.getTag();
+                if (isChecked) {
                     count++;
+                    SaveIntoSharepreference("ANDROID_TECH", isChecked);
                     mCheckedStates.put(position, true);
+
                 } else if (!isChecked) {
                     count--;
+                    SaveIntoSharepreference("ANDROID_TECH", isChecked);
                     mCheckedStates.put(position, false);
                 }
 
                 if (count >= 5) {
-                    Toast.makeText(context,"Du kan ikke vælge flere end "+ (count-1) +" sange",Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Du kan ikke vælge flere end " + (count - 1) + " sange", Toast.LENGTH_LONG).show();
                     buttonView.setChecked(false);
                     mCheckedStates.put(position, false);
                     count--;
 
                 } else {
                     sounds.get(position);
-                   /* if (LibraryFragment.userSelection.contains(sounds.get(getPosition))){
+
+                   *//* if (LibraryFragment.userSelection.contains(sounds.get(getPosition))){
                         LibraryFragment.userSelection.remove(sounds.get(getPosition));
                     } else{
                         LibraryFragment.userSelection.add(sounds.get(getPosition));
                     }
-                    Toast.makeText(context,"Antal Item: " +LibraryFragment.userSelection.size(),Toast.LENGTH_SHORT).show();*/
-                }
-                notifyDataSetChanged();
+                    Toast.makeText(context,"Antal Item: " +LibraryFragment.userSelection.size(),Toast.LENGTH_SHORT).show();*//*
+                }*/
+
             }
         });
         return row;
     }
 
-    public void removeItems(List<String> items){
-        for (String item : items){
+    public void removeItems(List<String> items) {
+        for (String item : items) {
             sounds.remove(item);
         }
         notifyDataSetChanged();
     }
 
+    private void SaveIntoSharepreference(String key, boolean value) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(key, value);
+        editor.apply();
+    }
+
+    private boolean Update(String key) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context);
+        boolean checkBoxValue = sharedPreferences.getBoolean(key, checkBox.isChecked());
+        return checkBoxValue;
+    }
 }
 

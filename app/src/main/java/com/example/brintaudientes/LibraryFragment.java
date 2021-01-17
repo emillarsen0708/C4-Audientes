@@ -95,7 +95,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
         buttonId = MainActivity.mybundle.getInt("buttonId");
 
         displaySelected = root.findViewById(R.id.display_selected_button);
-        displaySelected.setOnClickListener(new View.OnClickListener() {
+    /*    displaySelected.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String itemSelected = "Selected items:  \n";
@@ -105,7 +105,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
                     }
                 } Toast.makeText(getActivity(), itemSelected, Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
 
         soundLibraryListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
