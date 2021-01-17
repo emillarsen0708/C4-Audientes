@@ -1,3 +1,4 @@
+/*
 package com.example.brintaudientes;
 
 import android.app.Activity;
@@ -74,13 +75,15 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                     Toast.makeText(context, "Antal Item: " + LibraryFragment.userSelection.size(), Toast.LENGTH_LONG).show();
                 }
 
-             /*  if (LibraryFragment.userSelection.contains(sounds.get(position))){
+             */
+/*  if (LibraryFragment.userSelection.contains(sounds.get(position))){
                     LibraryFragment.userSelection.remove(sounds.get(position));
 
                 }else{
                     LibraryFragment.userSelection.add(sounds.get(position));
 
-                }*/
+                }*//*
+
                 //LibraryFragment.userSelection.setTitle(LibraryFragment.userSelection.size() + "items selected.. ");
                 //Toast.makeText(context,"Antal Item: " +LibraryFragment.userSelection.size(),Toast.LENGTH_LONG).show();
             }
@@ -98,3 +101,4 @@ public class ListViewAdapter extends ArrayAdapter<String> {
 
 }
 
+*/
