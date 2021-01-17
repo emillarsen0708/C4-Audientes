@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
+import java.util.List;
+
 import static android.view.View.GONE;
 import static android.view.View.INVISIBLE;
 
@@ -26,6 +28,8 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
     private SoundPool soundPool;
     private int sound1, sound2, sound3, sound4;
     private Button libraryButton;
+    ListViewAdapter adapter = null;
+
     private boolean play_pause_button = true;
     private final boolean waitForEdit = true;
     LibraryFragment addSound = new LibraryFragment();
@@ -61,6 +65,7 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
             @Override
             public void onClick(View v) {
+                System.out.println(addSound.chosenSoundNames);
                 LibraryFragment addFragment = new LibraryFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addFragment, "findThisFragment")
@@ -132,6 +137,10 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
         switch (v.getId()) {
             case R.id.select_preset_button_1:
+                ListViewAdapter.count = 0;
+                for (int i = 0; i < adapter.mCheckedStates.size() ; i++) {
+                    adapter.checkBox.setChecked(adapter.mCheckedStates.get(i));
+                }
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound, "add1")
                         .addToBackStack(null)

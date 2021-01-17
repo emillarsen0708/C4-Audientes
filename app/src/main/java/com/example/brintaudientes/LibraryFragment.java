@@ -68,7 +68,8 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
     private boolean isEditReady;
     CheckBox checkBox;
 
-    ArrayAdapter soundListAdapter;
+    public List <String> chosenSoundNames = new ArrayList<>();
+
     MediaPlayer mediaPlayer;
     private int nr = 4;
     Button button;
@@ -157,22 +158,8 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
             }
         });
 
-        addAsPreset = root.findViewById(R.id.add_as_preset_button);
         presetName = root.findViewById(R.id.preset_title_edittext);
 
-        addAsPreset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CharSequence input = presetName.getText();
-                listener.onInputLiSent(input);
-
-                FragmentManager fragmentManager = getParentFragmentManager();
-                fragmentManager.beginTransaction()
-                        .remove(LibraryFragment.this)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
 
 
         importLocalSound = root.findViewById(R.id.import_local_sound);
@@ -195,12 +182,20 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
         addAsPreset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 CharSequence input = presetName.getText().toString();
                 listener.onInputLiSent(input);
                 MainActivity.strBundle.putString("editText", presetName.getText().toString());
                 if (input.toString().isEmpty()) {
                     Toast.makeText(getActivity(), "Indtast et navn til dit preset", Toast.LENGTH_LONG).show();
                 } else {
+                    Field[] fields = R.raw.class.getFields();
+                    for (int i = 0; i < fields.length; i++) {
+                        if (adapter.mCheckedStates.get(i)) {
+                            chosenSoundNames.add(fields[i].getName());
+                        }
+                    }
+                    System.out.println(chosenSoundNames);
                 ListViewAdapter.count = 0;
                 FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
