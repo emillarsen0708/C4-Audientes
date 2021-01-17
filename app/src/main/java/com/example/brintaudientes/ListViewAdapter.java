@@ -55,12 +55,22 @@ public class ListViewAdapter extends ArrayAdapter<String> {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
+
                 int position = (int) buttonView.getTag();
 
                 if (isChecked) {
+                    count++;
                     SaveIntoSharepreference(sounds.get(position), isChecked);
+                } else if (!isChecked){
+                    count--;
+                    SaveIntoSharepreference(sounds.get(position), isChecked);
+                } if (count >= 5){
+                    Toast.makeText(context, "Du kan ikke vælge flere end " + (count - 1) + " sange", Toast.LENGTH_LONG).show();
+                    System.out.println(count);
+                    buttonView.setChecked(false);
+                    count--;
                 } else {
-                    SaveIntoSharepreference(sounds.get(position), isChecked);
+                    sounds.get(position);
                 }
 
 
@@ -68,12 +78,10 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                /* int position = (int) buttonView.getTag();
                 if (isChecked) {
                     count++;
-                    SaveIntoSharepreference("ANDROID_TECH", isChecked);
                     mCheckedStates.put(position, true);
 
                 } else if (!isChecked) {
                     count--;
-                    SaveIntoSharepreference("ANDROID_TECH", isChecked);
                     mCheckedStates.put(position, false);
                 }
 
