@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -14,6 +15,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -26,6 +28,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -46,7 +49,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
 
     private ListView soundLibraryListView;
     private ListViewAdapter adapter;
-    private List<String> sounds = new ArrayList<>();
+    public List<String> sounds = new ArrayList<>();
     public static List<String> userSelection = new ArrayList<>();
 
     public static boolean isActionMode = false;
@@ -63,6 +66,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
     PresetFragment presetFragment;
     private String name;
     private boolean isEditReady;
+    CheckBox checkBox;
 
     ArrayAdapter soundListAdapter;
     MediaPlayer mediaPlayer;
@@ -80,14 +84,28 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
 
 
         View root = inflater.inflate(R.layout.fragment_library, container, false);
+
         getSounds();
-        //Bundle bundle = this.getArguments();
-        buttonId = MainActivity.mybundle.getInt("buttonId");
 
         soundLibraryListView = root.findViewById(R.id.listview_songs);
         adapter = new ListViewAdapter(sounds, getActivity());
         soundLibraryListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
         soundLibraryListView.setAdapter(adapter);
+
+        buttonId = MainActivity.mybundle.getInt("buttonId");
+
+        displaySelected = root.findViewById(R.id.display_selected_button);
+        displaySelected.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String itemSelected = "Selected items:  \n";
+                for (int i = 0; i < soundLibraryListView.getCount() ; i++) {
+                    if(adapter.mCheckedStates.get(i)) {
+                        itemSelected += soundLibraryListView.getItemAtPosition(i) + "\n";
+                    }
+                } Toast.makeText(getActivity(), itemSelected, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         soundLibraryListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
@@ -139,7 +157,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
             }
         });
 
-        displaySelected = root.findViewById(R.id.display_selected_button);
         addAsPreset = root.findViewById(R.id.add_as_preset_button);
         presetName = root.findViewById(R.id.preset_title_edittext);
 
@@ -164,6 +181,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ListViewAdapter.count = 0;
                 FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
                         .remove(LibraryFragment.this)
@@ -180,12 +198,16 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
                 CharSequence input = presetName.getText().toString();
                 listener.onInputLiSent(input);
                 MainActivity.strBundle.putString("editText", presetName.getText().toString());
-                System.out.println(input);
+                if (input.toString().isEmpty()) {
+                    Toast.makeText(getActivity(), "Indtast et navn til dit preset", Toast.LENGTH_LONG).show();
+                } else {
+                ListViewAdapter.count = 0;
                 FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
                         .remove(LibraryFragment.this)
                         .addToBackStack(null)
                         .commit();
+                }
             }
         });
         presetName = root.findViewById(R.id.preset_title_edittext);
@@ -212,7 +234,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
         return root;
     }
 
-    private void getSounds() {
+    public void getSounds() {
         Field[] fields = R.raw.class.getFields();
         for (int i = 0; i < fields.length; i++) {
             sounds.add(fields[i].getName());
@@ -258,10 +280,30 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
     }
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_delete) {
+            String itemSelected = "Selected items:  \n";
+            for (int i = 0; i < soundLibraryListView.getCount(); i++) {
+                if (soundLibraryListView.isItemChecked(i)) {
+                    itemSelected += soundLibraryListView.getItemAtPosition(i) + "\n";
+                }
+
+            }
+            Toast.makeText(getActivity(), itemSelected, Toast.LENGTH_SHORT).show();
+            System.out.println(itemSelected);
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
     public void setVisibilityForButton(boolean bool) {
         if (bool) {
-            cancel.setVisibility(View.GONE);
+            soundLibraryListView.setSelector(R.drawable.list_item_selector);
             displaySelected.setVisibility(View.GONE);
+            cancel.setVisibility(View.GONE);
             addAsPreset.setVisibility(View.GONE);
             presetName.setVisibility(View.GONE);
             ViewGroup.LayoutParams list = soundLibraryListView.getLayoutParams();
@@ -271,7 +313,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
         } else {
             cancel.setVisibility(View.VISIBLE);
             cancel.setVisibility(View.VISIBLE);
-            displaySelected.setVisibility(View.VISIBLE);
             addAsPreset.setVisibility(View.VISIBLE);
             presetName.setVisibility(View.VISIBLE);
         }

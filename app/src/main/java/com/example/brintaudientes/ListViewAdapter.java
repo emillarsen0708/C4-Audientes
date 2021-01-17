@@ -2,6 +2,7 @@ package com.example.brintaudientes;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,8 @@ public class ListViewAdapter extends ArrayAdapter<String> {
     private List<String> sounds = new ArrayList<>();
     private Context context;
     static int count = 0;
+    CheckBox checkBox;
+    SparseBooleanArray mCheckedStates = new SparseBooleanArray(sounds.size());
 
     public ListViewAdapter(List<String> sounds, Context context){
         super(context,R.layout.item_layout,sounds);
@@ -38,25 +41,29 @@ public class ListViewAdapter extends ArrayAdapter<String> {
         TextView soundNames = row.findViewById(R.id.song_name);
         soundNames.setText(sounds.get(position));
 
-        CheckBox checkBox = row.findViewById(R.id.checkbox);
+        checkBox = row.findViewById(R.id.checkbox);
         checkBox.setTag(position);
         checkBox.setVisibility(View.VISIBLE);
+        checkBox.setChecked(mCheckedStates.get(position));
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                 int position = (int)buttonView.getTag();
+                int position = (int)buttonView.getTag();
 
                 if (isChecked) {
                     count++;
+                    mCheckedStates.put(position, true);
                 } else if (!isChecked) {
                     count--;
+                    mCheckedStates.put(position, false);
                 }
 
                 if (count >= 5) {
-                    Toast.makeText(context,"Du kan ikke vælge flere end "+ count +" sange",Toast.LENGTH_LONG).show();
+                    Toast.makeText(context,"Du kan ikke vælge flere end "+ (count-1) +" sange",Toast.LENGTH_LONG).show();
                     buttonView.setChecked(false);
+                    mCheckedStates.put(position, false);
                     count--;
 
                 } else {
@@ -68,6 +75,7 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                     }
                     Toast.makeText(context,"Antal Item: " +LibraryFragment.userSelection.size(),Toast.LENGTH_SHORT).show();*/
                 }
+                notifyDataSetChanged();
             }
         });
         return row;
@@ -79,7 +87,6 @@ public class ListViewAdapter extends ArrayAdapter<String> {
         }
         notifyDataSetChanged();
     }
-
 
 }
 

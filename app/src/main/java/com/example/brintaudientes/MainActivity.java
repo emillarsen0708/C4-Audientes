@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     public static Bundle mybundle = new Bundle();
     String editText;
     public static Bundle strBundle = new Bundle();
+    final EditLibraryFragment editLibraryFragment = new EditLibraryFragment();
 
 
 
@@ -89,10 +90,12 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         BottomNavigationView buttNav = findViewById(R.id.bottom);
         buttNav.setOnNavigationItemSelectedListener(naviListner);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, libraryFragment, "3").hide(libraryFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, editLibraryFragment, "3").hide(editLibraryFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, volumeFragment, "2").hide(volumeFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, presetFragment, "1").commit();
         libraryCancel = findViewById(R.id.cancel_button_library);
@@ -119,12 +122,11 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                             selectedFragment = volumeFragment;
                             return true;
                         case R.id.nav_preset:
-                            libraryFragment.setVisibilityForButton(true);
                             getSupportFragmentManager().beginTransaction()
                                     .hide(selectedFragment)
-                                    .show(libraryFragment)
+                                    .show(editLibraryFragment)
                                     .commit();
-                            selectedFragment = libraryFragment;
+                            selectedFragment = editLibraryFragment;
                             return true;
                     }
                     return false;
