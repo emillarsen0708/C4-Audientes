@@ -19,8 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
-        android:background="@color/colorPrimaryDark"
         android:layout_marginRight="25dp"
+        android:button="@drawable/image_chechbox"
         android:id="@+id/checkbox"
 
         />
