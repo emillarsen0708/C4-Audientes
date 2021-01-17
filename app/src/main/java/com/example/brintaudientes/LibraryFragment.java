@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Environment;
+import android.os.Parcelable;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
@@ -26,6 +27,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -46,8 +48,10 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
 
     private ListView soundLibraryListView;
     private ListViewAdapter adapter;
-    private List<String> sounds = new ArrayList<>();
+    public static List<String> sounds = new ArrayList<>();
     public static List<String> userSelection = new ArrayList<>();
+
+    public static int count = 0;
 
     public static boolean isActionMode = false;
     public static ActionMode actionMode = null;
@@ -63,12 +67,14 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
     PresetFragment presetFragment;
     private String name;
     private boolean isEditReady;
+    Parcelable state;
 
     ArrayAdapter soundListAdapter;
     MediaPlayer mediaPlayer;
     private int nr = 4;
     Button button;
     int buttonId;
+    public static int count2 = 0;
 
     public static int selectedPosition = 0;
 
@@ -81,62 +87,33 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
 
         View root = inflater.inflate(R.layout.fragment_library, container, false);
         getSounds();
+
         //Bundle bundle = this.getArguments();
         buttonId = MainActivity.mybundle.getInt("buttonId");
 
         soundLibraryListView = root.findViewById(R.id.listview_songs);
         adapter = new ListViewAdapter(sounds, getActivity());
-        soundLibraryListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
         soundLibraryListView.setAdapter(adapter);
+        soundLibraryListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
 
-        soundLibraryListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+        soundLibraryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-
-             /*   if (userSelection.contains(sounds.get(position))) {
-                    userSelection.remove(sounds.get(position));
-                } else {
-                    userSelection.add(sounds.get(position));
-                }*/
-
-                //mode.setTitle(userSelection.size() + " items selected.. ");
-            }
-
-
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                MenuInflater inflater = mode.getMenuInflater();
-                inflater.inflate(R.menu.context_menu, menu);
-                isActionMode = true;
-                actionMode = null;
-                return true;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_delete:
-                        adapter.removeItems(userSelection);
-                        mode.finish();
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-                isActionMode = false;
-                actionMode = null;
-                userSelection.clear();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                soundLibraryListView.setItemChecked(position, true);
+                System.out.println(soundLibraryListView.getCheckedItemCount());
             }
         });
+        soundLibraryListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount){
+            }
+        });
+
+        System.out.println(count2);
 
         displaySelected = root.findViewById(R.id.display_selected_button);
         addAsPreset = root.findViewById(R.id.add_as_preset_button);
@@ -155,59 +132,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
                         .commit();
             }
         });
-
-       /* soundLibraryListView = root.findViewById(R.id.listview_songs);
-        arrayList = new ArrayList<String>();
-        Field[] fields = R.raw.class.getFields();
-        for (int i = 0; i < fields.length; i++) {
-            arrayList.add(fields[i].getName());
-        }
-        soundListAdapter = new ArrayAdapter(getActivity(), R.layout.listview_text_color, arrayList);
-        soundLibraryListView.setAdapter(soundListAdapter);
-
-        System.out.println(buttonId);
-        soundLibraryListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE);
-
-        soundLibraryListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
-            @Override
-            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
-                SparseBooleanArray checkedItemPositions = soundLibraryListView.getCheckedItemPositions();
-                int count = 0;
-                if (checkedItemPositions.size() > 4) {
-                    soundLibraryListView.setItemChecked(position, false);
-                } else {
-                    soundLibraryListView.setItemChecked(position, true);
-                }
-            }
-
-            @Override
-            public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-                return false;
-            }
-
-            @Override
-            public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-                return false;
-            }
-
-            @Override
-            public void onDestroyActionMode(ActionMode mode) {
-
-            }
-        });
-
-        soundLibraryListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            }
-        });
-
-*/
 
         importLocalSound = root.findViewById(R.id.import_local_sound);
 
@@ -241,7 +165,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
         });
         presetName = root.findViewById(R.id.preset_title_edittext);
 
-
         soundLibraryListView.setOnItemClickListener((parent, view, position, id) -> {
             // Ends the Mediaplayer if a Mediaplayer already exist
             view.setSelected(true);
@@ -253,7 +176,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
                 mediaPlayer.release();
             }
 
-            // Creates a Mediaplayer and start playing from Mediaplayer
             int resId = getResources().getIdentifier(arrayList.get(position), "raw", getActivity().getPackageName());
             mediaPlayer = MediaPlayer.create(getActivity(), resId);
             mediaPlayer.start();
