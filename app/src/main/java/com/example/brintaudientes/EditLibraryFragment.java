@@ -41,7 +41,6 @@ public class EditLibraryFragment extends Fragment {
         arrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.listview_text_color, sounds);
         libraryListView.setAdapter(arrayAdapter);
 
-
         return root;
     }
 }

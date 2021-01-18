@@ -181,7 +181,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ListViewAdapter.count = 0;
                 FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
                         .remove(LibraryFragment.this)
@@ -201,7 +200,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
                 if (input.toString().isEmpty()) {
                     Toast.makeText(getActivity(), "Indtast et navn til dit preset", Toast.LENGTH_LONG).show();
                 } else {
-                ListViewAdapter.count = 0;
                 FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
                         .remove(LibraryFragment.this)

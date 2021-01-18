@@ -17,6 +17,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +30,10 @@ public class ListViewAdapter extends ArrayAdapter<String> {
     private Context context;
     static int count = 0;
     CheckBox checkBox;
+    TextView soundNames;
+    ViewHolder holder;
 
-   // SparseBooleanArray mCheckedStates = new SparseBooleanArray(sounds.size());
+   SparseBooleanArray mCheckedStates = new SparseBooleanArray(sounds.size());
 
     public ListViewAdapter(List<String> sounds, Context context) {
         super(context, R.layout.item_layout, sounds);
@@ -40,42 +45,42 @@ public class ListViewAdapter extends ArrayAdapter<String> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View row = inflater.inflate(R.layout.item_layout, parent, false);
-        TextView soundNames = row.findViewById(R.id.song_name);
-        soundNames.setText(sounds.get(position));
+        if (convertView == null) {
+            LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+            convertView = inflater.inflate(R.layout.item_layout, parent, false);
+            holder = new ViewHolder();
+            holder.txtView = (TextView) convertView.findViewById(R.id.song_name);
+            holder.chkBox = (CheckBox) convertView.findViewById(R.id.checkbox);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+        holder.txtView.setText(sounds.get(position));
+        holder.chkBox.setTag(position);
+        holder.chkBox.setChecked(Update(sounds.get(position)));
+        count = UpdateCountValue("jep");
 
-        checkBox = row.findViewById(R.id.checkbox);
-        checkBox.setTag(position);
-        checkBox.setVisibility(View.VISIBLE);
-        checkBox.setChecked(Update(sounds.get(position)));
-        count= UpdateCountValue("key");
-
-
-        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        holder.chkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
 
                 int position = (int) buttonView.getTag();
 
                 if (isChecked) {
                     count++;
-                    SaveIntoSharepreference(sounds.get(position), isChecked);
-                    SaveCount("key",count);
+                    SaveCount("jep", count);
+                    SaveIntoSharepreference(sounds.get(position), true);
                     Log.d(sounds.get(position), "Checked");
                 } else if (!isChecked) {
                     count--;
-                    SaveIntoSharepreference(sounds.get(position), isChecked);
-                    SaveCount("key",count);
+                    SaveCount("jep", count);
+                    SaveIntoSharepreference(sounds.get(position), false);
                     Log.d(sounds.get(position), "Unchecked");
-                }
-                 if (count >= 4) {
-                    Toast.makeText(context, "Du kan ikke vælge flere end " + (count - 1) + " sange", Toast.LENGTH_LONG).show();
-                    checkBox.setClickable(false);
-                     SaveCount("key",count);
-                    //buttonView.setChecked(false);
+                } if (count >= 5) {
                     count--;
+                    SaveCount("jep", count);
+                    Toast.makeText(context, "Du kan ikke vælge flere end " + (count) + " sange", Toast.LENGTH_LONG).show();
+                     //buttonView.setChecked(false);
                 } else {
                     sounds.get(position);
                 }
@@ -88,7 +93,8 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                 }*/
             }
         });
-        return row;
+        System.out.println((count));
+        return convertView;
     }
 
     public void removeItems(List<String> items) {
@@ -107,19 +113,21 @@ public class ListViewAdapter extends ArrayAdapter<String> {
 
     private boolean Update(String key) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context);
-        boolean checkBoxValue = sharedPreferences.getBoolean(key, checkBox.isChecked());
+        boolean checkBoxValue = sharedPreferences.getBoolean(key, false);
         return checkBoxValue;
     }
+
     private void SaveCount(String key, int countValue) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("key", countValue);
+        editor.putInt(key, countValue);
         editor.apply();
     }
+
+
     private int UpdateCountValue(String key) {
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context);
-        int checkBoxValue = sharedPreferences.getInt("key", count);
-        return checkBoxValue;
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        return sharedPreferences.getInt(key, 0);
     }
 }
 
