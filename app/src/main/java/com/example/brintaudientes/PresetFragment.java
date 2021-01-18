@@ -1,28 +1,21 @@
 package com.example.brintaudientes;
 
-import android.content.Intent;
 import android.media.SoundPool;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import static android.view.View.GONE;
-import static android.view.View.INVISIBLE;
 
 public class PresetFragment extends Fragment implements AccessFragmentViews, View.OnClickListener {
 
@@ -33,20 +26,15 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
     private boolean play_pause_button = true;
 
     private final boolean waitForEdit = true;
-
-    //PresetFragment playSound = new PresetFragment();
-    //PresetFragment playSound1 = new PresetFragment();
-    //PresetFragment playSound2 = new PresetFragment();
-
-    LibraryFragment addSound = new LibraryFragment();
-    LibraryFragment addSound2 = new LibraryFragment();
-    LibraryFragment addSound3 = new LibraryFragment();
-    LibraryFragment addSound4 = new LibraryFragment();
-    LibraryFragment addSound5 = new LibraryFragment();
-    LibraryFragment addSound6 = new LibraryFragment();
-    LibraryFragment addSound7 = new LibraryFragment();
-    LibraryFragment addSound8 = new LibraryFragment();
-    LibraryFragment addSound9 = new LibraryFragment();
+    LibraryEditFragment addSound = new LibraryEditFragment();
+    LibraryEditFragment addSound2 = new LibraryEditFragment();
+    LibraryEditFragment addSound3 = new LibraryEditFragment();
+    LibraryEditFragment addSound4 = new LibraryEditFragment();
+    LibraryEditFragment addSound5 = new LibraryEditFragment();
+    LibraryEditFragment addSound6 = new LibraryEditFragment();
+    LibraryEditFragment addSound7 = new LibraryEditFragment();
+    LibraryEditFragment addSound8 = new LibraryEditFragment();
+    LibraryEditFragment addSound9 = new LibraryEditFragment();
 
     RadioGroup radioGroup;
     RadioButton radioButton;
@@ -80,8 +68,7 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
             @Override
             public void onClick(View v) {
-
-                LibraryFragment addFragment = new LibraryFragment();
+                LibraryEditFragment addFragment = new LibraryEditFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addFragment, "findThisFragment")
                         .addToBackStack(null)
@@ -203,11 +190,11 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
     }
 
-    public LibraryFragment getLibraryFragment(LibraryFragment libraryFragment) {
-        if (libraryFragment == null) {
-            return new LibraryFragment();
+    public LibraryEditFragment getLibraryFragment(LibraryEditFragment libraryEditFragment) {
+        if (libraryEditFragment == null) {
+            return new LibraryEditFragment();
         } else {
-            return libraryFragment;
+            return libraryEditFragment;
             }
     }
 
