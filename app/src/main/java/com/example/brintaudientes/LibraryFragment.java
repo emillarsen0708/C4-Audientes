@@ -55,6 +55,8 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
     public static boolean isActionMode = false;
     public static ActionMode actionMode = null;
 
+
+
     public interface FragmentLiListener {
         void onInputLiSent(CharSequence input);
     }
@@ -69,6 +71,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
     CheckBox checkBox;
 
     public List <String> chosenSoundNames = new ArrayList<>();
+    public Field [] soundFields = R.raw.class.getFields();
 
     MediaPlayer mediaPlayer;
     private int nr = 4;
@@ -197,6 +200,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
                         }
 
                     }
+                    System.out.println(fields[1]);
                 ListViewAdapter.count = 0;
                 FragmentManager fragmentManager = getParentFragmentManager();
                 fragmentManager.beginTransaction()
@@ -208,7 +212,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
             }
         });
         presetName = root.findViewById(R.id.preset_title_edittext);
-        System.out.println(chosenSoundNames);
 
 
         soundLibraryListView.setOnItemClickListener((parent, view, position, id) -> {
@@ -216,7 +219,6 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
             view.setSelected(true);
             String pathname = String.valueOf(R.drawable.ic_selected_sound);
             view.setBackground(Drawable.createFromPath(pathname));
-
 
             if (mediaPlayer != null) {
                 mediaPlayer.release();

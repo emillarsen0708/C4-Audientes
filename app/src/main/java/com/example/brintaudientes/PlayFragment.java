@@ -44,6 +44,7 @@ public class PlayFragment extends Fragment {
     int tracktimep1;
     int tracktimep2;
 
+
     MediaPlayer player1;
     MediaPlayer player2;
     MediaPlayer player3;
@@ -65,7 +66,7 @@ public class PlayFragment extends Fragment {
         btplay = root.findViewById(R.id.btplay);
         btpause = root.findViewById(R.id.btpause);
 
-        player1 = MediaPlayer.create(getContext(), R.raw.bee_buzzing_a);
+        player1 = MediaPlayer.create(getContext(), R.raw.cricket );
         player2 = MediaPlayer.create(getContext(), R.raw.pack_of_dogs);
         player3 = MediaPlayer.create(getContext(), R.raw.cicada);
 
