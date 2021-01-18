@@ -70,6 +70,7 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                 if (count == 4) {
                     Toast.makeText(context, "Du kan ikke vælge flere end " + (count - 1) + " sange", Toast.LENGTH_LONG).show();
                     checkBox.setClickable(false);
+                    buttonView.setChecked(false);
                     count--;
                 } else {
                     sounds.get(position);

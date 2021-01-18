@@ -1,11 +1,18 @@
+
 package com.example.brintaudientes;
 
+import android.content.Context;
 import android.nfc.Tag;
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.InputDevice;
@@ -22,6 +29,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class VolumeFragment extends Fragment implements View.OnTouchListener {
 
+    private GLSurfaceView glView;
     private Button adjustButton = null;
 
     private float x;
@@ -37,9 +45,15 @@ public class VolumeFragment extends Fragment implements View.OnTouchListener {
 
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_volume, container, false);
+
+        //glView = new VolGLSurfaceView(this);
+
+        //setContentView(glView);
+
 
 
         Toast.makeText(getActivity().getApplicationContext(), "Move the ball to adjust volume", Toast.LENGTH_LONG)
