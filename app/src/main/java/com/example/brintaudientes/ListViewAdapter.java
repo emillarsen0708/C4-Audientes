@@ -75,6 +75,7 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                     checkBox.setClickable(false);
                      SaveCount("key",count);
                     //buttonView.setChecked(false);
+                    buttonView.setChecked(false);
                     count--;
                 } else {
                     sounds.get(position);

@@ -50,8 +50,8 @@ import static android.view.View.TEXT_ALIGNMENT_CENTER;
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener, AccessFragmentViews, LibraryFragment.FragmentLiListener {
 
    // ORDRE AF PRESETS
-   /*
-    PresetBuilding MakeConcurrents = new ConcurrentPresetBuilding();
+
+    /*PresetBuilding MakeConcurrents = new ConcurrentPresetBuilding();
     Preset oneSound = MakeConcurrents.orderThePreset("ONE");
     Preset twoSound = MakeConcurrents.orderThePreset("TWO");
     Preset threeSound = MakeConcurrents.orderThePreset("THREE");
@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     Preset oneSound = MakeContinuous.orderThePreset("ONE");
     Preset twoSound = MakeContinuous.orderThePreset("TWO");
     Preset threeSound = MakeContinuous.orderThePreset("THREE");
-    Preset fourSound = MakeContinuous.orderThePreset("FOUR");
-    */
+    Preset fourSound = MakeContinuous.orderThePreset("FOUR");*/
+
 
     PlayFragment playFragment = new PlayFragment();
     final VolumeFragment volumeFragment = new VolumeFragment();
@@ -157,8 +157,8 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         buttonId = MainActivity.mybundle.getInt("buttonId");
         if (!input.toString().isEmpty()) {
             ViewGroup.LayoutParams params = presetFragment.getView().findViewById(buttonId).getLayoutParams();
-            params.height = 262;
-            params.width = 262;
+            params.height = 200;
+            params.width = 200;
             ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) presetFragment.getView().findViewById(buttonId).getLayoutParams();
             switch (buttonId) {
                 case R.id.select_preset_button_1:
@@ -172,54 +172,54 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                     break;
                 case R.id.plus_button1:
                     presetFragment.add5.setVisibility(View.VISIBLE);
-                    marginLayoutParams.setMarginStart(103);
-                    marginLayoutParams.setMargins(0,670,0,0);
+                    marginLayoutParams.setMarginStart(75);
+                    marginLayoutParams.setMargins(0,50,0,0);
                     presetFragment.add4.setLayoutParams(marginLayoutParams);
-                    presetFragment.add4.setBackgroundResource(R.drawable.preset_add_rectangle);
+                    presetFragment.add4.setBackgroundResource(R.drawable.preset_selector);
                     presetFragment.add4.setLayoutParams(params);
                     presetFragment.add4.setText(input);
                     break;
                 case R.id.plus_button2:
                     presetFragment.add6.setVisibility(View.VISIBLE);
-                    marginLayoutParams.setMarginStart(430);
-                    marginLayoutParams.setMargins(0,670,0,0);
+                    marginLayoutParams.setMarginStart(335);
+                    marginLayoutParams.setMargins(0,-200,0,0);
                     presetFragment.add5.setLayoutParams(marginLayoutParams);
-                    presetFragment.add5.setBackgroundResource(R.drawable.preset_add_rectangle);
+                    presetFragment.add5.setBackgroundResource(R.drawable.preset_selector);
                     presetFragment.add5.setLayoutParams(params);
                     presetFragment.add5.setText(input);
                     break;
                 case R.id.plus_button3:
                     presetFragment.add7.setVisibility(View.VISIBLE);
-                    marginLayoutParams.setMarginStart(750);
-                    marginLayoutParams.setMargins(0,670,0,0);
+                    marginLayoutParams.setMarginStart(600);
+                    marginLayoutParams.setMargins(0,-200,0,0);
                     presetFragment.add6.setLayoutParams(marginLayoutParams);
-                    presetFragment.add6.setBackgroundResource(R.drawable.preset_add_rectangle);
+                    presetFragment.add6.setBackgroundResource(R.drawable.preset_selector);
                     presetFragment.add6.setLayoutParams(params);
                     presetFragment.add6.setText(input);
                     break;
                 case R.id.plus_button4:
                     presetFragment.add8.setVisibility(View.VISIBLE);
-                    marginLayoutParams.setMarginStart(103);
-                    marginLayoutParams.setMargins(0,1000,0,0);
+                    marginLayoutParams.setMarginStart(75);
+                    marginLayoutParams.setMargins(0,50,0,0);
                     presetFragment.add7.setLayoutParams(marginLayoutParams);
-                    presetFragment.add7.setBackgroundResource(R.drawable.preset_add_rectangle);
+                    presetFragment.add7.setBackgroundResource(R.drawable.preset_selector);
                     presetFragment.add7.setLayoutParams(params);
                     presetFragment.add7.setText(input);
                     break;
                 case R.id.plus_button5:
                     presetFragment.add9.setVisibility(View.VISIBLE);
-                    marginLayoutParams.setMarginStart(430);
-                    marginLayoutParams.setMargins(0,1000,0,0);
+                    marginLayoutParams.setMarginStart(335);
+                    marginLayoutParams.setMargins(0,-200,0,0);
                     presetFragment.add8.setLayoutParams(marginLayoutParams);
-                    presetFragment.add8.setBackgroundResource(R.drawable.preset_add_rectangle);
+                    presetFragment.add8.setBackgroundResource(R.drawable.preset_selector);
                     presetFragment.add8.setLayoutParams(params);
                     presetFragment.add8.setText(input);
                     break;
                 case R.id.plus_button6:
-                    marginLayoutParams.setMarginStart(750);
-                    marginLayoutParams.setMargins(0,1000,0,0);
+                    marginLayoutParams.setMarginStart(600);
+                    marginLayoutParams.setMargins(0,-200,0,0);
                     presetFragment.add9.setLayoutParams(marginLayoutParams);
-                    presetFragment.add9.setBackgroundResource(R.drawable.preset_add_rectangle);
+                    presetFragment.add9.setBackgroundResource(R.drawable.preset_selector);
                     presetFragment.add9.setLayoutParams(params);
                     presetFragment.add9.setText(input);
                     break;

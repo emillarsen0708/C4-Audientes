@@ -10,12 +10,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import static android.view.View.GONE;
 import static android.view.View.INVISIBLE;
@@ -27,6 +31,16 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
     private int sound1, sound2, sound3, sound4;
     private Button libraryButton;
     private boolean play_pause_button = true;
+    private boolean addP1 = true;
+    private boolean addP2 = true;
+    private boolean addP3 = true;
+    private boolean addP4 = true;
+    private boolean addP5 = true;
+    private boolean addP6 = true;
+    private boolean addP7 = true;
+    private boolean addP8 = true;
+    private boolean addP9 = true;
+
     private final boolean waitForEdit = true;
     LibraryFragment addSound = new LibraryFragment();
     LibraryFragment addSound2 = new LibraryFragment();
@@ -37,10 +51,19 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
     LibraryFragment addSound7 = new LibraryFragment();
     LibraryFragment addSound8 = new LibraryFragment();
     LibraryFragment addSound9 = new LibraryFragment();
+
+    RadioGroup radioGroup;
+    RadioButton radioButton;
+    TextView textView;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_preset, container, false);
+
+        radioGroup = root.findViewById(R.id.radio_group);
+
+        //Button buttonApply = root.findViewById(R.id.button_apply);
 
         play = root.findViewById(R.id.play_button);
         play.setOnClickListener(new View.OnClickListener() {
