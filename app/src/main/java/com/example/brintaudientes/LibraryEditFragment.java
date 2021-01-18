@@ -37,10 +37,14 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
     private ListView soundLibraryListView;
     private ListViewAdapter adapter;
     public List<String> sounds = new ArrayList<>();
-    public static List<String> userSelection = new ArrayList<>();
+    public List<String> userSelection = new ArrayList<>();
 
     public static boolean isActionMode = false;
     public static ActionMode actionMode = null;
+
+    Field [] fields = R.raw.class.getFields();
+
+    public List<String> chosenSoundNames = new ArrayList<>();
 
     public interface FragmentLiListener {
         void onInputLiSent(CharSequence input);
@@ -144,22 +148,7 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
             }
         });
 
-        addAsPreset = root.findViewById(R.id.add_as_preset_button);
         presetName = root.findViewById(R.id.preset_title_edittext);
-
-        addAsPreset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CharSequence input = presetName.getText();
-                listener.onInputLiSent(input);
-
-                FragmentManager fragmentManager = getParentFragmentManager();
-                fragmentManager.beginTransaction()
-                        .remove(LibraryEditFragment.this)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
 
 
         importLocalSound = root.findViewById(R.id.import_local_sound);
@@ -190,12 +179,19 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
                     userSelection = adapter.getSelectedSongs();
                     Log.d(userSelection.toString(),"Er blevet tilføjet");
                 } else {
-                ListViewAdapter.count = 0;
-                FragmentManager fragmentManager = getParentFragmentManager();
-                fragmentManager.beginTransaction()
-                        .remove(LibraryEditFragment.this)
-                        .addToBackStack(null)
-                        .commit();
+                    Field[] fields = R.raw.class.getFields();
+                    for (int i = 0; i < fields.length; i++) {
+                        if (adapter.mCheckedStates.get(i)) {
+                            chosenSoundNames.add(fields[i].getName());
+                        }
+                    }
+                    System.out.println(chosenSoundNames);
+                    ListViewAdapter.count = 0;
+                    FragmentManager fragmentManager = getParentFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .remove(LibraryEditFragment.this)
+                            .addToBackStack(null)
+                            .commit();
                 }
             }
         });
@@ -224,7 +220,6 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
     }
 
     public void getSounds() {
-        Field[] fields = R.raw.class.getFields();
         for (int i = 0; i < fields.length; i++) {
             sounds.add(fields[i].getName());
         }

@@ -23,11 +23,13 @@ import java.util.List;
 
 public class ListViewAdapter extends ArrayAdapter<String> {
 
-    private List<String> sounds;
-    private List<String> selectedSongs = new ArrayList<String>();
+    private List<String> sounds = new ArrayList<>();
     private Context context;
     static int count = 0;
     CheckBox checkBox;
+
+    SparseBooleanArray mCheckedStates = new SparseBooleanArray(sounds.size());
+
 
    // SparseBooleanArray mCheckedStates = new SparseBooleanArray(sounds.size());
 
@@ -49,35 +51,34 @@ public class ListViewAdapter extends ArrayAdapter<String> {
         checkBox = row.findViewById(R.id.checkbox);
         checkBox.setTag(position);
         checkBox.setVisibility(View.VISIBLE);
-        checkBox.setChecked(Update(sounds.get(position)));
-        UpdateCountValue("key");
+        checkBox.setChecked(mCheckedStates.get(position));
+
+        /*checkBox.setChecked(Update(sounds.get(position)));
+        UpdateCountValue("key");*/
 
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-
                 int position = (int) buttonView.getTag();
 
                 if (isChecked) {
                     count++;
-                    selectedSongs.add(sounds.get(position));
-
-                    SaveIntoSharepreference(sounds.get(position), isChecked);
+                    mCheckedStates.put(position, true);
+                   /* SaveIntoSharepreference(sounds.get(position), isChecked);
                     SaveCount("key",count);
-                    Log.d(sounds.get(position), "Checked");
+                    Log.d(sounds.get(position), "Checked");*/
                 } else if (!isChecked) {
                     count--;
-                    SaveIntoSharepreference(sounds.get(position), isChecked);
+                    mCheckedStates.put(position, false);
+                    /*SaveIntoSharepreference(sounds.get(position), isChecked);
                     SaveCount("key",count);
-                    Log.d(sounds.get(position), "Unchecked");
+                    Log.d(sounds.get(position), "Unchecked");*/
                 }
                  if (count >= 5) {
+                     mCheckedStates.put(position, false);
                     Toast.makeText(context, "Du kan ikke vælge flere end " + (count - 1) + " sange", Toast.LENGTH_LONG).show();
-                    checkBox.setClickable(false);
-                     SaveCount("key",count);
-                    //buttonView.setChecked(false);
+                    /* SaveCount("key",count);*/
                     buttonView.setChecked(false);
                     count--;
                 } else {
@@ -121,17 +122,10 @@ public class ListViewAdapter extends ArrayAdapter<String> {
         editor.putInt("key", countValue);
         editor.apply();
     }
-    public List<String> getSelectedSongs(){
-        return selectedSongs;
-
-    }
     private int UpdateCountValue(String key) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context);
         int countValue = sharedPreferences.getInt("key", count);
         return countValue;
     }
-
-
 }
-
 

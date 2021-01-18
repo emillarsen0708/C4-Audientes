@@ -42,12 +42,13 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     final VolumeFragment volumeFragment = new VolumeFragment();
     final LibraryFragment libraryFragment = new LibraryFragment();
     Fragment selectedFragment = presetFragment;
-
+    Button libraryCancel;
+    //String buttonText1, buttonText2, buttonText3, buttonText4, buttonText5, buttonText6, buttonText7, buttonText8 = "Add new";
+    int buttonId;
+    private String presetName;
     public static Bundle mybundle = new Bundle();
     public static Bundle strBundle = new Bundle();
 
-    Button libraryCancel;
-    int buttonId;
 
 
     @Override
@@ -119,8 +120,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     public void onInputLiSent(CharSequence input) {
         buttonId = MainActivity.mybundle.getInt("buttonId");
         if (!input.toString().isEmpty()) {
-            ViewGroup.LayoutParams params = presetFragment.getView().findViewById(buttonId).getLayoutParams();
-            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) presetFragment.getView().findViewById(buttonId).getLayoutParams();
             switch (buttonId) {
                 case R.id.select_preset_button_1:
                     presetFragment.add1.setText(input);

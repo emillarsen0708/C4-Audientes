@@ -1,5 +1,6 @@
 package com.example.brintaudientes;
 
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 
@@ -17,7 +18,7 @@ import android.widget.TextView;
 
 import static android.view.View.GONE;
 
-public class PresetFragment extends Fragment implements AccessFragmentViews, View.OnClickListener {
+public class PresetFragment extends Fragment implements AccessFragmentViews {
 
     Button play, edit;
     RadioButton add1, add2, add3, add4, add5, add6, add7, add8, add9;
@@ -53,6 +54,14 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
                 if ((play != null) && (play_pause_button)) {
                     play.setBackgroundResource(R.drawable.ic_pause_icon);
                     play_pause_button = false;
+                    if (add1.isChecked()) {
+                        for (int i = 0; i < addSound.chosenSoundNames.size(); i++) {
+                            MediaPlayer mediaPlayer = new MediaPlayer();
+                            mediaPlayer = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                            mediaPlayer.start();
+                        }
+                    }
+
                 } else {
                     if (play != null) play.setBackgroundResource(R.drawable.ic_play_icon);
                     play_pause_button = true;
@@ -61,50 +70,106 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
         });
         edit = root.findViewById(R.id.edit_preset_button);
         edit.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
 
-                if (play != null) play.setBackgroundResource(R.drawable.ic_play_icon);
-                play_pause_button = true;
+                if (add1.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound), "add1")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound.chosenSoundNames.isEmpty()) {
+                        addSound.chosenSoundNames.removeAll(addSound.chosenSoundNames);
+                    }
+                } else if (add2.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound2), "add2")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound2.chosenSoundNames.isEmpty()) {
+                        addSound2.chosenSoundNames.removeAll(addSound2.chosenSoundNames);
+                    }
+                } else if (add3.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound3), "add3")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound2.chosenSoundNames.isEmpty()) {
+                        addSound2.chosenSoundNames.removeAll(addSound2.chosenSoundNames);
+                    }
+                } else if (add4.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound4), "add4")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound2.chosenSoundNames.isEmpty()) {
+                        addSound2.chosenSoundNames.removeAll(addSound2.chosenSoundNames);
+                    }
+                } else if (add5.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound5), "add5")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound5.chosenSoundNames.isEmpty()) {
+                        addSound5.chosenSoundNames.removeAll(addSound5.chosenSoundNames);
+                    }
+                } else if (add6.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound6), "add6")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound6.chosenSoundNames.isEmpty()) {
+                        addSound6.chosenSoundNames.removeAll(addSound6.chosenSoundNames);
+                    }
 
-                LibraryEditFragment addFragment = new LibraryEditFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addFragment, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
-
+                } else if (add7.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound7), "add7")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound7.chosenSoundNames.isEmpty()) {
+                        addSound7.chosenSoundNames.removeAll(addSound7.chosenSoundNames);
+                    }
+                } else if (add8.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound8), "add8")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound8.chosenSoundNames.isEmpty()) {
+                        addSound8.chosenSoundNames.removeAll(addSound8.chosenSoundNames);
+                    }
+                } else if (add9.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound9), "add9")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound9.chosenSoundNames.isEmpty()) {
+                        addSound9.chosenSoundNames.removeAll(addSound9.chosenSoundNames);
+                    }
+                }
             }
         });
 
         add1 = root.findViewById(R.id.select_preset_button_1);
-        add1.setOnClickListener(this);
+
 
         add2 = root.findViewById(R.id.select_preset_button_2);
-        add2.setOnClickListener(this);
 
         add3 = root.findViewById(R.id.select_preset_button_3);
-        add3.setOnClickListener(this);
 
         add4 = root.findViewById(R.id.select_preset_button_4);
-        add4.setOnClickListener(this);
 
         add5 = root.findViewById(R.id.select_preset_button_5);
-        add5.setOnClickListener(this);
 
         add6 = root.findViewById(R.id.select_preset_button_6);
-        add6.setOnClickListener(this);
 
         add7 = root.findViewById(R.id.select_preset_button_7);
-        add7.setOnClickListener(this);
         add7.setVisibility(GONE);
 
         add8 = root.findViewById(R.id.select_preset_button_8);
-        add8.setOnClickListener(this);
         add8.setVisibility(GONE);
 
         add9 = root.findViewById(R.id.select_preset_button_9);
-        add9.setOnClickListener(this);
         add9.setVisibility(GONE);
 
         return root;
@@ -113,7 +178,7 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
     public void setVisibilityForButton(boolean bool) {}
     @Override
     public void readExternalStorage() {}
-    @Override
+    /*@Override
     public void onClick(View v) {
 
         getLibraryFragment(addSound);
@@ -136,9 +201,9 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
             case R.id.select_preset_button_7:
             case R.id.select_preset_button_8:
             case R.id.select_preset_button_9:
-                if ((play != null) && (play_pause_button))
+               *//* if ((play != null) && (play_pause_button))
                     play.setBackgroundResource(R.drawable.ic_pause_icon);
-                    play_pause_button = false;
+                    play_pause_button = false;*//*
                 break;
             default:
                 throw new RuntimeException("Unknown button ID");
@@ -146,7 +211,7 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
         }
         MainActivity.mybundle.putInt("buttonId", v.getId());
 
-    }
+    }*/
 
     public LibraryEditFragment getLibraryFragment(LibraryEditFragment libraryEditFragment) {
         if (libraryEditFragment == null) {
