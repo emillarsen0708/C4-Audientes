@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ public class ListViewAdapter extends ArrayAdapter<String> {
     static int count = 0;
     CheckBox checkBox;
 
-    SparseBooleanArray mCheckedStates = new SparseBooleanArray(sounds.size());
+   // SparseBooleanArray mCheckedStates = new SparseBooleanArray(sounds.size());
 
     public ListViewAdapter(List<String> sounds, Context context) {
         super(context, R.layout.item_layout, sounds);
@@ -50,7 +51,6 @@ public class ListViewAdapter extends ArrayAdapter<String> {
         checkBox.setChecked(Update(sounds.get(position)));
 
 
-
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -61,47 +61,26 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                 if (isChecked) {
                     count++;
                     SaveIntoSharepreference(sounds.get(position), isChecked);
-                } else if (!isChecked){
-                    count--;
-                    SaveIntoSharepreference(sounds.get(position), isChecked);
-                } if (count >= 5){
-                    Toast.makeText(context, "Du kan ikke vælge flere end " + (count - 1) + " sange", Toast.LENGTH_LONG).show();
-                    System.out.println(count);
-                    buttonView.setChecked(false);
-                    count--;
-                } else {
-                    sounds.get(position);
-                }
-
-
-
-               /* int position = (int) buttonView.getTag();
-                if (isChecked) {
-                    count++;
-                    mCheckedStates.put(position, true);
-
+                    Log.d(sounds.get(position), "Checked");
                 } else if (!isChecked) {
                     count--;
-                    mCheckedStates.put(position, false);
+                    SaveIntoSharepreference(sounds.get(position), isChecked);
+                    Log.d(sounds.get(position), "Unchecked");
                 }
-
-                if (count >= 5) {
+                if (count == 4) {
                     Toast.makeText(context, "Du kan ikke vælge flere end " + (count - 1) + " sange", Toast.LENGTH_LONG).show();
-                    buttonView.setChecked(false);
-                    mCheckedStates.put(position, false);
+                    checkBox.setClickable(false);
                     count--;
-
                 } else {
                     sounds.get(position);
-
-                   *//* if (LibraryFragment.userSelection.contains(sounds.get(getPosition))){
+                }
+               /* if (LibraryFragment.userSelection.contains(sounds.get(getPosition))){
                         LibraryFragment.userSelection.remove(sounds.get(getPosition));
                     } else{
                         LibraryFragment.userSelection.add(sounds.get(getPosition));
                     }
                     Toast.makeText(context,"Antal Item: " +LibraryFragment.userSelection.size(),Toast.LENGTH_SHORT).show();*//*
                 }*/
-
             }
         });
         return row;
