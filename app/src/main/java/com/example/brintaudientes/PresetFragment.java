@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,7 +19,7 @@ import android.widget.TextView;
 
 import static android.view.View.GONE;
 
-public class PresetFragment extends Fragment implements AccessFragmentViews {
+public class PresetFragment extends Fragment implements View.OnTouchListener {
 
     Button play, edit;
     RadioButton add1, add2, add3, add4, add5, add6, add7, add8, add9;
@@ -151,17 +152,22 @@ public class PresetFragment extends Fragment implements AccessFragmentViews {
         });
 
         add1 = root.findViewById(R.id.select_preset_button_1);
-
+        add1.setOnTouchListener(this);
 
         add2 = root.findViewById(R.id.select_preset_button_2);
+        add2.setOnTouchListener(this);
 
         add3 = root.findViewById(R.id.select_preset_button_3);
+        add3.setOnTouchListener(this);
 
         add4 = root.findViewById(R.id.select_preset_button_4);
+        add4.setOnTouchListener(this);
 
         add5 = root.findViewById(R.id.select_preset_button_5);
+        add5.setOnTouchListener(this);
 
         add6 = root.findViewById(R.id.select_preset_button_6);
+        add6.setOnTouchListener(this);
 
         add7 = root.findViewById(R.id.select_preset_button_7);
         add7.setVisibility(GONE);
@@ -174,23 +180,19 @@ public class PresetFragment extends Fragment implements AccessFragmentViews {
 
         return root;
     }
-    @Override
-    public void setVisibilityForButton(boolean bool) {}
-    @Override
-    public void readExternalStorage() {}
-    /*@Override
-    public void onClick(View v) {
 
-        getLibraryFragment(addSound);
-        getLibraryFragment(addSound2);
-        getLibraryFragment(addSound3);
-        getLibraryFragment(addSound4);
-        getLibraryFragment(addSound5);
-        getLibraryFragment(addSound6);
-        getLibraryFragment(addSound7);
-        getLibraryFragment(addSound8);
-        getLibraryFragment(addSound9);
 
+
+    public LibraryEditFragment getLibraryFragment(LibraryEditFragment libraryEditFragment) {
+        if (libraryEditFragment == null) {
+            return new LibraryEditFragment();
+        } else {
+            return libraryEditFragment;
+        }
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
         switch (v.getId()) {
             case R.id.select_preset_button_1:
             case R.id.select_preset_button_2:
@@ -201,24 +203,12 @@ public class PresetFragment extends Fragment implements AccessFragmentViews {
             case R.id.select_preset_button_7:
             case R.id.select_preset_button_8:
             case R.id.select_preset_button_9:
-               *//* if ((play != null) && (play_pause_button))
-                    play.setBackgroundResource(R.drawable.ic_pause_icon);
-                    play_pause_button = false;*//*
                 break;
             default:
                 throw new RuntimeException("Unknown button ID");
 
         }
         MainActivity.mybundle.putInt("buttonId", v.getId());
-
-    }*/
-
-    public LibraryEditFragment getLibraryFragment(LibraryEditFragment libraryEditFragment) {
-        if (libraryEditFragment == null) {
-            return new LibraryEditFragment();
-        } else {
-            return libraryEditFragment;
-            }
+        return false;
     }
-
 }

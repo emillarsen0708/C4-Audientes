@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.nav_play:
-                            presetFragment.setVisibilityForButton(true);
                             getSupportFragmentManager().beginTransaction()
                                     .hide(selectedFragment)
                                     .show(presetFragment)
