@@ -40,22 +40,21 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     //PlayFragment playFragment = new PlayFragment();
     final PresetFragment presetFragment = new PresetFragment();
     final VolumeFragment volumeFragment = new VolumeFragment();
-    static MediaPlayer mMediaPlayer;
-    int currentIndex = 0;
-    private Runnable runnable;
-    private AudioManager SoundManager;
-    final PresetFragment presetFragment = new PresetFragment();
-    Fragment selectedFragment = presetFragment;
-    Button libraryCancel;
-    //String buttonText1, buttonText2, buttonText3, buttonText4, buttonText5, buttonText6, buttonText7, buttonText8 = "Add new";
-    int buttonId;
-    private String presetName;
-    public static Bundle mybundle = new Bundle();
-    //String editText;
-    public static Bundle strBundle = new Bundle();
     final LibraryFragment libraryFragment = new LibraryFragment();
+    Fragment selectedFragment = presetFragment;
 
+    public static Bundle mybundle = new Bundle();
+    public static Bundle strBundle = new Bundle();
 
+    Button libraryCancel;
+    int buttonId;
+
+    //static MediaPlayer mMediaPlayer;
+    //int currentIndex = 0;
+    //private Runnable runnable;
+    //private AudioManager SoundManager;
+    //private String presetName;
+//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,8 +126,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         buttonId = MainActivity.mybundle.getInt("buttonId");
         if (!input.toString().isEmpty()) {
             ViewGroup.LayoutParams params = presetFragment.getView().findViewById(buttonId).getLayoutParams();
-            params.height = 200;
-            params.width = 200;
             ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) presetFragment.getView().findViewById(buttonId).getLayoutParams();
             switch (buttonId) {
                 case R.id.select_preset_button_1:
@@ -140,57 +137,22 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                 case R.id.select_preset_button_3:
                     presetFragment.add3.setText(input);
                     break;
-                case R.id.plus_button1:
-                    presetFragment.add5.setVisibility(View.VISIBLE);
-                    marginLayoutParams.setMarginStart(75);
-                    marginLayoutParams.setMargins(0,50,0,0);
-                    presetFragment.add4.setLayoutParams(marginLayoutParams);
-                    presetFragment.add4.setBackgroundResource(R.drawable.preset_selector);
-                    presetFragment.add4.setLayoutParams(params);
+                case R.id.select_preset_button_4:
                     presetFragment.add4.setText(input);
                     break;
-                case R.id.plus_button2:
-                    presetFragment.add6.setVisibility(View.VISIBLE);
-                    marginLayoutParams.setMarginStart(335);
-                    marginLayoutParams.setMargins(0,-200,0,0);
-                    presetFragment.add5.setLayoutParams(marginLayoutParams);
-                    presetFragment.add5.setBackgroundResource(R.drawable.preset_selector);
-                    presetFragment.add5.setLayoutParams(params);
+                case R.id.select_preset_button_5:
                     presetFragment.add5.setText(input);
                     break;
-                case R.id.plus_button3:
-                    presetFragment.add7.setVisibility(View.VISIBLE);
-                    marginLayoutParams.setMarginStart(600);
-                    marginLayoutParams.setMargins(0,-200,0,0);
-                    presetFragment.add6.setLayoutParams(marginLayoutParams);
-                    presetFragment.add6.setBackgroundResource(R.drawable.preset_selector);
-                    presetFragment.add6.setLayoutParams(params);
+                case R.id.select_preset_button_6:
                     presetFragment.add6.setText(input);
                     break;
-                case R.id.plus_button4:
-                    presetFragment.add8.setVisibility(View.VISIBLE);
-                    marginLayoutParams.setMarginStart(75);
-                    marginLayoutParams.setMargins(0,50,0,0);
-                    presetFragment.add7.setLayoutParams(marginLayoutParams);
-                    presetFragment.add7.setBackgroundResource(R.drawable.preset_selector);
-                    presetFragment.add7.setLayoutParams(params);
+                case R.id.select_preset_button_7:
                     presetFragment.add7.setText(input);
                     break;
-                case R.id.plus_button5:
-                    presetFragment.add9.setVisibility(View.VISIBLE);
-                    marginLayoutParams.setMarginStart(335);
-                    marginLayoutParams.setMargins(0,-200,0,0);
-                    presetFragment.add8.setLayoutParams(marginLayoutParams);
-                    presetFragment.add8.setBackgroundResource(R.drawable.preset_selector);
-                    presetFragment.add8.setLayoutParams(params);
+                case R.id.select_preset_button_8:
                     presetFragment.add8.setText(input);
                     break;
-                case R.id.plus_button6:
-                    marginLayoutParams.setMarginStart(600);
-                    marginLayoutParams.setMargins(0,-200,0,0);
-                    presetFragment.add9.setLayoutParams(marginLayoutParams);
-                    presetFragment.add9.setBackgroundResource(R.drawable.preset_selector);
-                    presetFragment.add9.setLayoutParams(params);
+                case R.id.select_preset_button_9:
                     presetFragment.add9.setText(input);
                     break;
             }

@@ -1,5 +1,4 @@
-/*
-package com.example.brintaudientes;
+/*package com.example.brintaudientes;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
@@ -29,5 +28,5 @@ public class VolGLRenderer implements GLSurfaceView.Renderer {
 // Set the viewport to the size of the view.
         GLES20.glViewport(0, 0, width, height);
     }
-}
-*/
+}*/
+
