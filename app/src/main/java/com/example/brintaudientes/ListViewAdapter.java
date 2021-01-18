@@ -23,7 +23,8 @@ import java.util.List;
 
 public class ListViewAdapter extends ArrayAdapter<String> {
 
-    private List<String> sounds = new ArrayList<>();
+    private List<String> sounds;
+    private List<String> selectedSongs = new ArrayList<String>();
     private Context context;
     static int count = 0;
     CheckBox checkBox;
@@ -61,6 +62,8 @@ public class ListViewAdapter extends ArrayAdapter<String> {
 
                 if (isChecked) {
                     count++;
+                    selectedSongs.add(sounds.get(position));
+
                     SaveIntoSharepreference(sounds.get(position), isChecked);
                     SaveCount("key",count);
                     Log.d(sounds.get(position), "Checked");
@@ -118,10 +121,17 @@ public class ListViewAdapter extends ArrayAdapter<String> {
         editor.putInt("key", countValue);
         editor.apply();
     }
+    public List<String> getSelectedSongs(){
+        return selectedSongs;
+
+    }
     private int UpdateCountValue(String key) {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context);
         int countValue = sharedPreferences.getInt("key", count);
         return countValue;
     }
+
+
 }
+
 

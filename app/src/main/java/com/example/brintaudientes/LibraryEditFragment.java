@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Environment;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -186,6 +187,8 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
                 MainActivity.strBundle.putString("editText", presetName.getText().toString());
                 if (input.toString().isEmpty()) {
                     Toast.makeText(getActivity(), "Indtast et navn til dit preset", Toast.LENGTH_LONG).show();
+                    userSelection = adapter.getSelectedSongs();
+                    Log.d(userSelection.toString(),"Er blevet tilføjet");
                 } else {
                 ListViewAdapter.count = 0;
                 FragmentManager fragmentManager = getParentFragmentManager();
