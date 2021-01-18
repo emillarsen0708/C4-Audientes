@@ -193,7 +193,9 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
                     for (int i = 0; i < fields.length; i++) {
                         if (adapter.mCheckedStates.get(i)) {
                             chosenSoundNames.add(fields[i].getName());
+
                         }
+
                     }
                 ListViewAdapter.count = 0;
                 FragmentManager fragmentManager = getParentFragmentManager();
@@ -202,6 +204,7 @@ public class LibraryFragment extends Fragment implements AccessFragmentViews{
                         .addToBackStack(null)
                         .commit();
                 }
+                System.out.println(chosenSoundNames.toString());
             }
         });
         presetName = root.findViewById(R.id.preset_title_edittext);
