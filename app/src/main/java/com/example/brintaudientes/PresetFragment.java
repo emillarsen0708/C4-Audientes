@@ -140,7 +140,6 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
     @Override
     public void onClick(View v) {
 
-        //getPresetFragment(playSound);
         getLibraryFragment(addSound);
         getLibraryFragment(addSound2);
         getLibraryFragment(addSound3);
