@@ -41,6 +41,8 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
     public static boolean isActionMode = false;
     public static ActionMode actionMode = null;
 
+    public List<String> chosenSoundNames = new ArrayList<>();
+
     public interface FragmentLiListener {
         void onInputLiSent(CharSequence input);
     }
@@ -152,11 +154,19 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
                 CharSequence input = presetName.getText();
                 listener.onInputLiSent(input);
 
-                FragmentManager fragmentManager = getParentFragmentManager();
-                fragmentManager.beginTransaction()
-                        .remove(LibraryEditFragment.this)
-                        .addToBackStack(null)
-                        .commit();
+                if (input.toString().isEmpty()) {
+                    Toast.makeText(getContext(), "Vælg et navn til dit preset", Toast.LENGTH_SHORT);
+                } else {
+                    for (int i = 0; i < adapter.m ; i++) {
+
+                    }
+
+                    FragmentManager fragmentManager = getParentFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .remove(LibraryEditFragment.this)
+                            .addToBackStack(null)
+                            .commit();
+                }
             }
         });
 

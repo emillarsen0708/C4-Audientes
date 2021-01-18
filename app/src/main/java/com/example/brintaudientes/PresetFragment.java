@@ -61,12 +61,30 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
         });
         edit = root.findViewById(R.id.edit_preset_button);
         edit.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
 
-                if (play != null) play.setBackgroundResource(R.drawable.ic_play_icon);
-                play_pause_button = true;
+                if (add1.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound), "add1")
+                            .addToBackStack(null)
+                            .commit();
+                } else if (add2.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound2), "add2")
+                            .addToBackStack(null)
+                            .commit();
+                } else if (add3.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound3), "add3")
+                            .addToBackStack(null)
+                            .commit();
+                } else if (add4.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound4), "add4")
+                            .addToBackStack(null)
+                            .commit();
+                }
 
                 LibraryEditFragment addFragment = new LibraryEditFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
@@ -79,6 +97,7 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
         add1 = root.findViewById(R.id.select_preset_button_1);
         add1.setOnClickListener(this);
+
 
         add2 = root.findViewById(R.id.select_preset_button_2);
         add2.setOnClickListener(this);

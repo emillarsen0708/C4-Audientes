@@ -28,6 +28,9 @@ public class ListViewAdapter extends ArrayAdapter<String> {
     static int count = 0;
     CheckBox checkBox;
 
+    SparseBooleanArray mCheckedStates = new SparseBooleanArray(sounds.size());
+
+
    // SparseBooleanArray mCheckedStates = new SparseBooleanArray(sounds.size());
 
     public ListViewAdapter(List<String> sounds, Context context) {
@@ -55,12 +58,11 @@ public class ListViewAdapter extends ArrayAdapter<String> {
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-
                 int position = (int) buttonView.getTag();
 
                 if (isChecked) {
                     count++;
+                    mCheckedStates.put(sounds.get(position), );
                     SaveIntoSharepreference(sounds.get(position), isChecked);
                     SaveCount("key",count);
                     Log.d(sounds.get(position), "Checked");
