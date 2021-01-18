@@ -176,15 +176,19 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
                 if (input.toString().isEmpty()) {
                     Toast.makeText(getActivity(), "Indtast et navn til dit preset", Toast.LENGTH_LONG).show();
                 } else {
-                    for (int i = 0; i < adapter.mCheckedStates.size() ; i++) {
-                        chosenSoundNames.add(fields[i].getName());
-                    } System.out.println(chosenSoundNames);
-                ListViewAdapter.count = 0;
-                FragmentManager fragmentManager = getParentFragmentManager();
-                fragmentManager.beginTransaction()
-                        .remove(LibraryEditFragment.this)
-                        .addToBackStack(null)
-                        .commit();
+                    Field[] fields = R.raw.class.getFields();
+                    for (int i = 0; i < fields.length; i++) {
+                        if (adapter.mCheckedStates.get(i)) {
+                            chosenSoundNames.add(fields[i].getName());
+                        }
+                    }
+                    System.out.println(chosenSoundNames);
+                    ListViewAdapter.count = 0;
+                    FragmentManager fragmentManager = getParentFragmentManager();
+                    fragmentManager.beginTransaction()
+                            .remove(LibraryEditFragment.this)
+                            .addToBackStack(null)
+                            .commit();
                 }
             }
         });

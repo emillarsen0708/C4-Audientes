@@ -76,6 +76,7 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                     Log.d(sounds.get(position), "Unchecked");*/
                 }
                  if (count >= 5) {
+                     mCheckedStates.put(position, false);
                     Toast.makeText(context, "Du kan ikke vælge flere end " + (count - 1) + " sange", Toast.LENGTH_LONG).show();
                     /* SaveCount("key",count);*/
                     buttonView.setChecked(false);

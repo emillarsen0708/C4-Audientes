@@ -69,29 +69,75 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
                             .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound), "add1")
                             .addToBackStack(null)
                             .commit();
+                    if (!addSound.chosenSoundNames.isEmpty()) {
+                        addSound.chosenSoundNames.removeAll(addSound.chosenSoundNames);
+                    }
                 } else if (add2.isChecked()) {
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound2), "add2")
                             .addToBackStack(null)
                             .commit();
+                    if (!addSound2.chosenSoundNames.isEmpty()) {
+                        addSound2.chosenSoundNames.removeAll(addSound2.chosenSoundNames);
+                    }
                 } else if (add3.isChecked()) {
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound3), "add3")
                             .addToBackStack(null)
                             .commit();
+                    if (!addSound2.chosenSoundNames.isEmpty()) {
+                        addSound2.chosenSoundNames.removeAll(addSound2.chosenSoundNames);
+                    }
                 } else if (add4.isChecked()) {
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound4), "add4")
                             .addToBackStack(null)
                             .commit();
+                    if (!addSound2.chosenSoundNames.isEmpty()) {
+                        addSound2.chosenSoundNames.removeAll(addSound2.chosenSoundNames);
+                    }
+                } else if (add5.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound5), "add5")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound5.chosenSoundNames.isEmpty()) {
+                        addSound5.chosenSoundNames.removeAll(addSound5.chosenSoundNames);
+                    }
+                } else if (add6.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound6), "add6")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound6.chosenSoundNames.isEmpty()) {
+                        addSound6.chosenSoundNames.removeAll(addSound6.chosenSoundNames);
+                    }
+
+                } else if (add7.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound7), "add7")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound7.chosenSoundNames.isEmpty()) {
+                        addSound7.chosenSoundNames.removeAll(addSound7.chosenSoundNames);
+                    }
+                } else if (add8.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound8), "add8")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound8.chosenSoundNames.isEmpty()) {
+                        addSound8.chosenSoundNames.removeAll(addSound8.chosenSoundNames);
+                    }
+                } else if (add9.isChecked()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound9), "add9")
+                            .addToBackStack(null)
+                            .commit();
+                    if (!addSound9.chosenSoundNames.isEmpty()) {
+                        addSound9.chosenSoundNames.removeAll(addSound9.chosenSoundNames);
+                    }
                 }
-
-                LibraryEditFragment addFragment = new LibraryEditFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addFragment, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
-
             }
         });
 

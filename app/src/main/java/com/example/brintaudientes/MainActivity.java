@@ -120,8 +120,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     public void onInputLiSent(CharSequence input) {
         buttonId = MainActivity.mybundle.getInt("buttonId");
         if (!input.toString().isEmpty()) {
-            ViewGroup.LayoutParams params = presetFragment.getView().findViewById(buttonId).getLayoutParams();
-            ViewGroup.MarginLayoutParams marginLayoutParams = (ViewGroup.MarginLayoutParams) presetFragment.getView().findViewById(buttonId).getLayoutParams();
             switch (buttonId) {
                 case R.id.select_preset_button_1:
                     presetFragment.add1.setText(input);
