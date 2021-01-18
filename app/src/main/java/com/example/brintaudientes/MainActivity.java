@@ -49,12 +49,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     Button libraryCancel;
     int buttonId;
 
-    //static MediaPlayer mMediaPlayer;
-    //int currentIndex = 0;
-    //private Runnable runnable;
-    //private AudioManager SoundManager;
-    //private String presetName;
-//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
