@@ -31,17 +31,13 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
     private int sound1, sound2, sound3, sound4;
     private Button libraryButton;
     private boolean play_pause_button = true;
-    private boolean addP1 = true;
-    private boolean addP2 = true;
-    private boolean addP3 = true;
-    private boolean addP4 = true;
-    private boolean addP5 = true;
-    private boolean addP6 = true;
-    private boolean addP7 = true;
-    private boolean addP8 = true;
-    private boolean addP9 = true;
 
     private final boolean waitForEdit = true;
+
+    //PresetFragment playSound = new PresetFragment();
+    //PresetFragment playSound1 = new PresetFragment();
+    //PresetFragment playSound2 = new PresetFragment();
+
     LibraryFragment addSound = new LibraryFragment();
     LibraryFragment addSound2 = new LibraryFragment();
     LibraryFragment addSound3 = new LibraryFragment();
@@ -84,6 +80,7 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
             @Override
             public void onClick(View v) {
+
                 LibraryFragment addFragment = new LibraryFragment();
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addFragment, "findThisFragment")
@@ -143,6 +140,7 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
     @Override
     public void onClick(View v) {
 
+        //getPresetFragment(playSound);
         getLibraryFragment(addSound);
         getLibraryFragment(addSound2);
         getLibraryFragment(addSound3);
@@ -155,23 +153,13 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
         switch (v.getId()) {
             case R.id.select_preset_button_1:
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addSound, "add1")
-                        .addToBackStack(null)
-                        .commit();
-                break;
             case R.id.select_preset_button_2:
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addSound2, "add2")
-                        .addToBackStack(null)
-                        .commit();
-                break;
             case R.id.select_preset_button_3:
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .add(((ViewGroup) getView().getParent()).getId(), addSound3, "add3")
-                        .addToBackStack(null)
-                        .commit();
+                if ((play != null) && (play_pause_button))
+                    play.setBackgroundResource(R.drawable.ic_pause_icon);
+                    play_pause_button = false;
                 break;
+
             case R.id.plus_button1:
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound4, "add4")

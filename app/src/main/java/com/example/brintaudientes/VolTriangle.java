@@ -1,11 +1,11 @@
-package com.example.brintaudientes;
+/*package com.example.brintaudientes;
 
 import android.opengl.GLES20;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
-/*
+
 public class VolTriangle {
 
     private FloatBuffer vertexBuffer;

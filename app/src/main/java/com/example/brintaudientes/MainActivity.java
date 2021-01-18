@@ -65,23 +65,27 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     Preset fourSound = MakeContinuous.orderThePreset("FOUR");*/
 
 
-    PlayFragment playFragment = new PlayFragment();
+    //PlayFragment playFragment = new PlayFragment();
+    final PresetFragment presetFragment = new PresetFragment();
     final VolumeFragment volumeFragment = new VolumeFragment();
     final LibraryFragment libraryFragment = new LibraryFragment();
+    final EditLibraryFragment editLibraryFragment = new EditLibraryFragment();
+
+
     static MediaPlayer mMediaPlayer;
     int currentIndex = 0;
     private Runnable runnable;
     private AudioManager SoundManager;
-    final PresetFragment presetFragment = new PresetFragment();
+
     Fragment selectedFragment = presetFragment;
     Button libraryCancel;
-    String buttonText1, buttonText2, buttonText3, buttonText4, buttonText5, buttonText6, buttonText7, buttonText8 = "Add new";
+    //String buttonText1, buttonText2, buttonText3, buttonText4, buttonText5, buttonText6, buttonText7, buttonText8 = "Add new";
     int buttonId;
     private String presetName;
     public static Bundle mybundle = new Bundle();
-    String editText;
+    //String editText;
     public static Bundle strBundle = new Bundle();
-    final EditLibraryFragment editLibraryFragment = new EditLibraryFragment();
+
 
 
 
@@ -89,8 +93,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         BottomNavigationView buttNav = findViewById(R.id.bottom);
         buttNav.setOnNavigationItemSelectedListener(naviListner);

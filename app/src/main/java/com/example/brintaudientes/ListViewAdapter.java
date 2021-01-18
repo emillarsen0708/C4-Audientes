@@ -67,13 +67,13 @@ public class ListViewAdapter extends ArrayAdapter<String> {
                     SaveIntoSharepreference(sounds.get(position), isChecked);
                     Log.d(sounds.get(position), "Unchecked");
                 }
-                if (count == 4) {
+                if (count > 4) {
                     Toast.makeText(context, "Du kan ikke vælge flere end " + (count - 1) + " sange", Toast.LENGTH_LONG).show();
                     checkBox.setClickable(false);
                     buttonView.setChecked(false);
                     count--;
                 } else {
-                    sounds.get(position);
+                    checkBox.setClickable(true);
                 }
                /* if (LibraryFragment.userSelection.contains(sounds.get(getPosition))){
                         LibraryFragment.userSelection.remove(sounds.get(getPosition));

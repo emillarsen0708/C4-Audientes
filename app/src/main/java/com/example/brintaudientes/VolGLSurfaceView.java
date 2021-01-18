@@ -1,5 +1,4 @@
 /*
-
 package com.example.brintaudientes;
 
 import android.content.Context;
@@ -19,5 +18,5 @@ public class VolGLSurfaceView extends GLSurfaceView{
         setRenderer(renderer);
     }
 }
-
 */
+
