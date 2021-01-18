@@ -1,6 +1,7 @@
 package com.example.brintaudientes;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +58,7 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
                     play_pause_button = false;
                 } else {
                     if (play != null) play.setBackgroundResource(R.drawable.ic_play_icon);
+
                     play_pause_button = true;
                 }
             }
@@ -137,10 +140,17 @@ public class PresetFragment extends Fragment implements AccessFragmentViews, Vie
 
         switch (v.getId()) {
             case R.id.select_preset_button_1:
+                if (!addSound.chosenSoundNames.isEmpty()) {
+                    for (int i = 0; i < addSound.chosenSoundNames.size(); i++) {
+                        MediaPlayer mediaPlayer = new MediaPlayer();
+                        mediaPlayer = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                        mediaPlayer.start();
+                    }
+                } else {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .add(((ViewGroup) getView().getParent()).getId(), addSound, "add1")
                         .addToBackStack(null)
-                        .commit();
+                        .commit(); }
                 break;
             case R.id.select_preset_button_2:
                 getActivity().getSupportFragmentManager().beginTransaction()
