@@ -4,50 +4,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 //import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelStoreOwner;
 
 
-import android.Manifest;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.FragmentManager;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.util.TypedValue;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
-import com.example.brintaudientes.preset.ConcurrentPresetBuilding;
-import com.example.brintaudientes.preset.Preset;
-import com.example.brintaudientes.preset.PresetBuilding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.sql.PreparedStatement;
-import java.util.ArrayList;
-import java.util.List;
-
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-import static android.view.View.GONE;
-import static android.view.View.TEXT_ALIGNMENT_CENTER;
 
 // todo: Få styr på skærmvending så player ikke kører videre mens player står i pause mode
 
-public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener, AccessFragmentViews, LibraryFragment.FragmentLiListener {
+public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener, AccessFragmentViews, LibraryEditFragment.FragmentLiListener {
 
    // ORDRE AF PRESETS
 
@@ -67,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
     PlayFragment playFragment = new PlayFragment();
     final VolumeFragment volumeFragment = new VolumeFragment();
-    final LibraryFragment libraryFragment = new LibraryFragment();
     static MediaPlayer mMediaPlayer;
     int currentIndex = 0;
     private Runnable runnable;
@@ -81,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     public static Bundle mybundle = new Bundle();
     String editText;
     public static Bundle strBundle = new Bundle();
-    final EditLibraryFragment editLibraryFragment = new EditLibraryFragment();
+    final LibraryFragment libraryFragment = new LibraryFragment();
 
 
 
@@ -95,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
         BottomNavigationView buttNav = findViewById(R.id.bottom);
         buttNav.setOnNavigationItemSelectedListener(naviListner);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, editLibraryFragment, "3").hide(editLibraryFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, libraryFragment, "3").hide(libraryFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, volumeFragment, "2").hide(volumeFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, presetFragment, "1").commit();
         libraryCancel = findViewById(R.id.cancel_button_library);
@@ -124,9 +95,9 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                         case R.id.nav_preset:
                             getSupportFragmentManager().beginTransaction()
                                     .hide(selectedFragment)
-                                    .show(editLibraryFragment)
+                                    .show(libraryFragment)
                                     .commit();
-                            selectedFragment = editLibraryFragment;
+                            selectedFragment = libraryFragment;
                             return true;
                     }
                     return false;
