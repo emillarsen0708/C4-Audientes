@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     int currentIndex = 0;
     private Runnable runnable;
     private AudioManager SoundManager;
-    final PresetFragment presetFragment = new PresetFragment();
     Fragment selectedFragment = presetFragment;
     Button libraryCancel;
     //String buttonText1, buttonText2, buttonText3, buttonText4, buttonText5, buttonText6, buttonText7, buttonText8 = "Add new";
