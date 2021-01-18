@@ -18,19 +18,16 @@ public class LibraryFragment extends Fragment {
     private final List<String> sounds = new ArrayList<>();
     private LibraryEditFragment libraryEditFragment;
     ArrayAdapter<String> arrayAdapter;
-
+    Field[] fields = R.raw.class.getFields();
 
     public LibraryFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_library_2, container, false);
-
-        Field[] fields = R.raw.class.getFields();
         for (int i = 0; i < fields.length; i++) {
             sounds.add(fields[i].getName());
         }

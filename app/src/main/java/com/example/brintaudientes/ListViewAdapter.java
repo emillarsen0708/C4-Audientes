@@ -51,8 +51,10 @@ public class ListViewAdapter extends ArrayAdapter<String> {
         checkBox = row.findViewById(R.id.checkbox);
         checkBox.setTag(position);
         checkBox.setVisibility(View.VISIBLE);
-        checkBox.setChecked(Update(sounds.get(position)));
-        UpdateCountValue("key");
+        checkBox.setChecked(mCheckedStates.get(position));
+
+        /*checkBox.setChecked(Update(sounds.get(position)));
+        UpdateCountValue("key");*/
 
 
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -62,21 +64,20 @@ public class ListViewAdapter extends ArrayAdapter<String> {
 
                 if (isChecked) {
                     count++;
-                    mCheckedStates.put(sounds.get(position), );
-                    SaveIntoSharepreference(sounds.get(position), isChecked);
+                    mCheckedStates.put(position, true);
+                   /* SaveIntoSharepreference(sounds.get(position), isChecked);
                     SaveCount("key",count);
-                    Log.d(sounds.get(position), "Checked");
+                    Log.d(sounds.get(position), "Checked");*/
                 } else if (!isChecked) {
                     count--;
-                    SaveIntoSharepreference(sounds.get(position), isChecked);
+                    mCheckedStates.put(position, false);
+                    /*SaveIntoSharepreference(sounds.get(position), isChecked);
                     SaveCount("key",count);
-                    Log.d(sounds.get(position), "Unchecked");
+                    Log.d(sounds.get(position), "Unchecked");*/
                 }
                  if (count >= 5) {
                     Toast.makeText(context, "Du kan ikke vælge flere end " + (count - 1) + " sange", Toast.LENGTH_LONG).show();
-                    checkBox.setClickable(false);
-                     SaveCount("key",count);
-                    //buttonView.setChecked(false);
+                    /* SaveCount("key",count);*/
                     buttonView.setChecked(false);
                     count--;
                 } else {
