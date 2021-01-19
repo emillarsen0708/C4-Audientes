@@ -1,6 +1,5 @@
 package com.example.brintaudientes;
 
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
@@ -13,7 +12,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.brintaudientes.PresetFragment.mediaPlayer;
 
 public class LibraryFragment extends Fragment {
 
@@ -23,6 +21,7 @@ public class LibraryFragment extends Fragment {
     private LibraryEditFragment libraryEditFragment;
     ArrayAdapter<String> arrayAdapter;
     Field[] fields = R.raw.class.getFields();
+    MediaPlayer mediaPlayer;
 
     public LibraryFragment() {
     }

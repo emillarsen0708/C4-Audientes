@@ -30,9 +30,6 @@ public class ListViewAdapter extends ArrayAdapter<String> {
 
     SparseBooleanArray mCheckedStates = new SparseBooleanArray(sounds.size());
 
-
-   // SparseBooleanArray mCheckedStates = new SparseBooleanArray(sounds.size());
-
     public ListViewAdapter(List<String> sounds, Context context) {
         super(context, R.layout.item_layout, sounds);
         this.context = context;

@@ -18,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -50,6 +51,7 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
         void onInputLiSent(CharSequence input);
     }
 
+
     ArrayList<String> arrayList;
 
     Button cancel, displaySelected, addAsPreset, importLocalSound, buttonPress;
@@ -70,6 +72,8 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
 
         // buttonId = MainActivity.mybundle.getInt("buttonId");
 
@@ -111,7 +115,6 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
 
                 //mode.setTitle(userSelection.size() + " items selected.. ");*/
             }
-
 
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
@@ -176,8 +179,6 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
                 MainActivity.strBundle.putString("editText", presetName.getText().toString());
                 if (input.toString().isEmpty()) {
                     Toast.makeText(getActivity(), "Indtast et navn til dit preset", Toast.LENGTH_LONG).show();
-                    userSelection = adapter.getSelectedSongs();
-                    Log.d(userSelection.toString(),"Er blevet tilføjet");
                 } else {
                     Field[] fields = R.raw.class.getFields();
                     for (int i = 0; i < fields.length; i++) {

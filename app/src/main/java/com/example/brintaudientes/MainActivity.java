@@ -22,16 +22,41 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener, AccessFragmentViews, LibraryEditFragment.FragmentLiListener {
 
+   // ORDRE AF PRESETS
+
+
+/*
+
+    PresetBuilding MakeConcurrents = new ConcurrentPresetBuilding();
+
+    //iterere over antal sange i chosenSongNames.
+
+    Preset oneSound = MakeConcurrents.orderThePreset("ONE");
+    Preset twoSound = MakeConcurrents.orderThePreset("TWO");
+    Preset threeSound = MakeConcurrents.orderThePreset("THREE");
+    Preset fourSound = MakeConcurrents.orderThePreset("FOUR");
+
+
+   PresetBuilding MakeContinuous = new ContinuousPresetBuilding();
+    Preset oneSound = MakeContinuous.orderThePreset("ONE");
+    Preset twoSound = MakeContinuous.orderThePreset("TWO");
+    Preset threeSound = MakeContinuous.orderThePreset("THREE");
+    Preset fourSound = MakeContinuous.orderThePreset("FOUR");*/
+
+
+    //PlayFragment playFragment = new PlayFragment();
     final PresetFragment presetFragment = new PresetFragment();
     final VolumeFragment volumeFragment = new VolumeFragment();
     final LibraryFragment libraryFragment = new LibraryFragment();
     Fragment selectedFragment = presetFragment;
     Button libraryCancel;
+    //String buttonText1, buttonText2, buttonText3, buttonText4, buttonText5, buttonText6, buttonText7, buttonText8 = "Add new";
     int buttonId;
     private String presetName;
     public static Bundle mybundle = new Bundle();
     public static Bundle strBundle = new Bundle();
-    SharedPreferences sharedPreferences;
+
+    LibraryEditFragment userselection = new LibraryEditFragment();
 
 
 
@@ -42,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
         BottomNavigationView buttNav = findViewById(R.id.bottom);
         buttNav.setOnNavigationItemSelectedListener(naviListner);
+
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, libraryFragment, "3").hide(libraryFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, volumeFragment, "2").hide(volumeFragment).commit();
@@ -80,7 +106,14 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                 }
             };
 
+    public int setUserSelection() {
+        int size = userselection.chosenSoundNames.size();
+        return size;
+    }
+
+
     public void setButtonTextString(String buttonText) {
+
     }
 
     @Override
@@ -121,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                 case R.id.select_preset_button_6:
                     presetFragment.add6.setText(input);
                     break;
+
             }
         }
     }
