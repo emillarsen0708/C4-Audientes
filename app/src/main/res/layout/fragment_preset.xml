@@ -147,50 +147,6 @@
                         android:textAppearance="@style/sonority_by2"
                         android:textStyle="bold" />
 
-                    <RadioButton
-                        android:id="@+id/select_preset_button_7"
-                        android:tag="add7"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="38dp"
-                        android:layout_marginTop="30dp"
-                        android:background="@drawable/preset_selector"
-                        android:button="@android:color/transparent"
-                        android:text="@string/add_new"
-                        android:textColor="@color/preset_text_color"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/sonority_by2"
-                        android:textStyle="bold" />
-
-                    <RadioButton
-                        android:id="@+id/select_preset_button_8"
-                        android:tag="add8"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="168dp"
-                        android:layout_marginTop="-100dp"
-                        android:background="@drawable/preset_selector"
-                        android:button="@android:color/transparent"
-                        android:text="@string/add_new"
-                        android:textColor="@color/preset_text_color"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/sonority_by2"
-                        android:textStyle="bold" />
-
-                    <RadioButton
-                        android:id="@+id/select_preset_button_9"
-                        android:tag="add9"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="298dp"
-                        android:layout_marginTop="-100dp"
-                        android:background="@drawable/preset_selector"
-                        android:button="@android:color/transparent"
-                        android:text="@string/add_new"
-                        android:textColor="@color/preset_text_color"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/sonority_by2"
-                        android:textStyle="bold" />
 
                 </RadioGroup>
 

@@ -42,10 +42,10 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
     LibraryEditFragment addSound5 = new LibraryEditFragment();
     LibraryEditFragment addSound6 = new LibraryEditFragment();
 
-    MediaPlayer mediaPlayer;
-    MediaPlayer mediaPlayer2;
-    MediaPlayer mediaPlayer3;
-    MediaPlayer mediaPlayer4;
+    public static MediaPlayer mediaPlayer;
+    public static MediaPlayer mediaPlayer2;
+    public static MediaPlayer mediaPlayer3;
+    public static MediaPlayer mediaPlayer4;
 
     Handler mp1_handler = new Handler(Looper.myLooper());
 
@@ -82,7 +82,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                     mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
                                 }
                                 mediaFiles[i].start();
-                                mediaFiles[i].setVolume(0.5f, 0.5f);
                                 playingCount.put(i, mediaFiles[i].isPlaying());
                             }
                             System.out.println(addSound.chosenSoundNames);

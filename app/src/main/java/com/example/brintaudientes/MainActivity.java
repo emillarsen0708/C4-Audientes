@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 
 
 import android.app.FragmentManager;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     private String presetName;
     public static Bundle mybundle = new Bundle();
     public static Bundle strBundle = new Bundle();
+    SharedPreferences sharedPreferences;
 
 
 
