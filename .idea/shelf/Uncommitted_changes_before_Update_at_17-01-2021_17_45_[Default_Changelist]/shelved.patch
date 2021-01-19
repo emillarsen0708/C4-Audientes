@@ -1,0 +1,56 @@
+Index: app/src/main/res/drawable/check_box_outline_blank.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/check_box_outline_blank.xml	(date 1610899098876)
++++ app/src/main/res/drawable/check_box_outline_blank.xml	(date 1610899098876)
+@@ -0,0 +1,5 @@
++<vector android:height="24dp" android:tint="#1B325F"
++    android:viewportHeight="24" android:viewportWidth="24"
++    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="@android:color/white" android:pathData="M19,5v14H5V5h14m0,-2H5c-1.1,0 -2,0.9 -2,2v14c0,1.1 0.9,2 2,2h14c1.1,0 2,-0.9 2,-2V5c0,-1.1 -0.9,-2 -2,-2z"/>
++</vector>
+Index: app/src/main/res/layout/item_layout.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<RelativeLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\" android:layout_width=\"match_parent\"\r\n    android:layout_height=\"50dp\" >\r\n\r\n    <TextView\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"match_parent\"\r\n        android:gravity=\"center\"\r\n        android:layout_marginLeft=\"25dp\"\r\n        android:text=\"18sp\"\r\n        android:textColor=\"#1B325F\"\r\n        android:textStyle=\"bold\"\r\n        android:id=\"@+id/song_name\"\r\n        android:layout_alignParentLeft=\"true\"/>\r\n\r\n    <CheckBox\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_alignParentRight=\"true\"\r\n        android:layout_centerInParent=\"true\"\r\n        android:background=\"#1B325F\"\r\n        android:layout_marginRight=\"25dp\"\r\n        android:id=\"@+id/checkbox\"\r\n\r\n        />\r\n\r\n</RelativeLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/item_layout.xml	(revision afd7ee64245939b385ab87d61fc9368ff82cee4a)
++++ app/src/main/res/layout/item_layout.xml	(date 1610901666805)
+@@ -19,7 +19,6 @@
+         android:layout_height="wrap_content"
+         android:layout_alignParentRight="true"
+         android:layout_centerInParent="true"
+-        android:background="#1B325F"
+         android:layout_marginRight="25dp"
+         android:id="@+id/checkbox"
+ 
+Index: app/src/main/res/drawable/flyben_check_24.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/flyben_check_24.xml	(date 1610900275063)
++++ app/src/main/res/drawable/flyben_check_24.xml	(date 1610900275063)
+@@ -0,0 +1,5 @@
++<vector android:height="24dp" android:tint="#1B325F"
++    android:viewportHeight="24" android:viewportWidth="24"
++    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="@android:color/white" android:pathData="M9,16.17L4.83,12l-1.42,1.41L9,19 21,7l-1.41,-1.41z"/>
++</vector>
+Index: app/src/main/res/drawable/ic_baseline_check_box_24.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/ic_baseline_check_box_24.xml	(date 1610899602459)
++++ app/src/main/res/drawable/ic_baseline_check_box_24.xml	(date 1610899602459)
+@@ -0,0 +1,5 @@
++<vector android:height="24dp" android:tint="#1B325F"
++    android:viewportHeight="24" android:viewportWidth="24"
++    android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
++    <path android:fillColor="@android:color/white" android:pathData="M19,3L5,3c-1.11,0 -2,0.9 -2,2v14c0,1.1 0.89,2 2,2h14c1.11,0 2,-0.9 2,-2L21,5c0,-1.1 -0.89,-2 -2,-2zM10,17l-5,-5 1.41,-1.41L10,14.17l7.59,-7.59L19,8l-9,9z"/>
++</vector>

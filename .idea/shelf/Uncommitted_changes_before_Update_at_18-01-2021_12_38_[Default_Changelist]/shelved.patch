@@ -1,0 +1,54 @@
+Index: app/src/main/java/com/example/brintaudientes/ListViewAdapter.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.brintaudientes;\r\n\r\nimport android.app.Activity;\r\nimport android.content.Context;\r\nimport android.content.SharedPreferences;\r\nimport android.preference.PreferenceManager;\r\nimport android.util.Log;\r\nimport android.util.SparseBooleanArray;\r\nimport android.view.LayoutInflater;\r\nimport android.view.View;\r\nimport android.view.ViewGroup;\r\nimport android.widget.ArrayAdapter;\r\nimport android.widget.CheckBox;\r\nimport android.widget.CompoundButton;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.annotation.NonNull;\r\nimport androidx.annotation.Nullable;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class ListViewAdapter extends ArrayAdapter<String> {\r\n\r\n    private List<String> sounds = new ArrayList<>();\r\n    private Context context;\r\n    static int count = 0;\r\n    CheckBox checkBox;\r\n\r\n   // SparseBooleanArray mCheckedStates = new SparseBooleanArray(sounds.size());\r\n\r\n    public ListViewAdapter(List<String> sounds, Context context) {\r\n        super(context, R.layout.item_layout, sounds);\r\n        this.context = context;\r\n        this.sounds = sounds;\r\n    }\r\n\r\n    @NonNull\r\n    @Override\r\n    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {\r\n\r\n        LayoutInflater inflater = ((Activity) context).getLayoutInflater();\r\n        View row = inflater.inflate(R.layout.item_layout, parent, false);\r\n        TextView soundNames = row.findViewById(R.id.song_name);\r\n        soundNames.setText(sounds.get(position));\r\n\r\n        checkBox = row.findViewById(R.id.checkbox);\r\n        checkBox.setTag(position);\r\n        checkBox.setVisibility(View.VISIBLE);\r\n        checkBox.setChecked(Update(sounds.get(position)));\r\n        count= UpdateCountValue(\"key\");\r\n\r\n\r\n        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {\r\n            @Override\r\n            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {\r\n\r\n\r\n                int position = (int) buttonView.getTag();\r\n\r\n                if (isChecked) {\r\n                    count++;\r\n                    SaveIntoSharepreference(sounds.get(position), isChecked);\r\n                    SaveCount(\"key\",count);\r\n                    Log.d(sounds.get(position), \"Checked\");\r\n                } else if (!isChecked) {\r\n                    count--;\r\n                    SaveIntoSharepreference(sounds.get(position), isChecked);\r\n                    SaveCount(\"key\",count);\r\n                    Log.d(sounds.get(position), \"Unchecked\");\r\n                }\r\n                 if (count >= 4) {\r\n                    Toast.makeText(context, \"Du kan ikke vælge flere end \" + (count - 1) + \" sange\", Toast.LENGTH_LONG).show();\r\n                    checkBox.setClickable(false);\r\n                     SaveCount(\"key\",count);\r\n                    //buttonView.setChecked(false);\r\n                    count--;\r\n                } else {\r\n                    sounds.get(position);\r\n                }\r\n               /* if (LibraryFragment.userSelection.contains(sounds.get(getPosition))){\r\n                        LibraryFragment.userSelection.remove(sounds.get(getPosition));\r\n                    } else{\r\n                        LibraryFragment.userSelection.add(sounds.get(getPosition));\r\n                    }\r\n                    Toast.makeText(context,\"Antal Item: \" +LibraryFragment.userSelection.size(),Toast.LENGTH_SHORT).show();*//*\r\n                }*/\r\n            }\r\n        });\r\n        return row;\r\n    }\r\n\r\n    public void removeItems(List<String> items) {\r\n        for (String item : items) {\r\n            sounds.remove(item);\r\n        }\r\n        notifyDataSetChanged();\r\n    }\r\n\r\n    private void SaveIntoSharepreference(String key, boolean value) {\r\n        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);\r\n        SharedPreferences.Editor editor = sharedPreferences.edit();\r\n        editor.putBoolean(key, value);\r\n        editor.apply();\r\n    }\r\n\r\n    private boolean Update(String key) {\r\n        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context);\r\n        boolean checkBoxValue = sharedPreferences.getBoolean(key, checkBox.isChecked());\r\n        return checkBoxValue;\r\n    }\r\n    private void SaveCount(String key, int countValue) {\r\n        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);\r\n        SharedPreferences.Editor editor = sharedPreferences.edit();\r\n        editor.putInt(\"key\", countValue);\r\n        editor.apply();\r\n    }\r\n    private int UpdateCountValue(String key) {\r\n        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context);\r\n        int checkBoxValue = sharedPreferences.getInt(\"key\", count);\r\n        return checkBoxValue;\r\n    }\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/brintaudientes/ListViewAdapter.java	(revision 496c9cea47bb8017460c45ecc268e7c074aec0c7)
++++ app/src/main/java/com/example/brintaudientes/ListViewAdapter.java	(date 1610964454266)
+@@ -49,7 +49,7 @@
+         checkBox.setTag(position);
+         checkBox.setVisibility(View.VISIBLE);
+         checkBox.setChecked(Update(sounds.get(position)));
+-        count= UpdateCountValue("key");
++        UpdateCountValue("key");
+ 
+ 
+         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+@@ -70,7 +70,7 @@
+                     SaveCount("key",count);
+                     Log.d(sounds.get(position), "Unchecked");
+                 }
+-                 if (count >= 4) {
++                 if (count <= 4) {
+                     Toast.makeText(context, "Du kan ikke vælge flere end " + (count - 1) + " sange", Toast.LENGTH_LONG).show();
+                     checkBox.setClickable(false);
+                      SaveCount("key",count);
+@@ -88,6 +88,7 @@
+                 }*/
+             }
+         });
++
+         return row;
+     }
+ 
+@@ -111,15 +112,15 @@
+         return checkBoxValue;
+     }
+     private void SaveCount(String key, int countValue) {
+-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
++        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context);
+         SharedPreferences.Editor editor = sharedPreferences.edit();
+         editor.putInt("key", countValue);
+         editor.apply();
+     }
+     private int UpdateCountValue(String key) {
+         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.context);
+-        int checkBoxValue = sharedPreferences.getInt("key", count);
+-        return checkBoxValue;
++        int countValue = sharedPreferences.getInt("key", count);
++        return countValue;
+     }
+ }
+ 
