@@ -65,9 +65,9 @@ public class PlayFragment extends Fragment {
         btplay = root.findViewById(R.id.btplay);
         btpause = root.findViewById(R.id.btpause);
 
-        player1 = MediaPlayer.create(getContext(), R.raw.bee_buzzing_a);
-        player2 = MediaPlayer.create(getContext(), R.raw.pack_of_dogs);
-        player3 = MediaPlayer.create(getContext(), R.raw.cicada);
+        player1 = MediaPlayer.create(getContext(), R.raw.animals_bee_buzzing);
+        player2 = MediaPlayer.create(getContext(), R.raw.animals_pack_of_dogs);
+        player3 = MediaPlayer.create(getContext(), R.raw.animals_cicada);
 
         player1.setLooping(true);
         player2.setLooping(true);

@@ -29,15 +29,9 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class VolumeFragment extends Fragment implements View.OnTouchListener {
 
-    private GLSurfaceView glView;
     private Button adjustButton = null;
-
-    private float x;
-    private float y;
-    private float xr;
-    private float yr;
-    private float xh;
-    private float yh;
+    private int x;
+    private int y;
 
     SeekBar volumes1;
     SeekBar volumes2;
@@ -49,53 +43,7 @@ public class VolumeFragment extends Fragment implements View.OnTouchListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_volume, container, false);
-
-        //glView = new VolGLSurfaceView(this);
-
-        //setContentView(glView);
-
-
-
-        Toast.makeText(getActivity().getApplicationContext(), "Move the ball to adjust volume", Toast.LENGTH_LONG)
-                .show();
-
-       // Snackbar snackbar = new Snackbar.make(getActivity().findViewById(R.id.nav_vol), "Move the ball to adjust volume", Snackbar.LENGTH_SHORT);
-       // snackbar.show();
-
-        adjustButton = root.findViewById(R.id.adjust_button);
-        root.setOnTouchListener(new View.OnTouchListener() {
-
-            InputDevice.MotionRange motionRange;
-
-            public InputDevice.MotionRange getMotionRange() {
-
-
-                return motionRange;
-            }
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-
-                x = event.getX();
-                y = event.getY();
-
-
-                switch (event.getAction()) {
-
-                    case MotionEvent.ACTION_DOWN:
-                        break;
-                    case MotionEvent.ACTION_MOVE:
-                        event.getX();
-                        event.getY();
-                }
-
-                return true;
-
-            }
-        });
-
-
+        
 
         volumes1 = root.findViewById(R.id.volumebars1);
         volumes1.setVisibility(View.GONE);
