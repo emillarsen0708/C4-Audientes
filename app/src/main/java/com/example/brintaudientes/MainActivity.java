@@ -21,29 +21,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener, AccessFragmentViews, LibraryEditFragment.FragmentLiListener {
 
-   // ORDRE AF PRESETS
-
-    /*PresetBuilding MakeConcurrents = new ConcurrentPresetBuilding();
-    Preset oneSound = MakeConcurrents.orderThePreset("ONE");
-    Preset twoSound = MakeConcurrents.orderThePreset("TWO");
-    Preset threeSound = MakeConcurrents.orderThePreset("THREE");
-    Preset fourSound = MakeConcurrents.orderThePreset("FOUR");
-
-
-    PresetBuilding MakeContinuous = new ContinuousPresetBuilding();
-    Preset oneSound = MakeContinuous.orderThePreset("ONE");
-    Preset twoSound = MakeContinuous.orderThePreset("TWO");
-    Preset threeSound = MakeContinuous.orderThePreset("THREE");
-    Preset fourSound = MakeContinuous.orderThePreset("FOUR");*/
-
-
-    //PlayFragment playFragment = new PlayFragment();
     final PresetFragment presetFragment = new PresetFragment();
     final VolumeFragment volumeFragment = new VolumeFragment();
     final LibraryFragment libraryFragment = new LibraryFragment();
     Fragment selectedFragment = presetFragment;
     Button libraryCancel;
-    //String buttonText1, buttonText2, buttonText3, buttonText4, buttonText5, buttonText6, buttonText7, buttonText8 = "Add new";
     int buttonId;
     private String presetName;
     public static Bundle mybundle = new Bundle();
@@ -97,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
             };
 
     public void setButtonTextString(String buttonText) {
-
     }
 
     @Override
@@ -137,15 +118,6 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                     break;
                 case R.id.select_preset_button_6:
                     presetFragment.add6.setText(input);
-                    break;
-                case R.id.select_preset_button_7:
-                    presetFragment.add7.setText(input);
-                    break;
-                case R.id.select_preset_button_8:
-                    presetFragment.add8.setText(input);
-                    break;
-                case R.id.select_preset_button_9:
-                    presetFragment.add9.setText(input);
                     break;
             }
         }

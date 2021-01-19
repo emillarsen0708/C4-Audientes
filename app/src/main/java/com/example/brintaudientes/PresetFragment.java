@@ -41,16 +41,11 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
     LibraryEditFragment addSound4 = new LibraryEditFragment();
     LibraryEditFragment addSound5 = new LibraryEditFragment();
     LibraryEditFragment addSound6 = new LibraryEditFragment();
-    LibraryEditFragment addSound7 = new LibraryEditFragment();
-    LibraryEditFragment addSound8 = new LibraryEditFragment();
-    LibraryEditFragment addSound9 = new LibraryEditFragment();
 
     MediaPlayer mediaPlayer;
     MediaPlayer mediaPlayer2;
     MediaPlayer mediaPlayer3;
     MediaPlayer mediaPlayer4;
-
-    Handler mp1_handler = new Handler(Looper.myLooper());
 
     boolean isPlaying = false;
 
@@ -60,7 +55,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
     SparseBooleanArray playingCount = new SparseBooleanArray();
 
     RadioGroup radioGroup;
-    private final boolean play_pause_button = true;
 
     @Nullable
     @Override
@@ -101,6 +95,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                             }
                             playingCount.clear();
                         }
+                        break;
                     case R.id.select_preset_button_2:
 
                         if (!isPlaying && !addSound2.chosenSoundNames.isEmpty()) {
@@ -109,7 +104,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
 
                             for (int i = 0; i < addSound2.chosenSoundNames.size(); i++) {
                                 if(mediaFiles[i] == null) {
-                                    mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                                    mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound2.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
                                 }                                mediaFiles[i].start();
                                 mediaFiles[i].setVolume(0.5f, 0.5f);
                                 playingCount.put(i, mediaFiles[i].isPlaying());
@@ -123,68 +118,106 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                 mediaFiles [i] = null;
                             }
                             playingCount.clear();
-                        } else {
                         }
+                        break;
                     case R.id.select_preset_button_3:
-                /*        if (addSound3.chosenSoundNames.isEmpty()) {
-                        } else if (play_pause_button) {
-                            for (int i = 0; i < addSound3.chosenSoundNames.size(); i++) {
-                                mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound3.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
-                                mediaFiles[i].start();
-                                mediaFiles[i].setLooping(true);
-                                mediaFiles[i].setVolume(0.5f, 0.5f);
-                            }
+                        if (!isPlaying && !addSound3.chosenSoundNames.isEmpty()) {
+
                             play.setBackgroundResource(R.drawable.ic_pause_icon);
-                        }
-                        if (!play_pause_button) {
+
                             for (int i = 0; i < addSound3.chosenSoundNames.size(); i++) {
-                                mediaFiles[i].pause();
+                                if(mediaFiles[i] == null) {
+                                    mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound3.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                                }                                mediaFiles[i].start();
+                                mediaFiles[i].setVolume(0.5f, 0.5f);
+                                playingCount.put(i, mediaFiles[i].isPlaying());
                             }
+                        } else if (isPlaying && playingCount.size() != 0) {
                             play.setBackgroundResource(R.drawable.ic_play_icon);
-                        }*/
+                            for (int i = 0; i < playingCount.size(); i++) {
+                                mediaFiles[i].stop();
+                                mediaFiles [i].reset();
+                                mediaFiles[i].release();
+                                mediaFiles [i] = null;
+                            }
+                            playingCount.clear();
+                        }
+                        break;
                     case R.id.select_preset_button_4:
-                  /*      if (addSound4.chosenSoundNames.isEmpty()) {
-                        } else if (play_pause_button) {
-                            for (int i = 0; i < addSound4.chosenSoundNames.size(); i++) {
-                                mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound4.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
-                                mediaFiles[i].start();
-                                mediaFiles[i].setLooping(true);
-                                mediaFiles[i].setVolume(0.5f, 0.5f);
-                            }
+                        if (!isPlaying && !addSound4.chosenSoundNames.isEmpty()) {
+
                             play.setBackgroundResource(R.drawable.ic_pause_icon);
-                        }
-                        if (!play_pause_button) {
+
                             for (int i = 0; i < addSound4.chosenSoundNames.size(); i++) {
-                                mediaFiles[i].pause();
+                                if(mediaFiles[i] == null) {
+                                    mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound4.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                                }                                mediaFiles[i].start();
+                                mediaFiles[i].setVolume(0.5f, 0.5f);
+                                playingCount.put(i, mediaFiles[i].isPlaying());
                             }
+                        } else if (isPlaying && playingCount.size() != 0) {
                             play.setBackgroundResource(R.drawable.ic_play_icon);
-                        }*/
+                            for (int i = 0; i < playingCount.size(); i++) {
+                                mediaFiles[i].stop();
+                                mediaFiles [i].reset();
+                                mediaFiles[i].release();
+                                mediaFiles [i] = null;
+                            }
+                            playingCount.clear();
+                        }
+                        break;
                     case R.id.select_preset_button_5:
-               /*         if (addSound5.chosenSoundNames.isEmpty()) {
-                        } else if (play_pause_button) {
-                            for (int i = 0; i < addSound5.chosenSoundNames.size(); i++) {
-                                mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound5.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
-                                mediaFiles[i].start();
-                                mediaFiles[i].setLooping(true);
-                                mediaFiles[i].setVolume(0.5f, 0.5f);
-                            }
+                        if (!isPlaying && !addSound5.chosenSoundNames.isEmpty()) {
+
                             play.setBackgroundResource(R.drawable.ic_pause_icon);
-                        }
-                        if (!play_pause_button) {
+
                             for (int i = 0; i < addSound5.chosenSoundNames.size(); i++) {
-                                mediaFiles[i].pause();
+                                if(mediaFiles[i] == null) {
+                                    mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound5.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                                }                                mediaFiles[i].start();
+                                mediaFiles[i].setVolume(0.5f, 0.5f);
+                                playingCount.put(i, mediaFiles[i].isPlaying());
                             }
+                        } else if (isPlaying && playingCount.size() != 0) {
                             play.setBackgroundResource(R.drawable.ic_play_icon);
+                            for (int i = 0; i < playingCount.size(); i++) {
+                                mediaFiles[i].stop();
+                                mediaFiles [i].reset();
+                                mediaFiles[i].release();
+                                mediaFiles [i] = null;
+                            }
+                            playingCount.clear();
                         }
+                        break;
+
                     case R.id.select_preset_button_6:
-                }*/
+                        if (!isPlaying && !addSound6.chosenSoundNames.isEmpty()) {
 
-                        if (playingCount.size() != 0) {
-                            isPlaying = true;
-                        } else if (playingCount.size() == 0) {
-                            isPlaying = false;
+                            play.setBackgroundResource(R.drawable.ic_pause_icon);
+
+                            for (int i = 0; i < addSound6.chosenSoundNames.size(); i++) {
+                                if(mediaFiles[i] == null) {
+                                    mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound6.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                                }                                mediaFiles[i].start();
+                                mediaFiles[i].setVolume(0.5f, 0.5f);
+                                playingCount.put(i, mediaFiles[i].isPlaying());
+                            }
+                        } else if (isPlaying && playingCount.size() != 0) {
+                            play.setBackgroundResource(R.drawable.ic_play_icon);
+                            for (int i = 0; i < playingCount.size(); i++) {
+                                mediaFiles[i].stop();
+                                mediaFiles [i].reset();
+                                mediaFiles[i].release();
+                                mediaFiles [i] = null;
+                            }
+                            playingCount.clear();
                         }
-
+                        break;
+                }
+                if (playingCount.size() != 0) {
+                    isPlaying = true;
+                } else if (playingCount.size() == 0) {
+                    isPlaying = false;
                 }
             }
         });
@@ -214,16 +247,16 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                             .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound3), "add3")
                             .addToBackStack(null)
                             .commit();
-                    if (!addSound2.chosenSoundNames.isEmpty()) {
-                        addSound2.chosenSoundNames.removeAll(addSound2.chosenSoundNames);
+                    if (!addSound3.chosenSoundNames.isEmpty()) {
+                        addSound3.chosenSoundNames.removeAll(addSound3.chosenSoundNames);
                     }
                 } else if (add4.isChecked()) {
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound4), "add4")
                             .addToBackStack(null)
                             .commit();
-                    if (!addSound2.chosenSoundNames.isEmpty()) {
-                        addSound2.chosenSoundNames.removeAll(addSound2.chosenSoundNames);
+                    if (!addSound4.chosenSoundNames.isEmpty()) {
+                        addSound4.chosenSoundNames.removeAll(addSound4.chosenSoundNames);
                     }
                 } else if (add5.isChecked()) {
                     getActivity().getSupportFragmentManager().beginTransaction()
@@ -240,31 +273,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                             .commit();
                     if (!addSound6.chosenSoundNames.isEmpty()) {
                         addSound6.chosenSoundNames.removeAll(addSound6.chosenSoundNames);
-                    }
-
-                } else if (add7.isChecked()) {
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound7), "add7")
-                            .addToBackStack(null)
-                            .commit();
-                    if (!addSound7.chosenSoundNames.isEmpty()) {
-                        addSound7.chosenSoundNames.removeAll(addSound7.chosenSoundNames);
-                    }
-                } else if (add8.isChecked()) {
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound8), "add8")
-                            .addToBackStack(null)
-                            .commit();
-                    if (!addSound8.chosenSoundNames.isEmpty()) {
-                        addSound8.chosenSoundNames.removeAll(addSound8.chosenSoundNames);
-                    }
-                } else if (add9.isChecked()) {
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound9), "add9")
-                            .addToBackStack(null)
-                            .commit();
-                    if (!addSound9.chosenSoundNames.isEmpty()) {
-                        addSound9.chosenSoundNames.removeAll(addSound9.chosenSoundNames);
                     }
                 }
             }
