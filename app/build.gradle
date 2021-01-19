@@ -22,15 +22,18 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    dataBinding{
-        enabled = true;
+    sourceSets {
+        main {
+            java {
+                srcDirs 'src\\main\\java'
+            }
+        }
     }
 }
 
 dependencies {
 
-    def lifecycle_version = "2.2.0"
-    def arch_version = "2.1.0"
+
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.2.0'
