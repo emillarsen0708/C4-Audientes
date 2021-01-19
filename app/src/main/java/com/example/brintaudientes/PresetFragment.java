@@ -34,26 +34,18 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
     private final boolean waitForEdit = true;
     public List<String> songListReplace = new ArrayList<>();
     Button play, edit;
-    RadioButton add1, add2, add3, add4, add5, add6, add7, add8, add9;
-
-    private boolean play_pause_button = true;
-
-    //private final boolean waitForEdit = true;
-
+    RadioButton add1, add2, add3, add4, add5, add6;
     LibraryEditFragment addSound = new LibraryEditFragment();
     LibraryEditFragment addSound2 = new LibraryEditFragment();
     LibraryEditFragment addSound3 = new LibraryEditFragment();
     LibraryEditFragment addSound4 = new LibraryEditFragment();
     LibraryEditFragment addSound5 = new LibraryEditFragment();
     LibraryEditFragment addSound6 = new LibraryEditFragment();
-    LibraryEditFragment addSound7 = new LibraryEditFragment();
-    LibraryEditFragment addSound8 = new LibraryEditFragment();
-    LibraryEditFragment addSound9 = new LibraryEditFragment();
 
-    MediaPlayer mediaPlayer;
-    MediaPlayer mediaPlayer2;
-    MediaPlayer mediaPlayer3;
-    MediaPlayer mediaPlayer4;
+    public static MediaPlayer mediaPlayer;
+    public static MediaPlayer mediaPlayer2;
+    public static MediaPlayer mediaPlayer3;
+    public static MediaPlayer mediaPlayer4;
 
     Handler mp1_handler = new Handler(Looper.myLooper());
 
@@ -90,7 +82,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                     mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
                                 }
                                 mediaFiles[i].start();
-                                mediaFiles[i].setVolume(0.5f, 0.5f);
                                 playingCount.put(i, mediaFiles[i].isPlaying());
                             }
                             System.out.println(addSound.chosenSoundNames);
@@ -106,7 +97,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                             }
                             playingCount.clear();
                         }
-                        break;
                     case R.id.select_preset_button_2:
 
                         if (!isPlaying && !addSound2.chosenSoundNames.isEmpty()) {
@@ -131,7 +121,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                             playingCount.clear();
                         } else {
                         }
-                        break;
                     case R.id.select_preset_button_3:
                         if (!isPlaying && !addSound3.chosenSoundNames.isEmpty()) {
 
@@ -155,7 +144,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                             playingCount.clear();
                         } else {
                         }
-                        break;
                     case R.id.select_preset_button_4:
                         if (!isPlaying && !addSound4.chosenSoundNames.isEmpty()) {
 
@@ -179,7 +167,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                             playingCount.clear();
                         } else {
                         }
-                        break;
                     case R.id.select_preset_button_5:
                         if (!isPlaying && !addSound5.chosenSoundNames.isEmpty()) {
 
@@ -203,6 +190,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                             playingCount.clear();
                         }
                         break;
+
                     case R.id.select_preset_button_6:
                         if (!isPlaying && !addSound6.chosenSoundNames.isEmpty()) {
 
@@ -232,7 +220,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                 } else if (playingCount.size() == 0) {
                     isPlaying = false;
                 }
-
             }
         });
         edit = root.findViewById(R.id.edit_preset_button);
@@ -261,16 +248,16 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                             .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound3), "add3")
                             .addToBackStack(null)
                             .commit();
-                    if (!addSound3.chosenSoundNames.isEmpty()) {
-                        addSound3.chosenSoundNames.removeAll(addSound3.chosenSoundNames);
+                    if (!addSound2.chosenSoundNames.isEmpty()) {
+                        addSound2.chosenSoundNames.removeAll(addSound2.chosenSoundNames);
                     }
                 } else if (add4.isChecked()) {
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .add(((ViewGroup) getView().getParent()).getId(), getLibraryFragment(addSound4), "add4")
                             .addToBackStack(null)
                             .commit();
-                    if (!addSound4.chosenSoundNames.isEmpty()) {
-                        addSound4.chosenSoundNames.removeAll(addSound4.chosenSoundNames);
+                    if (!addSound2.chosenSoundNames.isEmpty()) {
+                        addSound2.chosenSoundNames.removeAll(addSound2.chosenSoundNames);
                     }
                 } else if (add5.isChecked()) {
                     getActivity().getSupportFragmentManager().beginTransaction()
@@ -288,7 +275,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                     if (!addSound6.chosenSoundNames.isEmpty()) {
                         addSound6.chosenSoundNames.removeAll(addSound6.chosenSoundNames);
                     }
-
                 }
             }
         });
@@ -311,19 +297,9 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
         add6 = root.findViewById(R.id.select_preset_button_6);
         add6.setOnTouchListener(this);
 
-        add7 = root.findViewById(R.id.select_preset_button_7);
-        add7.setVisibility(GONE);
-
-        add8 = root.findViewById(R.id.select_preset_button_8);
-        add8.setVisibility(GONE);
-
-        add9 = root.findViewById(R.id.select_preset_button_9);
-        add9.setVisibility(GONE);
 
         return root;
     }
-
-
 
     public LibraryEditFragment getLibraryFragment(LibraryEditFragment libraryEditFragment) {
         if (libraryEditFragment == null) {
@@ -342,9 +318,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
             case R.id.select_preset_button_4:
             case R.id.select_preset_button_5:
             case R.id.select_preset_button_6:
-            case R.id.select_preset_button_7:
-            case R.id.select_preset_button_8:
-            case R.id.select_preset_button_9:
                 break;
             default:
                 throw new RuntimeException("Unknown button ID");

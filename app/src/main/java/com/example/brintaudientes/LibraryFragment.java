@@ -1,5 +1,7 @@
 package com.example.brintaudientes;
 
+import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +12,8 @@ import android.widget.ListView;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.brintaudientes.PresetFragment.mediaPlayer;
 
 public class LibraryFragment extends Fragment {
 
@@ -35,6 +39,19 @@ public class LibraryFragment extends Fragment {
         libraryListView = root.findViewById(R.id.listview_songs_edit);
         arrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.listview_text_color, sounds);
         libraryListView.setAdapter(arrayAdapter);
+
+        libraryListView.setOnItemClickListener((parent, view, position, id) -> {
+            view.setSelected(true);
+
+            if (mediaPlayer != null) {
+                mediaPlayer.release();
+            }
+
+            int resId = getResources().getIdentifier(sounds.get(position), "raw", getActivity().getPackageName());
+            mediaPlayer = MediaPlayer.create(getActivity(), resId);
+            mediaPlayer.start();
+
+        });
 
 
         return root;

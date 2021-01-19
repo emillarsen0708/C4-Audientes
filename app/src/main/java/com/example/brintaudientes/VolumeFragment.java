@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import com.example.brintaudientes.preset.Preset;
 import com.google.android.material.snackbar.Snackbar;
 
 
@@ -37,16 +38,14 @@ public class VolumeFragment extends Fragment implements View.OnTouchListener {
     SeekBar volumes2;
     SeekBar volumes3;
 
-
-
+    PresetFragment presetFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_volume, container, false);
-        
+
 
         volumes1 = root.findViewById(R.id.volumebars1);
-        volumes1.setVisibility(View.GONE);
         volumes2 = root.findViewById(R.id.volumebars2);
         volumes2.setVisibility(View.GONE);
         volumes3 = root.findViewById(R.id.volumebars3);
@@ -56,8 +55,10 @@ public class VolumeFragment extends Fragment implements View.OnTouchListener {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-            float volumeNum = progress / 100f;
-
+            float volumeNum = progress;
+            if (PresetFragment.mediaPlayer != null) {
+                PresetFragment.mediaPlayer.setVolume(progress, progress);
+            }
         }
 
         @Override
