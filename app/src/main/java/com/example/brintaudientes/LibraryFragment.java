@@ -52,7 +52,6 @@ public class LibraryFragment extends Fragment {
 
         });
 
-
         return root;
     }
 }

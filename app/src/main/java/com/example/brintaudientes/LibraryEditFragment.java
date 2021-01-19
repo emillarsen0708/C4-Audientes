@@ -73,11 +73,6 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-
-
-        // buttonId = MainActivity.mybundle.getInt("buttonId");
-
-
         View root = inflater.inflate(R.layout.fragment_edit_library, container, false);
 
         getSounds();
@@ -176,9 +171,13 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
             public void onClick(View v) {
                 CharSequence input = presetName.getText().toString();
                 listener.onInputLiSent(input);
+
                 MainActivity.strBundle.putString("editText", presetName.getText().toString());
-                if (input.toString().isEmpty()) {
-                    Toast.makeText(getActivity(), "Indtast et navn til dit preset", Toast.LENGTH_LONG).show();
+
+                if (input.toString().isEmpty() ) {
+                    presetName.setError("Caution! Please name preset");
+                } else if (adapter.mCheckedStates.size() == 0) {
+                    presetName.setError("Remember add sounds to preset");
                 } else {
                     Field[] fields = R.raw.class.getFields();
                     for (int i = 0; i < fields.length; i++) {
@@ -186,6 +185,7 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
                             chosenSoundNames.add(fields[i].getName());
                         }
                     }
+
                     System.out.println(chosenSoundNames);
                     ListViewAdapter.count = 0;
                     FragmentManager fragmentManager = getParentFragmentManager();
