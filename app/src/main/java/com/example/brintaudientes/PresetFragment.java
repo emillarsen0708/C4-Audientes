@@ -8,6 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.Looper;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,6 +19,9 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 import static android.view.View.GONE;
 
@@ -37,6 +43,17 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
     LibraryEditFragment addSound8 = new LibraryEditFragment();
     LibraryEditFragment addSound9 = new LibraryEditFragment();
 
+    MediaPlayer mediaPlayer;
+    MediaPlayer mediaPlayer2;
+    MediaPlayer mediaPlayer3;
+    MediaPlayer mediaPlayer4;
+
+    Handler mp1_handler = new Handler(Looper.myLooper());
+
+    boolean isPlaying = true;
+
+    MediaPlayer [] mediaFiles = {mediaPlayer, mediaPlayer2, mediaPlayer3, mediaPlayer4};
+
     RadioGroup radioGroup;
 
 
@@ -51,21 +68,102 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                switch (radioGroup.getCheckedRadioButtonId()) {
+                    case R.id.select_preset_button_1:
+                        if (addSound.chosenSoundNames.isEmpty()) {
 
-                if ((play != null) && (play_pause_button)) {
-                    play.setBackgroundResource(R.drawable.ic_pause_icon);
-                    play_pause_button = false;
-                    if (add1.isChecked()) {
-                        for (int i = 0; i < addSound.chosenSoundNames.size(); i++) {
-                            MediaPlayer mediaPlayer = new MediaPlayer();
-                            mediaPlayer = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
-                            mediaPlayer.start();
+                        } else if (play_pause_button) {
+                            for (int i = 0; i < addSound.chosenSoundNames.size(); i++) {
+                                mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                                mediaFiles[i].start();
+                                mediaFiles[i].setLooping(true);
+                                mediaFiles[i].setVolume(0.5f, 0.5f);
+                            }
+                            isPlaying = true;
+                            play.setBackgroundResource(R.drawable.ic_pause_icon);
                         }
-                    }
+                        if (!play_pause_button) {
+                            for (int i = 0; i < addSound.chosenSoundNames.size(); i++) {
+                                mediaFiles[i].pause();
+                            }
+                            isPlaying = false;
+                            play.setBackgroundResource(R.drawable.ic_play_icon);
+                        }
+                    case R.id.select_preset_button_2:
+                        if (addSound2.chosenSoundNames.isEmpty()) {
 
-                } else {
-                    if (play != null) play.setBackgroundResource(R.drawable.ic_play_icon);
-                    play_pause_button = true;
+                        } else if (play_pause_button) {
+                            for (int i = 0; i < addSound2.chosenSoundNames.size(); i++) {
+                                mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound2.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                                mediaFiles[i].start();
+                                mediaFiles[i].setLooping(true);
+                                mediaFiles[i].setVolume(0.5f, 0.5f);
+                            }
+                            isPlaying = true;
+                            play.setBackgroundResource(R.drawable.ic_pause_icon);
+                        }
+                        if (!play_pause_button) {
+                            for (int i = 0; i < addSound2.chosenSoundNames.size(); i++) {
+                                mediaFiles[i].pause();
+                            }
+                            isPlaying = false;
+                            play.setBackgroundResource(R.drawable.ic_play_icon);
+                        }
+                    case R.id.select_preset_button_3:
+                        if (addSound3.chosenSoundNames.isEmpty()) {
+                        } else if (play_pause_button) {
+                            for (int i = 0; i < addSound3.chosenSoundNames.size(); i++) {
+                                mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound3.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                                mediaFiles[i].start();
+                                mediaFiles[i].setLooping(true);
+                                mediaFiles[i].setVolume(0.5f, 0.5f);
+                            }
+                            play.setBackgroundResource(R.drawable.ic_pause_icon);
+                        }
+                        if (!play_pause_button) {
+                            for (int i = 0; i < addSound3.chosenSoundNames.size(); i++) {
+                                mediaFiles[i].pause();
+                            }
+                            play.setBackgroundResource(R.drawable.ic_play_icon);
+                        }
+                    case R.id.select_preset_button_4:
+                        if (addSound.chosenSoundNames.isEmpty()) {
+                        } else if (play_pause_button) {
+                            for (int i = 0; i < addSound3.chosenSoundNames.size(); i++) {
+                                mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound3.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                                mediaFiles[i].start();
+                                mediaFiles[i].setLooping(true);
+                                mediaFiles[i].setVolume(0.5f, 0.5f);
+                            }
+                            play.setBackgroundResource(R.drawable.ic_pause_icon);
+                        }
+                        if (!play_pause_button) {
+                            for (int i = 0; i < addSound3.chosenSoundNames.size(); i++) {
+                                mediaFiles[i].pause();
+                            }
+                            play.setBackgroundResource(R.drawable.ic_play_icon);
+                        }
+                    case R.id.select_preset_button_5:
+                        if (addSound3.chosenSoundNames.isEmpty()) {
+                        } else if (play_pause_button) {
+                            for (int i = 0; i < addSound3.chosenSoundNames.size(); i++) {
+                                mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound3.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                                mediaFiles[i].start();
+                                mediaFiles[i].setLooping(true);
+                                mediaFiles[i].setVolume(0.5f, 0.5f);
+                            }
+                            play.setBackgroundResource(R.drawable.ic_pause_icon);
+                        }
+                        if (!play_pause_button) {
+                            for (int i = 0; i < addSound3.chosenSoundNames.size(); i++) {
+                                mediaFiles[i].pause();
+                            }
+                            play.setBackgroundResource(R.drawable.ic_play_icon);
+                        }
+                    case R.id.select_preset_button_6:
+                }
+                if (!addSound.chosenSoundNames.isEmpty()) {
+                    play_pause_button = !play_pause_button;
                 }
             }
         });
