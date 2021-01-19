@@ -23,14 +23,20 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
    // ORDRE AF PRESETS
 
-    /*PresetBuilding MakeConcurrents = new ConcurrentPresetBuilding();
+
+/*
+
+    PresetBuilding MakeConcurrents = new ConcurrentPresetBuilding();
+
+    //iterere over antal sange i chosenSongNames.
+
     Preset oneSound = MakeConcurrents.orderThePreset("ONE");
     Preset twoSound = MakeConcurrents.orderThePreset("TWO");
     Preset threeSound = MakeConcurrents.orderThePreset("THREE");
     Preset fourSound = MakeConcurrents.orderThePreset("FOUR");
 
 
-    PresetBuilding MakeContinuous = new ContinuousPresetBuilding();
+   PresetBuilding MakeContinuous = new ContinuousPresetBuilding();
     Preset oneSound = MakeContinuous.orderThePreset("ONE");
     Preset twoSound = MakeContinuous.orderThePreset("TWO");
     Preset threeSound = MakeContinuous.orderThePreset("THREE");
@@ -49,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     public static Bundle mybundle = new Bundle();
     public static Bundle strBundle = new Bundle();
 
+    LibraryEditFragment userselection = new LibraryEditFragment();
+
 
 
     @Override
@@ -58,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
 
         BottomNavigationView buttNav = findViewById(R.id.bottom);
         buttNav.setOnNavigationItemSelectedListener(naviListner);
+
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, libraryFragment, "3").hide(libraryFragment).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, volumeFragment, "2").hide(volumeFragment).commit();
@@ -95,6 +104,12 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                     return false;
                 }
             };
+
+    public int setUserSelection() {
+        int size = userselection.chosenSoundNames.size();
+        return size;
+    }
+
 
     public void setButtonTextString(String buttonText) {
 
