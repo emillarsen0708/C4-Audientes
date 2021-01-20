@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -33,6 +35,11 @@ import java.util.List;
 
 public class LibraryEditFragment extends Fragment implements AccessFragmentViews{
 
+    public interface FragmentLiListener {
+        void onInputLiSent(CharSequence input);
+    }
+
+
     private FragmentLiListener listener;
 
     private ListView soundLibraryListView;
@@ -44,12 +51,10 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
     public static ActionMode actionMode = null;
 
     Field [] fields = R.raw.class.getFields();
+    Runnable chosen;
+    Handler chosenHandler = new Handler(Looper.getMainLooper());
 
     public List<String> chosenSoundNames = new ArrayList<>();
-
-    public interface FragmentLiListener {
-        void onInputLiSent(CharSequence input);
-    }
 
 
     ArrayList<String> arrayList;
@@ -182,9 +187,11 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
                     presetName.setError("Remember add sounds to preset");
                 } else {
                     Field[] fields = R.raw.class.getFields();
+                    chosenSoundNames.clear();
                     for (int i = 0; i < fields.length; i++) {
                         if (adapter.mCheckedStates.get(i)) {
                             chosenSoundNames.add(fields[i].getName());
+                            chosenHandler.postDelayed(chosen,10);
                         }
                     }
 
@@ -225,23 +232,9 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
 
 
     public void getSounds() {
-        Thread fieldsArrayUpdate = new Thread() {
-            @Override
-            public void run() {
-
                 for (int i = 0; i < fields.length; i++) {
                     sounds.add(fields[i].getName());
                 }
-
-                try {
-                    sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        fieldsArrayUpdate.start();
-
     }
 
     public void updateEditText(CharSequence newtext) {
