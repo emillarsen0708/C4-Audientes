@@ -33,6 +33,11 @@ import java.util.List;
 
 public class LibraryEditFragment extends Fragment implements AccessFragmentViews{
 
+    public interface FragmentLiListener {
+        void onInputLiSent(CharSequence input);
+    }
+
+
     private FragmentLiListener listener;
 
     private ListView soundLibraryListView;
@@ -46,10 +51,6 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
     Field [] fields = R.raw.class.getFields();
 
     public List<String> chosenSoundNames = new ArrayList<>();
-
-    public interface FragmentLiListener {
-        void onInputLiSent(CharSequence input);
-    }
 
 
     ArrayList<String> arrayList;
@@ -182,6 +183,7 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
                     presetName.setError("Remember add sounds to preset");
                 } else {
                     Field[] fields = R.raw.class.getFields();
+                    chosenSoundNames.clear();
                     for (int i = 0; i < fields.length; i++) {
                         if (adapter.mCheckedStates.get(i)) {
                             chosenSoundNames.add(fields[i].getName());
