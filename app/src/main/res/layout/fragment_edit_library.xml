@@ -1,107 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@xml/sound_background"
+    android:orientation="vertical"
     android:overScrollMode="never"
+    android:weightSum="4"
     tools:context=".LibraryEditFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="37dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/sonority_by_audientes"
-        android:textAppearance="@style/sonority_by2"
-        android:textStyle="bold" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="@string/library_text"
-        android:textAppearance="@style/home"
-        android:textColor="#1B325F"
-        android:textStyle="bold" />
-    <!--app:drawableLeftCompat="@drawable/ic_ambience_icon" -->
+        <TextView
+            android:id="@+id/preset_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/sonority_by_audientes"
+            android:textAppearance="@style/sonority_by2"
+            android:textStyle="bold" />
 
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="180dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="70dp"
-        android:background="@drawable/listview_rectangle"
-        android:fadeScrollbars="true"
-        android:isScrollContainer="true"
-        android:scrollbarAlwaysDrawHorizontalTrack="false"
-        android:scrollbarAlwaysDrawVerticalTrack="false"
-        android:scrollbarDefaultDelayBeforeFade="0"
-        android:scrollbars="none" />
+        <TextView
+            android:id="@+id/home"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@+id/preset_header"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:text="@string/sound"
+            android:textAppearance="@style/home"
+            android:textColor="#1B325F"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/cancel_button_library"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/ic_selected_sound"
-        android:text="Cancel"
-        android:textAppearance="@style/Play_ambience"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/cancel_button_library"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@drawable/ic_selected_sound"
+            android:text="Cancel"
+            android:textAppearance="@style/Play_ambience"
+            android:textStyle="bold" />
+    </RelativeLayout>
 
-    <ListView
-        android:id="@+id/listview_songs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="195dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="260dp"
-        android:choiceMode="singleChoice"
-        android:clickable="true"
-        android:drawSelectorOnTop="false"
-        android:fadingEdge="horizontal"
-        android:fadingEdgeLength="60dp"
-        android:fillViewport="false"
-        android:focusable="true"
-        android:requiresFadingEdge="vertical" />
-    <!--- android:listSelector="@drawable/selector_list" -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
 
-    <EditText
-        android:id="@+id/preset_title_edittext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="550dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:hint="Type in preset title of choice"
-        android:textColor="#000000"
-        android:textColorHint="#591B325F"
-        android:textSize="16dp"
-        android:textStyle="bold" />
+        <View
+            android:layout_width="@dimen/_300sdp"
+            android:layout_height="@dimen/_350sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:background="@drawable/listview_rectangle"
+            android:fadeScrollbars="true"
+            android:isScrollContainer="true"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbarAlwaysDrawVerticalTrack="false"
+            android:scrollbarDefaultDelayBeforeFade="0"
+            android:scrollbars="none" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="600dp"
-        android:orientation="horizontal">
+        <ListView
+            android:id="@+id/listview_songs"
+            android:layout_width="@dimen/_255sdp"
+            android:layout_height="@dimen/_220sdp"
+            android:layout_centerHorizontal="true"
+            android:choiceMode="singleChoice"
+            android:drawSelectorOnTop="false"
+            android:fadingEdge="horizontal"
+            android:fadingEdgeLength="60dp"
+            android:requiresFadingEdge="vertical"
+            android:fillViewport = "false"
+            android:clickable="true"
+            android:focusable="true">
+            <!--- android:listSelector="@drawable/selector_list" -->
+
+        </ListView>
+
 
         <Button
             android:id="@+id/display_selected_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="15dp"
+            android:layout_below="@+id/preset_title_edittext"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_30sdp"
             android:background="@drawable/custom_buttons"
             android:text="Display Selected"
             android:textAlignment="center"
@@ -112,14 +106,32 @@
             android:id="@+id/add_as_preset_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:layout_below="@+id/preset_title_edittext"
+            android:layout_toEndOf="@+id/display_selected_button"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_50sdp"
             android:background="@drawable/custom_buttons"
             android:text="Add As Preset"
             android:textAlignment="center"
             android:textAppearance="@style/Play_ambience"
             android:textStyle="bold" />
 
-    </LinearLayout>
+
+        <EditText
+            android:id="@+id/preset_title_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_230sdp"
+            android:backgroundTint="@color/colorPrimary"
+            android:hint="Type in preset title of choice"
+            android:textColor="#000000"
+            android:textColorHint="#591B325F"
+            android:textSize="@dimen/_16ssp"
+            android:textStyle="bold" />
 
 
-</FrameLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>
