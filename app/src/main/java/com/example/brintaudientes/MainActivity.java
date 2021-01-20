@@ -10,6 +10,7 @@ import android.app.FragmentManager;
 import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import io.sentry.Sentry;
 
 // todo: Få styr på skærmvending så player ikke kører videre mens player står i pause mode
 
@@ -64,6 +66,14 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Sentry.captureMessage("hej");
+
+        try {
+            throw new Exception("This is a test.");
+        } catch (Exception e) {
+            Sentry.captureException(e);
+        }
 
         BottomNavigationView buttNav = findViewById(R.id.bottom);
         buttNav.setOnNavigationItemSelectedListener(naviListner);
