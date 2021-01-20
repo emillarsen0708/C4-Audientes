@@ -9,16 +9,11 @@
     tools:context=".LibraryEditFragment">
 
     <TextView
-        android:layout_width="187dp"
-        android:layout_height="17dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="112dp"
-        android:layout_marginLeft="112dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="37dp"
         android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal|center_vertical"
         android:text="Sonority By Audientes"
         android:textAppearance="@style/sonority_by2"
         android:textStyle="bold" />
@@ -29,56 +24,56 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="60dp"
         android:fontFamily="sans-serif-medium"
-        android:gravity="center"
         android:text="Sound Library"
         android:textAppearance="@style/home"
         android:textColor="#1B325F"
         android:textStyle="bold" />
-        <!--app:drawableLeftCompat="@drawable/ic_ambience_icon" -->
+    <!--app:drawableLeftCompat="@drawable/ic_ambience_icon" -->
 
 
     <ListView
         android:id="@+id/listview_songs"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="180dp"
-        android:layout_marginBottom="250dp"
-        android:layout_marginRight="60dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="195dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="260dp"
         android:choiceMode="singleChoice"
+        android:clickable="true"
         android:drawSelectorOnTop="false"
         android:fadingEdge="horizontal"
         android:fadingEdgeLength="60dp"
-        android:requiresFadingEdge="vertical"
-        android:fillViewport = "false"
-        android:clickable="true"
-        android:focusable="true">
+        android:fillViewport="false"
+        android:focusable="true"
+        android:requiresFadingEdge="vertical">
         <!--- android:listSelector="@drawable/selector_list" -->
 
     </ListView>
-
 
 
     <EditText
         android:id="@+id/preset_title_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="405dp"
-        android:layout_marginStart="80dp"
-        android:hint="Type in preset title of choice ..."
-        android:textSize="16dp"
-        android:textStyle="bold"
-        android:textColorHint="#591B325F"
-        android:textColor="#000000"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="540dp"
         android:backgroundTint="@color/colorPrimary"
-        />
+        android:hint="Type in preset title of choice ..."
+        android:textColor="#000000"
+        android:textColorHint="#591B325F"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
     <View
-        android:layout_width="300dp"
-        android:layout_height="410dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="180dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="70dp"
         android:background="@drawable/listview_rectangle"
         android:fadeScrollbars="true"
         android:isScrollContainer="true"
@@ -89,10 +84,10 @@
 
     <Button
         android:id="@+id/cancel_button_library"
-        android:layout_width="75dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="20dp"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="left"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/ic_selected_sound"
@@ -101,26 +96,36 @@
         android:textStyle="bold" />
 
 
-    <Button
-        android:id="@+id/display_selected_button"
-        android:layout_width="90dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="500dp"
-        android:background="@xml/edit_play_rectangle"
-        android:text="Display Selected"
-        android:textAppearance="@style/Play_ambience"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="600dp">
 
-    <Button
-        android:id="@+id/add_as_preset_button"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="500dp"
-        android:background="@xml/edit_play_rectangle"
-        android:text="Add As Preset"
-        android:textAppearance="@style/Play_ambience"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/display_selected_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Display Selected"
+            android:textAlignment="center"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/custom_buttons"
+            android:textAppearance="@style/Play_ambience"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/add_as_preset_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_buttons"
+            android:layout_marginLeft="15dp"
+            android:text="Add As Preset"
+            android:textAlignment="center"
+            android:textAppearance="@style/Play_ambience"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
 
 </FrameLayout>
