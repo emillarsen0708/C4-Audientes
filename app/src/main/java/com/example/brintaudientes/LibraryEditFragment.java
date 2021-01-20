@@ -146,6 +146,8 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
             }
         });
 
+
+
         presetName = root.findViewById(R.id.preset_title_edittext);
 
 
@@ -220,10 +222,26 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
         return root;
     }
 
+
+
     public void getSounds() {
-        for (int i = 0; i < fields.length; i++) {
-            sounds.add(fields[i].getName());
-        }
+        Thread fieldsArrayUpdate = new Thread() {
+            @Override
+            public void run() {
+
+                for (int i = 0; i < fields.length; i++) {
+                    sounds.add(fields[i].getName());
+                }
+
+                try {
+                    sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        fieldsArrayUpdate.start();
+
     }
 
     public void updateEditText(CharSequence newtext) {

@@ -31,9 +31,23 @@ public class LibraryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_library_2, container, false);
-        for (int i = 0; i < fields.length; i++) {
-            sounds.add(fields[i].getName());
-        }
+
+        Thread fieldsArrayUpdate = new Thread() {
+            @Override
+            public void run() {
+
+                for (int i = 0; i < fields.length; i++) {
+                    sounds.add(fields[i].getName());
+                }
+
+                try {
+                    sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        fieldsArrayUpdate.start();
 
         libraryListView = root.findViewById(R.id.listview_songs_edit);
         arrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.listview_text_color, sounds);

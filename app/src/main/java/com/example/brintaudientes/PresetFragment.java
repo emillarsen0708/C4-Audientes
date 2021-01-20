@@ -18,11 +18,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class PresetFragment extends Fragment implements View.OnTouchListener {
+
+    Executor bgThread = Executors.newSingleThreadExecutor();
+    Handler uiThread = new Handler(Looper.getMainLooper());
 
     private final boolean waitForEdit = true;
     public List<String> songListReplace = new ArrayList<>();
@@ -45,7 +51,9 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
     MediaPlayer mediaPlayer3;
     MediaPlayer mediaPlayer4;
 
-    Handler mp1_handler = new Handler(Looper.myLooper());
+    //VolumeFragment volume1 = new VolumeFragment();
+
+    //Handler mp1_handler = new Handler(Looper.myLooper());
 
     boolean isPlaying = false;
 
@@ -282,6 +290,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                 }
             }
         });
+
 
         add1 = root.findViewById(R.id.select_preset_button_1);
         add1.setOnTouchListener(this);
