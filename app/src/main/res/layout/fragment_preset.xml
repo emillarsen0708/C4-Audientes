@@ -1,196 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/preset_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@xml/sound_background"
     android:orientation="vertical"
-    android:visibility="visible"
+    android:weightSum="3.5"
     tools:context=".PresetFragment">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <TextView
-            android:id="@+id/sonority_by"
+            android:id="@+id/preset_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="112dp"
-            android:layout_marginTop="37dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
             android:fontFamily="sans-serif-medium"
-            android:gravity="center_horizontal|center_vertical"
             android:text="@string/sonority_by_audientes"
             android:textAppearance="@style/sonority_by2"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/home"
-            android:layout_width="130dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="140dp"
-            android:layout_marginTop="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_below="@+id/preset_header"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_5sdp"
             android:fontFamily="sans-serif-medium"
-            android:gravity="center_horizontal|center_vertical"
+            android:gravity="center"
             android:text="@string/sound"
             android:textAppearance="@style/home"
             android:textColor="#1B325F"
             android:textStyle="bold" />
 
+    </RelativeLayout>
+
+    <com.example.brintaudientes.RelativeRadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="vertical"
+        >
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
+        <RadioButton
+            android:id="@+id/select_preset_button_1"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:background="@drawable/preset_selector"
+            android:button="@android:color/transparent"
+            android:text="@string/add_new"
+            android:textAlignment="center"
+            android:textAppearance="@style/sonority_by2"
+            android:textColor="@color/preset_text_color"
+            android:textStyle="bold"
+            android:layout_toStartOf="@+id/select_preset_button_2"
+            android:layout_marginEnd="@dimen/_15sdp"
+            
+            />
 
-                <RadioGroup
-                    android:id="@+id/radio_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="450dp"
-                    android:orientation="vertical">
+        <RadioButton
+            android:id="@+id/select_preset_button_2"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:background="@drawable/preset_selector"
+            android:button="@android:color/transparent"
+            android:text="@string/add_new"
+            android:textAlignment="center"
+            android:textAppearance="@style/sonority_by2"
+            android:textColor="@color/preset_text_color"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true" />
 
-                    <RadioButton
-                        android:id="@+id/select_preset_button_1"
-                        android:tag="add1"
-                        android:orientation="vertical"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="38dp"
-                        android:layout_marginTop="0dp"
-                        android:background="@drawable/preset_selector"
-                        android:button="@android:color/transparent"
-                        android:text="@string/add_new"
-                        android:textColor="@color/preset_text_color"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/sonority_by2"
-                        android:textStyle="bold" />
-
-                    <RadioButton
-                        android:id="@+id/select_preset_button_2"
-                        android:tag="add2"
-                        android:orientation="vertical"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="168dp"
-                        android:layout_marginTop="-100dp"
-                        android:background="@drawable/preset_selector"
-                        android:button="@android:color/transparent"
-                        android:text="@string/add_new"
-                        android:textColor="@color/preset_text_color"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/sonority_by2"
-                        android:textStyle="bold" />
-
-                    <RadioButton
-                        android:id="@+id/select_preset_button_3"
-                        android:tag="add3"
-                        android:orientation="vertical"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="298dp"
-                        android:layout_marginTop="-100dp"
-                        android:background="@drawable/preset_selector"
-                        android:button="@android:color/transparent"
-                        android:text="@string/add_new"
-                        android:textColor="@color/preset_text_color"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/sonority_by2"
-                        android:textStyle="bold" />
-
-                    <RadioButton
-                        android:id="@+id/select_preset_button_4"
-                        android:tag="add4"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="38dp"
-                        android:layout_marginTop="30dp"
-                        android:background="@drawable/preset_selector"
-                        android:button="@android:color/transparent"
-                        android:text="@string/add_new"
-                        android:textColor="@color/preset_text_color"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/sonority_by2"
-                        android:textStyle="bold" />
-
-                    <RadioButton
-                        android:id="@+id/select_preset_button_5"
-                        android:tag="add5"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="168dp"
-                        android:layout_marginTop="-100dp"
-                        android:background="@drawable/preset_selector"
-                        android:button="@android:color/transparent"
-                        android:text="@string/add_new"
-                        android:textColor="@color/preset_text_color"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/sonority_by2"
-                        android:textStyle="bold" />
-
-                    <RadioButton
-                        android:id="@+id/select_preset_button_6"
-                        android:tag="add6"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="298dp"
-                        android:layout_marginTop="-100dp"
-                        android:background="@drawable/preset_selector"
-                        android:button="@android:color/transparent"
-                        android:text="@string/add_new"
-                        android:textColor="@color/preset_text_color"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/sonority_by2"
-                        android:textStyle="bold" />
+        <RadioButton
+            android:id="@+id/select_preset_button_3"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:background="@drawable/preset_selector"
+            android:button="@android:color/transparent"
+            android:orientation="vertical"
+            android:tag="add3"
+            android:text="@string/add_new"
+            android:textAlignment="center"
+            android:textAppearance="@style/sonority_by2"
+            android:textColor="@color/preset_text_color"
+            android:textStyle="bold"
+            android:layout_toEndOf="@id/select_preset_button_2"
+            android:layout_marginStart="@dimen/_15sdp"
+            />
 
 
-                </RadioGroup>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="-80dp"
-                            android:orientation="vertical" >
+        <RadioButton
+            android:id="@+id/select_preset_button_4"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:background="@drawable/preset_selector"
+            android:button="@android:color/transparent"
+            android:tag="add4"
+            android:text="@string/add_new"
+            android:textAlignment="center"
+            android:textAppearance="@style/sonority_by2"
+            android:textColor="@color/preset_text_color"
+            android:textStyle="bold"
+            android:layout_below="@+id/select_preset_button_1"
+            android:layout_toStartOf="@+id/select_preset_button_5"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            />
 
-                            <Button
-                                android:id="@+id/play_button"
-                                android:layout_width="50dp"
-                                android:layout_height="60dp"
-                                android:layout_marginStart="90dp"
-                                android:layout_marginTop="0dp"
-                                android:background="@drawable/ic_play_icon"
-                                android:textAppearance="@style/Play_ambience" />
+        <RadioButton
+            android:id="@+id/select_preset_button_5"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:background="@drawable/preset_selector"
+            android:button="@android:color/transparent"
+            android:tag="add5"
+            android:text="@string/add_new"
+            android:textAlignment="center"
+            android:textAppearance="@style/sonority_by2"
+            android:textColor="@color/preset_text_color"
+            android:textStyle="bold"
+            android:layout_below="@+id/select_preset_button_2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            />
 
-                            <Button
-                                android:id="@+id/edit_preset_button"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginStart="290dp"
-                                android:layout_marginTop="-60dp"
-                                android:background="@drawable/ic_edit_preset"
-                                android:textAppearance="@style/Play_ambience" />
+        <RadioButton
+            android:id="@+id/select_preset_button_6"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:background="@drawable/preset_selector"
+            android:button="@android:color/transparent"
+            android:tag="add6"
+            android:text="@string/add_new"
+            android:textAlignment="center"
+            android:textAppearance="@style/sonority_by2"
+            android:textColor="@color/preset_text_color"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/select_preset_button_5"
+            android:layout_below="@+id/select_preset_button_3"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            
+            />
 
-                                <TextView
-                                    android:id="@+id/concurrent"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="17dp"
-                                    android:layout_marginStart="280dp"
-                                    android:layout_marginTop="0dp"
-                                    android:fontFamily="sans-serif-medium"
-                                    android:gravity="center_horizontal|center_vertical"
-                                    android:text="@string/edit_preset"
-                                    android:textAppearance="@style/sonority_by2"
-                                    android:textStyle="bold" />
+    </com.example.brintaudientes.RelativeRadioGroup>
 
 
-                        </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-80dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-            </LinearLayout>
+        <Button
+            android:id="@+id/play_button"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginEnd="@dimen/_40sdp"
+            android:layout_toStartOf="@+id/empty_text2"
+            android:background="@drawable/ic_play_icon"
+            android:textAppearance="@style/Play_ambience"
+            android:layout_marginTop="@dimen/_90sdp"/>
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/empty_text2"
+            android:layout_width="@dimen/_1sdp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_90sdp"/>
 
+        <Button
+            android:id="@+id/edit_preset_button"
+            android:layout_width="@dimen/_55sdp"
+            android:layout_height="@dimen/_58sdp"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_toEndOf="@+id/empty_text2"
+            android:background="@drawable/ic_edit_preset"
+            android:textAppearance="@style/Play_ambience"
+            android:layout_marginTop="@dimen/_85sdp"/>
+
+
+    </RelativeLayout>
 </LinearLayout>
