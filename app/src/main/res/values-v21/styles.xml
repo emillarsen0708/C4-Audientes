@@ -68,7 +68,7 @@
     <style name="home">
 
         <item name="android:textSize">
-            24sp
+            @dimen/_24ssp
         </item>
 
         <item name="android:letterSpacing">
@@ -164,7 +164,7 @@
     <style name="sonority_by2">
 
         <item name="android:textSize">
-            14sp
+            @dimen/_14ssp
         </item>
 
         <item name="android:textStyle">

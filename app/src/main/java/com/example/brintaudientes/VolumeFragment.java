@@ -49,7 +49,7 @@ public class VolumeFragment extends Fragment implements View.OnTouchListener {
 
 
         volumes1 = root.findViewById(R.id.volumebars1);
-        volumes1.setVisibility(View.VISIBLE);
+        volumes1.setVisibility(View.GONE);
 
 
         vol1_runnable = new Runnable() {
@@ -73,7 +73,6 @@ public class VolumeFragment extends Fragment implements View.OnTouchListener {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-           PresetFragment.mediaPlayer1.setVolume(0.5f, 0.5f);
            // PresetFragment.mediaPlayer2.setVolume(0.5f, 0.5f);
            // PresetFragment.mediaPlayer3.setVolume(0.5f, 0.5f);
            // PresetFragment.mediaPlayer4.setVolume(0.5f, 0.5f);

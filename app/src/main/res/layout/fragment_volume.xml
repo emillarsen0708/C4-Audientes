@@ -1,150 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/preset_quick"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@xml/frontpage_background_2">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@xml/sound_background"
+    android:orientation="vertical"
+    android:weightSum="4"
+    tools:context=".VolumeFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
     <TextView
         android:id="@+id/sonority_by_audientes"
-        android:layout_width="187dp"
-        android:layout_height="17dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="112dp"
-        android:layout_marginLeft="112dp"
-        android:layout_marginTop="37dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
         android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal|center_vertical"
+        android:layout_centerHorizontal="true"
         android:text="SONORITY BY AUDIENTES"
         android:textAppearance="@style/sonority_by"
         android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/settings_header"
-        android:layout_width="130dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="90dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_below="@+id/sonority_by_audientes"
         android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal|center_vertical"
+        android:layout_centerInParent="true"
         android:text="SETTINGS"
         android:textAppearance="@style/home"
         android:textStyle="bold" />
 
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
     <View
-        android:layout_width="280dp"
-        android:layout_height="224dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="180dp"
-        android:background="@drawable/sound_balance_polygon"
-        android:elevation="4dp" />
+        android:id="@+id/volumeTriangle"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_220sdp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/sound_balance_polygon" />
+
+        <SeekBar
+            android:id="@+id/volumebars1"
+            android:layout_width="@dimen/_230sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_147sdp"
+            android:progress="100"
+            android:progressBackgroundTint="@color/colorPrimary"
+            android:rotation="-27"
+            android:theme="@style/SeekBarTheme"
+            android:layout_marginStart="@dimen/_18sdp">
+
+        </SeekBar>
+
+        <SeekBar
+            android:id="@+id/volumebars2"
+            android:layout_width="@dimen/_230sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_90sdp"
+            android:progress="100"
+            android:progressBackgroundTint="@color/colorPrimary"
+            android:rotation="-90"
+            android:theme="@style/SeekBarTheme">
+
+        </SeekBar>
+
+        <SeekBar
+            android:id="@+id/volumebars3"
+            android:layout_width="@dimen/_233sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_147sdp"
+            android:layout_marginStart="@dimen/_70sdp"
+            android:progress="100"
+            android:progressBackgroundTint="@color/colorPrimary"
+            android:rotation="207"
+            android:theme="@style/SeekBarTheme">
+
+        </SeekBar>
 
     <Button
         android:id="@+id/adjust_button"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:layout_centerInParent="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="280dp"
         android:background="@drawable/ic_concurrent_marked_icon" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="445dp"
-        android:background="@xml/reset_ellipse_test"
-        android:fontFamily="sans-serif-medium"
-        android:text="RESET"
-        android:textAppearance="@style/sonority_by2"
-        android:textStyle="bold"/>
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/edit_preset_button"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="500dp"
-        android:background="@drawable/ic_concurrent_icon"
-        android:textAppearance="@style/Play_ambience" />
+  <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
+        <Button
+            android:id="@+id/reset_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@xml/reset_ellipse_test"
+            android:fontFamily="sans-serif-medium"
+            android:text="RESET"
+            android:textAppearance="@style/sonority_by2"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"/>
 
-    <TextView
-        android:id="@+id/concurrent"
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="580dp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="@string/concurrent_mode"
-        android:textAppearance="@style/sonority_by2"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/concurrent_button"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@drawable/ic_concurrent_icon"
+            android:textAppearance="@style/Play_ambience"
+            android:layout_toLeftOf="@+id/reset_button"
+            android:layout_marginEnd="@dimen/_30sdp" />
 
-    <Button
-        android:id="@+id/play_preset_button"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="500dp"
-        android:background="@drawable/ic_continuous_icon"
-        android:textAppearance="@style/Play_ambience" />
+        <TextView
+            android:id="@+id/concurrent"
+            android:layout_width="wrap_content"
+            android:layout_height="17dp"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/concurrent_mode"
+            android:textAppearance="@style/sonority_by2"
+            android:textStyle="bold"
+            android:textSize="@dimen/_12ssp"
+            android:layout_below="@+id/concurrent_button"
+            android:layout_toRightOf="@+id/reset_button"
+            android:layout_marginStart="@dimen/_7sdp"/>
 
-    <TextView
-        android:id="@+id/continuous_Mode"
-        android:layout_width="wrap_content"
-        android:layout_height="17dp"
-        android:layout_marginStart="280dp"
-        android:layout_marginTop="580dp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="@string/continuous_mode"
-        android:textAppearance="@style/sonority_by2"
-        android:textStyle="bold" />
+        <Button
+            android:id="@+id/continous_button"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@drawable/ic_continuous_icon"
+            android:textAppearance="@style/Play_ambience"
+            android:layout_toEndOf="@+id/reset_button"
+            android:layout_marginStart="@dimen/_30sdp"/>
 
-    <SeekBar
-        android:id="@+id/volumebars1"
-        android:layout_width="265dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="135dp"
-        android:progress="30"
-        android:progressBackgroundTint="@color/colorPrimary"
-        android:rotation="-27"
-        android:theme="@style/SeekBarTheme">
+        <TextView
+            android:id="@+id/continuous_Mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/continuous_mode"
+            android:textAppearance="@style/sonority_by2"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            android:layout_below="@id/continous_button"
+            android:layout_toLeftOf="@+id/reset_button"
+            android:layout_marginEnd="@dimen/_7sdp"/>
 
-    </SeekBar>
+    </RelativeLayout>
 
-    <SeekBar
-        android:id="@+id/volumebars2"
-        android:layout_width="260dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="280dp"
-        android:layout_marginEnd="70dp"
-        android:progress="20"
-        android:progressBackgroundTint="@color/colorPrimary"
-        android:rotation="-90"
-        android:theme="@style/SeekBarTheme">
-
-    </SeekBar>
-
-    <SeekBar
-        android:id="@+id/volumebars3"
-        android:layout_width="260dp"
-        android:layout_height="23dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="335dp"
-        android:layout_marginEnd="70dp"
-        android:progress="45"
-        android:progressBackgroundTint="@color/colorPrimary"
-        android:rotation="207"
-        android:theme="@style/SeekBarTheme">
-
-    </SeekBar>
-</FrameLayout>
+</LinearLayout>
 

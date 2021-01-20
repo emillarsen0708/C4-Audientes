@@ -39,7 +39,6 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
         void onInputLiSent(CharSequence input);
     }
 
-
     private FragmentLiListener listener;
 
     private ListView soundLibraryListView;
