@@ -27,8 +27,8 @@ import java.util.concurrent.Executors;
 
 public class PresetFragment extends Fragment implements View.OnTouchListener {
 
-    Executor bgThread = Executors.newSingleThreadExecutor();
-    Handler uiThread = new Handler(Looper.getMainLooper());
+    Runnable chosen;
+    Handler chosenHandler = new Handler(Looper.getMainLooper());
 
     private final boolean waitForEdit = true;
     public List<String> songListReplace = new ArrayList<>();
@@ -46,7 +46,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
     LibraryEditFragment addSound6 = new LibraryEditFragment();
 
 
-    MediaPlayer mediaPlayer1;
+    static MediaPlayer mediaPlayer1;
     MediaPlayer mediaPlayer2;
     MediaPlayer mediaPlayer3;
     MediaPlayer mediaPlayer4;
@@ -79,31 +79,34 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
             public void onClick(View v) {
                 switch (radioGroup.getCheckedRadioButtonId()) {
                     case R.id.select_preset_button_1:
-                        if (!isPlaying && !addSound.chosenSoundNames.isEmpty()) {
+                                if (!isPlaying && !addSound.chosenSoundNames.isEmpty()) {
 
-                            play.setBackgroundResource(R.drawable.ic_pause_icon);
+                                    play.setBackgroundResource(R.drawable.ic_pause_icon);
 
-                            for (int i = 0; i < addSound.chosenSoundNames.size(); i++) {
-                                if(mediaFiles[i] == null) {
-                                    mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                                    for (int i = 0; i < addSound.chosenSoundNames.size(); i++) {
+
+                                        if(mediaFiles[i] == null) {
+                                            mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                                        }
+                                        mediaFiles[i].start();
+                                        mediaFiles[i].setVolume(0.5f, 0.5f);
+                                        playingCount.put(i, mediaFiles[i].isPlaying());
+                                        chosenHandler.postDelayed(chosen, 50);
+                                    }
+                                    System.out.println(addSound.chosenSoundNames);
+
+                                } else if (isPlaying) {
+                                    play.setBackgroundResource(R.drawable.ic_play_icon);
+                                    for (int i = 0; i < playingCount.size(); i++) {
+                                        mediaFiles[i].stop();
+                                        mediaFiles [i].deselectTrack(getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
+                                        mediaFiles [i].reset();
+                                        mediaFiles[i].release();
+                                        mediaFiles [i] = null;
+                                        chosenHandler.removeCallbacks(chosen);
+                                    }
+                                    playingCount.clear();
                                 }
-                                mediaFiles[i].start();
-                                mediaFiles[i].setVolume(0.5f, 0.5f);
-                                playingCount.put(i, mediaFiles[i].isPlaying());
-                            }
-                            System.out.println(addSound.chosenSoundNames);
-
-                        } else if (isPlaying) {
-                            play.setBackgroundResource(R.drawable.ic_play_icon);
-                            for (int i = 0; i < playingCount.size(); i++) {
-                                mediaFiles[i].stop();
-                                mediaFiles [i].deselectTrack(getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
-                                mediaFiles [i].reset();
-                                mediaFiles[i].release();
-                                mediaFiles [i] = null;
-                            }
-                            playingCount.clear();
-                        }
                         break;
                     case R.id.select_preset_button_2:
 
@@ -117,6 +120,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                 }                                mediaFiles[i].start();
                                 mediaFiles[i].setVolume(0.5f, 0.5f);
                                 playingCount.put(i, mediaFiles[i].isPlaying());
+                                chosenHandler.postDelayed(chosen, 50);
                             }
                         } else if (isPlaying && playingCount.size() != 0) {
                             play.setBackgroundResource(R.drawable.ic_play_icon);
@@ -125,6 +129,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                 mediaFiles [i].reset();
                                 mediaFiles[i].release();
                                 mediaFiles [i] = null;
+                                chosenHandler.removeCallbacks(chosen);
                             }
                             playingCount.clear();
                         } else {
@@ -141,6 +146,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                 }                                mediaFiles[i].start();
                                 mediaFiles[i].setVolume(0.5f, 0.5f);
                                 playingCount.put(i, mediaFiles[i].isPlaying());
+                                chosenHandler.postDelayed(chosen, 50);
                             }
                         } else if (isPlaying && playingCount.size() != 0) {
                             play.setBackgroundResource(R.drawable.ic_play_icon);
@@ -149,6 +155,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                 mediaFiles [i].reset();
                                 mediaFiles[i].release();
                                 mediaFiles [i] = null;
+                                chosenHandler.removeCallbacks(chosen);
                             }
                             playingCount.clear();
                         } else {
@@ -165,6 +172,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                 }                                mediaFiles[i].start();
                                 mediaFiles[i].setVolume(0.5f, 0.5f);
                                 playingCount.put(i, mediaFiles[i].isPlaying());
+                                chosenHandler.postDelayed(chosen, 50);
                             }
                         } else if (isPlaying && playingCount.size() != 0) {
                             play.setBackgroundResource(R.drawable.ic_play_icon);
@@ -173,6 +181,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                 mediaFiles [i].reset();
                                 mediaFiles[i].release();
                                 mediaFiles [i] = null;
+                                chosenHandler.removeCallbacks(chosen);
                             }
                             playingCount.clear();
                         } else {
@@ -189,6 +198,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                 }                                mediaFiles[i].start();
                                 mediaFiles[i].setVolume(0.5f, 0.5f);
                                 playingCount.put(i, mediaFiles[i].isPlaying());
+                                chosenHandler.postDelayed(chosen, 50);
                             }
                         } else if (isPlaying && playingCount.size() != 0) {
                             play.setBackgroundResource(R.drawable.ic_play_icon);
@@ -197,6 +207,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                 mediaFiles [i].reset();
                                 mediaFiles[i].release();
                                 mediaFiles [i] = null;
+                                chosenHandler.removeCallbacks(chosen);
                             }
                             playingCount.clear();
                         }
@@ -212,6 +223,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                 }                                mediaFiles[i].start();
                                 mediaFiles[i].setVolume(0.5f, 0.5f);
                                 playingCount.put(i, mediaFiles[i].isPlaying());
+                                chosenHandler.postDelayed(chosen, 50);
                             }
                         } else if (isPlaying && playingCount.size() != 0) {
                             play.setBackgroundResource(R.drawable.ic_play_icon);
@@ -220,6 +232,7 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                 mediaFiles [i].reset();
                                 mediaFiles[i].release();
                                 mediaFiles [i] = null;
+                                chosenHandler.removeCallbacks(chosen);
                             }
                             playingCount.clear();
                         }

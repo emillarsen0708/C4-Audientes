@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -49,6 +51,8 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
     public static ActionMode actionMode = null;
 
     Field [] fields = R.raw.class.getFields();
+    Runnable chosen;
+    Handler chosenHandler = new Handler(Looper.getMainLooper());
 
     public List<String> chosenSoundNames = new ArrayList<>();
 
@@ -187,6 +191,7 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
                     for (int i = 0; i < fields.length; i++) {
                         if (adapter.mCheckedStates.get(i)) {
                             chosenSoundNames.add(fields[i].getName());
+                            chosenHandler.postDelayed(chosen,10);
                         }
                     }
 
@@ -227,23 +232,9 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
 
 
     public void getSounds() {
-        Thread fieldsArrayUpdate = new Thread() {
-            @Override
-            public void run() {
-
                 for (int i = 0; i < fields.length; i++) {
                     sounds.add(fields[i].getName());
                 }
-
-                try {
-                    sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        fieldsArrayUpdate.start();
-
     }
 
     public void updateEditText(CharSequence newtext) {

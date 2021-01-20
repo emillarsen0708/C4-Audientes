@@ -3,6 +3,9 @@ package com.example.brintaudientes;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,9 @@ import java.util.List;
 
 
 public class LibraryFragment extends Fragment {
+
+    Runnable chosen;
+    Handler chosenHandler = new Handler(Looper.getMainLooper());
 
     private ListView libraryListView;
     private ListViewAdapter adapter;
@@ -32,22 +38,10 @@ public class LibraryFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_library_2, container, false);
 
-        Thread fieldsArrayUpdate = new Thread() {
-            @Override
-            public void run() {
-
                 for (int i = 0; i < fields.length; i++) {
                     sounds.add(fields[i].getName());
+                    chosenHandler.postDelayed(chosen, 10);
                 }
-
-                try {
-                    sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        fieldsArrayUpdate.start();
 
         libraryListView = root.findViewById(R.id.listview_songs_edit);
         arrayAdapter = new ArrayAdapter<String>(getActivity(), R.layout.listview_text_color, sounds);
