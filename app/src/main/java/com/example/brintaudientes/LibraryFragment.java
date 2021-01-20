@@ -58,6 +58,9 @@ public class LibraryFragment extends Fragment {
             mediaPlayer = MediaPlayer.create(getActivity(), resId);
             mediaPlayer.start();
 
+
+
+
         });
 
         return root;

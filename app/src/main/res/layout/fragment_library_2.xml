@@ -14,7 +14,7 @@
         android:layout_marginTop="37dp"
         android:layout_gravity="center_horizontal"
         android:fontFamily="sans-serif-medium"
-        android:text="Sonority By Audientes"
+        android:text="@string/sonority_by_audientes"
         android:textAppearance="@style/sonority_by2"
         android:textStyle="bold" />
 
@@ -25,7 +25,7 @@
         android:layout_marginTop="60dp"
         android:fontFamily="sans-serif-medium"
         android:gravity="center_horizontal"
-        android:text="Sound Library"
+        android:text="@string/library_text"
         android:textAppearance="@style/home"
         android:textColor="#1B325F"
         android:textStyle="bold" />
