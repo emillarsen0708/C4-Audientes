@@ -28,6 +28,7 @@ import java.util.concurrent.Executors;
 public class PresetFragment extends Fragment implements View.OnTouchListener {
 
     private final boolean waitForEdit = true;
+    private final boolean play_pause_button = true;
     public List<String> songListReplace = new ArrayList<>();
     Runnable chosen;
     Handler chosenHandler = new Handler(Looper.getMainLooper());
@@ -43,15 +44,13 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
     MediaPlayer mediaPlayer2;
     MediaPlayer mediaPlayer3;
     MediaPlayer mediaPlayer4;
-    boolean isPlaying = false;
 
     //VolumeFragment volume1 = new VolumeFragment();
-
+    boolean isPlaying = false;
     //Handler mp1_handler = new Handler(Looper.myLooper());
     MediaPlayer[] mediaFiles = {mediaPlayer1, mediaPlayer2, mediaPlayer3, mediaPlayer4};
     SparseBooleanArray playingCount = new SparseBooleanArray();
     RelativeRadioGroup radioGroup, radioGroup2;
-    private final boolean play_pause_button = true;
     //private final boolean play_pause_button = true;
 
     @Nullable
@@ -69,11 +68,8 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                 switch (radioGroup.getCheckedRadioButtonId()) {
                     case R.id.select_preset_button_1:
                         if (!isPlaying && !addSound.chosenSoundNames.isEmpty()) {
-
                             play.setBackgroundResource(R.drawable.ic_pause_icon);
-
                             for (int i = 0; i < addSound.chosenSoundNames.size(); i++) {
-
                                 if (mediaFiles[i] == null) {
                                     mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
                                 }
@@ -88,7 +84,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                             play.setBackgroundResource(R.drawable.ic_play_icon);
                             for (int i = 0; i < playingCount.size(); i++) {
                                 mediaFiles[i].stop();
-                                mediaFiles[i].deselectTrack(getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
                                 mediaFiles[i].reset();
                                 mediaFiles[i].release();
                                 mediaFiles[i] = null;
@@ -98,11 +93,8 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                         }
                         break;
                     case R.id.select_preset_button_2:
-
                         if (!isPlaying && !addSound2.chosenSoundNames.isEmpty()) {
-
                             play.setBackgroundResource(R.drawable.ic_pause_icon);
-
                             for (int i = 0; i < addSound2.chosenSoundNames.size(); i++) {
                                 if (mediaFiles[i] == null) {
                                     mediaFiles[i] = MediaPlayer.create(getContext(), getResources().getIdentifier(addSound2.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
