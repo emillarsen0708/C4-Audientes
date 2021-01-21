@@ -13,14 +13,18 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
+
+import java.sql.Struct;
 
 
 public class VolumeFragment extends Fragment implements View.OnTouchListener {
 
+    private LinearLayout volumeLayout;
     private Button adjustButton = null;
-    private int x;
-    private int y;
+    private float x;
+    private float y;
 
     Handler vol1_handler = new Handler(Looper.myLooper());
     Handler vol2_handler = new Handler(Looper.myLooper());
@@ -45,7 +49,25 @@ public class VolumeFragment extends Fragment implements View.OnTouchListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_volume, container, false);
 
+        volumeLayout = root.findViewById(R.id.preset_quick);
+        adjustButton = root.findViewById(R.id.adjust_button);
 
+        volumeLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                x = event.getX();
+                y = event.getY();
+
+                if (event.getAction() == MotionEvent.ACTION_MOVE) {
+
+                    adjustButton.setX(x);
+                    adjustButton.setY(y);
+
+                }
+                return true;
+            }
+        });
 
 
         volumes1 = root.findViewById(R.id.volumebars1);
