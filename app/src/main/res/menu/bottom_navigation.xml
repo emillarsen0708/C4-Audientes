@@ -15,7 +15,4 @@
         android:id="@+id/nav_preset"
         android:icon="@drawable/ic_library_icon"
         android:title="Library"/>
-
-
-
 </menu>

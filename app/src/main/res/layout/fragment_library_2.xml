@@ -19,6 +19,36 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/anthony"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anthony Haidari s141479"
+        android:layout_marginTop="@dimen/_80sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:textAppearance="@style/sonority_by2"
+        android:textSize="@dimen/_10ssp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_90sdp"
+        android:textAppearance="@style/sonority_by2"
+        android:textSize="@dimen/_10ssp"
+        android:text="Emil Larsen 195383"
+        android:layout_marginStart="@dimen/_10sdp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_100sdp"
+        android:textAppearance="@style/sonority_by2"
+        android:textSize="@dimen/_10ssp"
+        android:text="Niels Grønlykke 195377"
+        android:layout_marginStart="@dimen/_10sdp"/>
+
+
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
