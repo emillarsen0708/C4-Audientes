@@ -88,7 +88,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                             play.setBackgroundResource(R.drawable.ic_play_icon);
                             for (int i = 0; i < playingCount.size(); i++) {
                                 mediaFiles[i].stop();
-                                mediaFiles[i].deselectTrack(getResources().getIdentifier(addSound.chosenSoundNames.get(i), "raw", getActivity().getPackageName()));
                                 mediaFiles[i].reset();
                                 mediaFiles[i].release();
                                 mediaFiles[i] = null;
