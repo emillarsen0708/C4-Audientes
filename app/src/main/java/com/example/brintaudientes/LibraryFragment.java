@@ -22,9 +22,7 @@ public class LibraryFragment extends Fragment {
     Handler chosenHandler = new Handler(Looper.getMainLooper());
 
     private ListView libraryListView;
-    private ListViewAdapter adapter;
     private final List<String> sounds = new ArrayList<>();
-    private LibraryEditFragment libraryEditFragment;
     ArrayAdapter<String> arrayAdapter;
     Field[] fields = R.raw.class.getFields();
     MediaPlayer mediaPlayer;
@@ -35,7 +33,6 @@ public class LibraryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_library_2, container, false);
 
                 for (int i = 0; i < fields.length; i++) {
@@ -57,10 +54,6 @@ public class LibraryFragment extends Fragment {
             int resId = getResources().getIdentifier(sounds.get(position), "raw", getActivity().getPackageName());
             mediaPlayer = MediaPlayer.create(getActivity(), resId);
             mediaPlayer.start();
-
-
-
-
         });
 
         return root;

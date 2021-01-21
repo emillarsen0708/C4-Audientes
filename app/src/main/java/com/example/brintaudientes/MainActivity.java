@@ -20,45 +20,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 // todo: Få styr på skærmvending så player ikke kører videre mens player står i pause mode
 
-public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener, AccessFragmentViews, LibraryEditFragment.FragmentLiListener {
+public class MainActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener, LibraryEditFragment.FragmentLiListener {
 
-   // ORDRE AF PRESETS
-
-
-/*
-
-    PresetBuilding MakeConcurrents = new ConcurrentPresetBuilding();
-
-    //iterere over antal sange i chosenSongNames.
-
-    Preset oneSound = MakeConcurrents.orderThePreset("ONE");
-    Preset twoSound = MakeConcurrents.orderThePreset("TWO");
-    Preset threeSound = MakeConcurrents.orderThePreset("THREE");
-    Preset fourSound = MakeConcurrents.orderThePreset("FOUR");
-
-
-   PresetBuilding MakeContinuous = new ContinuousPresetBuilding();
-    Preset oneSound = MakeContinuous.orderThePreset("ONE");
-    Preset twoSound = MakeContinuous.orderThePreset("TWO");
-    Preset threeSound = MakeContinuous.orderThePreset("THREE");
-    Preset fourSound = MakeContinuous.orderThePreset("FOUR");*/
-
-
-    //PlayFragment playFragment = new PlayFragment();
     final PresetFragment presetFragment = new PresetFragment();
     final VolumeFragment volumeFragment = new VolumeFragment();
     final LibraryFragment libraryFragment = new LibraryFragment();
     Fragment selectedFragment = presetFragment;
     Button libraryCancel;
-    //String buttonText1, buttonText2, buttonText3, buttonText4, buttonText5, buttonText6, buttonText7, buttonText8 = "Add new";
     int buttonId;
-    private String presetName;
     public static Bundle mybundle = new Bundle();
     public static Bundle strBundle = new Bundle();
-
-    LibraryEditFragment userselection = new LibraryEditFragment();
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,28 +77,9 @@ public class MainActivity extends AppCompatActivity implements FragmentManager.O
                 }
             };
 
-    public int setUserSelection() {
-        int size = userselection.chosenSoundNames.size();
-        return size;
-    }
-
-
-    public void setButtonTextString(String buttonText) {
-
-    }
 
     @Override
     public void onBackStackChanged() {
-
-    }
-
-    @Override
-    public void setVisibilityForButton(boolean bool) {
-
-    }
-
-    @Override
-    public void readExternalStorage() {
 
     }
 

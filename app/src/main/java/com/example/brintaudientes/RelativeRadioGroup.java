@@ -17,11 +17,8 @@ import androidx.annotation.IdRes;
  */
 public class RelativeRadioGroup extends RelativeLayout {
 
-    // holds the checked id; the selection is empty by default
     private int mCheckedId = -1;
-    // tracks children radio buttons checked state
     private CompoundButton.OnCheckedChangeListener mChildOnCheckedChangeListener;
-    // when true, mOnCheckedChangeListener discards events
     private boolean mProtectFromCheckedChange = false;
     private OnCheckedChangeListener mOnCheckedChangeListener;
     private PassThroughHierarchyChangeListener mPassThroughListener;
@@ -48,7 +45,6 @@ public class RelativeRadioGroup extends RelativeLayout {
      */
     @Override
     public void setOnHierarchyChangeListener(OnHierarchyChangeListener listener) {
-        // the user listener is delegated to our pass-through listener
         mPassThroughListener.mOnHierarchyChangeListener = listener;
     }
 

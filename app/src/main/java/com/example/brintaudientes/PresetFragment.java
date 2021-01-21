@@ -27,13 +27,10 @@ import java.util.concurrent.Executors;
 
 public class PresetFragment extends Fragment implements View.OnTouchListener {
 
-    private final boolean waitForEdit = true;
-    private final boolean play_pause_button = true;
-    public List<String> songListReplace = new ArrayList<>();
     Runnable chosen;
     Handler chosenHandler = new Handler(Looper.getMainLooper());
     Button play, edit;
-    RadioButton add1, add2, add3, add4, add5, add6, add7, add8, add9;
+    RadioButton add1, add2, add3, add4, add5, add6;
     LibraryEditFragment addSound = new LibraryEditFragment();
     LibraryEditFragment addSound2 = new LibraryEditFragment();
     LibraryEditFragment addSound3 = new LibraryEditFragment();
@@ -45,13 +42,10 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
     MediaPlayer mediaPlayer3;
     MediaPlayer mediaPlayer4;
 
-    //VolumeFragment volume1 = new VolumeFragment();
     boolean isPlaying = false;
-    //Handler mp1_handler = new Handler(Looper.myLooper());
     MediaPlayer[] mediaFiles = {mediaPlayer1, mediaPlayer2, mediaPlayer3, mediaPlayer4};
     SparseBooleanArray playingCount = new SparseBooleanArray();
-    RelativeRadioGroup radioGroup, radioGroup2;
-    //private final boolean play_pause_button = true;
+    RelativeRadioGroup radioGroup;
 
     @Nullable
     @Override
@@ -78,8 +72,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                                 playingCount.put(i, mediaFiles[i].isPlaying());
                                 chosenHandler.postDelayed(chosen, 50);
                             }
-                            System.out.println(addSound.chosenSoundNames);
-
                         } else if (isPlaying) {
                             play.setBackgroundResource(R.drawable.ic_play_icon);
                             for (int i = 0; i < playingCount.size(); i++) {
@@ -289,7 +281,6 @@ public class PresetFragment extends Fragment implements View.OnTouchListener {
                 }
             }
         });
-
 
         add1 = root.findViewById(R.id.select_preset_button_1);
         add1.setOnTouchListener(this);

@@ -34,7 +34,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
-            android:text="@string/sound"
+            android:text="@string/edit_preset"
             android:textAppearance="@style/home"
             android:textColor="#1B325F"
             android:textStyle="bold" />

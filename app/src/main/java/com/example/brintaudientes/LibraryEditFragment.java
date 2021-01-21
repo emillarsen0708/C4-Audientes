@@ -33,45 +33,24 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LibraryEditFragment extends Fragment implements AccessFragmentViews{
-
-    public interface FragmentLiListener {
-        void onInputLiSent(CharSequence input);
-    }
-
-    private FragmentLiListener listener;
-
-    private ListView soundLibraryListView;
-    private ListViewAdapter adapter;
-    public List<String> sounds = new ArrayList<>();
-    public List<String> userSelection = new ArrayList<>();
+public class LibraryEditFragment extends Fragment {
 
     public static boolean isActionMode = false;
     public static ActionMode actionMode = null;
-
-    Field [] fields = R.raw.class.getFields();
+    public List<String> sounds = new ArrayList<>();
+    public List<String> userSelection = new ArrayList<>();
+    public List<String> chosenSoundNames = new ArrayList<>();
+    Field[] fields = R.raw.class.getFields();
     Runnable chosen;
     Handler chosenHandler = new Handler(Looper.getMainLooper());
-
-    public List<String> chosenSoundNames = new ArrayList<>();
-
-
     ArrayList<String> arrayList;
-
-    Button cancel, displaySelected, addAsPreset, importLocalSound, buttonPress;
+    Button cancel, displaySelected, addAsPreset, importLocalSound;
     EditText presetName;
-    PresetFragment presetFragment;
-    private String name;
-    private boolean isEditReady;
-    CheckBox checkBox;
-
-    ArrayAdapter soundListAdapter;
     MediaPlayer mediaPlayer;
-    private int nr = 4;
-    Button button;
     int buttonId;
-
-    public static int selectedPosition = 0;
+    private FragmentLiListener listener;
+    private ListView soundLibraryListView;
+    private ListViewAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -89,30 +68,23 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
         buttonId = MainActivity.mybundle.getInt("buttonId");
 
         displaySelected = root.findViewById(R.id.display_selected_button);
-    /*    displaySelected.setOnClickListener(new View.OnClickListener() {
+        displaySelected.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String itemSelected = "Selected items:  \n";
-                for (int i = 0; i < soundLibraryListView.getCount() ; i++) {
-                    if(adapter.mCheckedStates.get(i)) {
+                for (int i = 0; i < soundLibraryListView.getCount(); i++) {
+                    if (adapter.mCheckedStates.get(i)) {
                         itemSelected += soundLibraryListView.getItemAtPosition(i) + "\n";
                     }
-                } Toast.makeText(getActivity(), itemSelected, Toast.LENGTH_SHORT).show();
+                }
+                Toast.makeText(getActivity(), itemSelected, Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
 
         soundLibraryListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
 
-              /* if (userSelection.contains(sounds.get(position))) {
-                    userSelection.remove(sounds.get(position));
-                } else {
-                    userSelection.add(sounds.get(position));
-                }
-                Toast.makeText(getActivity(),"Antal Item: " +LibraryFragment.userSelection.size(),Toast.LENGTH_SHORT).show();
-
-                //mode.setTitle(userSelection.size() + " items selected.. ");*/
             }
 
             @Override
@@ -151,7 +123,6 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
         });
 
 
-
         presetName = root.findViewById(R.id.preset_title_edittext);
 
 
@@ -180,7 +151,7 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
 
                 MainActivity.strBundle.putString("editText", presetName.getText().toString());
 
-                if (input.toString().isEmpty() ) {
+                if (input.toString().isEmpty()) {
                     presetName.setError("Caution! Please name preset");
                 } else if (adapter.mCheckedStates.size() == 0) {
                     presetName.setError("Remember add sounds to preset");
@@ -190,7 +161,7 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
                     for (int i = 0; i < fields.length; i++) {
                         if (adapter.mCheckedStates.get(i)) {
                             chosenSoundNames.add(fields[i].getName());
-                            chosenHandler.postDelayed(chosen,10);
+                            chosenHandler.postDelayed(chosen, 10);
                         }
                     }
 
@@ -228,12 +199,10 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
         return root;
     }
 
-
-
     public void getSounds() {
-                for (int i = 0; i < fields.length; i++) {
-                    sounds.add(fields[i].getName());
-                }
+        for (int i = 0; i < fields.length; i++) {
+            sounds.add(fields[i].getName());
+        }
     }
 
     public void updateEditText(CharSequence newtext) {
@@ -258,23 +227,6 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
     }
 
     @Override
-    public void readExternalStorage() {
-        String fileName = "1.mp3";
-        String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC).toString();
-        MediaPlayer player = new MediaPlayer();
-
-        try {
-            player.setDataSource(path);
-            player.prepare();
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            System.out.println("Exception of type : " + e.toString());
-            e.printStackTrace();
-        }
-    }
-
-    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_delete) {
@@ -293,27 +245,7 @@ public class LibraryEditFragment extends Fragment implements AccessFragmentViews
     }
 
 
-    @Override
-    public void setVisibilityForButton(boolean bool) {
-        if (bool) {
-            soundLibraryListView.setSelector(R.drawable.list_item_selector);
-            displaySelected.setVisibility(View.GONE);
-            cancel.setVisibility(View.GONE);
-            addAsPreset.setVisibility(View.GONE);
-            presetName.setVisibility(View.GONE);
-            ViewGroup.LayoutParams list = soundLibraryListView.getLayoutParams();
-            list.height = 900;
-            soundLibraryListView.setLayoutParams(list);
-            soundLibraryListView.setPadding(0, 150, 0, 0);
-        } else {
-            cancel.setVisibility(View.VISIBLE);
-            cancel.setVisibility(View.VISIBLE);
-            addAsPreset.setVisibility(View.VISIBLE);
-            presetName.setVisibility(View.VISIBLE);
-        }
-    }
-
-    public boolean isEditReady() {
-        return isEditReady;
+    public interface FragmentLiListener {
+        void onInputLiSent(CharSequence input);
     }
 }

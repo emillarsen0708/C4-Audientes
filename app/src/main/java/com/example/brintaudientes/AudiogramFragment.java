@@ -12,9 +12,7 @@ import android.view.ViewGroup;
 public class AudiogramFragment extends Fragment {
 
     public AudiogramFragment() {
-
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
