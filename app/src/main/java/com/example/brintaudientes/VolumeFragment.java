@@ -27,23 +27,13 @@ public class VolumeFragment extends Fragment implements View.OnTouchListener {
     private float y;
 
     Handler vol1_handler = new Handler(Looper.myLooper());
-    Handler vol2_handler = new Handler(Looper.myLooper());
-    Handler vol3_handler = new Handler(Looper.myLooper());
-    Handler vol4_handler = new Handler(Looper.myLooper());
-
     Runnable vol1_runnable;
-    Runnable vol2_runnable;
-    Runnable vol3_runnable;
-    Runnable vol4_runnable;
-
-    MediaPlayer mediaPlayer1;
 
     SeekBar volumes1;
     SeekBar volumes2;
     SeekBar volumes3;
     SeekBar volumes4;
 
-    PresetFragment presetFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -60,10 +50,8 @@ public class VolumeFragment extends Fragment implements View.OnTouchListener {
                 y = event.getY();
 
                 if (event.getAction() == MotionEvent.ACTION_MOVE) {
-
                     adjustButton.setX(x);
                     adjustButton.setY(y);
-
                 }
                 return true;
             }
@@ -94,13 +82,6 @@ public class VolumeFragment extends Fragment implements View.OnTouchListener {
     volumes1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
-           // PresetFragment.mediaPlayer2.setVolume(0.5f, 0.5f);
-           // PresetFragment.mediaPlayer3.setVolume(0.5f, 0.5f);
-           // PresetFragment.mediaPlayer4.setVolume(0.5f, 0.5f);
-//
-
-
         }
 
         @Override
